@@ -1,205 +1,5067 @@
-<h3>Global Trade Solutions</h3>
-                    <p>International import and export of general merchandise and specialized engineering components, managing cross-border logistics.</p>
-                </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
 
-                <div class="service-card">
-                    <div class="service-card-icon"><i class="fa-solid fa-hard-hat"></i></div>
-                    <h3>General Contracting</h3>
-                    <p>Full-scale civil construction, structural frameworks, building renovations, and site preparation for industrial and commercial projects.</p>
-                </div>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    >
 
-                <div class="service-card">
-                    <div class="service-card-icon"><i class="fa-solid fa-plug-circle-bolt"></i></div>
-                    <h3>M&E Engineering</h3>
-                    <p>Design, installation, and maintenance of mechanical and electrical systems, HVAC, plumbing, and industrial piping.</p>
-                </div>
+    <meta
+        name="description"
+        content="VIHAANAA TECH HUBS — Integrated engineering, procurement, technical services, civil works, M&E, instrumentation, industrial supplies and facility solutions across Malaysia."
+    >
 
-                <div class="service-card">
-                    <div class="service-card-icon"><i class="fa-solid fa-microchip"></i></div>
-                    <h3>Plant Instrumentation</h3>
-                    <p>Calibration, installation, and servicing of precision measurement instruments and control systems for process optimization.</p>
-                </div>
+    <meta
+        name="keywords"
+        content="Vihaanaa Tech Hubs, engineering Malaysia, technical services Malaysia, M&E engineering, civil works, instrumentation, industrial supplies, procurement, facility maintenance"
+    >
 
-                <div class="service-card">
-                    <div class="service-card-icon"><i class="fa-solid fa-tools"></i></div>
-                    <h3>Facility Maintenance</h3>
-                    <p>Preventative and corrective maintenance services, routine inspections, and rapid-response repairs to minimize downtime.</p>
-                </div>
-            </div>
-        </div>
+    <meta name="theme-color" content="#071A2F">
+
+    <title>VIHAANAA TECH HUBS | Engineering & Technical Solutions Malaysia</title>
+
+    <!-- =========================================================
+         GOOGLE FONTS
+    ========================================================== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- =========================================================
+         FONT AWESOME
+    ========================================================== -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    >
+
+    <style>
+
+        /* =====================================================
+           DESIGN SYSTEM
+        ====================================================== */
+
+        :root {
+
+            --navy-950: #061426;
+            --navy-900: #071A2F;
+            --navy-850: #0B223D;
+            --navy-800: #0D2948;
+
+            --blue-700: #003E70;
+            --blue-600: #005B91;
+            --blue-500: #0879B5;
+
+            --teal-700: #006D70;
+            --teal-600: #008C8F;
+            --teal-500: #00A7A7;
+
+            --cyan: #1CC8E8;
+
+            --orange: #F46B3B;
+            --orange-dark: #D95125;
+
+            --white: #FFFFFF;
+            --slate-50: #F8FAFC;
+            --slate-100: #F1F5F9;
+            --slate-200: #E2E8F0;
+            --slate-300: #CBD5E1;
+            --slate-400: #94A3B8;
+            --slate-500: #64748B;
+            --slate-600: #475569;
+            --slate-700: #334155;
+            --slate-800: #1E293B;
+            --slate-900: #0F172A;
+
+            --success: #16A34A;
+            --warning: #D97706;
+            --danger: #DC2626;
+
+            --container: 1240px;
+
+            --radius-xs: 6px;
+            --radius-sm: 10px;
+            --radius-md: 16px;
+            --radius-lg: 22px;
+            --radius-xl: 30px;
+
+            --shadow-xs:
+                0 1px 2px rgba(15, 23, 42, 0.04);
+
+            --shadow-sm:
+                0 5px 20px rgba(15, 23, 42, 0.06);
+
+            --shadow-md:
+                0 15px 40px rgba(15, 23, 42, 0.09);
+
+            --shadow-lg:
+                0 25px 70px rgba(3, 30, 55, 0.16);
+
+            --transition:
+                220ms cubic-bezier(.2,.7,.2,1);
+
+            --ease:
+                cubic-bezier(.2,.7,.2,1);
+        }
+
+
+        /* =====================================================
+           RESET
+        ====================================================== */
+
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 92px;
+        }
+
+        body {
+            font-family: "DM Sans", sans-serif;
+            color: var(--slate-800);
+            background: var(--white);
+            line-height: 1.65;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        button,
+        input,
+        textarea,
+        select {
+            font: inherit;
+        }
+
+        button {
+            border: 0;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        ::selection {
+            background: rgba(0, 140, 143, .18);
+            color: var(--navy-900);
+        }
+
+
+        /* =====================================================
+           ACCESSIBILITY
+        ====================================================== */
+
+        :focus-visible {
+            outline: 3px solid rgba(28, 200, 232, .55);
+            outline-offset: 4px;
+        }
+
+        .skip-link {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            z-index: 99999;
+            padding: 10px 16px;
+            background: var(--navy-900);
+            color: white;
+            border-radius: 8px;
+            transform: translateY(-150%);
+            transition: transform var(--transition);
+        }
+
+        .skip-link:focus {
+            transform: translateY(0);
+        }
+
+
+        /* =====================================================
+           UTILITIES
+        ====================================================== */
+
+        .container {
+            width: min(
+                calc(100% - 48px),
+                var(--container)
+            );
+
+            margin-inline: auto;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+
+            color: var(--teal-600);
+
+            font-size: 12px;
+            font-weight: 800;
+
+            letter-spacing: .14em;
+            text-transform: uppercase;
+        }
+
+        .eyebrow::before {
+            content: "";
+            width: 24px;
+            height: 2px;
+            border-radius: 999px;
+            background: var(--teal-500);
+        }
+
+        .section-heading {
+            max-width: 760px;
+        }
+
+        .section-heading.center {
+            margin-inline: auto;
+            text-align: center;
+        }
+
+        .section-heading.center .eyebrow {
+            justify-content: center;
+        }
+
+        .section-title {
+            margin-top: 12px;
+
+            color: var(--navy-900);
+
+            font-family: "Manrope", sans-serif;
+            font-size: clamp(30px, 4vw, 48px);
+            font-weight: 800;
+            line-height: 1.12;
+            letter-spacing: -.035em;
+        }
+
+        .section-description {
+            margin-top: 18px;
+
+            color: var(--slate-500);
+
+            font-size: 16px;
+            line-height: 1.75;
+        }
+
+
+        /* =====================================================
+           HEADER
+        ====================================================== */
+
+        .site-header {
+            position: fixed;
+            inset: 0 0 auto 0;
+
+            height: 82px;
+
+            z-index: 5000;
+
+            border-bottom:
+                1px solid rgba(226,232,240,.72);
+
+            background:
+                rgba(255,255,255,.88);
+
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+
+            transition:
+                height var(--transition),
+                box-shadow var(--transition),
+                background var(--transition);
+        }
+
+        .site-header.scrolled {
+            height: 70px;
+
+            background:
+                rgba(255,255,255,.96);
+
+            box-shadow:
+                0 8px 30px rgba(15,23,42,.07);
+        }
+
+        .nav-container {
+            height: 100%;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+
+            min-width: max-content;
+        }
+
+        .brand-mark {
+            width: 44px;
+            height: 44px;
+
+            flex-shrink: 0;
+
+            transition: transform 400ms var(--ease);
+        }
+
+        .brand:hover .brand-mark {
+            transform: rotate(8deg);
+        }
+
+        .brand-copy {
+            display: flex;
+            flex-direction: column;
+            line-height: 1;
+        }
+
+        .brand-name {
+            color: var(--navy-900);
+
+            font-family: "Manrope", sans-serif;
+            font-size: 17px;
+            font-weight: 800;
+
+            letter-spacing: .035em;
+        }
+
+        .brand-subtitle {
+            margin-top: 5px;
+
+            color: var(--teal-600);
+
+            font-size: 9px;
+            font-weight: 800;
+
+            letter-spacing: .19em;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .nav-link {
+            position: relative;
+
+            color: var(--slate-600);
+
+            font-size: 13px;
+            font-weight: 700;
+
+            padding: 8px 0;
+
+            transition: color var(--transition);
+        }
+
+        .nav-link::after {
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+            bottom: 0;
+
+            width: 0;
+            height: 2px;
+
+            border-radius: 99px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    var(--teal-600),
+                    var(--cyan)
+                );
+
+            transition: width var(--transition);
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--navy-900);
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+
+            padding: 11px 17px;
+
+            color: white;
+
+            border-radius: 9px;
+
+            background:
+                var(--navy-900);
+
+            box-shadow:
+                0 7px 20px rgba(7,26,47,.18);
+
+            font-size: 13px;
+            font-weight: 700;
+
+            transition:
+                transform var(--transition),
+                background var(--transition),
+                box-shadow var(--transition);
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+
+            background: var(--teal-700);
+
+            box-shadow:
+                0 12px 25px rgba(0,109,112,.22);
+        }
+
+        .mobile-toggle {
+            display: none;
+
+            width: 42px;
+            height: 42px;
+
+            align-items: center;
+            justify-content: center;
+
+            color: var(--navy-900);
+
+            background: var(--slate-100);
+
+            border-radius: 10px;
+
+            cursor: pointer;
+        }
+
+
+        /* =====================================================
+           HERO
+        ====================================================== */
+
+        .hero {
+            position: relative;
+
+            min-height: 760px;
+
+            display: flex;
+            align-items: center;
+
+            padding:
+                150px 0 110px;
+
+            overflow: hidden;
+
+            color: white;
+
+            background:
+                linear-gradient(
+                    120deg,
+                    #061426 0%,
+                    #071A2F 48%,
+                    #0B2E4B 100%
+                );
+        }
+
+        .hero::before {
+            content: "";
+
+            position: absolute;
+
+            width: 650px;
+            height: 650px;
+
+            right: -220px;
+            top: -180px;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(0,167,167,.22),
+                    rgba(0,167,167,0) 70%
+                );
+
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: "";
+
+            position: absolute;
+
+            width: 500px;
+            height: 500px;
+
+            left: -280px;
+            bottom: -280px;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(28,200,232,.10),
+                    transparent 68%
+                );
+
+            pointer-events: none;
+        }
+
+        .hero-grid {
+            position: relative;
+            z-index: 2;
+
+            display: grid;
+            grid-template-columns: minmax(0, 1.15fr) minmax(360px, .85fr);
+
+            align-items: center;
+
+            gap: 80px;
+        }
+
+        .hero-content {
+            max-width: 720px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+
+            padding: 8px 12px;
+
+            border:
+                1px solid rgba(28,200,232,.22);
+
+            border-radius: 999px;
+
+            background:
+                rgba(28,200,232,.07);
+
+            color: #8DEAF8;
+
+            font-size: 11px;
+            font-weight: 700;
+
+            letter-spacing: .02em;
+        }
+
+        .hero-badge-dot {
+            width: 7px;
+            height: 7px;
+
+            border-radius: 50%;
+
+            background: #32D6B0;
+
+            box-shadow:
+                0 0 0 5px rgba(50,214,176,.10);
+        }
+
+        .hero h1 {
+            margin-top: 25px;
+
+            font-family: "Manrope", sans-serif;
+
+            font-size:
+                clamp(42px, 5.4vw, 72px);
+
+            line-height: 1.03;
+
+            font-weight: 800;
+
+            letter-spacing: -.055em;
+        }
+
+        .hero h1 .highlight {
+            display: block;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #FFFFFF,
+                    #8DEAF8
+                );
+
+            -webkit-background-clip: text;
+            background-clip: text;
+
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-description {
+            max-width: 650px;
+
+            margin-top: 25px;
+
+            color: #B9C7D7;
+
+            font-size: 17px;
+            line-height: 1.75;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+
+            gap: 12px;
+
+            margin-top: 34px;
+        }
+
+        .btn {
+            min-height: 48px;
+
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+
+            padding: 0 19px;
+
+            border-radius: 9px;
+
+            font-size: 13px;
+            font-weight: 800;
+
+            cursor: pointer;
+
+            transition:
+                transform var(--transition),
+                box-shadow var(--transition),
+                background var(--transition),
+                border-color var(--transition);
+        }
+
+        .btn-primary {
+            color: white;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--orange),
+                    var(--orange-dark)
+                );
+
+            box-shadow:
+                0 10px 25px rgba(244,107,59,.23);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 15px 30px rgba(244,107,59,.32);
+        }
+
+        .btn-secondary {
+            color: white;
+
+            border:
+                1px solid rgba(255,255,255,.18);
+
+            background:
+                rgba(255,255,255,.055);
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+
+            border-color:
+                rgba(255,255,255,.36);
+
+            background:
+                rgba(255,255,255,.10);
+        }
+
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+
+            gap: 22px;
+
+            margin-top: 32px;
+
+            color: #A7B8CA;
+
+            font-size: 12px;
+        }
+
+        .hero-meta span {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .hero-meta i {
+            color: var(--cyan);
+        }
+
+
+        /* =====================================================
+           HERO BUSINESS CARD
+        ====================================================== */
+
+        .hero-visual {
+            position: relative;
+
+            display: flex;
+            justify-content: center;
+        }
+
+        .business-card {
+            position: relative;
+
+            width: min(100%, 430px);
+
+            padding: 38px;
+
+            border:
+                1px solid rgba(255,255,255,.14);
+
+            border-radius: 26px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,.10),
+                    rgba(255,255,255,.025)
+                );
+
+            box-shadow:
+                0 35px 80px rgba(0,0,0,.27);
+
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+
+            overflow: hidden;
+        }
+
+        .business-card::before {
+            content: "";
+
+            position: absolute;
+
+            width: 220px;
+            height: 220px;
+
+            right: -100px;
+            top: -100px;
+
+            border-radius: 50%;
+
+            border:
+                1px solid rgba(28,200,232,.18);
+        }
+
+        .business-card-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding-bottom: 25px;
+
+            border-bottom:
+                1px solid rgba(255,255,255,.10);
+        }
+
+        .business-logo {
+            width: 92px;
+            height: 92px;
+        }
+
+        .business-card-code {
+            color: #8EA6BC;
+
+            font-size: 10px;
+            font-weight: 700;
+
+            letter-spacing: .15em;
+            text-transform: uppercase;
+        }
+
+        .business-card h2 {
+            margin-top: 28px;
+
+            font-family: "Manrope", sans-serif;
+
+            font-size: 28px;
+            line-height: 1.15;
+            font-weight: 800;
+
+            letter-spacing: -.025em;
+        }
+
+        .business-card p {
+            margin-top: 12px;
+
+            color: #AFC0D1;
+
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        .business-services {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+            gap: 8px;
+
+            margin-top: 24px;
+        }
+
+        .business-service {
+            padding: 11px;
+
+            border:
+                1px solid rgba(255,255,255,.09);
+
+            border-radius: 9px;
+
+            color: #D8E4EE;
+
+            background:
+                rgba(255,255,255,.035);
+
+            font-size: 10px;
+            font-weight: 700;
+        }
+
+        .business-service i {
+            margin-right: 5px;
+
+            color: var(--cyan);
+        }
+
+        .business-card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            margin-top: 28px;
+            padding-top: 18px;
+
+            border-top:
+                1px solid rgba(255,255,255,.10);
+
+            color: #8EA6BC;
+
+            font-size: 10px;
+        }
+
+        .status {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .status-dot {
+            width: 7px;
+            height: 7px;
+
+            border-radius: 50%;
+
+            background: #31D3A1;
+        }
+
+
+        /* =====================================================
+           TRUST BAR
+        ====================================================== */
+
+        .trust-section {
+            position: relative;
+            z-index: 10;
+
+            margin-top: -55px;
+        }
+
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+
+            background: white;
+
+            border:
+                1px solid var(--slate-200);
+
+            border-radius: 17px;
+
+            box-shadow: var(--shadow-md);
+
+            overflow: hidden;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+
+            padding: 24px;
+
+            border-right:
+                1px solid var(--slate-200);
+        }
+
+        .trust-item:last-child {
+            border-right: 0;
+        }
+
+        .trust-icon {
+            width: 46px;
+            height: 46px;
+
+            flex-shrink: 0;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: var(--teal-600);
+
+            background:
+                rgba(0,140,143,.07);
+
+            border-radius: 11px;
+        }
+
+        .trust-number {
+            color: var(--navy-900);
+
+            font-family: "Manrope", sans-serif;
+
+            font-size: 16px;
+            font-weight: 800;
+            line-height: 1.15;
+        }
+
+        .trust-label {
+            margin-top: 4px;
+
+            color: var(--slate-500);
+
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+
+        /* =====================================================
+           ABOUT
+        ====================================================== */
+
+        .about-section {
+            padding: 125px 0 110px;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: .9fr 1.1fr;
+
+            align-items: center;
+
+            gap: 80px;
+
+            margin-top: 65px;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 520px;
+
+            object-fit: cover;
+
+            border-radius: 20px;
+
+            box-shadow: var(--shadow-lg);
+        }
+
+        .image-overlay {
+            position: absolute;
+
+            left: 22px;
+            bottom: 22px;
+
+            max-width: 285px;
+
+            padding: 18px;
+
+            border:
+                1px solid rgba(255,255,255,.18);
+
+            border-radius: 14px;
+
+            background:
+                rgba(7,26,47,.90);
+
+            color: white;
+
+            backdrop-filter: blur(12px);
+        }
+
+        .image-overlay strong {
+            display: block;
+
+            font-family: "Manrope", sans-serif;
+
+            font-size: 14px;
+        }
+
+        .image-overlay span {
+            display: block;
+
+            margin-top: 5px;
+
+            color: #B7C7D7;
+
+            font-size: 11px;
+        }
+
+        .about-content h3 {
+            color: var(--navy-900);
+
+            font-family: "Manrope", sans-serif;
+
+            font-size: 30px;
+            line-height: 1.2;
+            font-weight: 800;
+
+            letter-spacing: -.03em;
+        }
+
+        .about-content > p {
+            margin-top: 18px;
+
+            color: var(--slate-600);
+
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        .values {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+            gap: 12px;
+
+            margin-top: 28px;
+        }
+
+        .value {
+            padding: 17px;
+
+            border:
+                1px solid var(--slate-200);
+
+            border-radius: 12px;
+
+            background: white;
+
+            transition:
+                transform var(--transition),
+                box-shadow var(--transition),
+                border-color var(--transition);
+        }
+
+        .value:hover {
+            transform: translateY(-3px);
+
+            border-color:
+                rgba(0,140,143,.28);
+
+            box-shadow: var(--shadow-sm);
+        }
+
+        .value-icon {
+            width: 34px;
+            height: 34px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: var(--teal-600);
+
+            background:
+                rgba(0,140,143,.07);
+
+            border-radius: 8px;
+
+            font-size: 13px;
+        }
+
+        .value h4 {
+            margin-top: 12px;
+
+            color: var(--navy-900);
+
+            font-family: "Manrope", sans-serif;
+
+            font-size: 13px;
+            font-weight: 800;
+        }
+
+        .value p {
+            margin-top: 4px;
+
+            color: var(--slate-500);
+
+            font-size: 11px;
+            line-height: 1.55;
+        }
+
+
+        /* =====================================================
+           SERVICES
+        ====================================================== */
+
+        .services-section {
+            padding: 110px 0;
+
+            background:
+                var(--slate-50);
+
+            border-top:
+                1px solid var(--slate-200);
+
+            border-bottom:
+                1px solid var(--slate-200);
+        }
+
+        .services-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 16px;
+
+            margin-top: 55px;
+        }
+
+        .service-card {
+            position: relative;
+
+            padding: 28px;
+
+            background: white;
+
+            border:
+                1px solid var(--slate-200);
+
+            border-radius: 15px;
+
+            box-shadow:
+                var(--shadow-xs);
+
+            transition:
+                transform var(--transition),
+                box-shadow var(--transition),
+                border-color var(--transition);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+
+            border-color:
+                rgba(0,140,143,.25);
+
+            box-shadow: var(--shadow-md);
+        }
+
+        .service-number {
+            position: absolute;
+
+            right: 20px;
+            top: 20px;
+
+            color: var(--slate-300);
+
+            font-family: "Manrope", sans-serif;
+
+            font-size: 11px;
+            font-weight: 800;
+        }
+
+        .service-icon {
+            width: 52px;
+            height: 52px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: var(--teal-600);
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(0,62,112,.06),
+                    rgba(0,167,167,.09)
+                );
+
+            border-radius: 12px;
+
+            font-size: 19px;
+        }
+
+        .service-card h3 {
+            margin-top: 21px;
+
+            color: var(--navy-900);
+
+            font-family: "Manrope", sans-serif;
+
+            font-size: 17px;
+            font-weight: 800;
+
+            letter-spacing: -.015em;
+        }
+
+        .service-card p {
+            margin-top: 10px;
+
+            color: var(--slate-500);
+
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        .service-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+
+            margin-top: 20px;
+
+            color: var(--teal-700);
+
+            font-size: 11px;
+            font-weight: 800;
+
+            transition: gap var(--transition);
+        }
+
+        .service-card:hover .service-link {
+            gap: 11px;
+        }
+
+
+        /* =====================================================
+           CAPABILITIES STRIP
+        ====================================================== */
+
+        .capability-section {
+            padding: 110px 0;
+        }
+
+        .capability-layout {
+            display: grid;
+
+            grid-template-columns:
+                .8fr 1.2fr;
+
+            gap: 70px;
+
+            align-items: center;
+        }
+
+        .capability-intro h2 {
+            margin-top: 12px;
+
+            color: var(--navy-900);
+
+            font-family: "Manrope", sans-serif;
+
+            font-size: 42px;
+            line-height: 1.12;
+            font-weight: 800;
+
+            letter-spacing: -.04em;
+        }
+
+        .capability-intro p {
+            margin-top: 18px;
+
+            color: var(--slate-500);
+
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .capability-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+            gap: 12px;
+        }
+
+        .capability-item {
+            display: flex;
+            gap: 13px;
+
+            padding: 18px;
+
+            border:
+                1px solid var(--slate-200);
+
+            border-radius: 12px;
+
+            background: white;
+        }
+
+        .capability-item i {
+            color: var(--teal-600);
+
+            margin-top: 3px;
+        }
+
+        .capability-item strong {
+            display: block;
+
+            color: var(--navy-900);
+
+            font-family: "Manrope", sans-serif;
+
+            font-size: 12px;
+        }
+
+        .capability-item span {
+            display: block;
+
+            margin-top: 3px;
+
+            color: var(--slate-500);
+
+            font-size: 11px;
+        }
+
+
+        /* =====================================================
+           HSE / QUALITY
+        ====================================================== */
+
+        .hse-section {
+            padding: 110px 0;
+
+            background: var(--navy-900);
+
+            color: white;
+        }
+
+        .hse-grid {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 18px;
+
+            margin-top: 55px;
+        }
+
+        .hse-card {
+            padding: 32px;
+
+            border:
+                1px solid rgba(255,255,255,.10);
+
+            border-radius: 17px;
+
+            background:
+                rgba(255,255,255,.045);
+        }
+
+        .hse-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+
+            padding-bottom: 20px;
+
+            border-bottom:
+                1px solid rgba(255,255,255,.09);
+        }
+
+        .hse-icon {
+            width: 46px;
+            height: 46px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: var(--cyan);
+
+            background:
+                rgba(28,200,232,.08);
+
+            border-radius: 10px;
+        }
+
+        .hse-header h3 {
+            font-family: "Manrope", sans-serif;
+
+            font-size: 18px;
+            font-weight: 800;
+        }
+
+        .hse-list {
+            margin-top: 22px;
+        }
+
+        .hse-list li {
+            display: flex;
+            gap: 12px;
+
+            margin-bottom: 13px;
+
+            color: #B6C7D7;
+
+            font-size: 13px;
+        }
+
+        .hse-list li i {
+            flex-shrink: 0;
+
+            margin-top: 5px;
+
+            color: #35D4B0;
+
+            font-size: 11px;
+        }
+
+        .hse-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+
+            margin-top: 10px;
+            padding: 8px 11px;
+
+            border:
+                1px solid rgba(53,212,176,.18);
+
+            border-radius: 999px;
+
+            color: #8CE5CD;
+
+            background:
+                rgba(53,212,176,.06);
+
+            font-size: 10px;
+            font-weight: 700;
+        }
+
+
+        /* =====================================================
+           INDUSTRIES
+        ====================================================== */
+
+        .industries-section {
+            padding: 110px 0;
+        }
+
+        .industry-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 12px;
+
+            margin-top: 50px;
+        }
+
+        .industry {
+            position: relative;
+
+            min-height: 190px;
+
+            padding: 23px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+
+            overflow: hidden;
+
+            border-radius: 15px;
+
+            color: white;
+
+            background:
+                linear-gradient(
+                    160deg,
+                    #0B2946,
+                    #071A2F
+                );
+
+            box-shadow: var(--shadow-sm);
+        }
+
+        .industry::before {
+            content: "";
+
+            position: absolute;
+
+            width: 130px;
+            height: 130px;
+
+            top: -55px;
+            right: -45px;
+
+            border-radius: 50%;
+
+            border:
+                1px solid rgba(28,200,232,.18);
+        }
+
+        .industry i {
+            position: relative;
+
+            margin-bottom: auto;
+
+            color: var(--cyan);
+
+            font-size: 20px;
+        }
+
+        .industry h3 {
+            position: relative;
+
+            font-family: "Manrope", sans-serif;
+
+            font-size: 15px;
+            font-weight: 800;
+        }
+
+        .industry p {
+            position: relative;
+
+            margin-top: 6px;
+
+            color: #AABCCD;
+
+            font-size: 10px;
+            line-height: 1.55;
+        }
+
+
+        /* =====================================================
+           PROCESS
+        ====================================================== */
+
+        .process-section {
+            padding: 110px 0;
+
+            background:
+                var(--slate-50);
+
+            border-top:
+                1px solid var(--slate-200);
+        }
+
+        .process-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 14px;
+
+            margin-top: 55px;
+        }
+
+        .process-card {
+            position: relative;
+
+            padding: 25px;
+
+            background: white;
+
+            border:
+                1px solid var(--slate-200);
+
+            border-radius: 14px;
+        }
+
+        .process-step {
+            display: inline-flex;
+
+            width: 34px;
+            height: 34px;
+
+            align-items: center;
+            justify-content: center;
+
+            color: white;
+
+            background: var(--navy-900);
+
+            border-radius: 9px;
+
+            font-family: "Manrope", sans-serif;
+
+            font-size: 11px;
+            font-weight: 800;
+        }
+
+        .process-card h3 {
+            margin-top: 18px;
+
+            color: var(--navy-900);
+
+            font-family: "Manrope", sans-serif;
+
+            font-size: 15px;
+            font-weight: 800;
+        }
+
+        .process-card p {
+            margin-top: 7px;
+
+            color: var(--slate-500);
+
+            font-size: 11px;
+            line-height: 1.65;
+        }
+
+
+        /* =====================================================
+           CTA
+        ====================================================== */
+
+        .cta-section {
+            padding: 100px 0;
+        }
+
+        .cta-box {
+            position: relative;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 40px;
+
+            padding: 55px;
+
+            overflow: hidden;
+
+            border-radius: 22px;
+
+            color: white;
+
+            background:
+                linear-gradient(
+                    120deg,
+                    var(--navy-950),
+                    var(--navy-800)
+                );
+
+            box-shadow: var(--shadow-lg);
+        }
+
+        .cta-box::after {
+            content: "";
+
+            position: absolute;
+
+            width: 300px;
+            height: 300px;
+
+            right: -120px;
+            top: -150px;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(28,200,232,.16),
+                    transparent 68%
+                );
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-content .eyebrow {
+            color: #75E2EE;
+        }
+
+        .cta-content h2 {
+            margin-top: 12px;
+
+            max-width: 700px;
+
+            font-family: "Manrope", sans-serif;
+
+            font-size: clamp(28px, 4vw, 42px);
+            line-height: 1.1;
+
+            letter-spacing: -.035em;
+        }
+
+        .cta-content p {
+            margin-top: 12px;
+
+            max-width: 600px;
+
+            color: #AFC0D0;
+
+            font-size: 13px;
+        }
+
+        .cta-actions {
+            position: relative;
+            z-index: 2;
+
+            flex-shrink: 0;
+        }
+
+
+        /* =====================================================
+           CONTACT
+        ====================================================== */
+
+        .contact-section {
+            padding: 110px 0;
+
+            background: var(--slate-50);
+
+            border-top:
+                1px solid var(--slate-200);
+        }
+
+        .contact-grid {
+            display: grid;
+
+            grid-template-columns: .8fr 1.2fr;
+
+            gap: 22px;
+
+            margin-top: 55px;
+        }
+
+        .contact-panel {
+            padding: 35px;
+
+            color: white;
+
+            border-radius: 18px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    var(--navy-900),
+                    #0C3153
+                );
+
+            box-shadow: var(--shadow-md);
+        }
+
+        .contact-panel h3 {
+            font-family: "Manrope", sans-serif;
+
+            font-size: 24px;
+            font-weight: 800;
+        }
+
+        .contact-panel > p {
+            margin-top: 12px;
+
+            color: #AFC1D1;
+
+            font-size: 13px;
+        }
+
+        .contact-details {
+            margin-top: 30px;
+        }
+
+        .contact-detail {
+            display: flex;
+            gap: 13px;
+
+            margin-bottom: 22px;
+        }
+
+        .contact-detail-icon {
+            width: 40px;
+            height: 40px;
+
+            flex-shrink: 0;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: var(--cyan);
+
+            border-radius: 9px;
+
+            background:
+                rgba(255,255,255,.07);
+        }
+
+        .contact-detail small {
+            display: block;
+
+            color: #7F98AE;
+
+            font-size: 9px;
+            font-weight: 800;
+
+            letter-spacing: .12em;
+
+            text-transform: uppercase;
+        }
+
+        .contact-detail strong {
+            display: block;
+
+            margin-top: 4px;
+
+            color: white;
+
+            font-size: 12px;
+        }
+
+        .contact-form {
+            padding: 35px;
+
+            background: white;
+
+            border:
+                1px solid var(--slate-200);
+
+            border-radius: 18px;
+
+            box-shadow: var(--shadow-sm);
+        }
+
+        .form-grid {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 16px;
+        }
+
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            display: block;
+
+            margin-bottom: 7px;
+
+            color: var(--slate-700);
+
+            font-size: 11px;
+            font-weight: 800;
+        }
+
+        .form-control {
+            width: 100%;
+
+            min-height: 45px;
+
+            padding:
+                10px 12px;
+
+            color: var(--slate-800);
+
+            background:
+                var(--slate-50);
+
+            border:
+                1px solid var(--slate-200);
+
+            border-radius: 9px;
+
+            outline: none;
+
+            font-size: 12px;
+
+            transition:
+                border-color var(--transition),
+                box-shadow var(--transition),
+                background var(--transition);
+        }
+
+        textarea.form-control {
+            min-height: 120px;
+
+            resize: vertical;
+        }
+
+        .form-control:focus {
+            border-color: var(--teal-600);
+
+            background: white;
+
+            box-shadow:
+                0 0 0 4px rgba(0,140,143,.08);
+        }
+
+        .form-submit {
+            margin-top: 20px;
+        }
+
+        .form-note {
+            margin-top: 10px;
+
+            color: var(--slate-400);
+
+            font-size: 10px;
+        }
+
+        .form-message {
+            display: none;
+
+            margin-top: 15px;
+
+            padding: 12px;
+
+            color: #166534;
+
+            background: #F0FDF4;
+
+            border:
+                1px solid #BBF7D0;
+
+            border-radius: 9px;
+
+            font-size: 11px;
+        }
+
+        .form-message.show {
+            display: block;
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ====================================================== */
+
+        .footer {
+            padding: 55px 0 25px;
+
+            color: #9EB0C1;
+
+            background: var(--navy-950);
+        }
+
+        .footer-grid {
+            display: grid;
+
+            grid-template-columns:
+                1.4fr .7fr .7fr .9fr;
+
+            gap: 50px;
+
+            padding-bottom: 45px;
+
+            border-bottom:
+                1px solid rgba(255,255,255,.08);
+        }
+
+        .footer-brand {
+            max-width: 360px;
+        }
+
+        .footer-brand .brand-name {
+            color: white;
+        }
+
+        .footer-brand p {
+            margin-top: 17px;
+
+            color: #8398AB;
+
+            font-size: 11px;
+            line-height: 1.75;
+        }
+
+        .footer-heading {
+            margin-bottom: 16px;
+
+            color: white;
+
+            font-family: "Manrope", sans-serif;
+
+            font-size: 11px;
+            font-weight: 800;
+        }
+
+        .footer-links li {
+            margin-bottom: 9px;
+        }
+
+        .footer-links a {
+            color: #8398AB;
+
+            font-size: 10px;
+
+            transition: color var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 20px;
+
+            padding-top: 22px;
+
+            color: #647A8E;
+
+            font-size: 9px;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 18px;
+        }
+
+
+        /* =====================================================
+           WHATSAPP
+        ====================================================== */
+
+        .whatsapp {
+            position: fixed;
+
+            right: 22px;
+            bottom: 22px;
+
+            z-index: 4500;
+
+            width: 55px;
+            height: 55px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: white;
+
+            background: #25D366;
+
+            border-radius: 50%;
+
+            box-shadow:
+                0 12px 28px rgba(37,211,102,.32);
+
+            font-size: 24px;
+
+            transition:
+                transform var(--transition),
+                box-shadow var(--transition);
+        }
+
+        .whatsapp:hover {
+            transform: scale(1.07);
+
+            box-shadow:
+                0 16px 34px rgba(37,211,102,.42);
+        }
+
+        .whatsapp-tooltip {
+            position: absolute;
+
+            right: 68px;
+
+            white-space: nowrap;
+
+            padding: 8px 11px;
+
+            color: white;
+
+            background: var(--navy-900);
+
+            border-radius: 7px;
+
+            font-size: 10px;
+            font-weight: 700;
+
+            opacity: 0;
+            pointer-events: none;
+
+            transform: translateX(5px);
+
+            transition:
+                opacity var(--transition),
+                transform var(--transition);
+        }
+
+        .whatsapp:hover .whatsapp-tooltip {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+
+        /* =====================================================
+           BACK TO TOP
+        ====================================================== */
+
+        .back-top {
+            position: fixed;
+
+            right: 24px;
+            bottom: 91px;
+
+            z-index: 4000;
+
+            width: 39px;
+            height: 39px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: var(--navy-900);
+
+            background: white;
+
+            border:
+                1px solid var(--slate-200);
+
+            border-radius: 9px;
+
+            box-shadow: var(--shadow-sm);
+
+            opacity: 0;
+            visibility: hidden;
+
+            transform: translateY(10px);
+
+            transition:
+                opacity var(--transition),
+                visibility var(--transition),
+                transform var(--transition);
+        }
+
+        .back-top.visible {
+            opacity: 1;
+            visibility: visible;
+
+            transform: translateY(0);
+        }
+
+
+        /* =====================================================
+           SCROLL REVEAL
+        ====================================================== */
+
+        .reveal {
+            opacity: 0;
+
+            transform:
+                translateY(20px);
+
+            transition:
+                opacity .65s var(--ease),
+                transform .65s var(--ease);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+
+            transform:
+                translateY(0);
+        }
+
+
+        /* =====================================================
+           RESPONSIVE — 1100
+        ====================================================== */
+
+        @media (max-width: 1100px) {
+
+            .hero-grid {
+                gap: 45px;
+            }
+
+            .about-grid {
+                gap: 45px;
+            }
+
+            .capability-layout {
+                gap: 40px;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .industry-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: 1.3fr 1fr 1fr;
+            }
+        }
+
+
+        /* =====================================================
+           RESPONSIVE — 900
+        ====================================================== */
+
+        @media (max-width: 900px) {
+
+            .nav-menu {
+                position: fixed;
+
+                top: 70px;
+                left: 0;
+                right: 0;
+
+                display: flex;
+                flex-direction: column;
+                align-items: stretch;
+
+                gap: 0;
+
+                padding: 15px 24px 25px;
+
+                background: rgba(255,255,255,.98);
+
+                border-bottom:
+                    1px solid var(--slate-200);
+
+                box-shadow:
+                    0 20px 35px rgba(15,23,42,.09);
+
+                transform:
+                    translateY(-130%);
+
+                opacity: 0;
+                pointer-events: none;
+
+                transition:
+                    transform .3s var(--ease),
+                    opacity .3s var(--ease);
+            }
+
+            .nav-menu.open {
+                transform: translateY(0);
+
+                opacity: 1;
+
+                pointer-events: auto;
+            }
+
+            .nav-link {
+                display: block;
+
+                padding: 14px 0;
+
+                border-bottom:
+                    1px solid var(--slate-100);
+            }
+
+            .nav-link::after {
+                display: none;
+            }
+
+            .nav-cta {
+                margin-top: 14px;
+
+                justify-content: center;
+            }
+
+            .mobile-toggle {
+                display: flex;
+            }
+
+            .hero {
+                min-height: auto;
+            }
+
+            .hero-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-content {
+                max-width: 800px;
+            }
+
+            .hero-visual {
+                justify-content: flex-start;
+            }
+
+            .trust-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .trust-item:nth-child(2) {
+                border-right: 0;
+            }
+
+            .trust-item:nth-child(3),
+            .trust-item:nth-child(4) {
+                border-top:
+                    1px solid var(--slate-200);
+            }
+
+            .about-grid,
+            .capability-layout,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image {
+                max-width: 700px;
+            }
+
+            .capability-intro {
+                max-width: 700px;
+            }
+
+            .hse-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .process-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+
+        /* =====================================================
+           RESPONSIVE — 650
+        ====================================================== */
+
+        @media (max-width: 650px) {
+
+            .container {
+                width:
+                    min(
+                        calc(100% - 32px),
+                        var(--container)
+                    );
+            }
+
+            .site-header {
+                height: 72px;
+            }
+
+            .site-header.scrolled {
+                height: 66px;
+            }
+
+            .brand-mark {
+                width: 39px;
+                height: 39px;
+            }
+
+            .brand-name {
+                font-size: 15px;
+            }
+
+            .brand-subtitle {
+                font-size: 8px;
+            }
+
+            .hero {
+                padding:
+                    125px 0 80px;
+            }
+
+            .hero h1 {
+                font-size:
+                    clamp(38px, 11vw, 54px);
+            }
+
+            .hero-description {
+                font-size: 15px;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .hero-actions .btn {
+                width: 100%;
+            }
+
+            .hero-meta {
+                gap: 13px;
+
+                flex-direction: column;
+            }
+
+            .business-card {
+                padding: 25px;
+            }
+
+            .trust-section {
+                margin-top: -25px;
+            }
+
+            .trust-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .trust-item {
+                border-right: 0 !important;
+                border-top:
+                    1px solid var(--slate-200);
+            }
+
+            .trust-item:first-child {
+                border-top: 0;
+            }
+
+            .about-section,
+            .services-section,
+            .capability-section,
+            .hse-section,
+            .industries-section,
+            .process-section,
+            .contact-section {
+                padding:
+                    80px 0;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+
+            .about-image img {
+                height: 390px;
+            }
+
+            .values {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .capability-list {
+                grid-template-columns: 1fr;
+            }
+
+            .industry-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .industry {
+                min-height: 165px;
+            }
+
+            .process-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-box {
+                flex-direction: column;
+                align-items: flex-start;
+
+                padding: 35px 25px;
+            }
+
+            .cta-actions {
+                width: 100%;
+            }
+
+            .cta-actions .btn {
+                width: 100%;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group.full {
+                grid-column: auto;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+
+        /* =====================================================
+           RESPONSIVE — 430
+        ====================================================== */
+
+        @media (max-width: 430px) {
+
+            .brand-copy {
+                display: none;
+            }
+
+            .business-services {
+                grid-template-columns: 1fr;
+            }
+
+            .industry-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .image-overlay {
+                left: 12px;
+                right: 12px;
+                bottom: 12px;
+            }
+
+            .contact-panel,
+            .contact-form {
+                padding: 25px 20px;
+            }
+
+            .hse-card {
+                padding: 24px 20px;
+            }
+        }
+
+
+        /* =====================================================
+           REDUCED MOTION
+        ====================================================== */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: .01ms !important;
+            }
+
+            .reveal {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+<a
+    href="#main"
+    class="skip-link"
+>
+    Skip to content
+</a>
+
+
+<!-- =========================================================
+     HEADER
+========================================================== -->
+
+<header
+    class="site-header"
+    id="siteHeader"
+>
+
+    <div class="container nav-container">
+
+        <a
+            href="#home"
+            class="brand"
+            aria-label="Vihaanaa Tech Hubs home"
+        >
+
+            <svg
+                class="brand-mark"
+                viewBox="0 0 100 100"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+            >
+
+                <circle
+                    cx="50"
+                    cy="50"
+                    r="43"
+                    stroke="url(#logoGradient)"
+                    stroke-width="3"
+                />
+
+                <circle
+                    cx="50"
+                    cy="50"
+                    r="33"
+                    stroke="#008C8F"
+                    stroke-width="1.5"
+                    stroke-dasharray="4 3"
+                />
+
+                <path
+                    d="M18 50C18 30 82 30 82 50C82 70 18 70 18 50Z"
+                    stroke="#1CC8E8"
+                    stroke-width="1.2"
+                    opacity=".8"
+                />
+
+                <path
+                    d="M50 18C30 18 30 82 50 82C70 82 70 18 50 18Z"
+                    stroke="#1CC8E8"
+                    stroke-width="1.2"
+                    opacity=".65"
+                />
+
+                <polygon
+                    points="50,6 55,22 50,18 45,22"
+                    fill="#005B91"
+                />
+
+                <polygon
+                    points="50,94 55,78 50,82 45,78"
+                    fill="#005B91"
+                />
+
+                <polygon
+                    points="6,50 22,45 18,50 22,55"
+                    fill="#005B91"
+                />
+
+                <polygon
+                    points="94,50 78,45 82,50 78,55"
+                    fill="#005B91"
+                />
+
+                <polygon
+                    points="50,22 56,44 78,50 56,56 50,78 44,56 22,50 44,44"
+                    fill="url(#starGradient)"
+                />
+
+                <defs>
+
+                    <linearGradient
+                        id="logoGradient"
+                        x1="0"
+                        y1="0"
+                        x2="100"
+                        y2="100"
+                    >
+                        <stop
+                            stop-color="#00A7A7"
+                        />
+
+                        <stop
+                            offset="1"
+                            stop-color="#003E70"
+                        />
+                    </linearGradient>
+
+                    <linearGradient
+                        id="starGradient"
+                        x1="20"
+                        y1="20"
+                        x2="80"
+                        y2="80"
+                    >
+                        <stop
+                            stop-color="#1CC8E8"
+                        />
+
+                        <stop
+                            offset="1"
+                            stop-color="#003E70"
+                        />
+                    </linearGradient>
+
+                </defs>
+
+            </svg>
+
+            <span class="brand-copy">
+
+                <span class="brand-name">
+                    VIHAANAA
+                </span>
+
+                <span class="brand-subtitle">
+                    TECH HUBS
+                </span>
+
+            </span>
+
+        </a>
+
+
+        <nav
+            class="nav-menu"
+            id="navMenu"
+            aria-label="Primary navigation"
+        >
+
+            <a
+                href="#home"
+                class="nav-link active"
+            >
+                Home
+            </a>
+
+            <a
+                href="#about"
+                class="nav-link"
+            >
+                About Us
+            </a>
+
+            <a
+                href="#services"
+                class="nav-link"
+            >
+                Services
+            </a>
+
+            <a
+                href="#quality"
+                class="nav-link"
+            >
+                HSE & Quality
+            </a>
+
+            <a
+                href="#industries"
+                class="nav-link"
+            >
+                Industries
+            </a>
+
+            <a
+                href="#contact"
+                class="nav-cta"
+            >
+                Contact Us
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+
+        </nav>
+
+
+        <button
+            class="mobile-toggle"
+            id="mobileToggle"
+            aria-label="Open navigation menu"
+            aria-expanded="false"
+            type="button"
+        >
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
     </div>
 
-    <!-- HSE & QUALITY SECTION -->
-    <section id="hse">
-        <div class="section-header">
-            <span class="section-tag">Standards & Compliance</span>
-            <h2 class="section-title">HSE & Quality Assurance</h2>
-            <p class="section-desc">Our commitment to safe operations, environmental sustainability, and precision execution.</p>
+</header>
+
+
+<main id="main">
+
+
+<!-- =========================================================
+     HERO
+========================================================== -->
+
+<section
+    class="hero"
+    id="home"
+>
+
+    <div class="container hero-grid">
+
+        <div class="hero-content reveal">
+
+            <div class="hero-badge">
+
+                <span class="hero-badge-dot"></span>
+
+                Malaysian Technical Solutions Provider
+
+            </div>
+
+
+            <h1>
+
+                Engineering
+                <span class="highlight">
+                    Built Around Precision.
+                </span>
+
+            </h1>
+
+
+            <p class="hero-description">
+
+                Integrated engineering, procurement and technical
+                solutions covering civil works, M&E engineering,
+                instrumentation, industrial supplies and facility
+                support across Malaysia.
+
+            </p>
+
+
+            <div class="hero-actions">
+
+                <a
+                    href="#services"
+                    class="btn btn-primary"
+                >
+
+                    Explore Services
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </a>
+
+
+                <a
+                    href="#contact"
+                    class="btn btn-secondary"
+                >
+
+                    Request a Quote
+
+                    <i class="fa-solid fa-paper-plane"></i>
+
+                </a>
+
+            </div>
+
+
+            <div class="hero-meta">
+
+                <span>
+                    <i class="fa-solid fa-circle-check"></i>
+                    Safety-focused execution
+                </span>
+
+                <span>
+                    <i class="fa-solid fa-circle-check"></i>
+                    Multi-disciplinary capability
+                </span>
+
+                <span>
+                    <i class="fa-solid fa-circle-check"></i>
+                    Local & international sourcing
+                </span>
+
+            </div>
+
         </div>
+
+
+        <!-- BUSINESS CARD -->
+
+        <div class="hero-visual reveal">
+
+            <div class="business-card">
+
+                <div class="business-card-top">
+
+                    <svg
+                        class="business-logo"
+                        viewBox="0 0 100 100"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true"
+                    >
+
+                        <circle
+                            cx="50"
+                            cy="50"
+                            r="42"
+                            stroke="url(#heroLogo1)"
+                            stroke-width="3"
+                        />
+
+                        <circle
+                            cx="50"
+                            cy="50"
+                            r="32"
+                            stroke="#00A7A7"
+                            stroke-width="1.5"
+                            stroke-dasharray="4 2"
+                        />
+
+                        <path
+                            d="M18 50C18 30 82 30 82 50C82 70 18 70 18 50Z"
+                            stroke="#1CC8E8"
+                            stroke-width="1.2"
+                        />
+
+                        <polygon
+                            points="50,6 55,22 50,18 45,22"
+                            fill="#1CC8E8"
+                        />
+
+                        <polygon
+                            points="50,94 55,78 50,82 45,78"
+                            fill="#1CC8E8"
+                        />
+
+                        <polygon
+                            points="50,22 56,44 78,50 56,56 50,78 44,56 22,50 44,44"
+                            fill="url(#heroLogo2)"
+                        />
+
+                        <defs>
+
+                            <linearGradient
+                                id="heroLogo1"
+                                x1="0"
+                                y1="0"
+                                x2="100"
+                                y2="100"
+                            >
+                                <stop stop-color="#00A7A7"/>
+                                <stop offset="1" stop-color="#1CC8E8"/>
+                            </linearGradient>
+
+                            <linearGradient
+                                id="heroLogo2"
+                                x1="20"
+                                y1="20"
+                                x2="80"
+                                y2="80"
+                            >
+                                <stop stop-color="#1CC8E8"/>
+                                <stop offset="1" stop-color="#003E70"/>
+                            </linearGradient>
+
+                        </defs>
+
+                    </svg>
+
+
+                    <span class="business-card-code">
+                        TECHNICAL SOLUTIONS
+                    </span>
+
+                </div>
+
+
+                <h2>
+                    VIHAANAA
+                    <br>
+                    TECH HUBS
+                </h2>
+
+
+                <p>
+                    Engineering, procurement and technical
+                    services for industrial, energy,
+                    infrastructure and commercial requirements.
+                </p>
+
+
+                <div class="business-services">
+
+                    <div class="business-service">
+                        <i class="fa-solid fa-building"></i>
+                        Civil
+                    </div>
+
+                    <div class="business-service">
+                        <i class="fa-solid fa-bolt"></i>
+                        M&E
+                    </div>
+
+                    <div class="business-service">
+                        <i class="fa-solid fa-gauge-high"></i>
+                        Instrumentation
+                    </div>
+
+                    <div class="business-service">
+                        <i class="fa-solid fa-boxes-stacked"></i>
+                        Procurement
+                    </div>
+
+                </div>
+
+
+                <div class="business-card-footer">
+
+                    <span class="status">
+
+                        <span class="status-dot"></span>
+
+                        Operational Support
+
+                    </span>
+
+                    <span>
+                        MALAYSIA
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     TRUST / STATS
+========================================================== -->
+
+<section
+    class="trust-section"
+    aria-label="Company capabilities"
+>
+
+    <div class="container">
+
+        <div class="trust-grid">
+
+            <div class="trust-item">
+
+                <div class="trust-icon">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+
+                <div>
+
+                    <div class="trust-number">
+                        HSE Focused
+                    </div>
+
+                    <div class="trust-label">
+                        Safety-first operations
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="trust-item">
+
+                <div class="trust-icon">
+                    <i class="fa-solid fa-screwdriver-wrench"></i>
+                </div>
+
+                <div>
+
+                    <div class="trust-number">
+                        Multi-Disciplinary
+                    </div>
+
+                    <div class="trust-label">
+                        Civil, M&E & instrumentation
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="trust-item">
+
+                <div class="trust-icon">
+                    <i class="fa-solid fa-globe"></i>
+                </div>
+
+                <div>
+
+                    <div class="trust-number">
+                        Global Sourcing
+                    </div>
+
+                    <div class="trust-label">
+                        Local & international procurement
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="trust-item">
+
+                <div class="trust-icon">
+                    <i class="fa-solid fa-headset"></i>
+                </div>
+
+                <div>
+
+                    <div class="trust-number">
+                        Responsive
+                    </div>
+
+                    <div class="trust-label">
+                        Technical support & coordination
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     ABOUT
+========================================================== -->
+
+<section
+    class="about-section"
+    id="about"
+>
+
+    <div class="container">
+
+        <div class="section-heading reveal">
+
+            <span class="eyebrow">
+                About Company
+            </span>
+
+            <h2 class="section-title">
+                Multi-disciplinary capability.
+                One technical partner.
+            </h2>
+
+            <p class="section-description">
+                VIHAANAA TECH HUBS provides integrated technical
+                services and procurement solutions designed to
+                support industrial, energy, infrastructure and
+                commercial requirements across Malaysia.
+            </p>
+
+        </div>
+
+
+        <div class="about-grid">
+
+            <div class="about-image reveal">
+
+                <img
+                    src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=85"
+                    alt="Engineering and construction team working on an industrial project"
+                    loading="lazy"
+                >
+
+
+                <div class="image-overlay">
+
+                    <strong>
+                        Technical execution with operational discipline
+                    </strong>
+
+                    <span>
+                        From sourcing and coordination to field
+                        execution and facility support.
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="about-content reveal">
+
+                <h3>
+                    End-to-end solutions for
+                    industrial and energy environments.
+                </h3>
+
+
+                <p>
+                    VIHAANAA TECH HUBS is a dynamic Malaysian
+                    technical solutions provider offering
+                    capabilities spanning local and international
+                    material sourcing, global trade logistics,
+                    civil construction, M&E installations and
+                    facility maintenance.
+                </p>
+
+
+                <p>
+                    Our approach combines operational precision,
+                    technical coordination and safety-conscious
+                    execution to support plant operators,
+                    infrastructure projects, energy sectors and
+                    commercial entities.
+                </p>
+
+
+                <div class="values">
+
+                    <div class="value">
+
+                        <div class="value-icon">
+                            <i class="fa-solid fa-handshake"></i>
+                        </div>
+
+                        <h4>
+                            Integrity
+                        </h4>
+
+                        <p>
+                            Transparent and dependable client
+                            partnerships.
+                        </p>
+
+                    </div>
+
+
+                    <div class="value">
+
+                        <div class="value-icon">
+                            <i class="fa-solid fa-helmet-safety"></i>
+                        </div>
+
+                        <h4>
+                            Safety First
+                        </h4>
+
+                        <p>
+                            Safety-conscious planning and
+                            site execution.
+                        </p>
+
+                    </div>
+
+
+                    <div class="value">
+
+                        <div class="value-icon">
+                            <i class="fa-solid fa-crosshairs"></i>
+                        </div>
+
+                        <h4>
+                            Precision
+                        </h4>
+
+                        <p>
+                            Standard-focused technical
+                            execution.
+                        </p>
+
+                    </div>
+
+
+                    <div class="value">
+
+                        <div class="value-icon">
+                            <i class="fa-solid fa-bolt"></i>
+                        </div>
+
+                        <h4>
+                            Reliability
+                        </h4>
+
+                        <p>
+                            Responsive technical coordination
+                            and support.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     SERVICES
+========================================================== -->
+
+<section
+    class="services-section"
+    id="services"
+>
+
+    <div class="container">
+
+        <div class="section-heading center reveal">
+
+            <span class="eyebrow">
+                Core Capabilities
+            </span>
+
+            <h2 class="section-title">
+                Services & Technical Solutions
+            </h2>
+
+            <p class="section-description">
+                Comprehensive capabilities across engineering,
+                contracting, procurement, technical services and
+                industrial supply.
+            </p>
+
+        </div>
+
+
+        <div class="services-grid">
+
+
+            <article class="service-card reveal">
+
+                <span class="service-number">
+                    01
+                </span>
+
+                <div class="service-icon">
+                    <i class="fa-solid fa-boxes-stacked"></i>
+                </div>
+
+                <h3>
+                    Supply & Distribution
+                </h3>
+
+                <p>
+                    Local procurement and distribution of
+                    industrial hardware, raw materials,
+                    electrical fittings and factory consumables.
+                </p>
+
+                <a
+                    href="#contact"
+                    class="service-link"
+                >
+                    Discuss requirement
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+
+            </article>
+
+
+            <article class="service-card reveal">
+
+                <span class="service-number">
+                    02
+                </span>
+
+                <div class="service-icon">
+                    <i class="fa-solid fa-plane-departure"></i>
+                </div>
+
+                <h3>
+                    Import & Export
+                </h3>
+
+                <p>
+                    International sourcing and trade coordination
+                    for specialised industrial materials,
+                    equipment and technical requirements.
+                </p>
+
+                <a
+                    href="#contact"
+                    class="service-link"
+                >
+                    Discuss requirement
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+
+            </article>
+
+
+            <article class="service-card reveal">
+
+                <span class="service-number">
+                    03
+                </span>
+
+                <div class="service-icon">
+                    <i class="fa-solid fa-building"></i>
+                </div>
+
+                <h3>
+                    Civil Works
+                </h3>
+
+                <p>
+                    Civil construction, repair, modification
+                    and supporting works for industrial and
+                    commercial environments.
+                </p>
+
+                <a
+                    href="#contact"
+                    class="service-link"
+                >
+                    Discuss requirement
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+
+            </article>
+
+
+            <article class="service-card reveal">
+
+                <span class="service-number">
+                    04
+                </span>
+
+                <div class="service-icon">
+                    <i class="fa-solid fa-bolt"></i>
+                </div>
+
+                <h3>
+                    M&E Engineering
+                </h3>
+
+                <p>
+                    Mechanical and electrical installation,
+                    technical support, modifications and
+                    maintenance-related works.
+                </p>
+
+                <a
+                    href="#contact"
+                    class="service-link"
+                >
+                    Discuss requirement
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+
+            </article>
+
+
+            <article class="service-card reveal">
+
+                <span class="service-number">
+                    05
+                </span>
+
+                <div class="service-icon">
+                    <i class="fa-solid fa-gauge-high"></i>
+                </div>
+
+                <h3>
+                    Instrumentation
+                </h3>
+
+                <p>
+                    Instrumentation-related technical support,
+                    equipment sourcing and precision-focused
+                    industrial requirements.
+                </p>
+
+                <a
+                    href="#contact"
+                    class="service-link"
+                >
+                    Discuss requirement
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+
+            </article>
+
+
+            <article class="service-card reveal">
+
+                <span class="service-number">
+                    06
+                </span>
+
+                <div class="service-icon">
+                    <i class="fa-solid fa-gears"></i>
+                </div>
+
+                <h3>
+                    Facility Maintenance
+                </h3>
+
+                <p>
+                    Routine maintenance, technical support and
+                    facility-related services for operational
+                    environments.
+                </p>
+
+                <a
+                    href="#contact"
+                    class="service-link"
+                >
+                    Discuss requirement
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     CAPABILITIES
+========================================================== -->
+
+<section class="capability-section">
+
+    <div class="container">
+
+        <div class="capability-layout">
+
+            <div class="capability-intro reveal">
+
+                <span class="eyebrow">
+                    One Integrated Approach
+                </span>
+
+                <h2>
+                    From requirement
+                    to execution.
+                </h2>
+
+                <p>
+                    Our multi-disciplinary model allows clients
+                    to coordinate procurement, technical
+                    services and project execution through a
+                    single technical partner.
+                </p>
+
+                <a
+                    href="#contact"
+                    class="btn btn-primary"
+                    style="margin-top:24px;"
+                >
+                    Start a Conversation
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+
+            </div>
+
+
+            <div class="capability-list reveal">
+
+                <div class="capability-item">
+
+                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                    <div>
+
+                        <strong>
+                            Requirement Assessment
+                        </strong>
+
+                        <span>
+                            Understand scope, specifications
+                            and operational requirements.
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="capability-item">
+
+                    <i class="fa-solid fa-globe"></i>
+
+                    <div>
+
+                        <strong>
+                            Sourcing
+                        </strong>
+
+                        <span>
+                            Local and international sourcing
+                            coordination.
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="capability-item">
+
+                    <i class="fa-solid fa-file-signature"></i>
+
+                    <div>
+
+                        <strong>
+                            Technical Coordination
+                        </strong>
+
+                        <span>
+                            Align technical requirements,
+                            suppliers and execution teams.
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="capability-item">
+
+                    <i class="fa-solid fa-truck-fast"></i>
+
+                    <div>
+
+                        <strong>
+                            Logistics
+                        </strong>
+
+                        <span>
+                            Coordinate movement of materials
+                            and equipment.
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="capability-item">
+
+                    <i class="fa-solid fa-screwdriver-wrench"></i>
+
+                    <div>
+
+                        <strong>
+                            Field Execution
+                        </strong>
+
+                        <span>
+                            Technical and engineering work
+                            aligned with project scope.
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="capability-item">
+
+                    <i class="fa-solid fa-clipboard-check"></i>
+
+                    <div>
+
+                        <strong>
+                            Quality & HSE
+                        </strong>
+
+                        <span>
+                            Safety-conscious and quality-focused
+                            delivery.
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     HSE & QUALITY
+========================================================== -->
+
+<section
+    class="hse-section"
+    id="quality"
+>
+
+    <div class="container">
+
+        <div class="section-heading center reveal">
+
+            <span class="eyebrow">
+                HSE & Quality
+            </span>
+
+            <h2
+                class="section-title"
+                style="color:white;"
+            >
+                Responsible execution.
+                Consistent standards.
+            </h2>
+
+            <p
+                class="section-description"
+                style="color:#9FB2C5;"
+            >
+                Safety, technical discipline and quality
+                awareness are integrated into the way we
+                approach projects and services.
+            </p>
+
+        </div>
+
 
         <div class="hse-grid">
-            <div class="hse-card">
-                <div class="hse-card-header">
-                    <i class="fa-solid fa-shield-virus"></i>
-                    <h3>Health, Safety & Environment</h3>
+
+
+            <div class="hse-card reveal">
+
+                <div class="hse-header">
+
+                    <div class="hse-icon">
+                        <i class="fa-solid fa-helmet-safety"></i>
+                    </div>
+
+                    <h3>
+                        Health, Safety & Environment
+                    </h3>
+
                 </div>
+
+
                 <ul class="hse-list">
-                    <li><i class="fa-solid fa-check"></i> Strict adherence to DOSH regulations and local statutory requirements.</li>
-                    <li><i class="fa-solid fa-check"></i> Mandatory safety induction and continuous training for all site personnel.</li>
-                    <li><i class="fa-solid fa-check"></i> Proactive risk assessment and hazard mitigation on every project.</li>
-                    <li><i class="fa-solid fa-check"></i> Goal Zero framework targeting zero workplace incidents.</li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Safety-conscious project planning and
+                        execution.
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Site practices designed around responsible
+                        operational procedures.
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Emphasis on hazard awareness and risk
+                        control.
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Environmental responsibility throughout
+                        operational activities.
+                    </li>
+
                 </ul>
+
+
+                <span class="hse-badge">
+
+                    <i class="fa-solid fa-shield-halved"></i>
+
+                    Safety-first approach
+
+                </span>
+
             </div>
 
-            <div class="hse-card">
-                <div class="hse-card-header">
-                    <i class="fa-solid fa-clipboard-check"></i>
-                    <h3>Quality Policy</h3>
-                </div>
-                <ul class="hse-list">
-                    <li><i class="fa-solid fa-check"></i> Implementation of robust Quality Management Systems (QMS).</li>
-                    <li><i class="fa-solid fa-check"></i> Traceability and certification for all procured materials.</li>
-                    <li><i class="fa-solid fa-check"></i> Technical execution strictly aligned with engineering drawings and client specifications.</li>
-                    <li><i class="fa-solid fa-check"></i> Continuous improvement processes based on performance audits.</li>
-                </ul>
-            </div>
-        </div>
-    </section>
 
-    <!-- CONTACT SECTION -->
-    <section id="contact">
-        <div class="section-header">
-            <span class="section-tag">Get in Touch</span>
-            <h2 class="section-title">Request a Consultation</h2>
-            <p class="section-desc">Partner with us for reliable technical solutions and streamlined procurement.</p>
+            <div class="hse-card reveal">
+
+                <div class="hse-header">
+
+                    <div class="hse-icon">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div>
+
+                    <h3>
+                        Quality & Technical Discipline
+                    </h3>
+
+                </div>
+
+
+                <ul class="hse-list">
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Technical requirements are considered
+                        throughout project coordination.
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Focus on appropriate materials,
+                        specifications and workmanship.
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Documentation and coordination aligned
+                        with project requirements.
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Continuous focus on dependable service
+                        delivery.
+                    </li>
+
+                </ul>
+
+
+                <span class="hse-badge">
+
+                    <i class="fa-solid fa-award"></i>
+
+                    Quality-focused delivery
+
+                </span>
+
+            </div>
+
         </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     INDUSTRIES
+========================================================== -->
+
+<section
+    class="industries-section"
+    id="industries"
+>
+
+    <div class="container">
+
+        <div class="section-heading center reveal">
+
+            <span class="eyebrow">
+                Industries & Applications
+            </span>
+
+            <h2 class="section-title">
+                Supporting demanding environments.
+            </h2>
+
+            <p class="section-description">
+                Flexible technical and procurement capabilities
+                for a range of industrial, infrastructure and
+                commercial applications.
+            </p>
+
+        </div>
+
+
+        <div class="industry-grid">
+
+            <article class="industry reveal">
+
+                <i class="fa-solid fa-industry"></i>
+
+                <h3>
+                    Industrial Plants
+                </h3>
+
+                <p>
+                    Technical supply, maintenance and project
+                    support requirements.
+                </p>
+
+            </article>
+
+
+            <article class="industry reveal">
+
+                <i class="fa-solid fa-oil-well"></i>
+
+                <h3>
+                    Energy Sector
+                </h3>
+
+                <p>
+                    Technical materials, engineering support
+                    and procurement coordination.
+                </p>
+
+            </article>
+
+
+            <article class="industry reveal">
+
+                <i class="fa-solid fa-road"></i>
+
+                <h3>
+                    Infrastructure
+                </h3>
+
+                <p>
+                    Civil works, supply and supporting technical
+                    services.
+                </p>
+
+            </article>
+
+
+            <article class="industry reveal">
+
+                <i class="fa-solid fa-building"></i>
+
+                <h3>
+                    Commercial Facilities
+                </h3>
+
+                <p>
+                    M&E support, maintenance and industrial
+                    supply requirements.
+                </p>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     PROCESS
+========================================================== -->
+
+<section class="process-section">
+
+    <div class="container">
+
+        <div class="section-heading center reveal">
+
+            <span class="eyebrow">
+                How We Work
+            </span>
+
+            <h2 class="section-title">
+                A clear path from scope to delivery.
+            </h2>
+
+            <p class="section-description">
+                Structured coordination helps keep technical
+                requirements, procurement and execution aligned.
+            </p>
+
+        </div>
+
+
+        <div class="process-grid">
+
+            <div class="process-card reveal">
+
+                <span class="process-step">
+                    01
+                </span>
+
+                <h3>
+                    Understand
+                </h3>
+
+                <p>
+                    Review your requirements, specifications,
+                    scope and operational priorities.
+                </p>
+
+            </div>
+
+
+            <div class="process-card reveal">
+
+                <span class="process-step">
+                    02
+                </span>
+
+                <h3>
+                    Plan
+                </h3>
+
+                <p>
+                    Identify suitable technical approaches,
+                    suppliers and execution requirements.
+                </p>
+
+            </div>
+
+
+            <div class="process-card reveal">
+
+                <span class="process-step">
+                    03
+                </span>
+
+                <h3>
+                    Execute
+                </h3>
+
+                <p>
+                    Coordinate procurement, logistics and
+                    technical implementation.
+                </p>
+
+            </div>
+
+
+            <div class="process-card reveal">
+
+                <span class="process-step">
+                    04
+                </span>
+
+                <h3>
+                    Support
+                </h3>
+
+                <p>
+                    Continue technical coordination and
+                    maintenance support where required.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     CTA
+========================================================== -->
+
+<section class="cta-section">
+
+    <div class="container">
+
+        <div class="cta-box reveal">
+
+            <div class="cta-content">
+
+                <span class="eyebrow">
+                    Let's Work Together
+                </span>
+
+                <h2>
+                    Have a technical requirement?
+                    Let's discuss the right solution.
+                </h2>
+
+                <p>
+                    Share your project scope, technical
+                    requirement or procurement need with our team.
+                </p>
+
+            </div>
+
+
+            <div class="cta-actions">
+
+                <a
+                    href="#contact"
+                    class="btn btn-primary"
+                >
+
+                    Request a Quote
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     CONTACT
+========================================================== -->
+
+<section
+    class="contact-section"
+    id="contact"
+>
+
+    <div class="container">
+
+        <div class="section-heading center reveal">
+
+            <span class="eyebrow">
+                Contact
+            </span>
+
+            <h2 class="section-title">
+                Tell us what you need.
+            </h2>
+
+            <p class="section-description">
+                Send your requirement and provide enough detail
+                for our team to understand your project.
+            </p>
+
+        </div>
+
 
         <div class="contact-grid">
-            <div class="contact-info-panel">
-                <h3>Contact Details</h3>
-                <p>Reach out to our operations team for immediate assistance or RFQ submissions.</p>
 
-                <div class="info-row">
-                    <div class="info-row-icon"><i class="fa-solid fa-location-dot"></i></div>
-                    <div>
-                        <label>Headquarters</label>
-                        <span>Malaysia</span>
+
+            <div class="contact-panel reveal">
+
+                <h3>
+                    Let's connect.
+                </h3>
+
+                <p>
+                    Whether you need engineering support,
+                    industrial materials, procurement assistance
+                    or facility services, start the conversation
+                    with us.
+                </p>
+
+
+                <div class="contact-details">
+
+
+                    <div class="contact-detail">
+
+                        <div class="contact-detail-icon">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+
+                        <div>
+
+                            <small>
+                                Location
+                            </small>
+
+                            <strong>
+                                Malaysia
+                            </strong>
+
+                        </div>
+
                     </div>
+
+
+                    <div class="contact-detail">
+
+                        <div class="contact-detail-icon">
+                            <i class="fa-solid fa-phone"></i>
+                        </div>
+
+                        <div>
+
+                            <small>
+                                Telephone
+                            </small>
+
+                            <strong>
+                                +60 XX-XXXX XXXX
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="contact-detail">
+
+                        <div class="contact-detail-icon">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+
+                        <div>
+
+                            <small>
+                                Email
+                            </small>
+
+                            <strong>
+                                info@vihaanaa.com
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="contact-detail">
+
+                        <div class="contact-detail-icon">
+                            <i class="fa-solid fa-clock"></i>
+                        </div>
+
+                        <div>
+
+                            <small>
+                                Availability
+                            </small>
+
+                            <strong>
+                                Technical enquiries welcome
+                            </strong>
+
+                        </div>
+
+                    </div>
+
                 </div>
 
-                <div class="info-row">
-                    <div class="info-row-icon"><i class="fa-solid fa-phone"></i></div>
-                    <div>
-                        <label>Phone Inquiry</label>
-                        <span>+60 12-345 6789</span>
-                    </div>
-                </div>
-
-                <div class="info-row">
-                    <div class="info-row-icon"><i class="fa-solid fa-envelope"></i></div>
-                    <div>
-                        <label>Email Address</label>
-                        <span>sales@vihaanaatech.com.my</span>
-                    </div>
-                </div>
             </div>
 
-            <div class="contact-form-panel">
-                <form id="contactForm">
-                    <div class="form-group">
-                        <label for="name">Company / Name</label>
-                        <input type="text" id="name" class="form-control" placeholder="Your name or company" required>
+
+            <div class="contact-form reveal">
+
+                <form
+                    id="contactForm"
+                    novalidate
+                >
+
+                    <div class="form-grid">
+
+
+                        <div class="form-group">
+
+                            <label for="name">
+                                Full Name *
+                            </label>
+
+                            <input
+                                id="name"
+                                name="name"
+                                class="form-control"
+                                type="text"
+                                autocomplete="name"
+                                placeholder="Your name"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="company">
+                                Company
+                            </label>
+
+                            <input
+                                id="company"
+                                name="company"
+                                class="form-control"
+                                type="text"
+                                autocomplete="organization"
+                                placeholder="Company name"
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="email">
+                                Email *
+                            </label>
+
+                            <input
+                                id="email"
+                                name="email"
+                                class="form-control"
+                                type="email"
+                                autocomplete="email"
+                                placeholder="you@company.com"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="phone">
+                                Phone
+                            </label>
+
+                            <input
+                                id="phone"
+                                name="phone"
+                                class="form-control"
+                                type="tel"
+                                autocomplete="tel"
+                                placeholder="+60"
+                            >
+
+                        </div>
+
+
+                        <div class="form-group full">
+
+                            <label for="service">
+                                Requirement
+                            </label>
+
+                            <select
+                                id="service"
+                                name="service"
+                                class="form-control"
+                            >
+
+                                <option value="">
+                                    Select a service
+                                </option>
+
+                                <option>
+                                    Supply & Distribution
+                                </option>
+
+                                <option>
+                                    Import & Export
+                                </option>
+
+                                <option>
+                                    Civil Works
+                                </option>
+
+                                <option>
+                                    M&E Engineering
+                                </option>
+
+                                <option>
+                                    Instrumentation
+                                </option>
+
+                                <option>
+                                    Facility Maintenance
+                                </option>
+
+                                <option>
+                                    Other Technical Requirement
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group full">
+
+                            <label for="message">
+                                Project / Requirement Details *
+                            </label>
+
+                            <textarea
+                                id="message"
+                                name="message"
+                                class="form-control"
+                                placeholder="Briefly describe your requirement, scope, location and timeline..."
+                                required
+                            ></textarea>
+
+                        </div>
+
                     </div>
-                    <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" class="form-control" placeholder="john@example.com" required>
+
+
+                    <div class="form-submit">
+
+                        <button
+                            type="submit"
+                            class="btn btn-primary"
+                        >
+
+                            Send Enquiry
+
+                            <i class="fa-solid fa-paper-plane"></i>
+
+                        </button>
+
                     </div>
-                    <div class="form-group">
-                        <label for="service">Service Required</label>
-                        <select id="service" class="form-control" required>
-                            <option value="" disabled selected>Select an option</option>
-                            <option value="supply">Supply & Distribution</option>
-                            <option value="trade">Import & Export Trade</option>
-                            <option value="civil">General Contracting (Civil)</option>
-                            <option value="mne">M&E Engineering</option>
-                            <option value="instrumentation">Plant Instrumentation</option>
-                            <option value="maintenance">Facility Maintenance</option>
-                        </select>
+
+
+                    <p class="form-note">
+                        Your enquiry form is currently configured
+                        as a front-end demonstration. Connect it
+                        to your preferred email/API/backend before
+                        production deployment.
+                    </p>
+
+
+                    <div
+                        class="form-message"
+                        id="formMessage"
+                        role="status"
+                        aria-live="polite"
+                    >
+                        Thank you. Your enquiry has been prepared
+                        successfully.
                     </div>
-                    <div class="form-group">
-                        <label for="message">Project Details</label>
-                        <textarea id="message" class="form-control" rows="4" placeholder="Describe your requirements..." required></textarea>
-                    </div>
-                    <button type="submit" class="btn-primary-glow" style="width: 100%; border: none; cursor: pointer;">Send Inquiry</button>
+
                 </form>
+
             </div>
+
         </div>
-    </section>
 
-    <!-- FOOTER -->
-    <footer>
-        <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 1rem;">
-            <svg style="width: 24px; height: 24px;" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="50" cy="50" r="42" stroke="#008080" stroke-width="3"/>
-                <polygon points="50,6 55,22 50,18 45,22" fill="#00D2FF"/>
-                <polygon points="50,94 55,78 50,82 45,78" fill="#00D2FF"/>
-                <polygon points="50,22 56,44 78,50 56,56 50,78 44,56 22,50 44,44" fill="#00D2FF"/>
-            </svg>
-            <span style="font-weight: 700; color: #fff; font-size: 1.1rem; letter-spacing: 1px;">VIHAANAA TECH HUBS</span>
+    </div>
+
+</section>
+
+</main>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================== -->
+
+<footer class="footer">
+
+    <div class="container">
+
+        <div class="footer-grid">
+
+
+            <div class="footer-brand">
+
+                <a
+                    href="#home"
+                    class="brand"
+                >
+
+                    <svg
+                        class="brand-mark"
+                        viewBox="0 0 100 100"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true"
+                    >
+
+                        <circle
+                            cx="50"
+                            cy="50"
+                            r="43"
+                            stroke="#00A7A7"
+                            stroke-width="3"
+                        />
+
+                        <circle
+                            cx="50"
+                            cy="50"
+                            r="33"
+                            stroke="#1CC8E8"
+                            stroke-width="1.5"
+                            stroke-dasharray="4 3"
+                        />
+
+                        <polygon
+                            points="50,22 56,44 78,50 56,56 50,78 44,56 22,50 44,44"
+                            fill="#0879B5"
+                        />
+
+                    </svg>
+
+                    <span class="brand-copy">
+
+                        <span class="brand-name">
+                            VIHAANAA
+                        </span>
+
+                        <span class="brand-subtitle">
+                            TECH HUBS
+                        </span>
+
+                    </span>
+
+                </a>
+
+
+                <p>
+                    Integrated engineering, procurement and
+                    technical solutions supporting industrial,
+                    infrastructure, energy and commercial
+                    requirements.
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <h4 class="footer-heading">
+                    Company
+                </h4>
+
+                <ul class="footer-links">
+
+                    <li>
+                        <a href="#about">
+                            About Us
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#services">
+                            Services
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#industries">
+                            Industries
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div>
+
+                <h4 class="footer-heading">
+                    Capabilities
+                </h4>
+
+                <ul class="footer-links">
+
+                    <li>
+                        <a href="#services">
+                            Civil Works
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#services">
+                            M&E Engineering
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#services">
+                            Instrumentation
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#services">
+                            Procurement
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div>
+
+                <h4 class="footer-heading">
+                    Contact
+                </h4>
+
+                <ul class="footer-links">
+
+                    <li>
+                        <a href="#contact">
+                            Request a Quote
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="mailto:info@vihaanaa.com">
+                            Email Us
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#contact">
+                            Malaysia
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
         </div>
-        <p>&copy; 2026 Vihaanaa Tech Hubs. All Rights Reserved. Malaysia.</p>
-    </footer>
 
-    <!-- WHATSAPP FLOAT -->
-    <a href="https://wa.me/60123456789" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
-        <i class="fa-brands fa-whatsapp"></i>
-    </a>
 
-    <script>
-        // Navbar Scroll Effect
-        window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
+        <div class="footer-bottom">
+
+            <span>
+                © <span id="year"></span>
+                VIHAANAA TECH HUBS.
+                All rights reserved.
+            </span>
+
+
+            <div class="footer-bottom-links">
+
+                <a href="#home">
+                    Privacy
+                </a>
+
+                <a href="#home">
+                    Terms
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<!-- =========================================================
+     WHATSAPP
+========================================================== -->
+
+<a
+    class="whatsapp"
+    href="https://wa.me/60000000000"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Contact Vihaanaa Tech Hubs on WhatsApp"
+>
+
+    <span class="whatsapp-tooltip">
+        Chat with us
+    </span>
+
+    <i class="fa-brands fa-whatsapp"></i>
+
+</a>
+
+
+<!-- =========================================================
+     BACK TO TOP
+========================================================== -->
+
+<button
+    class="back-top"
+    id="backTop"
+    type="button"
+    aria-label="Back to top"
+>
+
+    <i class="fa-solid fa-arrow-up"></i>
+
+</button>
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================== -->
+
+<script>
+
+    /* ========================================================
+       DOM
+    ========================================================= */
+
+    const header =
+        document.getElementById("siteHeader");
+
+    const navMenu =
+        document.getElementById("navMenu");
+
+    const mobileToggle =
+        document.getElementById("mobileToggle");
+
+    const backTop =
+        document.getElementById("backTop");
+
+    const navLinks =
+        document.querySelectorAll(".nav-link");
+
+    const sections =
+        document.querySelectorAll("main section[id]");
+
+
+    /* ========================================================
+       HEADER SCROLL EFFECT
+    ========================================================= */
+
+    function handleScroll() {
+
+        if (window.scrollY > 30) {
+
+            header.classList.add("scrolled");
+
+        } else {
+
+            header.classList.remove("scrolled");
+
+        }
+
+
+        if (window.scrollY > 600) {
+
+            backTop.classList.add("visible");
+
+        } else {
+
+            backTop.classList.remove("visible");
+
+        }
+
+    }
+
+
+    window.addEventListener(
+        "scroll",
+        handleScroll,
+        { passive: true }
+    );
+
+    handleScroll();
+
+
+    /* ========================================================
+       MOBILE NAVIGATION
+    ========================================================= */
+
+    function closeMenu() {
+
+        navMenu.classList.remove("open");
+
+        mobileToggle.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+
+        mobileToggle.innerHTML =
+            '<i class="fa-solid fa-bars"></i>';
+
+    }
+
+
+    mobileToggle.addEventListener(
+        "click",
+        () => {
+
+            const isOpen =
+                navMenu.classList.toggle("open");
+
+            mobileToggle.setAttribute(
+                "aria-expanded",
+                String(isOpen)
+            );
+
+            mobileToggle.innerHTML =
+                isOpen
+                    ? '<i class="fa-solid fa-xmark"></i>'
+                    : '<i class="fa-solid fa-bars"></i>';
+
+        }
+    );
+
+
+    navLinks.forEach(
+        link => {
+
+            link.addEventListener(
+                "click",
+                closeMenu
+            );
+
+        }
+    );
+
+
+    /* ========================================================
+       ACTIVE NAVIGATION
+    ========================================================= */
+
+    const observer =
+        new IntersectionObserver(
+            entries => {
+
+                entries.forEach(
+                    entry => {
+
+                        if (!entry.isIntersecting) {
+                            return;
+                        }
+
+                        const id =
+                            entry.target.getAttribute("id");
+
+                        navLinks.forEach(
+                            link => {
+
+                                link.classList.toggle(
+                                    "active",
+                                    link.getAttribute("href")
+                                        === `#${id}`
+                                );
+
+                            }
+                        );
+
+                    }
+                );
+
+            },
+            {
+                rootMargin:
+                    "-35% 0px -55% 0px",
+                threshold: 0
             }
-        });
+        );
 
-        // Mobile Menu Toggle
-        const mobileToggle = document.getElementById('mobileToggle');
-        const navMenu = document.getElementById('navMenu');
-        const navLinks = document.querySelectorAll('.nav-link');
 
-        mobileToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            const icon = mobileToggle.querySelector('i');
-            if (navMenu.classList.contains('active')) {
-                icon.classList.remove('fa-bars-staggered');
-                icon.classList.add('fa-xmark');
-            } else {
-                icon.classList.remove('fa-xmark');
-                icon.classList.add('fa-bars-staggered');
+    sections.forEach(
+        section =>
+            observer.observe(section)
+    );
+
+
+    /* ========================================================
+       REVEAL ANIMATION
+    ========================================================= */
+
+    const revealElements =
+        document.querySelectorAll(".reveal");
+
+
+    const revealObserver =
+        new IntersectionObserver(
+            entries => {
+
+                entries.forEach(
+                    entry => {
+
+                        if (
+                            entry.isIntersecting
+                        ) {
+
+                            entry.target.classList.add(
+                                "visible"
+                            );
+
+                            revealObserver.unobserve(
+                                entry.target
+                            );
+
+                        }
+
+                    }
+                );
+
+            },
+            {
+                threshold: .08
             }
-        });
+        );
 
-        // Close mobile menu on link click
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-                const icon = mobileToggle.querySelector('i');
-                icon.classList.remove('fa-xmark');
-                icon.classList.add('fa-bars-staggered');
+
+    revealElements.forEach(
+        element =>
+            revealObserver.observe(element)
+    );
+
+
+    /* ========================================================
+       BACK TO TOP
+    ========================================================= */
+
+    backTop.addEventListener(
+        "click",
+        () => {
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
             });
-        });
 
-        // Simple Form Submit Alert
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for your inquiry. The Vihaanaa Tech Hubs team will contact you shortly.');
-            this.reset();
-        });
-    </script>
+        }
+    );
+
+
+    /* ========================================================
+       CONTACT FORM
+    ========================================================= */
+
+    const contactForm =
+        document.getElementById("contactForm");
+
+    const formMessage =
+        document.getElementById("formMessage");
+
+
+    contactForm.addEventListener(
+        "submit",
+        event => {
+
+            event.preventDefault();
+
+
+            if (!contactForm.checkValidity()) {
+
+                contactForm.reportValidity();
+
+                return;
+
+            }
+
+
+            formMessage.classList.add(
+                "show"
+            );
+
+
+            contactForm.reset();
+
+
+            setTimeout(
+                () => {
+
+                    formMessage.classList.remove(
+                        "show"
+                    );
+
+                },
+                6000
+            );
+
+        }
+    );
+
+
+    /* ========================================================
+       CURRENT YEAR
+    ========================================================= */
+
+    document.getElementById("year")
+        .textContent =
+            new Date().getFullYear();
+
+
+    /* ========================================================
+       ESCAPE KEY
+    ========================================================= */
+
+    document.addEventListener(
+        "keydown",
+        event => {
+
+            if (
+                event.key === "Escape" &&
+                navMenu.classList.contains("open")
+            ) {
+
+                closeMenu();
+
+                mobileToggle.focus();
+
+            }
+
+        }
+    );
+
+
+    /* ========================================================
+       CLOSE MOBILE MENU WHEN CLICKING OUTSIDE
+    ========================================================= */
+
+    document.addEventListener(
+        "click",
+        event => {
+
+            if (
+                navMenu.classList.contains("open") &&
+                !navMenu.contains(event.target) &&
+                !mobileToggle.contains(event.target)
+            ) {
+
+                closeMenu();
+
+            }
+
+        }
+    );
+
+</script>
+
 </body>
 </html>
-" Complete this code
