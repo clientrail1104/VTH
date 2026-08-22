@@ -1,1105 +1,97 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vihaanaa Tech Hubs | Engineering & Technical Services Malaysia</title>
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
-    <style>
-        /* --- ROOT SYSTEM VARIABLES --- */
-        :root {
-            --navy-deep: #0B192C;
-            --navy-card: #1E3E62;
-            --primary: #003366;
-            --teal-accent: #008080;
-            --cyan-glow: #00D2FF;
-            --accent-orange: #FF6B35;
-            --bg-light: #F8FAFC;
-            --text-main: #1E293B;
-            --text-muted: #64748B;
-            --border-light: #E2E8F0;
-            --shadow-sm: 0 4px 6px -1px rgba(0,0,0,0.05);
-            --shadow-md: 0 10px 25px -5px rgba(0,51,102,0.1);
-            --shadow-lg: 0 20px 35px -10px rgba(0,128,128,0.15);
-            --radius-sm: 8px;
-            --radius-md: 14px;
-            --radius-lg: 24px;
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        /* --- GLOBAL RESET & TYPOGRAPHY --- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 90px;
-        }
-
-        body {
-            background-color: var(--bg-light);
-            color: var(--text-main);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        h1, h2, h3, h4, h5 {
-            font-family: 'Outfit', sans-serif;
-            font-weight: 700;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        /* --- HEADER & NAVIGATION --- */
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 85px;
-            background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
-            z-index: 1000;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 6%;
-            transition: var(--transition);
-        }
-
-        .navbar.scrolled {
-            height: 75px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-        }
-
-        .brand-logo {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
-
-        /* Compass Geometric Logo SVG */
-        .logo-svg {
-            width: 48px;
-            height: 48px;
-            filter: drop-shadow(0 2px 8px rgba(0,128,128,0.3));
-            transition: var(--transition);
-        }
-
-        .brand-logo:hover .logo-svg {
-            transform: rotate(45deg);
-        }
-
-        .brand-text {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .brand-title {
-            font-size: 1.3rem;
-            font-weight: 800;
-            color: var(--primary);
-            letter-spacing: 0.8px;
-            line-height: 1.1;
-        }
-
-        .brand-subtitle {
-            font-size: 0.72rem;
-            font-weight: 700;
-            color: var(--teal-accent);
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        .nav-menu {
-            display: flex;
-            align-items: center;
-            gap: 2.2rem;
-            list-style: none;
-        }
-
-        .nav-link {
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: var(--text-main);
-            position: relative;
-            padding: 6px 0;
-            transition: var(--transition);
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0%;
-            height: 2px;
-            background: linear-gradient(90deg, var(--teal-accent), var(--cyan-glow));
-            transition: var(--transition);
-            border-radius: 2px;
-        }
-
-        .nav-link:hover::after,
-        .nav-link.active::after {
-            width: 100%;
-        }
-
-        .btn-header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--teal-accent) 100%);
-            color: #ffffff !important;
-            padding: 0.65rem 1.4rem;
-            border-radius: var(--radius-sm);
-            font-weight: 600;
-            font-size: 0.9rem;
-            box-shadow: 0 4px 14px rgba(0, 51, 102, 0.25);
-            transition: var(--transition);
-        }
-
-        .btn-header:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 128, 128, 0.35);
-        }
-
-        .mobile-toggle {
-            display: none;
-            font-size: 1.6rem;
-            color: var(--primary);
-            cursor: pointer;
-        }
-
-        /* --- HERO SECTION --- */
-        .hero {
-            position: relative;
-            padding: 180px 6% 120px;
-            background: linear-gradient(135deg, var(--navy-deep) 0%, #082032 50%, var(--primary) 100%);
-            color: #ffffff;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -20%;
-            right: -10%;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(0, 210, 255, 0.15) 0%, rgba(0, 128, 128, 0) 70%);
-            border-radius: 50%;
-            pointer-events: none;
-        }
-
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 3rem;
-            align-items: center;
-            max-width: 1280px;
-            margin: 0 auto;
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(0, 210, 255, 0.1);
-            border: 1px solid rgba(0, 210, 255, 0.3);
-            padding: 6px 16px;
-            border-radius: 50px;
-            font-size: 0.82rem;
-            font-weight: 600;
-            color: var(--cyan-glow);
-            margin-bottom: 1.5rem;
-        }
-
-        .hero h1 {
-            font-size: 3.2rem;
-            line-height: 1.15;
-            margin-bottom: 1.2rem;
-            letter-spacing: -0.5px;
-        }
-
-        .hero h1 span {
-            background: linear-gradient(90deg, #ffffff, var(--cyan-glow));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero p {
-            font-size: 1.1rem;
-            color: #CBD5E1;
-            margin-bottom: 2.2rem;
-            max-width: 620px;
-        }
-
-        .hero-actions {
-            display: flex;
-            gap: 1.2rem;
-            align-items: center;
-        }
-
-        .btn-primary-glow {
-            background: linear-gradient(135deg, var(--accent-orange) 0%, #D9531E 100%);
-            color: #ffffff;
-            padding: 0.9rem 2.2rem;
-            border-radius: var(--radius-sm);
-            font-weight: 700;
-            font-size: 1rem;
-            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.35);
-            transition: var(--transition);
-        }
-
-        .btn-primary-glow:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 30px rgba(255, 107, 53, 0.5);
-        }
-
-        .btn-outline-glow {
-            background: rgba(255,255,255,0.05);
-            color: #ffffff;
-            border: 1px solid rgba(255,255,255,0.25);
-            padding: 0.9rem 2rem;
-            border-radius: var(--radius-sm);
-            font-weight: 600;
-            font-size: 1rem;
-            backdrop-filter: blur(5px);
-            transition: var(--transition);
-        }
-
-        .btn-outline-glow:hover {
-            background: rgba(255,255,255,0.15);
-            border-color: #ffffff;
-        }
-
-        /* Hero Graphic Frame */
-        .hero-card-visual {
-            position: relative;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(16px);
-            border-radius: var(--radius-lg);
-            padding: 2.5rem;
-            box-shadow: var(--shadow-lg);
-            text-align: center;
-        }
-
-        .card-logo-container {
-            width: 130px;
-            height: 130px;
-            margin: 0 auto 1.5rem;
-            background: radial-gradient(circle, rgba(0,128,128,0.2) 0%, rgba(11,25,44,0.6) 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px solid rgba(0, 210, 255, 0.4);
-            box-shadow: 0 0 30px rgba(0, 210, 255, 0.2);
-        }
-
-        .card-manager-tag {
-            background: rgba(0,128,128,0.25);
-            padding: 10px 20px;
-            border-radius: var(--radius-md);
-            border: 1px solid rgba(0,210,255,0.2);
-            margin-top: 1rem;
-        }
-
-        /* --- STATS QUICK BAR --- */
-        .stats-bar-wrapper {
-            max-width: 1200px;
-            margin: -50px auto 0;
-            padding: 0 20px;
-            position: relative;
-            z-index: 20;
-        }
-
-        .stats-grid {
-            background: #ffffff;
-            border-radius: var(--radius-md);
-            box-shadow: var(--shadow-md);
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            padding: 2rem;
-            gap: 1.5rem;
-            border: 1px solid var(--border-light);
-        }
-
-        .stat-item {
-            display: flex;
-            align-items: center;
-            gap: 1.2rem;
-            border-right: 1px solid var(--border-light);
-            padding-right: 1rem;
-        }
-
-        .stat-item:last-child {
-            border-right: none;
-        }
-
-        .stat-icon {
-            width: 52px;
-            height: 52px;
-            background: rgba(0, 128, 128, 0.08);
-            color: var(--teal-accent);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.4rem;
-        }
-
-        .stat-num {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--primary);
-            line-height: 1.1;
-        }
-
-        .stat-label {
-            font-size: 0.82rem;
-            color: var(--text-muted);
-            font-weight: 600;
-        }
-
-        /* --- SECTION BASE STYLES --- */
-        section {
-            padding: 100px 6%;
-            max-width: 1300px;
-            margin: 0 auto;
-        }
-
-        .section-header {
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto 4rem;
-        }
-
-        .section-tag {
-            font-size: 0.85rem;
-            font-weight: 800;
-            color: var(--teal-accent);
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 0.5rem;
-            display: block;
-        }
-
-        .section-title {
-            font-size: 2.4rem;
-            color: var(--primary);
-            margin-bottom: 0.8rem;
-        }
-
-        .section-desc {
-            color: var(--text-muted);
-            font-size: 1.05rem;
-        }
-
-        /* --- ABOUT SECTION --- */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .about-content h3 {
-            font-size: 1.8rem;
-            color: var(--primary);
-            margin-bottom: 1.2rem;
-            line-height: 1.3;
-        }
-
-        .about-content p {
-            color: #475569;
-            margin-bottom: 1.2rem;
-            font-size: 1rem;
-        }
-
-        .values-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.2rem;
-            margin-top: 2rem;
-        }
-
-        .value-box {
-            background: #ffffff;
-            padding: 1.2rem;
-            border-radius: var(--radius-sm);
-            border-left: 4px solid var(--teal-accent);
-            box-shadow: var(--shadow-sm);
-            border: 1px solid var(--border-light);
-            border-left-width: 4px;
-        }
-
-        .value-box h4 {
-            color: var(--primary);
-            font-size: 1.05rem;
-            margin-bottom: 0.3rem;
-        }
-
-        .value-box p {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin: 0;
-        }
-
-        .about-image-wrapper {
-            position: relative;
-        }
-
-        .about-img {
-            width: 100%;
-            border-radius: var(--radius-md);
-            box-shadow: var(--shadow-md);
-            object-fit: cover;
-            height: 480px;
-        }
-
-        .about-floating-badge {
-            position: absolute;
-            bottom: -20px;
-            left: -20px;
-            background: var(--navy-deep);
-            color: #ffffff;
-            padding: 1.5rem;
-            border-radius: var(--radius-md);
-            box-shadow: var(--shadow-lg);
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-
-        /* --- SERVICES SECTION --- */
-        .services-bg-wrapper {
-            background: #F1F5F9;
-            padding: 100px 0;
-            width: 100vw;
-            position: relative;
-            left: 50%;
-            right: 50%;
-            margin-left: -50vw;
-            margin-right: -50vw;
-        }
-
-        .services-inner {
-            max-width: 1300px;
-            margin: 0 auto;
-            padding: 0 6%;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        .service-card {
-            background: #ffffff;
-            border-radius: var(--radius-md);
-            padding: 2.2rem 1.8rem;
-            box-shadow: var(--shadow-sm);
-            border: 1px solid var(--border-light);
-            transition: var(--transition);
-            position: relative;
-            top: 0;
-        }
-
-        .service-card:hover {
-            top: -8px;
-            box-shadow: var(--shadow-md);
-            border-color: rgba(0,128,128,0.3);
-        }
-
-        .service-card-icon {
-            width: 65px;
-            height: 65px;
-            background: linear-gradient(135deg, rgba(0,51,102,0.05) 0%, rgba(0,128,128,0.1) 100%);
-            color: var(--teal-accent);
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.6rem;
-            margin-bottom: 1.4rem;
-            transition: var(--transition);
-        }
-
-        .service-card:hover .service-card-icon {
-            background: var(--teal-accent);
-            color: #ffffff;
-        }
-
-        .service-card h3 {
-            font-size: 1.25rem;
-            color: var(--primary);
-            margin-bottom: 0.8rem;
-        }
-
-        .service-card p {
-            color: var(--text-muted);
-            font-size: 0.92rem;
-            line-height: 1.5;
-        }
-
-        /* --- HSE & QUALITY SECTION --- */
-        .hse-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2.5rem;
-        }
-
-        .hse-card {
-            background: #ffffff;
-            border-radius: var(--radius-md);
-            padding: 2.5rem;
-            border: 1px solid var(--border-light);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .hse-card-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1rem;
-            border-bottom: 2px solid var(--bg-light);
-        }
-
-        .hse-card-header i {
-            font-size: 1.8rem;
-            color: var(--teal-accent);
-        }
-
-        .hse-card-header h3 {
-            font-size: 1.4rem;
-            color: var(--primary);
-        }
-
-        .hse-list {
-            list-style: none;
-        }
-
-        .hse-list li {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            margin-bottom: 1rem;
-            color: #475569;
-            font-size: 0.98rem;
-        }
-
-        .hse-list li i {
-            color: var(--teal-accent);
-            margin-top: 4px;
-        }
-
-        /* --- CONTACT & FOOTER --- */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 0.9fr 1.1fr;
-            gap: 3rem;
-            align-items: start;
-        }
-
-        .contact-info-panel {
-            background: linear-gradient(135deg, var(--navy-deep) 0%, var(--primary) 100%);
-            color: #ffffff;
-            border-radius: var(--radius-md);
-            padding: 3rem 2.5rem;
-            box-shadow: var(--shadow-md);
-        }
-
-        .contact-info-panel h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-        }
-
-        .contact-info-panel p {
-            color: #94A3B8;
-            margin-bottom: 2.5rem;
-        }
-
-        .info-row {
-            display: flex;
-            align-items: flex-start;
-            gap: 1.2rem;
-            margin-bottom: 1.8rem;
-        }
-
-        .info-row-icon {
-            width: 46px;
-            height: 46px;
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--cyan-glow);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            flex-shrink: 0;
-        }
-
-        .info-row label {
-            display: block;
-            font-size: 0.8rem;
-            color: #94A3B8;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 700;
-        }
-
-        .info-row span {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #ffffff;
-        }
-
-        .contact-form-panel {
-            background: #ffffff;
-            border-radius: var(--radius-md);
-            padding: 3rem 2.5rem;
-            box-shadow: var(--shadow-sm);
-            border: 1px solid var(--border-light);
-        }
-
-        .form-group {
-            margin-bottom: 1.4rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            font-size: 0.9rem;
-            color: var(--text-main);
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 0.85rem 1rem;
-            border: 1px solid var(--border-light);
-            border-radius: var(--radius-sm);
-            font-size: 0.95rem;
-            transition: var(--transition);
-            outline: none;
-            background: #FAFAFA;
-        }
-
-        .form-control:focus {
-            border-color: var(--teal-accent);
-            background: #ffffff;
-            box-shadow: 0 0 0 4px rgba(0, 128, 128, 0.1);
-        }
-
-        footer {
-            background: var(--navy-deep);
-            color: #94A3B8;
-            text-align: center;
-            padding: 2.5rem 6%;
-            border-top: 1px solid rgba(255,255,255,0.08);
-            font-size: 0.9rem;
-        }
-
-        /* --- FLOATING WHATSAPP BUTTON --- */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 60px;
-            height: 60px;
-            background: #25D366;
-            color: #ffffff;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
-            z-index: 999;
-            transition: var(--transition);
-        }
-
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-            box-shadow: 0 15px 30px rgba(37, 211, 102, 0.6);
-        }
-
-        /* --- RESPONSIVE MEDIA QUERIES --- */
-        @media (max-width: 1024px) {
-            .hero-grid, .about-grid, .contact-grid, .hse-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .stat-item {
-                border-right: none;
-                border-bottom: 1px solid var(--border-light);
-                padding-bottom: 1rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .nav-menu {
-                position: fixed;
-                top: 85px;
-                left: -100%;
-                width: 100%;
-                height: calc(100vh - 85px);
-                background: #ffffff;
-                flex-direction: column;
-                justify-content: flex-start;
-                padding: 3rem 2rem;
-                transition: var(--transition);
-                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            }
-
-            .nav-menu.active {
-                left: 0;
-            }
-
-            .mobile-toggle {
-                display: block;
-            }
-
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-
-            .stats-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-actions {
-                flex-direction: column;
-                align-items: stretch;
-            }
-        }
-    </style>
-</head>
-<body>
-
-    <!-- NAVBAR -->
-    <nav class="navbar" id="navbar">
-        <a href="#home" class="brand-logo">
-            <!-- Inline SVG Compass Logo matching card visual identity -->
-            <svg class="logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="50" cy="50" r="42" stroke="url(#paint0_linear)" stroke-width="3"/>
-                <circle cx="50" cy="50" r="32" stroke="#008080" stroke-width="1.5" stroke-dasharray="4 2"/>
-                <!-- Geodesic Lines -->
-                <path d="M18 50 C 18 30, 82 30, 82 50 C 82 70, 18 70, 18 50 Z" stroke="#00D2FF" stroke-width="1.2" opacity="0.7"/>
-                <path d="M50 18 C 30 18, 30 82, 50 82 C 70 82, 70 18, 50 18 Z" stroke="#00D2FF" stroke-width="1.2" opacity="0.7"/>
-                <!-- Compass Points -->
-                <polygon points="50,6 55,22 50,18 45,22" fill="#003366"/>
-                <polygon points="50,94 55,78 50,82 45,78" fill="#003366"/>
-                <polygon points="6,50 22,45 18,50 22,55" fill="#003366"/>
-                <polygon points="94,50 78,45 82,50 78,55" fill="#003366"/>
-                <!-- Dial Star -->
-                <polygon points="50,22 56,44 78,50 56,56 50,78 44,56 22,50 44,44" fill="url(#paint1_linear)"/>
-                <defs>
-                    <linearGradient id="paint0_linear" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
-                        <stop stop-color="#008080"/>
-                        <stop offset="1" stop-color="#003366"/>
-                    </linearGradient>
-                    <linearGradient id="paint1_linear" x1="22" y1="22" x2="78" y2="78" gradientUnits="userSpaceOnUse">
-                        <stop stop-color="#00D2FF"/>
-                        <stop offset="1" stop-color="#003366"/>
-                    </linearGradient>
-                </defs>
-            </svg>
-            <div class="brand-text">
-                <span class="brand-title">VIHAANAA</span>
-                <span class="brand-subtitle">TECH HUBS</span>
-            </div>
-        </a>
-
-        <ul class="nav-menu" id="navMenu">
-            <li><a href="#home" class="nav-link active">Home</a></li>
-            <li><a href="#about" class="nav-link">About Us</a></li>
-            <li><a href="#services" class="nav-link">Services</a></li>
-            <li><a href="#hse" class="nav-link">HSE & Quality</a></li>
-            <li><a href="#contact" class="btn-header">Contact Us</a></li>
-        </ul>
-
-        <div class="mobile-toggle" id="mobileToggle">
-            <i class="fa-solid fa-bars-staggered"></i>
-        </div>
-    </nav>
-
-    <!-- HERO SECTION -->
-    <section class="hero" id="home">
-        <div class="hero-grid">
-            <div class="hero-text-content">
-                <div class="hero-badge">
-                    <i class="fa-solid fa-shield-halved"></i> Registered Technical Partner Malaysia
+<h3>Global Trade Solutions</h3>
+                    <p>International import and export of general merchandise and specialized engineering components, managing cross-border logistics.</p>
                 </div>
-                <h1>Integrated Engineering, Procurement & <span>Technical Solutions</span></h1>
-                <p>Delivering turnkey civil works, M&E engineering, precision instrumentation, import/export, and specialized industrial supplies nationwide.</p>
-                <div class="hero-actions">
-                    <a href="#services" class="btn-primary-glow"><i class="fa-solid fa-compass me-2"></i> Explore Services</a>
-                    <a href="#contact" class="btn-outline-glow"><i class="fa-solid fa-paper-plane me-2"></i> Get Quote</a>
-                </div>
-            </div>
 
-            <!-- Visual Card mimicking the company business card -->
-            <div class="hero-card-visual">
-                <div class="card-logo-container">
-                    <svg class="logo-svg" style="width: 80px; height: 80px;" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="50" cy="50" r="42" stroke="url(#p1)" stroke-width="3"/>
-                        <circle cx="50" cy="50" r="32" stroke="#008080" stroke-width="1.5" stroke-dasharray="4 2"/>
-                        <path d="M18 50 C 18 30, 82 30, 82 50 C 82 70, 18 70, 18 50 Z" stroke="#00D2FF" stroke-width="1.2" opacity="0.8"/>
-                        <polygon points="50,6 55,22 50,18 45,22" fill="#00D2FF"/>
-                        <polygon points="50,94 55,78 50,82 45,78" fill="#00D2FF"/>
-                        <polygon points="50,22 56,44 78,50 56,56 50,78 44,56 22,50 44,44" fill="url(#p2)"/>
-                        <defs>
-                            <linearGradient id="p1" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
-                                <stop stop-color="#008080"/><stop offset="1" stop-color="#00D2FF"/>
-                            </linearGradient>
-                            <linearGradient id="p2" x1="22" y1="22" x2="78" y2="78" gradientUnits="userSpaceOnUse">
-                                <stop stop-color="#00D2FF"/><stop offset="1" stop-color="#003366"/>
-                            </linearGradient>
-                        </defs>
-                    </svg>
-            </div>
-        </div>
-    </section>
+                <div class="service-card">
+                    <div class="service-card-icon"><i class="fa-solid fa-hard-hat"></i></div>
+                    <h3>General Contracting</h3>
+                    <p>Full-scale civil construction, structural frameworks, building renovations, and site preparation for industrial and commercial projects.</p>
+                </div>
 
-    <!-- STATS QUICK BAR -->
-    <div class="stats-bar-wrapper">
-        <div class="stats-grid">
-            <div class="stat-item">
-                <div class="stat-icon"><i class="fa-solid fa-award"></i></div>
-                <div>
-                    <div class="stat-num">100%</div>
-                    <div class="stat-label">HSE & DOSH Compliance</div>
+                <div class="service-card">
+                    <div class="service-card-icon"><i class="fa-solid fa-plug-circle-bolt"></i></div>
+                    <h3>M&E Engineering</h3>
+                    <p>Design, installation, and maintenance of mechanical and electrical systems, HVAC, plumbing, and industrial piping.</p>
                 </div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
-                <div>
-                    <div class="stat-num">Multi-Disciplinary</div>
-                    <div class="stat-label">Civil, M&E & Instrumentation</div>
+
+                <div class="service-card">
+                    <div class="service-card-icon"><i class="fa-solid fa-microchip"></i></div>
+                    <h3>Plant Instrumentation</h3>
+                    <p>Calibration, installation, and servicing of precision measurement instruments and control systems for process optimization.</p>
                 </div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-icon"><i class="fa-solid fa-globe"></i></div>
-                <div>
-                    <div class="stat-num">Global</div>
-                    <div class="stat-label">Import & Export Sourcing</div>
-                </div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-icon"><i class="fa-solid fa-clock"></i></div>
-                <div>
-                    <div class="stat-num">24/7</div>
-                    <div class="stat-label">Rapid Technical Support</div>
+
+                <div class="service-card">
+                    <div class="service-card-icon"><i class="fa-solid fa-tools"></i></div>
+                    <h3>Facility Maintenance</h3>
+                    <p>Preventative and corrective maintenance services, routine inspections, and rapid-response repairs to minimize downtime.</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- ABOUT SECTION -->
-    <section id="about">
-        <div class="section-header">
-            <span class="section-tag">About Company</span>
-            <h2 class="section-title">Multi-Disciplinary Engineering & Procurement Excellence</h2>
-            <p class="section-desc">Delivering high-precision technical services and comprehensive supply chain solutions across Malaysia.</p>
-        </div>
-
-        <div class="about-grid">
-            <div class="about-content">
-                <h3>End-to-End Solutions for Industrial & Energy Sectors</h3>
-                <p>VIHAANAA TECH HUBS is a dynamic Malaysian technical solutions provider. We offer complete end-to-end capabilities spanning local/international material sourcing, global trade logistics, civil construction, M&E installations, and routine facility maintenance.</p>
-                <p>Driven by operational precision and technical standard compliance, we serve plant operators, energy sectors, infrastructure projects, and commercial entities nationwide.</p>
-
-                <div class="values-grid">
-                    <div class="value-box">
-                        <h4>Integrity</h4>
-                        <p>Transparent and honest client partnerships.</p>
-                    </div>
-                    <div class="value-box">
-                        <h4>Safety First</h4>
-                        <p>Uncompromising HSE protocols on site.</p>
-                    </div>
-                    <div class="value-box">
-                        <h4>Precision</h4>
-                        <p>Standard-compliant technical execution.</p>
-                    </div>
-                    <div class="value-box">
-                        <h4>Reliability</h4>
-                        <p>Swift response for emergency repairs.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="about-image-wrapper">
-                <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1000&q=80" alt="Engineering Team" class="about-img">
-                <div class="about-floating-badge">
-                    <i class="fa-solid fa-circle-check" style="font-size: 2.2rem; color: var(--cyan-glow);"></i>
-                    <div>
-                        <strong style="display:block; font-size:1.1rem; color:#fff;">ISO & DOSH Compliant</strong>
-                        <span style="font-size:0.85rem; color:#CBD5E1;">Rigorous Quality Standards</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SERVICES SECTION -->
-    <div class="services-bg-wrapper" id="services">
-        <div class="services-inner">
-            <div class="section-header">
-                <span class="section-tag">Capabilities</span>
-                <h2 class="section-title">Services & Solutions Provided</h2>
-                <p class="section-desc">Comprehensive execution across trade, contracting, and technical engineering.</p>
-            </div>
-
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-card-icon"><i class="fa-solid fa-boxes-packing"></i></div>
-                    <h3>Supply & Distribution</h3>
-                    <p>Local procurement and distribution of certified industrial hardware, raw materials, electrical fittings, and factory consumables.</p>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-card-icon"><i class="fa-solid fa-plane-departure"></i></div>
-                    <h3>Import & Export</h3>
-                    <p>Cross-border sourcing, technical machinery trading, customs clearance, and international supply chain logistics.</p>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-card-icon"><i class="fa-solid fa-toolbox"></i></div>
-                    <h3>Tools & Spare Parts</h3>
-                    <p>Provision of specialized hand/power tools, pneumatic equipment, and OEM replacement components for industrial plants.</p>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-card-icon"><i class="fa-solid fa-bridge"></i></div>
-                    <h3>Civil Works</h3>
-                    <p>Structural concrete, site preparation, foundation works, industrial paving, trenching, and facility upgrades.</p>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-card-icon"><i class="fa-solid fa-helmet-safety"></i></div>
-                    <h3>Installation & Construction</h3>
-                    <p>Full-scale structural steel erection, modular skid assembly, piping fabrication, and site construction management.</p>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-card-icon"><i class="fa-solid fa-gears"></i></div>
-                    <h3>Mechanical Services</h3>
-                    <p>HVAC systems, industrial piping networks, pump alignment, pressure vessel installation, and rotating equipment overhaul.</p>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-card-icon"><i class="fa-solid fa-bolt"></i></div>
-                    <h3>Electrical Services</h3>
-                    <p>High & Low Voltage (HV/LV) electrical wiring, distribution panels, switchgear, cable laying, and grounding systems.</p>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-card-icon"><i class="fa-solid fa-gauge-high"></i></div>
-                    <h3>Instrumentation Products</h3>
-                    <p>Process sensors, pressure/temperature transmitters, control valves, actuators, and PLC automation integration.</p>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-card-icon"><i class="fa-solid fa-sliders"></i></div>
-                    <h3>Testing & Commissioning</h3>
-                    <p>Pre-commissioning validation, load testing, loop tests, and safety calibration prior to plant startup.</p>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-card-icon"><i class="fa-solid fa-wrench"></i></div>
-                    <h3>Repair & Testing</h3>
-                    <p>Preventive maintenance, non-destructive testing (NDT), diagnostics, and emergency repair services.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- HSE & QUALITY -->
+    <!-- HSE & QUALITY SECTION -->
     <section id="hse">
         <div class="section-header">
-            <span class="section-tag">Safety Standards</span>
-            <h2 class="section-title">HSE & Quality Policy</h2>
-            <p class="section-desc">Our core commitment to occupational health, safety, and operational precision.</p>
+            <span class="section-tag">Standards & Compliance</span>
+            <h2 class="section-title">HSE & Quality Assurance</h2>
+            <p class="section-desc">Our commitment to safe operations, environmental sustainability, and precision execution.</p>
         </div>
 
         <div class="hse-grid">
             <div class="hse-card">
                 <div class="hse-card-header">
-                    <i class="fa-solid fa-shield-halved"></i>
-                    <h3>Health & Safety First</h3>
+                    <i class="fa-solid fa-shield-virus"></i>
+                    <h3>Health, Safety & Environment</h3>
                 </div>
                 <ul class="hse-list">
-                    <li><i class="fa-solid fa-circle-check"></i> Zero Harm policy for workplace safety and environment.</li>
-                    <li><i class="fa-solid fa-circle-check"></i> Mandatory Hazard Identification, Risk Assessment (HIRARC).</li>
-                    <li><i class="fa-solid fa-circle-check"></i> Full compliance with Malaysian DOSH / JKKP regulations.</li>
-                    <li><i class="fa-solid fa-circle-check"></i> Strict PPE enforcement and daily safety toolbox briefings.</li>
+                    <li><i class="fa-solid fa-check"></i> Strict adherence to DOSH regulations and local statutory requirements.</li>
+                    <li><i class="fa-solid fa-check"></i> Mandatory safety induction and continuous training for all site personnel.</li>
+                    <li><i class="fa-solid fa-check"></i> Proactive risk assessment and hazard mitigation on every project.</li>
+                    <li><i class="fa-solid fa-check"></i> Goal Zero framework targeting zero workplace incidents.</li>
                 </ul>
             </div>
 
             <div class="hse-card">
                 <div class="hse-card-header">
-                    <i class="fa-solid fa-award"></i>
-                    <h3>Quality Assurance</h3>
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <h3>Quality Policy</h3>
                 </div>
                 <ul class="hse-list">
-                    <li><i class="fa-solid fa-circle-check"></i> Standardized QA/QC inspection plans on all incoming materials.</li>
-                    <li><i class="fa-solid fa-circle-check"></i> Complete technical documentation & loop check validation.</li>
-                    <li><i class="fa-solid fa-circle-check"></i> Adherence to ISO standards and strict client technical specs.</li>
-                    <li><i class="fa-solid fa-circle-check"></i> Continuous technical skill upgrading for personnel.</li>
+                    <li><i class="fa-solid fa-check"></i> Implementation of robust Quality Management Systems (QMS).</li>
+                    <li><i class="fa-solid fa-check"></i> Traceability and certification for all procured materials.</li>
+                    <li><i class="fa-solid fa-check"></i> Technical execution strictly aligned with engineering drawings and client specifications.</li>
+                    <li><i class="fa-solid fa-check"></i> Continuous improvement processes based on performance audits.</li>
                 </ul>
             </div>
         </div>
     </section>
 
     <!-- CONTACT SECTION -->
-    <section id="contact" style="padding-bottom: 120px;">
+    <section id="contact">
         <div class="section-header">
-            <span class="section-tag">Get In Touch</span>
-            <h2 class="section-title">Contact Management</h2>
-            <p class="section-desc">Reach out directly for project quotations, tenders, and technical inquiries.</p>
+            <span class="section-tag">Get in Touch</span>
+            <h2 class="section-title">Request a Consultation</h2>
+            <p class="section-desc">Partner with us for reliable technical solutions and streamlined procurement.</p>
         </div>
 
         <div class="contact-grid">
             <div class="contact-info-panel">
-                <h3>VIHAANAA TECH HUBS</h3>
-                <p>Get direct access to key operational management for immediate support.</p>
+                <h3>Contact Details</h3>
+                <p>Reach out to our operations team for immediate assistance or RFQ submissions.</p>
 
                 <div class="info-row">
-                    <div class="info-row-icon"><i class="fa-solid fa-user-gear"></i></div>
+                    <div class="info-row-icon"><i class="fa-solid fa-location-dot"></i></div>
                     <div>
-                        <label>Contact Person</label>
-                        <span>MOGHAN (Manager)</span>
+                        <label>Headquarters</label>
+                        <span>Malaysia</span>
                     </div>
                 </div>
 
                 <div class="info-row">
                     <div class="info-row-icon"><i class="fa-solid fa-phone"></i></div>
                     <div>
-                        <label>Phone / WhatsApp</label>
-                        <span>+6014 972 5722</span>
+                        <label>Phone Inquiry</label>
+                        <span>+60 12-345 6789</span>
                     </div>
                 </div>
 
@@ -1107,7 +99,7 @@
                     <div class="info-row-icon"><i class="fa-solid fa-envelope"></i></div>
                     <div>
                         <label>Email Address</label>
-                        <span>smorghan9@gmail.com</span>
+                        <span>sales@vihaanaatech.com.my</span>
                     </div>
                 </div>
             </div>
@@ -1115,31 +107,30 @@
             <div class="contact-form-panel">
                 <form id="contactForm">
                     <div class="form-group">
-                        <label for="name">Your Name / Organization</label>
-                        <input type="text" id="name" class="form-control" required placeholder="e.g. Alex Tan / ABC Engineering">
+                        <label for="name">Company / Name</label>
+                        <input type="text" id="name" class="form-control" placeholder="Your name or company" required>
                     </div>
                     <div class="form-group">
                         <label for="email">Email Address</label>
-                        <input type="email" id="email" class="form-control" required placeholder="name@company.com">
+                        <input type="email" id="email" class="form-control" placeholder="john@example.com" required>
                     </div>
                     <div class="form-group">
                         <label for="service">Service Required</label>
-                        <select id="service" class="form-control">
-                            <option>Supply & Distribution</option>
-                            <option>Import & Export</option>
-                            <option>Civil & Construction Works</option>
-                            <option>Mechanical / Electrical Services</option>
-                            <option>Instrumentation / Testing & Commissioning</option>
-                            <option>General Technical Enquiry</option>
+                        <select id="service" class="form-control" required>
+                            <option value="" disabled selected>Select an option</option>
+                            <option value="supply">Supply & Distribution</option>
+                            <option value="trade">Import & Export Trade</option>
+                            <option value="civil">General Contracting (Civil)</option>
+                            <option value="mne">M&E Engineering</option>
+                            <option value="instrumentation">Plant Instrumentation</option>
+                            <option value="maintenance">Facility Maintenance</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="message">Project Requirements / Description</label>
-                        <textarea id="message" class="form-control" rows="4" required placeholder="Describe your project requirements or RFQ details..."></textarea>
+                        <label for="message">Project Details</label>
+                        <textarea id="message" class="form-control" rows="4" placeholder="Describe your requirements..." required></textarea>
                     </div>
-                    <button type="submit" class="btn-primary-glow" style="width: 100%; border: none; cursor: pointer;">
-                        <i class="fa-solid fa-paper-plane me-2"></i> Submit Inquiry
-                    </button>
+                    <button type="submit" class="btn-primary-glow" style="width: 100%; border: none; cursor: pointer;">Send Inquiry</button>
                 </form>
             </div>
         </div>
@@ -1147,19 +138,27 @@
 
     <!-- FOOTER -->
     <footer>
-        <p>&copy; 2026 VIHAANAA TECH HUBS (Malaysia). All Rights Reserved.</p>
+        <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 1rem;">
+            <svg style="width: 24px; height: 24px;" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="50" cy="50" r="42" stroke="#008080" stroke-width="3"/>
+                <polygon points="50,6 55,22 50,18 45,22" fill="#00D2FF"/>
+                <polygon points="50,94 55,78 50,82 45,78" fill="#00D2FF"/>
+                <polygon points="50,22 56,44 78,50 56,56 50,78 44,56 22,50 44,44" fill="#00D2FF"/>
+            </svg>
+            <span style="font-weight: 700; color: #fff; font-size: 1.1rem; letter-spacing: 1px;">VIHAANAA TECH HUBS</span>
+        </div>
+        <p>&copy; 2026 Vihaanaa Tech Hubs. All Rights Reserved. Malaysia.</p>
     </footer>
 
-    <!-- FLOATING WHATSAPP CTA -->
-    <a href="https://wa.me/60149725722?text=Hello%20Moghan,%20I%20would%20like%20to%20enquire%20about%20Vihaanaa%20Tech%20Hubs%20services." target="_blank" class="whatsapp-float" title="Chat on WhatsApp">
+    <!-- WHATSAPP FLOAT -->
+    <a href="https://wa.me/60123456789" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
-    <!-- INTERACTIVE JAVASCRIPT -->
     <script>
         // Navbar Scroll Effect
-        const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
             if (window.scrollY > 50) {
                 navbar.classList.add('scrolled');
             } else {
@@ -1170,27 +169,37 @@
         // Mobile Menu Toggle
         const mobileToggle = document.getElementById('mobileToggle');
         const navMenu = document.getElementById('navMenu');
+        const navLinks = document.querySelectorAll('.nav-link');
 
         mobileToggle.addEventListener('click', () => {
             navMenu.classList.toggle('active');
+            const icon = mobileToggle.querySelector('i');
+            if (navMenu.classList.contains('active')) {
+                icon.classList.remove('fa-bars-staggered');
+                icon.classList.add('fa-xmark');
+            } else {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars-staggered');
+            }
         });
 
-        document.querySelectorAll('.nav-link').forEach(link => {
+        // Close mobile menu on link click
+        navLinks.forEach(link => {
             link.addEventListener('click', () => {
                 navMenu.classList.remove('active');
+                const icon = mobileToggle.querySelector('i');
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars-staggered');
             });
         });
 
-        // Contact Form Handling with Direct WhatsApp Redirection
+        // Simple Form Submit Alert
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            const name = document.getElementById('name').value;
-            const service = document.getElementById('service').value;
-            const message = document.getElementById('message').value;
-
-            alert(`Thank you ${name}! Your inquiry regarding ${service} has been processed. Moghan (Manager) will respond shortly.`);
+            alert('Thank you for your inquiry. The Vihaanaa Tech Hubs team will contact you shortly.');
             this.reset();
         });
     </script>
 </body>
 </html>
+" Complete this code
