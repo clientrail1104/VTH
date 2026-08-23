@@ -3,106 +3,233 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vihaanaa Tech Hubs | Engineering & Technical Services Malaysia</title>
+    <meta name="description" content="VIHAANAA TECH HUBS - Engineering, procurement, technical services, civil, mechanical, electrical and instrumentation solutions in Malaysia.">
+    <title>VIHAANAA TECH HUBS | Engineering & Technical Services Malaysia</title>
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- FontAwesome Icons -->
+
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
+
     <style>
-        /* --- ROOT SYSTEM VARIABLES --- */
+        /* =========================================================
+           ROOT
+        ========================================================= */
         :root {
-            --navy-deep: #0B192C;
-            --navy-card: #1E3E62;
-            --primary: #003366;
-            --teal-accent: #008080;
-            --cyan-glow: #00D2FF;
-            --accent-orange: #FF6B35;
-            --bg-light: #F8FAFC;
-            --text-main: #1E293B;
-            --text-muted: #64748B;
-            --border-light: #E2E8F0;
-            --shadow-sm: 0 4px 6px -1px rgba(0,0,0,0.05);
-            --shadow-md: 0 10px 25px -5px rgba(0,51,102,0.1);
-            --shadow-lg: 0 20px 35px -10px rgba(0,128,128,0.15);
-            --radius-sm: 8px;
-            --radius-md: 14px;
-            --radius-lg: 24px;
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --navy-deep: #041323;
+            --navy: #0b2540;
+            --primary: #003b70;
+            --blue: #0066ff;
+            --teal: #008080;
+            --cyan: #00d9ff;
+            --purple: #7c3aed;
+            --pink: #ff2ea6;
+            --orange: #ff7a18;
+            --green: #00d97a;
+
+            --bg: #f7faff;
+            --white: #ffffff;
+            --text: #172b3f;
+            --muted: #64748b;
+            --border: #e2e8f0;
+
+            --rainbow:
+                linear-gradient(
+                    110deg,
+                    #00d9ff 0%,
+                    #0066ff 22%,
+                    #7c3aed 46%,
+                    #ff2ea6 68%,
+                    #ff7a18 84%,
+                    #ffd166 100%
+                );
+
+            --rainbow-2:
+                linear-gradient(
+                    135deg,
+                    #00e676,
+                    #00d9ff,
+                    #0066ff,
+                    #7c3aed,
+                    #ff2ea6
+                );
+
+            --shadow-sm: 0 5px 18px rgba(0, 51, 102, .07);
+            --shadow-md: 0 15px 40px rgba(0, 51, 102, .11);
+            --shadow-lg: 0 25px 70px rgba(0, 20, 50, .22);
+
+            --radius-sm: 10px;
+            --radius-md: 18px;
+            --radius-lg: 28px;
+
+            --ease: cubic-bezier(.16, 1, .3, 1);
+            --transition: .35s var(--ease);
         }
 
-        /* --- GLOBAL RESET & TYPOGRAPHY --- */
-        * {
+        /* =========================================================
+           RESET
+        ========================================================= */
+        *,
+        *::before,
+        *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Plus Jakarta Sans', sans-serif;
         }
 
         html {
             scroll-behavior: smooth;
-            scroll-padding-top: 90px;
+            scroll-padding-top: 95px;
         }
 
         body {
-            background-color: var(--bg-light);
-            color: var(--text-main);
-            line-height: 1.6;
+            min-height: 100vh;
             overflow-x: hidden;
+            background:
+                radial-gradient(circle at 8% 8%, rgba(0, 217, 255, .10), transparent 24%),
+                radial-gradient(circle at 92% 18%, rgba(255, 46, 166, .08), transparent 23%),
+                radial-gradient(circle at 50% 90%, rgba(124, 58, 237, .07), transparent 28%),
+                var(--bg);
+            color: var(--text);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.6;
         }
 
-        h1, h2, h3, h4, h5 {
+        body.menu-open {
+            overflow: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
             font-family: 'Outfit', sans-serif;
-            font-weight: 700;
+            line-height: 1.2;
         }
 
         a {
-            text-decoration: none;
             color: inherit;
+            text-decoration: none;
         }
 
-        /* --- HEADER & NAVIGATION --- */
+        button,
+        input,
+        textarea,
+        select {
+            font: inherit;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        /* =========================================================
+           BACKGROUND PARTICLES
+        ========================================================= */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: -30%;
+            z-index: -2;
+            pointer-events: none;
+            background:
+                radial-gradient(circle, rgba(0, 217, 255, .10) 0 1.5px, transparent 2.5px) 0 0 / 72px 72px,
+                radial-gradient(circle, rgba(255, 46, 166, .07) 0 1.5px, transparent 2.5px) 36px 36px / 92px 92px;
+            animation: particlesMove 30s linear infinite;
+        }
+
+        @keyframes particlesMove {
+            to {
+                transform: translate(72px, 72px);
+            }
+        }
+
+        /* =========================================================
+           PRELOADER
+        ========================================================= */
+        .preloader {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: grid;
+            place-items: center;
+            background:
+                radial-gradient(circle at 50% 45%, rgba(0, 217, 255, .15), transparent 25%),
+                linear-gradient(135deg, #03101f, #062f51, #30105e);
+            transition: opacity .7s ease, visibility .7s ease;
+        }
+
+        .preloader.hide {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .loader {
+            width: 86px;
+            height: 86px;
+            border: 3px solid rgba(255, 255, 255, .12);
+            border-top-color: var(--cyan);
+            border-right-color: var(--pink);
+            border-radius: 50%;
+            box-shadow: 0 0 45px rgba(0, 217, 255, .25);
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* =========================================================
+           NAVBAR
+        ========================================================= */
         .navbar {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 85px;
-            background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+            right: 0;
             z-index: 1000;
+            height: 84px;
+            padding: 0 5.5%;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            padding: 0 6%;
-            transition: var(--transition);
+            justify-content: space-between;
+            background: rgba(255, 255, 255, .90);
+            border-bottom: 1px solid rgba(0, 102, 255, .08);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            transition: height .4s var(--ease), box-shadow .4s var(--ease), background .4s var(--ease);
         }
 
         .navbar.scrolled {
-            height: 75px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            height: 72px;
+            background: rgba(255, 255, 255, .96);
+            box-shadow: 0 15px 45px rgba(0, 51, 102, .12);
         }
 
         .brand-logo {
             display: flex;
             align-items: center;
-            gap: 14px;
+            gap: 12px;
+            flex-shrink: 0;
         }
 
-        /* Compass Geometric Logo SVG */
         .logo-svg {
             width: 48px;
             height: 48px;
-            filter: drop-shadow(0 2px 8px rgba(0,128,128,0.3));
-            transition: var(--transition);
+            filter: drop-shadow(0 3px 10px rgba(0, 128, 128, .25));
+            transition: transform .45s var(--ease);
         }
 
         .brand-logo:hover .logo-svg {
-            transform: rotate(45deg);
+            transform: rotate(8deg) scale(1.05);
         }
 
         .brand-text {
@@ -111,352 +238,604 @@
         }
 
         .brand-title {
-            font-size: 1.3rem;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.25rem;
             font-weight: 800;
-            color: var(--primary);
-            letter-spacing: 0.8px;
-            line-height: 1.1;
+            letter-spacing: .8px;
+            line-height: 1;
+            background: var(--rainbow);
+            background-size: 220% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: rainbowFlow 5s linear infinite;
         }
 
         .brand-subtitle {
-            font-size: 0.72rem;
-            font-weight: 700;
-            color: var(--teal-accent);
-            letter-spacing: 2px;
-            text-transform: uppercase;
+            margin-top: 4px;
+            color: var(--teal);
+            font-size: .66rem;
+            font-weight: 800;
+            letter-spacing: 2.2px;
+        }
+
+        @keyframes rainbowFlow {
+            to {
+                background-position: 220% center;
+            }
         }
 
         .nav-menu {
             display: flex;
             align-items: center;
-            gap: 2.2rem;
+            gap: 2rem;
             list-style: none;
         }
 
         .nav-link {
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: var(--text-main);
             position: relative;
-            padding: 6px 0;
+            padding: 7px 0;
+            color: var(--text);
+            font-size: .9rem;
+            font-weight: 700;
             transition: var(--transition);
         }
 
         .nav-link::after {
-            content: '';
+            content: "";
             position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0%;
-            height: 2px;
-            background: linear-gradient(90deg, var(--teal-accent), var(--cyan-glow));
-            transition: var(--transition);
-            border-radius: 2px;
+            left: 50%;
+            bottom: -5px;
+            width: 0;
+            height: 3px;
+            border-radius: 99px;
+            background: var(--rainbow);
+            transform: translateX(-50%);
+            transition: width .3s var(--ease);
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--purple);
         }
 
         .nav-link:hover::after,
         .nav-link.active::after {
-            width: 100%;
+            width: 70%;
         }
 
         .btn-header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--teal-accent) 100%);
-            color: #ffffff !important;
-            padding: 0.65rem 1.4rem;
-            border-radius: var(--radius-sm);
-            font-weight: 600;
-            font-size: 0.9rem;
-            box-shadow: 0 4px 14px rgba(0, 51, 102, 0.25);
+            position: relative;
+            overflow: hidden;
+            isolation: isolate;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: .72rem 1.3rem;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--primary), var(--teal));
+            color: #fff !important;
+            font-size: .88rem;
+            font-weight: 800;
+            box-shadow: 0 7px 20px rgba(0, 102, 255, .18);
             transition: var(--transition);
         }
 
         .btn-header:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 128, 128, 0.35);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 28px rgba(0, 102, 255, .28);
         }
 
         .mobile-toggle {
             display: none;
-            font-size: 1.6rem;
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            align-items: center;
+            justify-content: center;
             color: var(--primary);
+            font-size: 1.35rem;
             cursor: pointer;
+            background: rgba(0, 102, 255, .06);
         }
 
-        /* --- HERO SECTION --- */
+        /* =========================================================
+           COMMON BUTTONS
+        ========================================================= */
+        .btn-primary-glow,
+        .btn-outline-glow {
+            position: relative;
+            overflow: hidden;
+            isolation: isolate;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            min-height: 52px;
+            padding: .9rem 1.55rem;
+            border-radius: 11px;
+            font-size: .95rem;
+            font-weight: 800;
+            transition: var(--transition);
+        }
+
+        .btn-primary-glow {
+            border: 0;
+            color: #fff !important;
+            background: var(--rainbow);
+            background-size: 220% 220%;
+            animation: buttonGradient 6s ease infinite;
+            box-shadow: 0 12px 30px rgba(0, 102, 255, .24);
+        }
+
+        .btn-primary-glow:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 18px 42px rgba(124, 58, 237, .3);
+        }
+
+        .btn-outline-glow {
+            border: 2px solid transparent;
+            background:
+                linear-gradient(rgba(255,255,255,.06), rgba(255,255,255,.06)) padding-box,
+                var(--rainbow) border-box;
+            color: #fff;
+        }
+
+        .btn-outline-glow:hover {
+            transform: translateY(-4px);
+            background: var(--rainbow);
+            color: #fff;
+        }
+
+        .btn-primary-glow::after,
+        .btn-outline-glow::after,
+        .btn-header::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background: linear-gradient(
+                105deg,
+                transparent 30%,
+                rgba(255,255,255,.5) 48%,
+                transparent 66%
+            );
+            transform: translateX(-130%);
+            transition: transform .7s var(--ease);
+        }
+
+        .btn-primary-glow:hover::after,
+        .btn-outline-glow:hover::after,
+        .btn-header:hover::after {
+            transform: translateX(130%);
+        }
+
+        @keyframes buttonGradient {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        /* =========================================================
+           HERO
+        ========================================================= */
         .hero {
             position: relative;
-            padding: 180px 6% 120px;
-            background: linear-gradient(135deg, var(--navy-deep) 0%, #082032 50%, var(--primary) 100%);
-            color: #ffffff;
+            min-height: 690px;
+            padding: 165px 5.5% 125px;
+            display: flex;
+            align-items: center;
             overflow: hidden;
+            color: #fff;
+            background:
+                radial-gradient(circle at 82% 18%, rgba(0, 217, 255, .30), transparent 25%),
+                radial-gradient(circle at 18% 82%, rgba(255, 46, 166, .18), transparent 26%),
+                radial-gradient(circle at 70% 72%, rgba(124, 58, 237, .18), transparent 22%),
+                linear-gradient(135deg, #041323, #063a61 48%, #11104b 100%);
         }
 
         .hero::before {
-            content: '';
+            content: "";
             position: absolute;
-            top: -20%;
-            right: -10%;
+            inset: -45%;
+            pointer-events: none;
+            background: conic-gradient(
+                from 0deg,
+                transparent,
+                rgba(0, 217, 255, .10),
+                transparent 22%,
+                rgba(255, 46, 166, .08),
+                transparent 48%
+            );
+            animation: heroSpin 20s linear infinite;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
             width: 600px;
             height: 600px;
-            background: radial-gradient(circle, rgba(0, 210, 255, 0.15) 0%, rgba(0, 128, 128, 0) 70%);
+            right: -280px;
+            top: 100px;
             border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 217, 255, .12), transparent 68%);
             pointer-events: none;
         }
 
+        @keyframes heroSpin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
         .hero-grid {
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 3rem;
-            align-items: center;
-            max-width: 1280px;
+            position: relative;
+            z-index: 2;
+            width: min(1280px, 100%);
             margin: 0 auto;
+            display: grid;
+            grid-template-columns: minmax(0, 1.15fr) minmax(340px, .85fr);
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .hero-text-content {
+            min-width: 0;
         }
 
         .hero-badge {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            background: rgba(0, 210, 255, 0.1);
-            border: 1px solid rgba(0, 210, 255, 0.3);
-            padding: 6px 16px;
-            border-radius: 50px;
-            font-size: 0.82rem;
-            font-weight: 600;
-            color: var(--cyan-glow);
-            margin-bottom: 1.5rem;
+            gap: 9px;
+            margin-bottom: 1.4rem;
+            padding: 7px 15px;
+            border: 1px solid rgba(0, 217, 255, .4);
+            border-radius: 99px;
+            background: linear-gradient(
+                135deg,
+                rgba(0, 217, 255, .18),
+                rgba(255, 46, 166, .12)
+            );
+            color: var(--cyan);
+            font-size: .78rem;
+            font-weight: 800;
+            box-shadow: 0 0 35px rgba(0, 217, 255, .13);
+            animation: badgePulse 2.7s ease-in-out infinite;
+        }
+
+        @keyframes badgePulse {
+            50% {
+                transform: translateY(-3px);
+                box-shadow: 0 0 50px rgba(255, 46, 166, .16);
+            }
         }
 
         .hero h1 {
-            font-size: 3.2rem;
-            line-height: 1.15;
-            margin-bottom: 1.2rem;
-            letter-spacing: -0.5px;
+            max-width: 800px;
+            margin-bottom: 1.25rem;
+            font-size: clamp(2.5rem, 5vw, 4.25rem);
+            font-weight: 800;
+            letter-spacing: -1.5px;
         }
 
         .hero h1 span {
-            background: linear-gradient(90deg, #ffffff, var(--cyan-glow));
+            background: linear-gradient(90deg, #fff, var(--cyan), #fff);
+            background-size: 200% auto;
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
+            animation: heroTextFlow 5s linear infinite;
+        }
+
+        @keyframes heroTextFlow {
+            to {
+                background-position: 200% center;
+            }
         }
 
         .hero p {
-            font-size: 1.1rem;
-            color: #CBD5E1;
-            margin-bottom: 2.2rem;
-            max-width: 620px;
+            max-width: 700px;
+            margin-bottom: 2rem;
+            color: #cbd5e1;
+            font-size: 1.05rem;
+            line-height: 1.8;
         }
 
         .hero-actions {
             display: flex;
-            gap: 1.2rem;
-            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
 
-        .btn-primary-glow {
-            background: linear-gradient(135deg, var(--accent-orange) 0%, #D9531E 100%);
-            color: #ffffff;
-            padding: 0.9rem 2.2rem;
-            border-radius: var(--radius-sm);
-            font-weight: 700;
-            font-size: 1rem;
-            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.35);
-            transition: var(--transition);
-        }
-
-        .btn-primary-glow:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 30px rgba(255, 107, 53, 0.5);
-        }
-
-        .btn-outline-glow {
-            background: rgba(255,255,255,0.05);
-            color: #ffffff;
-            border: 1px solid rgba(255,255,255,0.25);
-            padding: 0.9rem 2rem;
-            border-radius: var(--radius-sm);
-            font-weight: 600;
-            font-size: 1rem;
-            backdrop-filter: blur(5px);
-            transition: var(--transition);
-        }
-
-        .btn-outline-glow:hover {
-            background: rgba(255,255,255,0.15);
-            border-color: #ffffff;
-        }
-
-        /* Hero Graphic Frame */
+        /* =========================================================
+           HERO VISUAL CARD
+        ========================================================= */
         .hero-card-visual {
             position: relative;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(16px);
-            border-radius: var(--radius-lg);
+            min-height: 410px;
             padding: 2.5rem;
-            box-shadow: var(--shadow-lg);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
+            border: 1px solid rgba(255, 255, 255, .18);
+            border-radius: var(--radius-lg);
+            background: linear-gradient(
+                145deg,
+                rgba(255,255,255,.16),
+                rgba(255,255,255,.035)
+            );
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            box-shadow:
+                0 25px 90px rgba(0,0,0,.32),
+                inset 0 1px rgba(255,255,255,.22);
+            animation: cardFloat 5s ease-in-out infinite;
+        }
+
+        @keyframes cardFloat {
+            50% {
+                transform: translateY(-10px);
+            }
         }
 
         .card-logo-container {
-            width: 130px;
-            height: 130px;
-            margin: 0 auto 1.5rem;
-            background: radial-gradient(circle, rgba(0,128,128,0.2) 0%, rgba(11,25,44,0.6) 100%);
+            width: 145px;
+            height: 145px;
+            margin-bottom: 1.5rem;
+            display: grid;
+            place-items: center;
+            border: 2px solid rgba(0, 217, 255, .4);
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px solid rgba(0, 210, 255, 0.4);
-            box-shadow: 0 0 30px rgba(0, 210, 255, 0.2);
+            background: radial-gradient(
+                circle,
+                rgba(0,128,128,.28),
+                rgba(11,25,44,.55)
+            );
+            box-shadow:
+                0 0 35px rgba(0,217,255,.2),
+                inset 0 0 30px rgba(0,217,255,.05);
+            animation: aura 3s ease-in-out infinite;
+        }
+
+        @keyframes aura {
+            50% {
+                box-shadow:
+                    0 0 50px rgba(0,217,255,.35),
+                    0 0 25px rgba(255,46,166,.15),
+                    inset 0 0 35px rgba(0,217,255,.08);
+            }
+        }
+
+        .hero-card-logo {
+            width: 92px;
+            height: 92px;
+        }
+
+        .hero-card-visual h2 {
+            margin-bottom: .45rem;
+            color: #fff;
+            font-size: 1.65rem;
+            font-weight: 800;
+        }
+
+        .hero-card-visual > p {
+            max-width: 310px;
+            margin-bottom: 1.2rem;
+            color: #cbd5e1;
+            font-size: .9rem;
         }
 
         .card-manager-tag {
-            background: rgba(0,128,128,0.25);
-            padding: 10px 20px;
-            border-radius: var(--radius-md);
-            border: 1px solid rgba(0,210,255,0.2);
-            margin-top: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 9px 17px;
+            border: 1px solid rgba(0, 217, 255, .2);
+            border-radius: 99px;
+            background: rgba(0, 128, 128, .2);
+            color: #fff;
+            font-size: .78rem;
+            font-weight: 700;
         }
 
-        /* --- STATS QUICK BAR --- */
+        /* =========================================================
+           STATS
+        ========================================================= */
         .stats-bar-wrapper {
-            max-width: 1200px;
-            margin: -50px auto 0;
-            padding: 0 20px;
             position: relative;
             z-index: 20;
+            width: min(1200px, calc(100% - 40px));
+            margin: -52px auto 0;
         }
 
         .stats-grid {
-            background: #ffffff;
-            border-radius: var(--radius-md);
-            box-shadow: var(--shadow-md);
+            position: relative;
+            overflow: hidden;
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            padding: 2rem;
-            gap: 1.5rem;
-            border: 1px solid var(--border-light);
+            gap: 0;
+            padding: 1.7rem;
+            border: 1px solid rgba(0, 217, 255, .15);
+            border-radius: var(--radius-md);
+            background: linear-gradient(
+                135deg,
+                rgba(255,255,255,.96),
+                rgba(237,249,255,.95)
+            );
+            box-shadow: var(--shadow-md);
+        }
+
+        .stats-grid::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(0,217,255,.10),
+                transparent
+            );
+            transform: translateX(-100%);
+            animation: shine 5s infinite;
+        }
+
+        @keyframes shine {
+            to {
+                transform: translateX(100%);
+            }
         }
 
         .stat-item {
+            position: relative;
+            min-width: 0;
             display: flex;
             align-items: center;
-            gap: 1.2rem;
-            border-right: 1px solid var(--border-light);
-            padding-right: 1rem;
+            gap: 1rem;
+            padding: .6rem 1.4rem;
+            border-right: 1px solid var(--border);
         }
 
         .stat-item:last-child {
-            border-right: none;
+            border-right: 0;
         }
 
         .stat-icon {
             width: 52px;
             height: 52px;
-            background: rgba(0, 128, 128, 0.08);
-            color: var(--teal-accent);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.4rem;
+            flex: 0 0 52px;
+            display: grid;
+            place-items: center;
+            border-radius: 14px;
+            background: var(--rainbow-2);
+            color: #fff;
+            font-size: 1.25rem;
+            box-shadow: 0 10px 25px rgba(0,102,255,.18);
+            transition: var(--transition);
+        }
+
+        .stat-item:hover .stat-icon {
+            transform: rotate(-7deg) scale(1.08);
         }
 
         .stat-num {
-            font-size: 1.5rem;
-            font-weight: 800;
+            margin-bottom: 3px;
             color: var(--primary);
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 800;
             line-height: 1.1;
+            overflow-wrap: anywhere;
         }
 
         .stat-label {
-            font-size: 0.82rem;
-            color: var(--text-muted);
-            font-weight: 600;
+            color: var(--muted);
+            font-size: .73rem;
+            font-weight: 700;
+            line-height: 1.35;
         }
 
-        /* --- SECTION BASE STYLES --- */
+        /* =========================================================
+           SECTION
+        ========================================================= */
         section {
-            padding: 100px 6%;
-            max-width: 1300px;
+            width: min(1300px, 100%);
             margin: 0 auto;
+            padding: 105px 5.5%;
         }
 
         .section-header {
+            max-width: 760px;
+            margin: 0 auto 3.5rem;
             text-align: center;
-            max-width: 700px;
-            margin: 0 auto 4rem;
         }
 
         .section-tag {
-            font-size: 0.85rem;
+            display: inline-block;
+            margin-bottom: .65rem;
+            color: var(--purple);
+            font-size: .78rem;
             font-weight: 800;
-            color: var(--teal-accent);
             letter-spacing: 2px;
             text-transform: uppercase;
-            margin-bottom: 0.5rem;
-            display: block;
         }
 
         .section-title {
-            font-size: 2.4rem;
+            margin-bottom: .8rem;
             color: var(--primary);
-            margin-bottom: 0.8rem;
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 800;
+            letter-spacing: -.6px;
         }
 
         .section-desc {
-            color: var(--text-muted);
-            font-size: 1.05rem;
+            color: var(--muted);
+            font-size: 1rem;
+            line-height: 1.75;
         }
 
-        /* --- ABOUT SECTION --- */
+        /* =========================================================
+           ABOUT
+        ========================================================= */
         .about-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+            gap: 4.5rem;
             align-items: center;
         }
 
         .about-content h3 {
-            font-size: 1.8rem;
+            margin-bottom: 1.1rem;
             color: var(--primary);
-            margin-bottom: 1.2rem;
-            line-height: 1.3;
+            font-size: 1.8rem;
         }
 
-        .about-content p {
+        .about-content > p {
+            margin-bottom: 1rem;
             color: #475569;
-            margin-bottom: 1.2rem;
-            font-size: 1rem;
+            font-size: .95rem;
+            line-height: 1.8;
         }
 
         .values-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.2rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 1.8rem;
         }
 
         .value-box {
-            background: #ffffff;
-            padding: 1.2rem;
-            border-radius: var(--radius-sm);
-            border-left: 4px solid var(--teal-accent);
+            position: relative;
+            overflow: hidden;
+            padding: 1.15rem;
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--teal);
+            border-radius: 12px;
+            background: #fff;
             box-shadow: var(--shadow-sm);
-            border: 1px solid var(--border-light);
-            border-left-width: 4px;
+            transition: var(--transition);
+        }
+
+        .value-box:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+            border-left-color: var(--pink);
         }
 
         .value-box h4 {
+            margin-bottom: .25rem;
             color: var(--primary);
-            font-size: 1.05rem;
-            margin-bottom: 0.3rem;
+            font-size: 1rem;
         }
 
         .value-box p {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin: 0;
+            color: var(--muted);
+            font-size: .8rem;
         }
 
         .about-image-wrapper {
@@ -465,500 +844,930 @@
 
         .about-img {
             width: 100%;
+            height: 480px;
+            object-fit: cover;
             border-radius: var(--radius-md);
             box-shadow: var(--shadow-md);
-            object-fit: cover;
-            height: 480px;
+        }
+
+        .about-image-wrapper::after {
+            content: "";
+            position: absolute;
+            inset: 15px -15px -15px 15px;
+            z-index: -1;
+            border-radius: var(--radius-md);
+            background: var(--rainbow);
+            opacity: .25;
         }
 
         .about-floating-badge {
             position: absolute;
-            bottom: -20px;
             left: -20px;
-            background: var(--navy-deep);
-            color: #ffffff;
-            padding: 1.5rem;
-            border-radius: var(--radius-md);
-            box-shadow: var(--shadow-lg);
+            bottom: -20px;
             display: flex;
             align-items: center;
             gap: 1rem;
-            border: 1px solid rgba(255,255,255,0.1);
+            padding: 1.3rem 1.5rem;
+            border: 1px solid rgba(255,255,255,.12);
+            border-radius: var(--radius-md);
+            background: linear-gradient(135deg, #041323, #063a61);
+            color: #fff;
+            box-shadow: var(--shadow-lg);
         }
 
-        /* --- SERVICES SECTION --- */
+        /* =========================================================
+           SERVICES
+        ========================================================= */
         .services-bg-wrapper {
-            background: #F1F5F9;
-            padding: 100px 0;
-            width: 100vw;
-            position: relative;
-            left: 50%;
-            right: 50%;
-            margin-left: -50vw;
-            margin-right: -50vw;
+            width: 100%;
+            padding: 105px 0;
+            background:
+                radial-gradient(circle at 15% 20%, rgba(0,217,255,.08), transparent 25%),
+                radial-gradient(circle at 85% 80%, rgba(255,46,166,.07), transparent 25%),
+                #eef4fa;
         }
 
         .services-inner {
-            max-width: 1300px;
+            width: min(1300px, 100%);
             margin: 0 auto;
-            padding: 0 6%;
+            padding: 0 5.5%;
         }
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            gap: 1.3rem;
         }
 
         .service-card {
-            background: #ffffff;
-            border-radius: var(--radius-md);
-            padding: 2.2rem 1.8rem;
-            box-shadow: var(--shadow-sm);
-            border: 1px solid var(--border-light);
-            transition: var(--transition);
             position: relative;
+            overflow: hidden;
+            min-width: 0;
+            padding: 1.65rem 1.4rem;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            background: #fff;
+            box-shadow: var(--shadow-sm);
+            transition: transform .4s var(--ease), box-shadow .4s var(--ease), border-color .4s var(--ease);
+        }
+
+        .service-card::before {
+            content: "";
+            position: absolute;
             top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--rainbow);
         }
 
         .service-card:hover {
-            top: -8px;
-            box-shadow: var(--shadow-md);
-            border-color: rgba(0,128,128,0.3);
+            transform: translateY(-9px);
+            border-color: rgba(124,58,237,.22);
+            box-shadow: 0 25px 55px rgba(0,51,102,.13);
         }
 
         .service-card-icon {
-            width: 65px;
-            height: 65px;
-            background: linear-gradient(135deg, rgba(0,51,102,0.05) 0%, rgba(0,128,128,0.1) 100%);
-            color: var(--teal-accent);
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.6rem;
-            margin-bottom: 1.4rem;
+            width: 58px;
+            height: 58px;
+            margin-bottom: 1.15rem;
+            display: grid;
+            place-items: center;
+            border-radius: 15px;
+            background: var(--rainbow-2);
+            color: #fff;
+            font-size: 1.35rem;
+            box-shadow: 0 10px 25px rgba(0,102,255,.16);
             transition: var(--transition);
         }
 
         .service-card:hover .service-card-icon {
-            background: var(--teal-accent);
-            color: #ffffff;
+            transform: rotate(-7deg) scale(1.08);
         }
 
         .service-card h3 {
-            font-size: 1.25rem;
+            margin-bottom: .65rem;
             color: var(--primary);
-            margin-bottom: 0.8rem;
+            font-size: 1.08rem;
         }
 
         .service-card p {
-            color: var(--text-muted);
-            font-size: 0.92rem;
-            line-height: 1.5;
+            color: var(--muted);
+            font-size: .82rem;
+            line-height: 1.65;
         }
 
-        /* --- HSE & QUALITY SECTION --- */
+        /* =========================================================
+           HSE
+        ========================================================= */
+        #hse {
+            position: relative;
+            isolation: isolate;
+            overflow: hidden;
+            background:
+                linear-gradient(
+                    180deg,
+                    #f8fbff 0%,
+                    #eef7ff 52%,
+                    #fff7fc 100%
+                );
+        }
+
+        #hse::before,
+        #hse::after {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        #hse::before {
+            width: 360px;
+            height: 360px;
+            left: -160px;
+            top: 70px;
+            background: radial-gradient(circle, rgba(0,217,255,.18), transparent 68%);
+        }
+
+        #hse::after {
+            width: 420px;
+            height: 420px;
+            right: -190px;
+            bottom: -140px;
+            background: radial-gradient(circle, rgba(255,46,166,.14), transparent 68%);
+        }
+
         .hse-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2.5rem;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 2rem;
         }
 
         .hse-card {
-            background: #ffffff;
-            border-radius: var(--radius-md);
-            padding: 2.5rem;
-            border: 1px solid var(--border-light);
+            position: relative;
+            overflow: hidden;
+            min-width: 0;
+            padding: 2.2rem;
+            border: 1px solid rgba(0,119,255,.13);
+            border-radius: 24px;
+            background: rgba(255,255,255,.96);
             box-shadow: var(--shadow-sm);
+            transition: transform .4s var(--ease), box-shadow .4s var(--ease);
+        }
+
+        .hse-card:nth-child(2) {
+            border-color: rgba(255,46,166,.14);
+            background: rgba(255,255,255,.97);
+        }
+
+        .hse-card::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 6px;
+            background: linear-gradient(180deg, #00d9ff, #0077ff, #7c3aed);
+        }
+
+        .hse-card:nth-child(2)::before {
+            background: linear-gradient(180deg, #ffd166, #ff7a00, #ff2ea6);
+        }
+
+        .hse-card::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            height: 5px;
+            background: var(--rainbow);
+        }
+
+        .hse-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 28px 60px rgba(0,65,130,.14);
         }
 
         .hse-card-header {
+            position: relative;
             display: flex;
             align-items: center;
             gap: 1rem;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1rem;
-            border-bottom: 2px solid var(--bg-light);
+            margin-bottom: 1.4rem;
+            padding-bottom: 1.2rem;
+            border-bottom: 1px solid rgba(0,119,255,.12);
         }
 
         .hse-card-header i {
-            font-size: 1.8rem;
-            color: var(--teal-accent);
+            width: 56px;
+            height: 56px;
+            flex: 0 0 56px;
+            display: grid;
+            place-items: center;
+            border-radius: 16px;
+            background: linear-gradient(135deg, #00d9ff, #0077ff, #7c3aed);
+            color: #fff;
+            font-size: 1.35rem;
+            box-shadow: 0 12px 28px rgba(0,119,255,.2);
+        }
+
+        .hse-card:nth-child(2) .hse-card-header i {
+            background: linear-gradient(135deg, #ffd166, #ff7a00, #ff2ea6);
         }
 
         .hse-card-header h3 {
-            font-size: 1.4rem;
-            color: var(--primary);
+            color: #083b70;
+            font-size: 1.35rem;
+        }
+
+        .hse-card:nth-child(2) .hse-card-header h3 {
+            color: #8b2c50;
         }
 
         .hse-list {
+            display: grid;
+            gap: .75rem;
             list-style: none;
         }
 
         .hse-list li {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            margin-bottom: 1rem;
-            color: #475569;
-            font-size: 0.98rem;
+            display: grid;
+            grid-template-columns: 23px 1fr;
+            gap: .65rem;
+            padding: .7rem;
+            border-radius: 12px;
+            color: #43546a;
+            font-size: .9rem;
+            background: rgba(248,250,252,.7);
         }
 
         .hse-list li i {
-            color: var(--teal-accent);
-            margin-top: 4px;
+            margin-top: .25rem;
+            color: #0077ff;
         }
 
-        /* --- CONTACT & FOOTER --- */
+        .hse-card:nth-child(2) .hse-list li i {
+            color: #ff2ea6;
+        }
+
+        /* =========================================================
+           CONTACT
+        ========================================================= */
         .contact-grid {
             display: grid;
-            grid-template-columns: 0.9fr 1.1fr;
-            gap: 3rem;
-            align-items: start;
+            grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+            gap: 2rem;
+            align-items: stretch;
         }
 
         .contact-info-panel {
-            background: linear-gradient(135deg, var(--navy-deep) 0%, var(--primary) 100%);
-            color: #ffffff;
-            border-radius: var(--radius-md);
+            position: relative;
+            overflow: hidden;
             padding: 3rem 2.5rem;
+            border-radius: var(--radius-md);
+            color: #fff;
+            background:
+                radial-gradient(circle at 85% 15%, rgba(0,217,255,.28), transparent 28%),
+                radial-gradient(circle at 10% 90%, rgba(255,46,166,.20), transparent 26%),
+                linear-gradient(135deg, #041323, #063a61 52%, #30105e);
             box-shadow: var(--shadow-md);
         }
 
-        .contact-info-panel h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
+        .contact-info-panel::before {
+            content: "";
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            right: -100px;
+            bottom: -120px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0,217,255,.14), transparent 68%);
         }
 
-        .contact-info-panel p {
-            color: #94A3B8;
-            margin-bottom: 2.5rem;
+        .contact-info-panel h3 {
+            position: relative;
+            margin-bottom: .8rem;
+            font-size: 1.8rem;
+        }
+
+        .contact-info-panel > p {
+            position: relative;
+            margin-bottom: 2.2rem;
+            color: #a8bbce;
+            font-size: .9rem;
         }
 
         .info-row {
+            position: relative;
             display: flex;
             align-items: flex-start;
-            gap: 1.2rem;
-            margin-bottom: 1.8rem;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
         }
 
         .info-row-icon {
             width: 46px;
             height: 46px;
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--cyan-glow);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            flex-shrink: 0;
+            flex: 0 0 46px;
+            display: grid;
+            place-items: center;
+            border-radius: 12px;
+            background: var(--rainbow-2);
+            color: #fff;
+            box-shadow: 0 10px 25px rgba(0,102,255,.18);
         }
 
         .info-row label {
             display: block;
-            font-size: 0.8rem;
-            color: #94A3B8;
-            text-transform: uppercase;
+            margin-bottom: 2px;
+            color: #8fa8bf;
+            font-size: .68rem;
+            font-weight: 800;
             letter-spacing: 1px;
-            font-weight: 700;
+            text-transform: uppercase;
         }
 
         .info-row span {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #ffffff;
+            color: #fff;
+            font-size: .95rem;
+            font-weight: 700;
+            overflow-wrap: anywhere;
         }
 
         .contact-form-panel {
-            background: #ffffff;
+            padding: 2.5rem;
+            border: 1px solid var(--border);
             border-radius: var(--radius-md);
-            padding: 3rem 2.5rem;
+            background: #fff;
             box-shadow: var(--shadow-sm);
-            border: 1px solid var(--border-light);
         }
 
         .form-group {
-            margin-bottom: 1.4rem;
+            margin-bottom: 1.15rem;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            font-size: 0.9rem;
-            color: var(--text-main);
+            margin-bottom: .45rem;
+            color: var(--text);
+            font-size: .82rem;
+            font-weight: 800;
         }
 
         .form-control {
             width: 100%;
-            padding: 0.85rem 1rem;
-            border: 1px solid var(--border-light);
-            border-radius: var(--radius-sm);
-            font-size: 0.95rem;
-            transition: var(--transition);
+            min-height: 48px;
+            padding: .8rem .95rem;
             outline: none;
-            background: #FAFAFA;
+            border: 1px solid transparent;
+            border-radius: 10px;
+            color: var(--text);
+            background:
+                linear-gradient(#fff,#fff) padding-box,
+                linear-gradient(120deg,#00d9ff,#7c3aed,#ff2ea6) border-box;
+            transition: var(--transition);
+        }
+
+        textarea.form-control {
+            min-height: 115px;
+            resize: vertical;
+        }
+
+        .form-control::placeholder {
+            color: #94a3b8;
         }
 
         .form-control:focus {
-            border-color: var(--teal-accent);
-            background: #ffffff;
-            box-shadow: 0 0 0 4px rgba(0, 128, 128, 0.1);
+            transform: translateY(-2px);
+            box-shadow:
+                0 0 0 4px rgba(0,217,255,.10),
+                0 8px 25px rgba(124,58,237,.08);
         }
 
+        /* =========================================================
+           FOOTER
+        ========================================================= */
         footer {
-            background: var(--navy-deep);
-            color: #94A3B8;
+            position: relative;
+            overflow: hidden;
+            padding: 2.5rem 5.5%;
+            color: #c9e1f1;
             text-align: center;
-            padding: 2.5rem 6%;
-            border-top: 1px solid rgba(255,255,255,0.08);
-            font-size: 0.9rem;
+            background: linear-gradient(120deg, #041323, #11104b, #063a61);
+            font-size: .82rem;
         }
 
-        /* --- FLOATING WHATSAPP BUTTON --- */
+        footer::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--rainbow);
+        }
+
+        /* =========================================================
+           WHATSAPP
+        ========================================================= */
         .whatsapp-float {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
+            right: 28px;
+            bottom: 28px;
+            z-index: 998;
             width: 60px;
             height: 60px;
-            background: #25D366;
-            color: #ffffff;
+            display: grid;
+            place-items: center;
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
-            z-index: 999;
+            background: linear-gradient(135deg, #00e676, #25d366, #00b8d4);
+            color: #fff;
+            font-size: 1.9rem;
+            box-shadow: 0 12px 32px rgba(0,230,118,.35);
+            animation: waGlow 2.4s infinite;
             transition: var(--transition);
         }
 
         .whatsapp-float:hover {
             transform: scale(1.1);
-            box-shadow: 0 15px 30px rgba(37, 211, 102, 0.6);
         }
 
-        /* --- RESPONSIVE MEDIA QUERIES --- */
-        @media (max-width: 1024px) {
-            .hero-grid, .about-grid, .contact-grid, .hse-grid {
-                grid-template-columns: 1fr;
+        @keyframes waGlow {
+            50% {
+                box-shadow:
+                    0 15px 38px rgba(0,230,118,.42),
+                    0 0 0 12px rgba(0,230,118,.06);
+            }
+        }
+
+        /* =========================================================
+           BACK TO TOP
+        ========================================================= */
+        .back-top {
+            position: fixed;
+            right: 31px;
+            bottom: 102px;
+            z-index: 997;
+            width: 45px;
+            height: 45px;
+            display: grid;
+            place-items: center;
+            border: 0;
+            border-radius: 50%;
+            background: var(--rainbow);
+            color: #fff;
+            box-shadow: 0 12px 30px rgba(0,102,255,.25);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(15px);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .back-top.show {
+            opacity: 1;
+            visibility: visible;
+            transform: none;
+        }
+
+        .back-top:hover {
+            transform: translateY(-5px);
+        }
+
+        /* =========================================================
+           TOAST
+        ========================================================= */
+        .toast {
+            position: fixed;
+            left: 50%;
+            bottom: 28px;
+            z-index: 9998;
+            max-width: calc(100vw - 30px);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 18px;
+            border: 1px solid rgba(0,217,255,.28);
+            border-radius: 14px;
+            color: #fff;
+            background: linear-gradient(135deg,#071a2f,#30105e);
+            box-shadow: 0 20px 60px rgba(0,0,0,.25);
+            transform: translate(-50%, 25px) scale(.96);
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .toast.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translate(-50%, 0) scale(1);
+        }
+
+        .toast i {
+            color: #00e676;
+        }
+
+        /* =========================================================
+           REVEAL
+        ========================================================= */
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition:
+                opacity .75s var(--ease),
+                transform .75s var(--ease);
+        }
+
+        .reveal.show {
+            opacity: 1;
+            transform: none;
+        }
+
+        /* =========================================================
+           TABLET
+        ========================================================= */
+        @media (max-width: 1150px) {
+            .hero-grid {
+                grid-template-columns: minmax(0, 1fr) minmax(300px, .75fr);
+                gap: 3rem;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
             }
 
             .stats-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
 
-            .stat-item {
-                border-right: none;
-                border-bottom: 1px solid var(--border-light);
-                padding-bottom: 1rem;
+            .stat-item:nth-child(2) {
+                border-right: 0;
+            }
+
+            .stat-item:nth-child(-n + 2) {
+                border-bottom: 1px solid var(--border);
+                padding-bottom: 1.1rem;
+            }
+
+            .stat-item:nth-child(n + 3) {
+                padding-top: 1.1rem;
             }
         }
 
-        @media (max-width: 768px) {
-            .nav-menu {
-                position: fixed;
-                top: 85px;
-                left: -100%;
-                width: 100%;
-                height: calc(100vh - 85px);
-                background: #ffffff;
-                flex-direction: column;
-                justify-content: flex-start;
-                padding: 3rem 2rem;
-                transition: var(--transition);
-                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        /* =========================================================
+           MOBILE
+        ========================================================= */
+        @media (max-width: 900px) {
+            .navbar {
+                height: 76px;
+                padding: 0 5%;
             }
 
-            .nav-menu.active {
-                left: 0;
+            .navbar.scrolled {
+                height: 70px;
             }
 
             .mobile-toggle {
+                display: flex;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 76px;
+                left: 0;
+                right: 0;
+                width: 100%;
+                height: calc(100vh - 76px);
+                padding: 2.5rem 1.5rem;
+                flex-direction: column;
+                align-items: stretch;
+                justify-content: flex-start;
+                gap: .35rem;
+                background: linear-gradient(180deg,#fff,#f2fbff);
+                box-shadow: 0 20px 40px rgba(0,0,0,.12);
+                transform: translateX(100%);
+                visibility: hidden;
+                transition: transform .4s var(--ease), visibility .4s;
+            }
+
+            .nav-menu.active {
+                transform: translateX(0);
+                visibility: visible;
+            }
+
+            .nav-link {
                 display: block;
+                padding: 1rem;
+                border-radius: 10px;
+                text-align: center;
+            }
+
+            .nav-link::after {
+                bottom: 5px;
+            }
+
+            .btn-header {
+                margin-top: .5rem;
+                width: 100%;
+            }
+
+            .hero {
+                min-height: auto;
+                padding-top: 125px;
+                padding-bottom: 105px;
+            }
+
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .hero-text-content {
+                text-align: center;
+            }
+
+            .hero-badge {
+                justify-content: center;
+            }
+
+            .hero p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-actions {
+                justify-content: center;
+            }
+
+            .hero-card-visual {
+                width: min(100%, 480px);
+                margin: 0 auto;
+            }
+
+            .about-grid,
+            .contact-grid,
+            .hse-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-grid {
+                gap: 3.5rem;
+            }
+
+            .about-image-wrapper {
+                max-width: 650px;
+                margin: 0 auto;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            section {
+                padding-top: 85px;
+                padding-bottom: 85px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .brand-title {
+                font-size: 1.05rem;
+            }
+
+            .brand-subtitle {
+                font-size: .58rem;
+                letter-spacing: 1.6px;
+            }
+
+            .logo-svg {
+                width: 42px;
+                height: 42px;
             }
 
             .hero h1 {
-                font-size: 2.2rem;
+                font-size: 2.35rem;
+                letter-spacing: -.8px;
             }
 
-            .stats-grid {
-                grid-template-columns: 1fr;
+            .hero p {
+                font-size: .92rem;
             }
 
             .hero-actions {
                 flex-direction: column;
                 align-items: stretch;
             }
+
+            .btn-primary-glow,
+            .btn-outline-glow {
+                width: 100%;
+            }
+
+            .hero-card-visual {
+                min-height: 350px;
+                padding: 2rem 1.3rem;
+            }
+
+            .card-logo-container {
+                width: 120px;
+                height: 120px;
+            }
+
+            .stats-bar-wrapper {
+                width: calc(100% - 24px);
+                margin-top: -35px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+                padding: .8rem;
+            }
+
+            .stat-item {
+                border-right: 0 !important;
+                border-bottom: 1px solid var(--border);
+                padding: 1rem .6rem !important;
+            }
+
+            .stat-item:last-child {
+                border-bottom: 0;
+            }
+
+            .stat-num {
+                font-size: 1.1rem;
+            }
+
+            .section-header {
+                margin-bottom: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-img {
+                height: 350px;
+            }
+
+            .about-floating-badge {
+                left: 10px;
+                right: 10px;
+                bottom: -20px;
+                padding: 1rem;
+            }
+
+            .services-bg-wrapper {
+                padding: 80px 0;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hse-card {
+                padding: 1.4rem;
+            }
+
+            .hse-card-header {
+                align-items: flex-start;
+            }
+
+            .hse-card-header i {
+                width: 50px;
+                height: 50px;
+                flex-basis: 50px;
+                font-size: 1.15rem;
+            }
+
+            .hse-card-header h3 {
+                font-size: 1.15rem;
+            }
+
+            .contact-info-panel,
+            .contact-form-panel {
+                padding: 1.7rem;
+            }
+
+            .whatsapp-float {
+                right: 18px;
+                bottom: 20px;
+            }
+
+            .back-top {
+                right: 21px;
+                bottom: 91px;
+            }
         }
-    
-/* =========================================================
-   VIHAANAA TECH HUBS — BRIGHT EXCEPTIONAL UI/UX SYSTEM
-   ========================================================= */
-:root{
-  --c1:#00d9ff; --c2:#0066ff; --c3:#7c3aed; --c4:#ff2ea6;
-  --c5:#ff7a18; --c6:#ffd166; --c7:#00e676; --c8:#00b8d4;
-  --ink:#071a2f; --white:#fff;
-  --rainbow:linear-gradient(110deg,#00d9ff 0%,#0066ff 22%,#7c3aed 46%,#ff2ea6 68%,#ff7a18 84%,#ffd166 100%);
-  --rainbow2:linear-gradient(135deg,#00e676,#00d9ff,#7c3aed,#ff2ea6);
-  --ease:cubic-bezier(.16,1,.3,1);
-}
-html{scroll-behavior:smooth;scroll-padding-top:96px}
-body{background:
- radial-gradient(circle at 8% 8%,rgba(0,217,255,.13),transparent 25%),
- radial-gradient(circle at 92% 18%,rgba(255,46,166,.11),transparent 24%),
- radial-gradient(circle at 50% 88%,rgba(124,58,237,.09),transparent 28%),var(--bg-light);}
-body::before{content:"";position:fixed;inset:-30%;z-index:-3;pointer-events:none;background:
- radial-gradient(circle,rgba(0,217,255,.12) 0 1.5px,transparent 2.5px) 0 0/72px 72px,
- radial-gradient(circle,rgba(255,46,166,.09) 0 1.5px,transparent 2.5px) 36px 36px/92px 92px;animation:starsMove 26s linear infinite}
-@keyframes starsMove{to{transform:translate(72px,72px)}}
-.navbar{transition:.45s var(--ease);background:rgba(255,255,255,.88);backdrop-filter:blur(18px);border-bottom:1px solid rgba(0,102,255,.08)}
-.navbar.scrolled{box-shadow:0 15px 45px rgba(0,51,102,.14);background:rgba(255,255,255,.94)}
-.brand-title{background:var(--rainbow);background-size:220% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:rainbowFlow 5s linear infinite}
-@keyframes rainbowFlow{to{background-position:220% center}}
-.nav-link{position:relative;transition:.3s var(--ease)}
-.nav-link::after{content:"";position:absolute;left:50%;bottom:-7px;width:0;height:3px;border-radius:99px;background:var(--rainbow);transform:translateX(-50%);transition:.3s var(--ease)}
-.nav-link:hover,.nav-link.active{color:var(--c3)}
-.nav-link:hover::after,.nav-link.active::after{width:70%}
-.btn-primary-glow,.btn-outline-glow,.btn-header{position:relative;overflow:hidden;isolation:isolate;transition:.35s var(--ease)}
-.btn-primary-glow{background:var(--rainbow)!important;background-size:220% 220%!important;animation:buttonGradient 6s ease infinite;color:#fff!important;box-shadow:0 12px 30px rgba(0,102,255,.24),0 0 0 1px rgba(255,255,255,.18) inset}
-.btn-primary-glow:hover{transform:translateY(-4px) scale(1.02);box-shadow:0 18px 40px rgba(124,58,237,.3)}
-.btn-outline-glow{border:2px solid transparent!important;background:linear-gradient(#fff,#fff) padding-box,var(--rainbow) border-box!important;color:#07517a!important}
-.btn-outline-glow:hover{transform:translateY(-4px);background:var(--rainbow)!important;color:#fff!important}
-.btn-primary-glow::after,.btn-outline-glow::after,.btn-header::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,.55) 48%,transparent 66%);transform:translateX(-130%);transition:transform .7s var(--ease);pointer-events:none}
-.btn-primary-glow:hover::after,.btn-outline-glow:hover::after,.btn-header:hover::after{transform:translateX(130%)}
-@keyframes buttonGradient{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
-.hero{background:
- radial-gradient(circle at 82% 18%,rgba(0,217,255,.30),transparent 25%),
- radial-gradient(circle at 18% 82%,rgba(255,46,166,.18),transparent 26%),
- radial-gradient(circle at 70% 72%,rgba(124,58,237,.17),transparent 22%),
- linear-gradient(135deg,#041323,#063a61 48%,#11104b 100%);position:relative;overflow:hidden}
-.hero::before{content:"";position:absolute;inset:-40%;background:conic-gradient(from 0deg,transparent,rgba(0,217,255,.12),transparent 22%,rgba(255,46,166,.10),transparent 48%);animation:heroSpin 18s linear infinite}
-@keyframes heroSpin{to{transform:rotate(360deg)}}
-.hero-badge{background:linear-gradient(135deg,rgba(0,217,255,.22),rgba(255,46,166,.16))!important;border-color:rgba(0,217,255,.45)!important;box-shadow:0 0 35px rgba(0,217,255,.16);animation:badgePulse 2.7s ease-in-out infinite}
-@keyframes badgePulse{50%{transform:translateY(-4px);box-shadow:0 0 55px rgba(255,46,166,.2)}}
-.hero-card-visual{background:linear-gradient(145deg,rgba(255,255,255,.18),rgba(255,255,255,.035));border:1px solid rgba(255,255,255,.18);box-shadow:0 25px 90px rgba(0,0,0,.34),inset 0 1px rgba(255,255,255,.25);animation:cardFloat 5s ease-in-out infinite;transform-style:preserve-3d}
-@keyframes cardFloat{50%{transform:translateY(-12px) rotateY(-2deg)}}
-.card-logo-container{animation:aura 3s ease-in-out infinite}
-@keyframes aura{50%{filter:drop-shadow(0 0 28px rgba(0,217,255,.42)) drop-shadow(0 0 18px rgba(255,46,166,.18))}}
-.stats-bar-wrapper{position:relative;z-index:10}
-.stats-grid{background:linear-gradient(135deg,rgba(255,255,255,.92),rgba(236,249,255,.9));border:1px solid rgba(0,217,255,.18);box-shadow:0 18px 50px rgba(0,51,102,.12);overflow:hidden}
-.stats-grid::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(0,217,255,.10),transparent);transform:translateX(-100%);animation:shine 5s infinite}
-@keyframes shine{to{transform:translateX(100%)}}
-.stat-icon{background:var(--rainbow2)!important;color:#fff!important;box-shadow:0 10px 25px rgba(0,102,255,.2);transition:.35s var(--ease)}
-.stat-item:hover .stat-icon{transform:rotate(-8deg) scale(1.1)}
-.stat-num{background:var(--rainbow);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:rainbowFlow 5s linear infinite}
-.section-tag{color:var(--c3)!important}
-.section-tag::before{background:var(--rainbow)!important}
-.section-title span{background:var(--rainbow);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.service-card,.hse-card,.value-box,.contact-form-panel{position:relative;overflow:hidden;transition:.45s var(--ease)}
-.service-card::before,.hse-card::before,.value-box::before,.contact-form-panel::before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 20%,rgba(0,217,255,.08),rgba(255,46,166,.08),transparent 80%);transform:translateX(-120%);transition:transform .8s var(--ease);pointer-events:none}
-.service-card:hover,.hse-card:hover,.value-box:hover,.contact-form-panel:hover{transform:translateY(-9px);box-shadow:0 25px 55px rgba(0,51,102,.13);border-color:rgba(124,58,237,.25)}
-.service-card:hover::before,.hse-card:hover::before,.value-box:hover::before,.contact-form-panel:hover::before{transform:translateX(120%)}
-.service-card-icon,.info-row-icon{background:var(--rainbow2)!important;color:#fff!important;box-shadow:0 12px 28px rgba(0,102,255,.18);transition:.35s var(--ease)}
-.service-card:hover .service-card-icon,.info-row:hover .info-row-icon{transform:scale(1.1) rotate(-7deg)}
-.hse-card::after{content:"";position:absolute;left:0;right:0;top:0;height:5px;background:var(--rainbow);background-size:200% 100%;animation:rainbowFlow 5s linear infinite}
-.form-control{background:linear-gradient(#fff,#fff) padding-box,linear-gradient(120deg,#00d9ff,#7c3aed,#ff2ea6) border-box!important;border:1px solid transparent!important;transition:.3s var(--ease)!important}
-.form-control:focus{box-shadow:0 0 0 4px rgba(0,217,255,.12),0 8px 25px rgba(124,58,237,.08)!important;transform:translateY(-2px)}
-.contact-info-panel{background:radial-gradient(circle at 85% 15%,rgba(0,217,255,.30),transparent 28%),radial-gradient(circle at 10% 90%,rgba(255,46,166,.22),transparent 26%),linear-gradient(135deg,#041323,#063a61 52%,#30105e)!important}
-footer{background:linear-gradient(120deg,#041323,#11104b,#063a61)!important;color:#d7efff!important;position:relative;overflow:hidden}
-footer::before{content:"";position:absolute;left:0;right:0;top:0;height:4px;background:var(--rainbow);background-size:200% 100%;animation:rainbowFlow 5s linear infinite}
-.whatsapp-float{background:linear-gradient(135deg,#00e676,#25d366,#00b8d4)!important;box-shadow:0 12px 32px rgba(0,230,118,.35),0 0 0 0 rgba(0,230,118,.28);animation:waGlow 2.4s infinite}
-@keyframes waGlow{50%{box-shadow:0 15px 38px rgba(0,230,118,.42),0 0 0 12px rgba(0,230,118,.07)}}
-.reveal{opacity:0;transform:translateY(32px);transition:opacity .75s var(--ease),transform .75s var(--ease)}
-.reveal.show{opacity:1;transform:none}
-.preloader{position:fixed;inset:0;background:linear-gradient(135deg,#03101f,#062f51,#30105e);z-index:9999;display:grid;place-items:center;transition:.7s ease}
-.preloader.hide{opacity:0;visibility:hidden;pointer-events:none}
-.loader{width:90px;height:90px;border-radius:50%;border:3px solid rgba(255,255,255,.14);border-top-color:#00d9ff;border-right-color:#ff2ea6;animation:spin 1s linear infinite;box-shadow:0 0 45px rgba(0,217,255,.25)}
-@keyframes spin{to{transform:rotate(360deg)}}
-.toast{position:fixed;left:50%;bottom:28px;z-index:9998;transform:translate(-50%,25px) scale(.96);opacity:0;visibility:hidden;background:linear-gradient(135deg,#071a2f,#30105e);color:#fff;padding:15px 20px;border-radius:16px;border:1px solid rgba(0,217,255,.28);box-shadow:0 20px 60px rgba(0,0,0,.25);transition:.4s var(--ease);display:flex;gap:10px;align-items:center;max-width:92vw}
-.toast.show{opacity:1;visibility:visible;transform:translate(-50%,0) scale(1)}
-.toast i{color:#00e676}
-.back-top{position:fixed;right:30px;bottom:105px;width:46px;height:46px;border:0;border-radius:50%;background:var(--rainbow);color:#fff;z-index:997;box-shadow:0 12px 30px rgba(0,102,255,.25);opacity:0;visibility:hidden;transform:translateY(15px);transition:.35s var(--ease);cursor:pointer}
-.back-top.show{opacity:1;visibility:visible;transform:none}
-.back-top:hover{transform:translateY(-5px) rotate(8deg)}
-@media(max-width:768px){.hero{padding-top:130px}.nav-menu{background:linear-gradient(180deg,#fff,#f2fbff)!important}.back-top{right:20px;bottom:100px}.whatsapp-float{right:20px;bottom:25px}}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 
+        /* =========================================================
+           ACCESSIBILITY / REDUCED MOTION
+        ========================================================= */
+        :focus-visible {
+            outline: 3px solid rgba(0, 217, 255, .5);
+            outline-offset: 3px;
+        }
 
-/* ===== HSE & QUALITY — VISUAL STABILITY + BRIGHT COLOUR FIX ===== */
-#hse{position:relative;isolation:isolate;overflow:hidden;background:linear-gradient(180deg,#f8fbff 0%,#eef7ff 52%,#fff7fc 100%)}
-#hse::before,#hse::after{content:"";position:absolute;z-index:-1;border-radius:50%;pointer-events:none;filter:blur(4px)}
-#hse::before{width:360px;height:360px;left:-150px;top:80px;background:radial-gradient(circle,rgba(0,217,255,.20),transparent 68%)}
-#hse::after{width:420px;height:420px;right:-180px;bottom:-120px;background:radial-gradient(circle,rgba(255,46,166,.16),transparent 68%)}
-#hse .section-header{position:relative;z-index:2;margin-bottom:2.6rem}
-#hse .section-tag{background:linear-gradient(90deg,#00bfff,#7c3aed,#ff2ea6);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:hseGradient 5s linear infinite;font-weight:800}
-#hse .section-tag::before{background:linear-gradient(90deg,#00d9ff,#7c3aed,#ff2ea6)!important}
-#hse .section-title{background:linear-gradient(90deg,#003b7a,#0077ff,#7c3aed,#ff2ea6,#ff7a00);background-size:300% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:hseGradient 7s linear infinite}
-#hse .section-desc{max-width:720px}
-#hse .hse-grid{position:relative;z-index:2;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2rem;align-items:stretch}
-#hse .hse-card{min-width:0;min-height:100%;padding:2.25rem;border:1px solid rgba(0,119,255,.13)!important;border-radius:24px!important;background:linear-gradient(145deg,rgba(255,255,255,.98),rgba(244,250,255,.95))!important;box-shadow:0 18px 45px rgba(0,55,110,.09)!important;overflow:hidden!important;transform:none!important;transition:transform .4s cubic-bezier(.16,1,.3,1),box-shadow .4s,border-color .4s!important}
-#hse .hse-card:nth-child(2){background:linear-gradient(145deg,rgba(255,255,255,.98),rgba(255,246,252,.96))!important;border-color:rgba(255,46,166,.14)!important}
-#hse .hse-card::before{content:"";position:absolute;inset:0 auto 0 0;width:6px;height:100%;background:linear-gradient(180deg,#00d9ff,#0077ff,#7c3aed)!important;transform:none!important;pointer-events:none}
-#hse .hse-card:nth-child(2)::before{background:linear-gradient(180deg,#ffcf33,#ff7a00,#ff2ea6)!important}
-#hse .hse-card::after{content:"";position:absolute;left:0;right:0;top:0;height:5px;background:linear-gradient(90deg,#00d9ff,#0077ff,#7c3aed,#ff2ea6,#ff7a00,#ffd166)!important;background-size:300% 100%!important;animation:hseGradient 6s linear infinite;pointer-events:none}
-#hse .hse-card:hover{transform:translateY(-8px)!important;box-shadow:0 28px 60px rgba(0,65,130,.16)!important;border-color:rgba(0,119,255,.30)!important}
-#hse .hse-card:nth-child(2):hover{border-color:rgba(255,46,166,.28)!important}
-#hse .hse-card-header{display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;padding:0 0 1.2rem;border-bottom:1px solid rgba(0,119,255,.13);position:relative}
-#hse .hse-card-header::after{content:"";position:absolute;left:0;bottom:-1px;width:82px;height:3px;border-radius:99px;background:linear-gradient(90deg,#00d9ff,#7c3aed)}
-#hse .hse-card:nth-child(2) .hse-card-header::after{background:linear-gradient(90deg,#ffd166,#ff7a00,#ff2ea6)}
-#hse .hse-card-header i{width:58px;height:58px;flex:0 0 58px;display:grid;place-items:center;border-radius:17px;font-size:1.45rem!important;color:#fff!important;background:linear-gradient(135deg,#00d9ff,#0077ff,#7c3aed)!important;box-shadow:0 12px 28px rgba(0,119,255,.22);transition:transform .35s,box-shadow .35s}
-#hse .hse-card:nth-child(2) .hse-card-header i{background:linear-gradient(135deg,#ffd166,#ff7a00,#ff2ea6)!important;box-shadow:0 12px 28px rgba(255,92,0,.20)}
-#hse .hse-card:hover .hse-card-header i{transform:rotate(-6deg) scale(1.08);box-shadow:0 16px 34px rgba(0,119,255,.30)}
-#hse .hse-card:nth-child(2):hover .hse-card-header i{box-shadow:0 16px 34px rgba(255,46,166,.28)}
-#hse .hse-card-header h3{margin:0!important;color:#083b70!important;font-size:1.35rem!important;line-height:1.2}
-#hse .hse-card:nth-child(2) .hse-card-header h3{color:#8b2c50!important}
-#hse .hse-list{list-style:none;margin:0;padding:0;display:grid;gap:.85rem}
-#hse .hse-list li{display:grid;grid-template-columns:25px 1fr;align-items:start;gap:.65rem;padding:.65rem .7rem;border-radius:12px;color:#43546a;background:rgba(255,255,255,.62);transition:transform .3s,background .3s,box-shadow .3s}
-#hse .hse-list li:hover{transform:translateX(5px);background:#fff;box-shadow:0 8px 22px rgba(0,65,130,.07)}
-#hse .hse-list li i{font-size:1rem;color:#0077ff;margin-top:.25rem;transition:transform .3s,color .3s}
-#hse .hse-card:nth-child(2) .hse-list li i{color:#ff2ea6}
-#hse .hse-list li:hover i{transform:scale(1.18);color:#00a6ff}
-#hse .hse-card:nth-child(2) .hse-list li:hover i{color:#ff7a00}
-@keyframes hseGradient{to{background-position:300% center}}
-@media(max-width:900px){#hse .hse-grid{grid-template-columns:1fr;gap:1.35rem}#hse .hse-card{padding:1.65rem}}
-@media(max-width:520px){#hse .section-header{margin-bottom:1.8rem}#hse .hse-card{padding:1.35rem;border-radius:20px!important}#hse .hse-card-header{align-items:flex-start}#hse .hse-card-header i{width:50px;height:50px;flex-basis:50px;font-size:1.2rem!important}#hse .hse-card-header h3{font-size:1.15rem!important}#hse .hse-list li{grid-template-columns:21px 1fr;font-size:.9rem;padding:.55rem .45rem}}
-@media(prefers-reduced-motion:reduce){#hse .section-tag,#hse .section-title,#hse .hse-card::after{animation:none!important}}
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation: none !important;
+                transition: none !important;
+                scroll-behavior: auto !important;
+            }
 
-</style>
+            .reveal {
+                opacity: 1;
+                transform: none;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
-    <div class="preloader" id="preloader" aria-label="Loading website"><div class="loader"></div></div>
-    <button class="back-top" id="backTop" type="button" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
-    <div class="toast" id="toast" role="status" aria-live="polite"><i class="fa-solid fa-circle-check"></i><span id="toastText"></span></div>
+    <!-- PRELOADER -->
+    <div class="preloader" id="preloader" aria-label="Loading website">
+        <div class="loader"></div>
+    </div>
 
-    <!-- NAVBAR -->
+    <!-- TOAST -->
+    <div class="toast" id="toast" role="status" aria-live="polite">
+        <i class="fa-solid fa-circle-check"></i>
+        <span id="toastText"></span>
+    </div>
+
+    <!-- BACK TO TOP -->
+    <button class="back-top" id="backTop" type="button" aria-label="Back to top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <!-- =========================================================
+         NAVBAR
+    ========================================================== -->
     <nav class="navbar" id="navbar">
-        <a href="#home" class="brand-logo">
-            <!-- Inline SVG Compass Logo matching card visual identity -->
-            <svg class="logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="50" cy="50" r="42" stroke="url(#paint0_linear)" stroke-width="3"/>
-                <circle cx="50" cy="50" r="32" stroke="#008080" stroke-width="1.5" stroke-dasharray="4 2"/>
-                <!-- Geodesic Lines -->
-                <path d="M18 50 C 18 30, 82 30, 82 50 C 82 70, 18 70, 18 50 Z" stroke="#00D2FF" stroke-width="1.2" opacity="0.7"/>
-                <path d="M50 18 C 30 18, 30 82, 50 82 C 70 82, 70 18, 50 18 Z" stroke="#00D2FF" stroke-width="1.2" opacity="0.7"/>
-                <!-- Compass Points -->
+
+        <a href="#home" class="brand-logo" aria-label="VIHAANAA TECH HUBS home">
+
+            <svg class="logo-svg"
+                 viewBox="0 0 100 100"
+                 fill="none"
+                 xmlns="http://www.w3.org/2000/svg"
+                 aria-hidden="true">
+
+                <circle cx="50" cy="50" r="42"
+                        stroke="url(#logoGradient1)"
+                        stroke-width="3"/>
+
+                <circle cx="50" cy="50" r="32"
+                        stroke="#008080"
+                        stroke-width="1.5"
+                        stroke-dasharray="4 2"/>
+
+                <path d="M18 50 C18 30 82 30 82 50 C82 70 18 70 18 50Z"
+                      stroke="#00D2FF"
+                      stroke-width="1.2"
+                      opacity=".7"/>
+
+                <path d="M50 18 C30 18 30 82 50 82 C70 82 70 18 50 18Z"
+                      stroke="#00D2FF"
+                      stroke-width="1.2"
+                      opacity=".7"/>
+
                 <polygon points="50,6 55,22 50,18 45,22" fill="#003366"/>
                 <polygon points="50,94 55,78 50,82 45,78" fill="#003366"/>
                 <polygon points="6,50 22,45 18,50 22,55" fill="#003366"/>
                 <polygon points="94,50 78,45 82,50 78,55" fill="#003366"/>
-                <!-- Dial Star -->
-                <polygon points="50,22 56,44 78,50 56,56 50,78 44,56 22,50 44,44" fill="url(#paint1_linear)"/>
+
+                <polygon points="50,22 56,44 78,50 56,56 50,78 44,56 22,50 44,44"
+                         fill="url(#logoGradient2)"/>
+
                 <defs>
-                    <linearGradient id="paint0_linear" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
-                        <stop stop-color="#008080"/>
+                    <linearGradient id="logoGradient1"
+                                    x1="0" y1="0"
+                                    x2="100" y2="100"
+                                    gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#00D9FF"/>
                         <stop offset="1" stop-color="#003366"/>
                     </linearGradient>
-                    <linearGradient id="paint1_linear" x1="22" y1="22" x2="78" y2="78" gradientUnits="userSpaceOnUse">
+
+                    <linearGradient id="logoGradient2"
+                                    x1="22" y1="22"
+                                    x2="78" y2="78"
+                                    gradientUnits="userSpaceOnUse">
                         <stop stop-color="#00D2FF"/>
                         <stop offset="1" stop-color="#003366"/>
                     </linearGradient>
                 </defs>
             </svg>
+
             <div class="brand-text">
                 <span class="brand-title">VIHAANAA</span>
                 <span class="brand-subtitle">TECH HUBS</span>
@@ -966,463 +1775,1145 @@ footer::before{content:"";position:absolute;left:0;right:0;top:0;height:4px;back
         </a>
 
         <ul class="nav-menu" id="navMenu">
-            <li><a href="#home" class="nav-link active">Home</a></li>
-            <li><a href="#about" class="nav-link">About Us</a></li>
-            <li><a href="#services" class="nav-link">Services</a></li>
-            <li><a href="#hse" class="nav-link">HSE & Quality</a></li>
-            <li><a href="#contact" class="btn-header">Contact Us</a></li>
+            <li>
+                <a href="#home" class="nav-link active">Home</a>
+            </li>
+            <li>
+                <a href="#about" class="nav-link">About Us</a>
+            </li>
+            <li>
+                <a href="#services" class="nav-link">Services</a>
+            </li>
+            <li>
+                <a href="#hse" class="nav-link">HSE & Quality</a>
+            </li>
+            <li>
+                <a href="#contact" class="btn-header">Contact Us</a>
+            </li>
         </ul>
 
-        <div class="mobile-toggle" id="mobileToggle">
+        <button class="mobile-toggle"
+                id="mobileToggle"
+                type="button"
+                aria-label="Open navigation"
+                aria-expanded="false">
             <i class="fa-solid fa-bars-staggered"></i>
-        </div>
+        </button>
+
     </nav>
 
-    <!-- HERO SECTION -->
+    <!-- =========================================================
+         HERO
+    ========================================================== -->
     <section class="hero" id="home">
+
         <div class="hero-grid">
+
             <div class="hero-text-content">
+
                 <div class="hero-badge">
-                    <i class="fa-solid fa-shield-halved"></i> Registered Technical Partner Malaysia
+                    <i class="fa-solid fa-shield-halved"></i>
+                    Registered Technical Partner Malaysia
                 </div>
-                <h1>Integrated Engineering, Procurement & <span>Technical Solutions</span></h1>
-                <p>Delivering turnkey civil works, M&E engineering, precision instrumentation, import/export, and specialized industrial supplies nationwide.</p>
+
+                <h1>
+                    Integrated Engineering, Procurement &
+                    <span>Technical Solutions</span>
+                </h1>
+
+                <p>
+                    Delivering turnkey civil works, M&amp;E engineering,
+                    precision instrumentation, import/export, and specialized
+                    industrial supplies nationwide.
+                </p>
+
                 <div class="hero-actions">
-                    <a href="#services" class="btn-primary-glow"><i class="fa-solid fa-compass me-2"></i> Explore Services</a>
-                    <a href="#contact" class="btn-outline-glow"><i class="fa-solid fa-paper-plane me-2"></i> Get Quote</a>
+                    <a href="#services" class="btn-primary-glow">
+                        <i class="fa-solid fa-compass"></i>
+                        Explore Services
+                    </a>
+
+                    <a href="#contact" class="btn-outline-glow">
+                        <i class="fa-solid fa-paper-plane"></i>
+                        Get Quote
+                    </a>
                 </div>
+
             </div>
 
-            <!-- Visual Card mimicking the company business card -->
+            <!-- FIXED: complete hero visual container -->
             <div class="hero-card-visual">
+
                 <div class="card-logo-container">
-                    <svg class="logo-svg" style="width: 80px; height: 80px;" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="50" cy="50" r="42" stroke="url(#p1)" stroke-width="3"/>
-                        <circle cx="50" cy="50" r="32" stroke="#008080" stroke-width="1.5" stroke-dasharray="4 2"/>
-                        <path d="M18 50 C 18 30, 82 30, 82 50 C 82 70, 18 70, 18 50 Z" stroke="#00D2FF" stroke-width="1.2" opacity="0.8"/>
-                        <polygon points="50,6 55,22 50,18 45,22" fill="#00D2FF"/>
-                        <polygon points="50,94 55,78 50,82 45,78" fill="#00D2FF"/>
-                        <polygon points="50,22 56,44 78,50 56,56 50,78 44,56 22,50 44,44" fill="url(#p2)"/>
+
+                    <svg class="hero-card-logo"
+                         viewBox="0 0 100 100"
+                         fill="none"
+                         xmlns="http://www.w3.org/2000/svg"
+                         aria-hidden="true">
+
+                        <circle cx="50" cy="50" r="42"
+                                stroke="url(#heroGradient1)"
+                                stroke-width="3"/>
+
+                        <circle cx="50" cy="50" r="32"
+                                stroke="#008080"
+                                stroke-width="1.5"
+                                stroke-dasharray="4 2"/>
+
+                        <path d="M18 50 C18 30 82 30 82 50 C82 70 18 70 18 50Z"
+                              stroke="#00D2FF"
+                              stroke-width="1.2"
+                              opacity=".8"/>
+
+                        <path d="M50 18 C30 18 30 82 50 82 C70 82 70 18 50 18Z"
+                              stroke="#00D2FF"
+                              stroke-width="1.2"
+                              opacity=".7"/>
+
+                        <polygon points="50,6 55,22 50,18 45,22"
+                                 fill="#00D2FF"/>
+
+                        <polygon points="50,94 55,78 50,82 45,78"
+                                 fill="#00D2FF"/>
+
+                        <polygon points="6,50 22,45 18,50 22,55"
+                                 fill="#00D2FF"/>
+
+                        <polygon points="94,50 78,45 82,50 78,55"
+                                 fill="#00D2FF"/>
+
+                        <polygon points="50,22 56,44 78,50 56,56 50,78 44,56 22,50 44,44"
+                                 fill="url(#heroGradient2)"/>
+
                         <defs>
-                            <linearGradient id="p1" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
-                                <stop stop-color="#008080"/><stop offset="1" stop-color="#00D2FF"/>
+                            <linearGradient id="heroGradient1"
+                                            x1="0" y1="0"
+                                            x2="100" y2="100"
+                                            gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#00D9FF"/>
+                                <stop offset="1" stop-color="#7C3AED"/>
                             </linearGradient>
-                            <linearGradient id="p2" x1="22" y1="22" x2="78" y2="78" gradientUnits="userSpaceOnUse">
-                                <stop stop-color="#00D2FF"/><stop offset="1" stop-color="#003366"/>
+
+                            <linearGradient id="heroGradient2"
+                                            x1="22" y1="22"
+                                            x2="78" y2="78"
+                                            gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#00D9FF"/>
+                                <stop offset=".5" stop-color="#7C3AED"/>
+                                <stop offset="1" stop-color="#003366"/>
                             </linearGradient>
                         </defs>
                     </svg>
+
+                </div>
+
+                <h2>VIHAANAA TECH HUBS</h2>
+
+                <p>
+                    Engineering, procurement and industrial technical
+                    solutions built around precision, safety and reliability.
+                </p>
+
+                <div class="card-manager-tag">
+                    <i class="fa-solid fa-user-tie"></i>
+                    Managed Technical Solutions
+                </div>
+
             </div>
+
         </div>
     </section>
 
-    <!-- STATS QUICK BAR -->
+    <!-- =========================================================
+         STATS
+    ========================================================== -->
     <div class="stats-bar-wrapper">
+
         <div class="stats-grid">
+
             <div class="stat-item">
-                <div class="stat-icon"><i class="fa-solid fa-award"></i></div>
+                <div class="stat-icon">
+                    <i class="fa-solid fa-award"></i>
+                </div>
+
                 <div>
                     <div class="stat-num">100%</div>
-                    <div class="stat-label">HSE & DOSH Compliance</div>
+                    <div class="stat-label">HSE &amp; DOSH Compliance</div>
                 </div>
             </div>
+
             <div class="stat-item">
-                <div class="stat-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+                <div class="stat-icon">
+                    <i class="fa-solid fa-screwdriver-wrench"></i>
+                </div>
+
                 <div>
                     <div class="stat-num">Multi-Disciplinary</div>
-                    <div class="stat-label">Civil, M&E & Instrumentation</div>
+                    <div class="stat-label">Civil, M&amp;E &amp; Instrumentation</div>
                 </div>
             </div>
+
             <div class="stat-item">
-                <div class="stat-icon"><i class="fa-solid fa-globe"></i></div>
+                <div class="stat-icon">
+                    <i class="fa-solid fa-globe"></i>
+                </div>
+
                 <div>
                     <div class="stat-num">Global</div>
-                    <div class="stat-label">Import & Export Sourcing</div>
+                    <div class="stat-label">Import &amp; Export Sourcing</div>
                 </div>
             </div>
+
             <div class="stat-item">
-                <div class="stat-icon"><i class="fa-solid fa-clock"></i></div>
+                <div class="stat-icon">
+                    <i class="fa-solid fa-clock"></i>
+                </div>
+
                 <div>
                     <div class="stat-num">24/7</div>
                     <div class="stat-label">Rapid Technical Support</div>
                 </div>
             </div>
+
         </div>
     </div>
 
-    <!-- ABOUT SECTION -->
+    <!-- =========================================================
+         ABOUT
+    ========================================================== -->
     <section id="about">
-        <div class="section-header">
+
+        <div class="section-header reveal">
             <span class="section-tag">About Company</span>
-            <h2 class="section-title">Multi-Disciplinary Engineering & Procurement Excellence</h2>
-            <p class="section-desc">Delivering high-precision technical services and comprehensive supply chain solutions across Malaysia.</p>
+
+            <h2 class="section-title">
+                Multi-Disciplinary Engineering &amp; Procurement Excellence
+            </h2>
+
+            <p class="section-desc">
+                Delivering high-precision technical services and comprehensive
+                supply chain solutions across Malaysia.
+            </p>
         </div>
 
         <div class="about-grid">
-            <div class="about-content">
-                <h3>End-to-End Solutions for Industrial & Energy Sectors</h3>
-                <p>VIHAANAA TECH HUBS is a dynamic Malaysian technical solutions provider. We offer complete end-to-end capabilities spanning local/international material sourcing, global trade logistics, civil construction, M&E installations, and routine facility maintenance.</p>
-                <p>Driven by operational precision and technical standard compliance, we serve plant operators, energy sectors, infrastructure projects, and commercial entities nationwide.</p>
+
+            <div class="about-content reveal">
+
+                <h3>
+                    End-to-End Solutions for Industrial &amp; Energy Sectors
+                </h3>
+
+                <p>
+                    VIHAANAA TECH HUBS is a dynamic Malaysian technical
+                    solutions provider. We offer complete end-to-end
+                    capabilities spanning local/international material
+                    sourcing, global trade logistics, civil construction,
+                    M&amp;E installations, and routine facility maintenance.
+                </p>
+
+                <p>
+                    Driven by operational precision and technical standard
+                    compliance, we serve plant operators, energy sectors,
+                    infrastructure projects, and commercial entities
+                    nationwide.
+                </p>
 
                 <div class="values-grid">
-                    <div class="value-box">
+
+                    <div class="value-box reveal">
                         <h4>Integrity</h4>
                         <p>Transparent and honest client partnerships.</p>
                     </div>
-                    <div class="value-box">
+
+                    <div class="value-box reveal">
                         <h4>Safety First</h4>
                         <p>Uncompromising HSE protocols on site.</p>
                     </div>
-                    <div class="value-box">
+
+                    <div class="value-box reveal">
                         <h4>Precision</h4>
                         <p>Standard-compliant technical execution.</p>
                     </div>
-                    <div class="value-box">
+
+                    <div class="value-box reveal">
                         <h4>Reliability</h4>
                         <p>Swift response for emergency repairs.</p>
                     </div>
+
                 </div>
             </div>
 
-            <div class="about-image-wrapper">
-                <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1000&q=80" alt="Engineering Team" class="about-img">
+            <div class="about-image-wrapper reveal">
+
+                <img
+                    src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1000&q=85"
+                    alt="Engineering team working on an industrial construction project"
+                    class="about-img"
+                    loading="lazy"
+                >
+
                 <div class="about-floating-badge">
-                    <i class="fa-solid fa-circle-check" style="font-size: 2.2rem; color: var(--cyan-glow);"></i>
+
+                    <i class="fa-solid fa-circle-check"
+                       style="font-size:2.1rem;color:#00d9ff;"
+                       aria-hidden="true"></i>
+
                     <div>
-                        <strong style="display:block; font-size:1.1rem; color:#fff;">ISO & DOSH Compliant</strong>
-                        <span style="font-size:0.85rem; color:#CBD5E1;">Rigorous Quality Standards</span>
+                        <strong style="display:block;font-size:1rem;color:#fff;">
+                            ISO &amp; DOSH Compliant
+                        </strong>
+
+                        <span style="font-size:.78rem;color:#cbd5e1;">
+                            Rigorous Quality Standards
+                        </span>
                     </div>
+
                 </div>
+
             </div>
+
         </div>
     </section>
 
-    <!-- SERVICES SECTION -->
+    <!-- =========================================================
+         SERVICES
+    ========================================================== -->
     <div class="services-bg-wrapper" id="services">
+
         <div class="services-inner">
-            <div class="section-header">
+
+            <div class="section-header reveal">
+
                 <span class="section-tag">Capabilities</span>
-                <h2 class="section-title">Services & Solutions Provided</h2>
-                <p class="section-desc">Comprehensive execution across trade, contracting, and technical engineering.</p>
+
+                <h2 class="section-title">
+                    Services &amp; Solutions Provided
+                </h2>
+
+                <p class="section-desc">
+                    Comprehensive execution across trade, contracting,
+                    and technical engineering.
+                </p>
+
             </div>
 
             <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-card-icon"><i class="fa-solid fa-boxes-packing"></i></div>
-                    <h3>Supply & Distribution</h3>
-                    <p>Local procurement and distribution of certified industrial hardware, raw materials, electrical fittings, and factory consumables.</p>
+
+                <div class="service-card reveal">
+                    <div class="service-card-icon">
+                        <i class="fa-solid fa-boxes-packing"></i>
+                    </div>
+                    <h3>Supply &amp; Distribution</h3>
+                    <p>
+                        Local procurement and distribution of certified
+                        industrial hardware, raw materials, electrical
+                        fittings, and factory consumables.
+                    </p>
                 </div>
 
-                <div class="service-card">
-                    <div class="service-card-icon"><i class="fa-solid fa-plane-departure"></i></div>
-                    <h3>Import & Export</h3>
-                    <p>Cross-border sourcing, technical machinery trading, customs clearance, and international supply chain logistics.</p>
+                <div class="service-card reveal">
+                    <div class="service-card-icon">
+                        <i class="fa-solid fa-plane-departure"></i>
+                    </div>
+                    <h3>Import &amp; Export</h3>
+                    <p>
+                        Cross-border sourcing, technical machinery trading,
+                        customs clearance, and international supply chain
+                        logistics.
+                    </p>
                 </div>
 
-                <div class="service-card">
-                    <div class="service-card-icon"><i class="fa-solid fa-toolbox"></i></div>
-                    <h3>Tools & Spare Parts</h3>
-                    <p>Provision of specialized hand/power tools, pneumatic equipment, and OEM replacement components for industrial plants.</p>
+                <div class="service-card reveal">
+                    <div class="service-card-icon">
+                        <i class="fa-solid fa-toolbox"></i>
+                    </div>
+                    <h3>Tools &amp; Spare Parts</h3>
+                    <p>
+                        Provision of specialized hand/power tools, pneumatic
+                        equipment, and OEM replacement components for
+                        industrial plants.
+                    </p>
                 </div>
 
-                <div class="service-card">
-                    <div class="service-card-icon"><i class="fa-solid fa-bridge"></i></div>
+                <div class="service-card reveal">
+                    <div class="service-card-icon">
+                        <i class="fa-solid fa-bridge"></i>
+                    </div>
                     <h3>Civil Works</h3>
-                    <p>Structural concrete, site preparation, foundation works, industrial paving, trenching, and facility upgrades.</p>
+                    <p>
+                        Structural concrete, site preparation, foundation
+                        works, industrial paving, trenching, and facility
+                        upgrades.
+                    </p>
                 </div>
 
-                <div class="service-card">
-                    <div class="service-card-icon"><i class="fa-solid fa-helmet-safety"></i></div>
-                    <h3>Installation & Construction</h3>
-                    <p>Full-scale structural steel erection, modular skid assembly, piping fabrication, and site construction management.</p>
+                <div class="service-card reveal">
+                    <div class="service-card-icon">
+                        <i class="fa-solid fa-helmet-safety"></i>
+                    </div>
+                    <h3>Installation &amp; Construction</h3>
+                    <p>
+                        Full-scale structural steel erection, modular skid
+                        assembly, piping fabrication, and site construction
+                        management.
+                    </p>
                 </div>
 
-                <div class="service-card">
-                    <div class="service-card-icon"><i class="fa-solid fa-gears"></i></div>
+                <div class="service-card reveal">
+                    <div class="service-card-icon">
+                        <i class="fa-solid fa-gears"></i>
+                    </div>
                     <h3>Mechanical Services</h3>
-                    <p>HVAC systems, industrial piping networks, pump alignment, pressure vessel installation, and rotating equipment overhaul.</p>
+                    <p>
+                        HVAC systems, industrial piping networks, pump
+                        alignment, pressure vessel installation, and
+                        rotating equipment overhaul.
+                    </p>
                 </div>
 
-                <div class="service-card">
-                    <div class="service-card-icon"><i class="fa-solid fa-bolt"></i></div>
+                <div class="service-card reveal">
+                    <div class="service-card-icon">
+                        <i class="fa-solid fa-bolt"></i>
+                    </div>
                     <h3>Electrical Services</h3>
-                    <p>High & Low Voltage (HV/LV) electrical wiring, distribution panels, switchgear, cable laying, and grounding systems.</p>
+                    <p>
+                        High &amp; Low Voltage (HV/LV) electrical wiring,
+                        distribution panels, switchgear, cable laying,
+                        and grounding systems.
+                    </p>
                 </div>
 
-                <div class="service-card">
-                    <div class="service-card-icon"><i class="fa-solid fa-gauge-high"></i></div>
+                <div class="service-card reveal">
+                    <div class="service-card-icon">
+                        <i class="fa-solid fa-gauge-high"></i>
+                    </div>
                     <h3>Instrumentation Products</h3>
-                    <p>Process sensors, pressure/temperature transmitters, control valves, actuators, and PLC automation integration.</p>
+                    <p>
+                        Process sensors, pressure/temperature transmitters,
+                        control valves, actuators, and PLC automation
+                        integration.
+                    </p>
                 </div>
 
-                <div class="service-card">
-                    <div class="service-card-icon"><i class="fa-solid fa-sliders"></i></div>
-                    <h3>Testing & Commissioning</h3>
-                    <p>Pre-commissioning validation, load testing, loop tests, and safety calibration prior to plant startup.</p>
+                <div class="service-card reveal">
+                    <div class="service-card-icon">
+                        <i class="fa-solid fa-sliders"></i>
+                    </div>
+                    <h3>Testing &amp; Commissioning</h3>
+                    <p>
+                        Pre-commissioning validation, load testing, loop
+                        tests, and safety calibration prior to plant startup.
+                    </p>
                 </div>
 
-                <div class="service-card">
-                    <div class="service-card-icon"><i class="fa-solid fa-wrench"></i></div>
-                    <h3>Repair & Testing</h3>
-                    <p>Preventive maintenance, non-destructive testing (NDT), diagnostics, and emergency repair services.</p>
+                <div class="service-card reveal">
+                    <div class="service-card-icon">
+                        <i class="fa-solid fa-wrench"></i>
+                    </div>
+                    <h3>Repair &amp; Testing</h3>
+                    <p>
+                        Preventive maintenance, non-destructive testing
+                        (NDT), diagnostics, and emergency repair services.
+                    </p>
                 </div>
+
             </div>
         </div>
     </div>
 
-    <!-- HSE & QUALITY -->
+    <!-- =========================================================
+         HSE
+    ========================================================== -->
     <section id="hse">
-        <div class="section-header">
+
+        <div class="section-header reveal">
+
             <span class="section-tag">Safety Standards</span>
-            <h2 class="section-title">HSE & Quality Policy</h2>
-            <p class="section-desc">Our core commitment to occupational health, safety, and operational precision.</p>
+
+            <h2 class="section-title">
+                HSE &amp; Quality Policy
+            </h2>
+
+            <p class="section-desc">
+                Our core commitment to occupational health, safety,
+                and operational precision.
+            </p>
+
         </div>
 
         <div class="hse-grid">
-            <div class="hse-card">
+
+            <div class="hse-card reveal">
+
                 <div class="hse-card-header">
                     <i class="fa-solid fa-shield-halved"></i>
-                    <h3>Health & Safety First</h3>
+                    <h3>Health &amp; Safety First</h3>
                 </div>
+
                 <ul class="hse-list">
-                    <li><i class="fa-solid fa-circle-check"></i> Zero Harm policy for workplace safety and environment.</li>
-                    <li><i class="fa-solid fa-circle-check"></i> Mandatory Hazard Identification, Risk Assessment (HIRARC).</li>
-                    <li><i class="fa-solid fa-circle-check"></i> Full compliance with Malaysian DOSH / JKKP regulations.</li>
-                    <li><i class="fa-solid fa-circle-check"></i> Strict PPE enforcement and daily safety toolbox briefings.</li>
+
+                    <li>
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span>
+                            Zero Harm policy for workplace safety
+                            and environment.
+                        </span>
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span>
+                            Mandatory Hazard Identification, Risk
+                            Assessment (HIRARC).
+                        </span>
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span>
+                            Full compliance with Malaysian
+                            DOSH / JKKP regulations.
+                        </span>
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span>
+                            Strict PPE enforcement and daily safety
+                            toolbox briefings.
+                        </span>
+                    </li>
+
                 </ul>
+
             </div>
 
-            <div class="hse-card">
+            <div class="hse-card reveal">
+
                 <div class="hse-card-header">
                     <i class="fa-solid fa-award"></i>
                     <h3>Quality Assurance</h3>
                 </div>
+
                 <ul class="hse-list">
-                    <li><i class="fa-solid fa-circle-check"></i> Standardized QA/QC inspection plans on all incoming materials.</li>
-                    <li><i class="fa-solid fa-circle-check"></i> Complete technical documentation & loop check validation.</li>
-                    <li><i class="fa-solid fa-circle-check"></i> Adherence to ISO standards and strict client technical specs.</li>
-                    <li><i class="fa-solid fa-circle-check"></i> Continuous technical skill upgrading for personnel.</li>
+
+                    <li>
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span>
+                            Standardized QA/QC inspection plans
+                            on all incoming materials.
+                        </span>
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span>
+                            Complete technical documentation
+                            &amp; loop check validation.
+                        </span>
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span>
+                            Adherence to ISO standards and strict
+                            client technical specifications.
+                        </span>
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span>
+                            Continuous technical skill upgrading
+                            for personnel.
+                        </span>
+                    </li>
+
                 </ul>
+
             </div>
+
         </div>
     </section>
 
-    <!-- CONTACT SECTION -->
-    <section id="contact" style="padding-bottom: 120px;">
-        <div class="section-header">
+    <!-- =========================================================
+         CONTACT
+    ========================================================== -->
+    <section id="contact">
+
+        <div class="section-header reveal">
+
             <span class="section-tag">Get In Touch</span>
-            <h2 class="section-title">Contact Management</h2>
-            <p class="section-desc">Reach out directly for project quotations, tenders, and technical inquiries.</p>
+
+            <h2 class="section-title">
+                Contact Management
+            </h2>
+
+            <p class="section-desc">
+                Reach out directly for project quotations,
+                tenders, and technical inquiries.
+            </p>
+
         </div>
 
         <div class="contact-grid">
-            <div class="contact-info-panel">
+
+            <div class="contact-info-panel reveal">
+
                 <h3>VIHAANAA TECH HUBS</h3>
-                <p>Get direct access to key operational management for immediate support.</p>
+
+                <p>
+                    Get direct access to key operational management
+                    for immediate support.
+                </p>
 
                 <div class="info-row">
-                    <div class="info-row-icon"><i class="fa-solid fa-user-gear"></i></div>
+
+                    <div class="info-row-icon">
+                        <i class="fa-solid fa-user-gear"></i>
+                    </div>
+
                     <div>
                         <label>Contact Person</label>
-                        <span>MOGHAN (Manager)</span>
+                        <span>MOGHA (Manager)</span>
                     </div>
+
                 </div>
 
                 <div class="info-row">
-                    <div class="info-row-icon"><i class="fa-solid fa-phone"></i></div>
+
+                    <div class="info-row-icon">
+                        <i class="fa-solid fa-phone"></i>
+                    </div>
+
                     <div>
                         <label>Phone / WhatsApp</label>
                         <span>+6014 972 5722</span>
                     </div>
+
                 </div>
 
                 <div class="info-row">
-                    <div class="info-row-icon"><i class="fa-solid fa-envelope"></i></div>
+
+                    <div class="info-row-icon">
+                        <i class="fa-solid fa-envelope"></i>
+                    </div>
+
                     <div>
                         <label>Email Address</label>
                         <span>smorghan9@gmail.com</span>
                     </div>
+
                 </div>
+
             </div>
 
-            <div class="contact-form-panel">
+            <div class="contact-form-panel reveal">
+
                 <form id="contactForm">
+
                     <div class="form-group">
-                        <label for="name">Your Name / Organization</label>
-                        <input type="text" id="name" class="form-control" required placeholder="e.g. Alex Tan / ABC Engineering">
+                        <label for="name">
+                            Your Name / Organization
+                        </label>
+
+                        <input
+                            type="text"
+                            id="name"
+                            class="form-control"
+                            required
+                            autocomplete="name"
+                            placeholder="e.g. Alex Tan / ABC Engineering"
+                        >
                     </div>
+
                     <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" class="form-control" required placeholder="name@company.com">
+                        <label for="email">
+                            Email Address
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            class="form-control"
+                            required
+                            autocomplete="email"
+                            placeholder="name@company.com"
+                        >
                     </div>
+
                     <div class="form-group">
-                        <label for="service">Service Required</label>
+                        <label for="service">
+                            Service Required
+                        </label>
+
                         <select id="service" class="form-control">
-                            <option>Supply & Distribution</option>
-                            <option>Import & Export</option>
-                            <option>Civil & Construction Works</option>
-                            <option>Mechanical / Electrical Services</option>
-                            <option>Instrumentation / Testing & Commissioning</option>
-                            <option>General Technical Enquiry</option>
+
+                            <option value="Supply & Distribution">
+                                Supply &amp; Distribution
+                            </option>
+
+                            <option value="Import & Export">
+                                Import &amp; Export
+                            </option>
+
+                            <option value="Civil & Construction Works">
+                                Civil &amp; Construction Works
+                            </option>
+
+                            <option value="Mechanical / Electrical Services">
+                                Mechanical / Electrical Services
+                            </option>
+
+                            <option value="Instrumentation / Testing & Commissioning">
+                                Instrumentation / Testing &amp; Commissioning
+                            </option>
+
+                            <option value="General Technical Enquiry">
+                                General Technical Enquiry
+                            </option>
+
                         </select>
                     </div>
+
                     <div class="form-group">
-                        <label for="message">Project Requirements / Description</label>
-                        <textarea id="message" class="form-control" rows="4" required placeholder="Describe your project requirements or RFQ details..."></textarea>
+                        <label for="message">
+                            Project Requirements / Description
+                        </label>
+
+                        <textarea
+                            id="message"
+                            class="form-control"
+                            rows="4"
+                            required
+                            placeholder="Describe your project requirements or RFQ details..."
+                        ></textarea>
                     </div>
-                    <button type="submit" class="btn-primary-glow" style="width: 100%; border: none; cursor: pointer;">
-                        <i class="fa-solid fa-paper-plane me-2"></i> Submit Inquiry
+
+                    <button
+                        type="submit"
+                        class="btn-primary-glow"
+                        style="width:100%;cursor:pointer;"
+                    >
+                        <i class="fa-solid fa-paper-plane"></i>
+                        Submit Inquiry
                     </button>
+
                 </form>
             </div>
+
         </div>
     </section>
 
-    <!-- FOOTER -->
+    <!-- =========================================================
+         FOOTER
+    ========================================================== -->
     <footer>
-        <p>&copy; 2026 VIHAANAA TECH HUBS (Malaysia). All Rights Reserved.</p>
+        <p>
+            &copy; 2026 VIHAANAA TECH HUBS (Malaysia).
+            All Rights Reserved.
+        </p>
     </footer>
 
-    <!-- FLOATING WHATSAPP CTA -->
-    <a href="https://wa.me/60149725722?text=Hello%20Moghan,%20I%20would%20like%20to%20enquire%20about%20Vihaanaa%20Tech%20Hubs%20services." target="_blank" class="whatsapp-float" title="Chat on WhatsApp">
+    <!-- =========================================================
+         WHATSAPP
+    ========================================================== -->
+    <a
+        href="https://wa.me/60149725722?text=Hello%20Mogha,%20I%20would%20like%20to%20enquire%20about%20Vihaanaa%20Tech%20Hubs%20services."
+        target="_blank"
+        rel="noopener noreferrer"
+        class="whatsapp-float"
+        aria-label="Chat with VIHAANAA TECH HUBS on WhatsApp"
+        title="Chat on WhatsApp"
+    >
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
-    <!-- INTERACTIVE JAVASCRIPT -->
-    
-<script>
-(() => {
-  'use strict';
-  const $ = (s, r=document) => r.querySelector(s);
-  const $$ = (s, r=document) => [...r.querySelectorAll(s)];
+    <!-- =========================================================
+         JAVASCRIPT
+    ========================================================== -->
+    <script>
+        (() => {
+            'use strict';
 
-  const navbar = $('#navbar');
-  const mobileToggle = $('#mobileToggle');
-  const navMenu = $('#navMenu');
-  const contactForm = $('#contactForm');
+            const $ = (selector, root = document) =>
+                root.querySelector(selector);
 
-  // Premium loading screen
-  window.addEventListener('load', () => {
-    const preloader = $('#preloader');
-    if (preloader) setTimeout(() => preloader.classList.add('hide'), 350);
-  });
+            const $$ = (selector, root = document) =>
+                [...root.querySelectorAll(selector)];
 
-  // Navbar: safe even if an element is missing
-  const updateNavbar = () => navbar?.classList.toggle('scrolled', window.scrollY > 35);
-  window.addEventListener('scroll', updateNavbar, {passive:true});
-  updateNavbar();
+            const navbar = $('#navbar');
+            const mobileToggle = $('#mobileToggle');
+            const navMenu = $('#navMenu');
+            const contactForm = $('#contactForm');
+            const backTop = $('#backTop');
+            const toast = $('#toast');
+            const toastText = $('#toastText');
 
-  // Mobile menu
-  const closeMenu = () => {
-    navMenu?.classList.remove('active');
-    if (mobileToggle) {
-      mobileToggle.setAttribute('aria-expanded','false');
-      mobileToggle.innerHTML = '<i class="fa-solid fa-bars-staggered"></i>';
-    }
-    document.body.classList.remove('menu-open');
-  };
-  mobileToggle?.setAttribute('aria-expanded','false');
-  mobileToggle?.addEventListener('click', () => {
-    if (!navMenu) return;
-    const open = navMenu.classList.toggle('active');
-    mobileToggle.setAttribute('aria-expanded', String(open));
-    mobileToggle.innerHTML = open
-      ? '<i class="fa-solid fa-xmark"></i>'
-      : '<i class="fa-solid fa-bars-staggered"></i>';
-    document.body.classList.toggle('menu-open', open);
-  });
-  $$('.nav-link').forEach(link => link.addEventListener('click', closeMenu));
-  window.addEventListener('resize', () => { if (window.innerWidth > 768) closeMenu(); });
+            /* -----------------------------------------------------
+               PRELOADER
+            ----------------------------------------------------- */
+            window.addEventListener('load', () => {
+                const preloader = $('#preloader');
 
-  // Active navigation
-  const navLinks = $$('.nav-link');
-  const sections = $$('section[id]');
-  const updateActive = () => {
-    const y = window.scrollY + 140;
-    let current = 'home';
-    sections.forEach(section => { if (y >= section.offsetTop) current = section.id; });
-    navLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === '#' + current));
-  };
-  window.addEventListener('scroll', updateActive, {passive:true});
-  updateActive();
+                if (preloader) {
+                    setTimeout(() => {
+                        preloader.classList.add('hide');
+                    }, 350);
+                }
+            });
 
-  // Scroll reveal
-  $$('.section-header,.about-content,.about-image-wrapper,.service-card,.hse-card,.value-box,.contact-info-panel,.contact-form-panel,.stat-item').forEach((el,i) => {
-    el.classList.add('reveal');
-    el.style.transitionDelay = Math.min(i * 45, 280) + 'ms';
-  });
-  if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting){ entry.target.classList.add('show'); observer.unobserve(entry.target); }
-      });
-    }, {threshold:.12, rootMargin:'0px 0px -40px'});
-    $$('.reveal').forEach(el => observer.observe(el));
-  } else $$('.reveal').forEach(el => el.classList.add('show'));
+            /* -----------------------------------------------------
+               NAVBAR
+            ----------------------------------------------------- */
+            const updateNavbar = () => {
+                if (!navbar) return;
 
-  // Animated numeric stats; leaves non-numeric values alone
-  const counters = $$('.stat-num');
-  if ('IntersectionObserver' in window) {
-    const counterObserver = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if(!entry.isIntersecting || entry.target.dataset.counted) return;
-        const el = entry.target, raw = el.textContent.trim(), m = raw.match(/^(\d+)(.*)$/);
-        if(!m){ el.dataset.counted='1'; counterObserver.unobserve(el); return; }
-        el.dataset.counted='1';
-        const target = Number(m[1]), suffix = m[2], duration = 1000, t0 = performance.now();
-        const tick = now => {
-          const p = Math.min((now-t0)/duration,1), e = 1-Math.pow(1-p,3);
-          el.textContent = Math.floor(target*e)+suffix;
-          if(p<1) requestAnimationFrame(tick);
-        };
-        requestAnimationFrame(tick); counterObserver.unobserve(el);
-      });
-    }, {threshold:.65});
-    counters.forEach(el => counterObserver.observe(el));
-  }
+                navbar.classList.toggle(
+                    'scrolled',
+                    window.scrollY > 35
+                );
+            };
 
-  // Lightweight 3D hover, desktop only
-  if (matchMedia('(pointer:fine)').matches) {
-    $$('.service-card,.hse-card,.hero-card-visual').forEach(card => {
-      card.addEventListener('pointermove', e => {
-        const r=card.getBoundingClientRect(), x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5;
-        card.style.transform=`perspective(900px) rotateX(${(-y*3).toFixed(2)}deg) rotateY(${(x*3).toFixed(2)}deg) translateY(-7px)`;
-      });
-      card.addEventListener('pointerleave', () => card.style.transform='');
-    });
-  }
+            window.addEventListener(
+                'scroll',
+                updateNavbar,
+                { passive: true }
+            );
 
-  // Back to top
-  const backTop = $('#backTop');
-  window.addEventListener('scroll', () => backTop?.classList.toggle('show', window.scrollY > 600), {passive:true});
-  backTop?.addEventListener('click', () => window.scrollTo({top:0,behavior:'smooth'}));
+            updateNavbar();
 
-  // Toast helper
-  const toast = $('#toast'), toastText = $('#toastText');
-  const showToast = msg => {
-    if(!toast || !toastText) return;
-    toastText.textContent=msg; toast.classList.add('show');
-    clearTimeout(window.__vthToast);
-    window.__vthToast=setTimeout(()=>toast.classList.remove('show'),4500);
-  };
+            /* -----------------------------------------------------
+               MOBILE MENU
+            ----------------------------------------------------- */
+            const closeMenu = () => {
+                if (!navMenu || !mobileToggle) return;
 
-  // Contact form: validate and open a pre-filled WhatsApp enquiry instead of a fake alert.
-  contactForm?.addEventListener('submit', e => {
-    e.preventDefault();
-    const name=$('#name')?.value.trim()||'';
-    const service=$('#service')?.value.trim()||'';
-    const message=$('#message')?.value.trim()||'';
-    if(!name || !service || !message){ showToast('Please complete all required enquiry fields.'); return; }
-    const text = `Hello Moghan, I would like to enquire about Vihaanaa Tech Hubs services.\n\nName: ${name}\nService: ${service}\nProject requirements: ${message}`;
-    const url='https://wa.me/60149725722?text='+encodeURIComponent(text);
-    showToast('Opening WhatsApp with your enquiry…');
-    window.open(url,'_blank','noopener,noreferrer');
-    contactForm.reset();
-  });
+                navMenu.classList.remove('active');
 
-  // Escape closes mobile menu
-  document.addEventListener('keydown', e => { if(e.key==='Escape') closeMenu(); });
-})();
-</script>
+                mobileToggle.setAttribute(
+                    'aria-expanded',
+                    'false'
+                );
+
+                mobileToggle.setAttribute(
+                    'aria-label',
+                    'Open navigation'
+                );
+
+                mobileToggle.innerHTML =
+                    '<i class="fa-solid fa-bars-staggered"></i>';
+
+                document.body.classList.remove('menu-open');
+            };
+
+            mobileToggle?.addEventListener('click', () => {
+
+                const isOpen =
+                    navMenu.classList.toggle('active');
+
+                mobileToggle.setAttribute(
+                    'aria-expanded',
+                    String(isOpen)
+                );
+
+                mobileToggle.setAttribute(
+                    'aria-label',
+                    isOpen
+                        ? 'Close navigation'
+                        : 'Open navigation'
+                );
+
+                mobileToggle.innerHTML = isOpen
+                    ? '<i class="fa-solid fa-xmark"></i>'
+                    : '<i class="fa-solid fa-bars-staggered"></i>';
+
+                document.body.classList.toggle(
+                    'menu-open',
+                    isOpen
+                );
+            });
+
+            $$('.nav-link').forEach(link => {
+                link.addEventListener('click', closeMenu);
+            });
+
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 900) {
+                    closeMenu();
+                }
+            });
+
+            /* -----------------------------------------------------
+               ACTIVE NAVIGATION
+            ----------------------------------------------------- */
+            const navLinks = $$('.nav-link');
+
+            const navigationSections = [
+                document.querySelector('#home'),
+                document.querySelector('#about'),
+                document.querySelector('#services'),
+                document.querySelector('#hse'),
+                document.querySelector('#contact')
+            ].filter(Boolean);
+
+            const updateActiveNavigation = () => {
+
+                const scrollPosition =
+                    window.scrollY + 180;
+
+                let currentId = 'home';
+
+                navigationSections.forEach(section => {
+                    if (
+                        scrollPosition >= section.offsetTop
+                    ) {
+                        currentId = section.id;
+                    }
+                });
+
+                navLinks.forEach(link => {
+
+                    const isActive =
+                        link.getAttribute('href') ===
+                        `#${currentId}`;
+
+                    link.classList.toggle(
+                        'active',
+                        isActive
+                    );
+                });
+            };
+
+            window.addEventListener(
+                'scroll',
+                updateActiveNavigation,
+                { passive: true }
+            );
+
+            updateActiveNavigation();
+
+            /* -----------------------------------------------------
+               SCROLL REVEAL
+            ----------------------------------------------------- */
+            const revealElements =
+                $$('.reveal');
+
+            if ('IntersectionObserver' in window) {
+
+                const revealObserver =
+                    new IntersectionObserver(
+                        entries => {
+
+                            entries.forEach(entry => {
+
+                                if (
+                                    !entry.isIntersecting
+                                ) {
+                                    return;
+                                }
+
+                                entry.target.classList.add(
+                                    'show'
+                                );
+
+                                revealObserver.unobserve(
+                                    entry.target
+                                );
+                            });
+
+                        },
+                        {
+                            threshold: .1,
+                            rootMargin: '0px 0px -40px'
+                        }
+                    );
+
+                revealElements.forEach(element => {
+                    revealObserver.observe(element);
+                });
+
+            } else {
+
+                revealElements.forEach(element => {
+                    element.classList.add('show');
+                });
+            }
+
+            /* -----------------------------------------------------
+               BACK TO TOP
+            ----------------------------------------------------- */
+            const updateBackTop = () => {
+
+                if (!backTop) return;
+
+                backTop.classList.toggle(
+                    'show',
+                    window.scrollY > 600
+                );
+            };
+
+            window.addEventListener(
+                'scroll',
+                updateBackTop,
+                { passive: true }
+            );
+
+            updateBackTop();
+
+            backTop?.addEventListener('click', () => {
+
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+
+            });
+
+            /* -----------------------------------------------------
+               TOAST
+            ----------------------------------------------------- */
+            const showToast = message => {
+
+                if (!toast || !toastText) return;
+
+                toastText.textContent = message;
+
+                toast.classList.add('show');
+
+                clearTimeout(
+                    window.__vthToastTimer
+                );
+
+                window.__vthToastTimer =
+                    setTimeout(() => {
+                        toast.classList.remove('show');
+                    }, 4500);
+            };
+
+            /* -----------------------------------------------------
+               CONTACT FORM
+            ----------------------------------------------------- */
+            contactForm?.addEventListener(
+                'submit',
+                event => {
+
+                    event.preventDefault();
+
+                    const name =
+                        $('#name')?.value.trim() || '';
+
+                    const email =
+                        $('#email')?.value.trim() || '';
+
+                    const service =
+                        $('#service')?.value.trim() || '';
+
+                    const message =
+                        $('#message')?.value.trim() || '';
+
+                    if (
+                        !name ||
+                        !email ||
+                        !service ||
+                        !message
+                    ) {
+                        showToast(
+                            'Please complete all required enquiry fields.'
+                        );
+
+                        return;
+                    }
+
+                    const enquiry =
+                        `Hello Mogha, I would like to enquire about Vihaanaa Tech Hubs services.\n\n` +
+                        `Name / Organization: ${name}\n` +
+                        `Email: ${email}\n` +
+                        `Service: ${service}\n` +
+                        `Project requirements: ${message}`;
+
+                    const whatsappURL =
+                        'https://wa.me/60149725722?text=' +
+                        encodeURIComponent(enquiry);
+
+                    showToast(
+                        'Opening WhatsApp with your enquiry…'
+                    );
+
+                    window.open(
+                        whatsappURL,
+                        '_blank',
+                        'noopener,noreferrer'
+                    );
+
+                    contactForm.reset();
+                }
+            );
+
+            /* -----------------------------------------------------
+               ESCAPE KEY
+            ----------------------------------------------------- */
+            document.addEventListener(
+                'keydown',
+                event => {
+
+                    if (event.key === 'Escape') {
+                        closeMenu();
+                    }
+
+                }
+            );
+
+            /* -----------------------------------------------------
+               DESKTOP CARD MICRO-INTERACTION
+               Disabled on HSE cards to prevent transform conflicts.
+            ----------------------------------------------------- */
+            const canHover =
+                window.matchMedia(
+                    '(pointer:fine)'
+                ).matches;
+
+            if (canHover) {
+
+                $$('.service-card').forEach(card => {
+
+                    card.addEventListener(
+                        'pointermove',
+                        event => {
+
+                            const rect =
+                                card.getBoundingClientRect();
+
+                            const x =
+                                (event.clientX - rect.left) /
+                                rect.width - .5;
+
+                            const y =
+                                (event.clientY - rect.top) /
+                                rect.height - .5;
+
+                            card.style.transform =
+                                `perspective(900px)
+                                 rotateX(${(-y * 2.5).toFixed(2)}deg)
+                                 rotateY(${(x * 2.5).toFixed(2)}deg)
+                                 translateY(-7px)`;
+                        }
+                    );
+
+                    card.addEventListener(
+                        'pointerleave',
+                        () => {
+                            card.style.transform = '';
+                        }
+                    );
+                });
+
+            }
+
+        })();
+    </script>
+
 </body>
 </html>
