@@ -195,13 +195,14 @@
         .stack-group:hover .stack-card:nth-child(2) { transform: translateY(-20px) rotate(3deg); opacity: 0.95; }
         .stack-group:hover .stack-card:nth-child(3) { transform: translateY(-50px) rotate(-1deg); opacity: 0.9; }
 
-        /* CONTINUOUS VIDEO & IMAGE CONTAINER */
+        /* AUTO-FUNCTIONAL VIDEO & IMAGE CONTAINER */
         .card-img-wrapper {
             width: 100%; height: 160px; border-radius: var(--radius-sm);
             overflow: hidden; margin-bottom: 1rem; background: #0f172a; position: relative;
         }
         .animated-img, .continuous-video {
             width: 100%; height: 100%; object-fit: cover; display: block;
+            pointer-events: none; /* Prevents user pause on click */
         }
 
         /* --- PROJECT GALLERY SHOWCASE --- */
@@ -541,12 +542,12 @@
                 </div>
             </div>
 
-            <!-- Stack 2: Civil & Structural Engineering (WITH CONTINUOUS VIDEO) -->
+            <!-- Stack 2: Civil & Structural Engineering -->
             <div class="stack-group">
                 <div class="stack-card">
                     <div>
                         <div class="card-img-wrapper">
-                            <video class="continuous-video" autoplay loop muted playsinline>
+                            <video class="continuous-video" autoplay loop muted playsinline preload="auto" disablePictureInPicture>
                                 <source src="video_3.mp4" type="video/mp4">
                             </video>
                         </div>
@@ -565,12 +566,12 @@
                 </div>
             </div>
 
-            <!-- Stack 3: Mechanical & Electrical (WITH CONTINUOUS VIDEO) -->
+            <!-- Stack 3: Mechanical & Electrical -->
             <div class="stack-group">
                 <div class="stack-card">
                     <div>
                         <div class="card-img-wrapper">
-                            <video class="continuous-video" autoplay loop muted playsinline>
+                            <video class="continuous-video" autoplay loop muted playsinline preload="auto" disablePictureInPicture>
                                 <source src="video_0.mp4" type="video/mp4">
                             </video>
                         </div>
@@ -591,7 +592,7 @@
         </div>
     </section>
 
-    <!-- FEATURED INFRASTRUCTURE PROJECTS SHOWCASE (WITH CONTINUOUS VIDEOS) -->
+    <!-- FEATURED INFRASTRUCTURE PROJECTS SHOWCASE -->
     <section class="section-block" id="gallery" style="padding-top: 20px;">
         <div class="section-header">
             <h2>Featured Infrastructure Projects</h2>
@@ -602,7 +603,7 @@
             <!-- 1. Refinery Pipeline Systems -->
             <div class="gallery-card">
                 <div class="gallery-img-container">
-                    <video class="continuous-video" autoplay loop muted playsinline>
+                    <video class="continuous-video" autoplay loop muted playsinline preload="auto" disablePictureInPicture>
                         <source src="video_2.mp4" type="video/mp4">
                     </video>
                 </div>
@@ -615,7 +616,7 @@
             <!-- 2. Gas Processing Plants -->
             <div class="gallery-card">
                 <div class="gallery-img-container">
-                    <video class="continuous-video" autoplay loop muted playsinline>
+                    <video class="continuous-video" autoplay loop muted playsinline preload="auto" disablePictureInPicture>
                         <source src="video_5.mp4" type="video/mp4">
                     </video>
                 </div>
@@ -628,7 +629,7 @@
             <!-- 3. Piping & Valve Assemblies -->
             <div class="gallery-card">
                 <div class="gallery-img-container">
-                    <video class="continuous-video" autoplay loop muted playsinline>
+                    <video class="continuous-video" autoplay loop muted playsinline preload="auto" disablePictureInPicture>
                         <source src="video_1.mp4" type="video/mp4">
                     </video>
                 </div>
@@ -652,7 +653,7 @@
             <!-- 5. Control Panel Distribution -->
             <div class="gallery-card">
                 <div class="gallery-img-container">
-                    <video class="continuous-video" autoplay loop muted playsinline>
+                    <video class="continuous-video" autoplay loop muted playsinline preload="auto" disablePictureInPicture>
                         <source src="video_0.mp4" type="video/mp4">
                     </video>
                 </div>
@@ -665,7 +666,7 @@
             <!-- 6. Tech-Hub Operations Matrix -->
             <div class="gallery-card">
                 <div class="gallery-img-container">
-                    <video class="continuous-video" autoplay loop muted playsinline>
+                    <video class="continuous-video" autoplay loop muted playsinline preload="auto" disablePictureInPicture>
                         <source src="video_4.mp4" type="video/mp4">
                     </video>
                 </div>
@@ -887,8 +888,37 @@
         <a href="https://wa.me/60149725722" target="_blank" class="dock-icon" title="WhatsApp"><i class="fa-brands fa-whatsapp" style="color: #25d366;"></i></a>
     </div>
 
-    <!-- SYSTEM INTERACTION SCRIPT -->
+    <!-- SYSTEM INTERACTION & AUTO-PLAY ENFORCEMENT SCRIPT -->
     <script>
+        // Force Auto-Play Functionality Across All Browsers & Devices
+        function ensureAutoplay() {
+            const allVideos = document.querySelectorAll('video');
+            allVideos.forEach(vid => {
+                vid.muted = true;
+                vid.playsInline = true;
+                vid.loop = true;
+                
+                const playPromise = vid.play();
+                if (playPromise !== undefined) {
+                    playPromise.catch(() => {
+                        // Retry playing video automatically upon initial user interaction if blocked by browser policy
+                        const enablePlayOnTouch = () => {
+                            vid.play();
+                            window.removeEventListener('touchstart', enablePlayOnTouch);
+                            window.removeEventListener('click', enablePlayOnTouch);
+                            window.removeEventListener('scroll', enablePlayOnTouch);
+                        };
+                        window.addEventListener('touchstart', enablePlayOnTouch, { once: true });
+                        window.addEventListener('click', enablePlayOnTouch, { once: true });
+                        window.addEventListener('scroll', enablePlayOnTouch, { once: true });
+                    });
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', ensureAutoplay);
+        window.addEventListener('load', ensureAutoplay);
+
         // WhatsApp Floating Chatbot Toggle
         function toggleWaBox() {
             const box = document.getElementById('waChatBox');
