@@ -83,19 +83,18 @@
         }
         .menubar-brand { display: flex; align-items: center; gap: 12px; font-weight: 800; font-size: 1.05rem; }
         
-        /* Fixed Header Logo Container */
+        /* Integrated Brand Logo SVG Container */
         .logo-container {
-            position: relative; width: 32px; height: 32px;
+            position: relative; width: 34px; height: 34px;
             display: flex; align-items: center; justify-content: center;
         }
-        .logo-compass {
-            position: absolute; font-size: 28px;
-            background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-purple) 100%);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            transform: rotate(45deg); filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
+        .logo-svg {
+            width: 100%; height: 100%;
+            filter: drop-shadow(0 2px 6px rgba(0,242,254,0.35));
+            transition: transform 0.4s var(--ease-out);
         }
-        .logo-globe {
-            position: absolute; font-size: 16px; color: var(--accent-blue);
+        .logo-container:hover .logo-svg {
+            transform: rotate(45deg);
         }
 
         .menubar-nav { display: flex; gap: 1.8rem; list-style: none; }
@@ -138,7 +137,7 @@
         .wp-option:hover { transform: scale(1.08); }
         .wp-option.active { border-color: var(--accent-blue); }
 
-        /* --- HERO & INTERACTIVE 3D SNIPPETS --- */
+        /* --- HERO & INTERACTIVE SHOWCASE --- */
         .hero-container {
             padding: 150px 6% 80px; max-width: 1400px; margin: 0 auto;
             display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 4rem; align-items: center;
@@ -175,24 +174,60 @@
         }
         .btn-mac-glass:hover { transform: translateY(-3px); background: rgba(255, 255, 255, 0.95); }
 
-        /* 3D INTERACTIVE TILT SNIPPET */
+        /* 3D INTERACTIVE TILT SHOWCASE & CONSTRUCTION IMAGE TRANSITION */
         .perspective-wrapper { perspective: 1000px; }
         .snippet-3d-card {
             background: var(--glass-card); border: 1px solid var(--glass-border);
-            border-radius: var(--radius-md); padding: 2rem; box-shadow: var(--glass-shadow);
+            border-radius: var(--radius-md); padding: 1.8rem; box-shadow: var(--glass-shadow);
             backdrop-filter: var(--glass-blur); transform-style: preserve-3d;
             transition: transform 0.15s ease-out; position: relative;
         }
-        .snippet-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
+        .snippet-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.2rem; }
         .traffic-lights { display: flex; gap: 8px; }
         .light { width: 13px; height: 13px; border-radius: 50%; }
         .light-red { background: #ff5f56; } .light-yellow { background: #ffbd2e; } .light-green { background: #27c93f; }
         
-        /* Interactive Snippet Content */
-        .snippet-content { font-size: 1.05rem; line-height: 1.8; color: var(--text-primary); }
-        .code-tag { color: var(--accent-pink); font-weight: 700; }
-        .code-val { color: var(--accent-green); font-weight: 600; }
-        .code-func { color: var(--accent-blue); font-weight: 700; }
+        /* Construction Image Transition Container */
+        .image-transition-container {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+            cursor: pointer;
+        }
+        .image-transition-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+        }
+        .img-base { z-index: 1; }
+        .img-overlay { z-index: 2; opacity: 0; }
+        .image-transition-container:hover .img-overlay { opacity: 1; transform: scale(1.04); }
+        .image-transition-container:hover .img-base { transform: scale(1.04); }
+        .transition-badge {
+            position: absolute;
+            bottom: 14px;
+            right: 14px;
+            z-index: 3;
+            background: rgba(15, 23, 42, 0.82);
+            color: #ffffff;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,255,255,0.25);
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
 
         /* --- DESKTOP STACKS (INTERACTIVE CARD FAN OUT) --- */
         .section-block { padding: 90px 6%; max-width: 1400px; margin: 0 auto; }
@@ -302,9 +337,26 @@
     <!-- MACOS TOP MENU BAR -->
     <header class="menubar">
         <div class="menubar-brand">
+            <!-- Header Brand SVG Logo Integration -->
             <div class="logo-container">
-                <i class="fa-solid fa-compass logo-compass"></i>
-                <i class="fa-solid fa-globe logo-globe"></i>
+                <svg class="logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="42" stroke="url(#paint0_linear)" stroke-width="3"/>
+                    <circle cx="50" cy="50" r="32" stroke="#00f2fe" stroke-width="1.5" stroke-dasharray="4 2"/>
+                    <path d="M18 50 C 18 30, 82 30, 82 50 C 82 70, 18 70, 18 50 Z" stroke="#00f2fe" stroke-width="1.2" opacity="0.7"/>
+                    <polygon points="50,6 55,22 50,18 45,22" fill="#0284c7"/>
+                    <polygon points="50,94 55,78 50,82 45,78" fill="#0284c7"/>
+                    <polygon points="50,22 56,44 78,50 56,56 50,78 44,56 22,50 44,44" fill="url(#paint1_linear)"/>
+                    <defs>
+                        <linearGradient id="paint0_linear" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#00f2fe"/>
+                            <stop offset="1" stop-color="#0284c7"/>
+                        </linearGradient>
+                        <linearGradient id="paint1_linear" x1="22" y1="22" x2="78" y2="78" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#00f2fe"/>
+                            <stop offset="1" stop-color="#d946ef"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
             </div>
             <span>Vihaanaa Tech Hubs</span>
         </div>
@@ -334,7 +386,7 @@
         </div>
     </div>
 
-    <!-- HERO & 3D INTERACTIVE SNIPPET -->
+    <!-- HERO & 3D INTERACTIVE CONSTRUCTION SHOWCASE -->
     <section class="hero-container" id="hero">
         <div>
             <div class="hero-tag">
@@ -348,7 +400,7 @@
             </div>
         </div>
 
-        <!-- 3D INTERACTIVE CODE & ROUTINE SNIPPET -->
+        <!-- 3D INTERACTIVE TILT SHOWCASE WITH CONSTRUCTION IMAGE TRANSITION -->
         <div class="perspective-wrapper">
             <div class="snippet-3d-card" id="tiltSnippet">
                 <div class="snippet-header">
@@ -357,21 +409,16 @@
                         <span class="light light-yellow"></span>
                         <span class="light light-green"></span>
                     </div>
-                    <span class="code-font" style="font-size: 0.8rem; color: var(--text-secondary);">ops_engine.ts</span>
+                    <span class="code-font" style="font-size: 0.8rem; color: var(--text-secondary);">site_execution.view</span>
                 </div>
-                <div class="snippet-content">
-                    <div style="font-size: 1.3rem; font-weight: 800; margin-bottom: 1rem; color: var(--accent-blue);">
-                        <i class="fa-solid fa-bolt"></i> Operational Engine Routine
+                
+                <!-- Interactive Construction Phase Transition -->
+                <div class="image-transition-container">
+                    <img src="https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?auto=format&fit=crop&w=1000&q=80" alt="Civil Construction Phase" class="img-base">
+                    <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1000&q=80" alt="Completed Technical Hub" class="img-overlay">
+                    <div class="transition-badge">
+                        <i class="fa-solid fa-arrows-rotate"></i> Hover to Transition Phase
                     </div>
-                    <pre class="code-font" style="font-size: 0.95rem; line-height: 1.6; font-weight: 600;">
-<span class="code-tag">const</span> deployOperations = <span class="code-func">async</span> () =&gt; {
-  <span class="code-tag">await</span> <span class="code-func">verifyCompliance</span>({
-    dosh: <span class="code-val">"PASSED"</span>,
-    hirarc: <span class="code-val">"VERIFIED"</span>,
-    iso_9001: <span class="code-val">true</span>
-  });
-  <span class="code-func">executeProject</span>();
-};</pre>
                 </div>
             </div>
         </div>
