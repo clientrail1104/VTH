@@ -1,253 +1,675 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-wallpaper="sonoma">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>3D Industrial Interactive Showcase</title>
-<style>
-  :root {
-    --transition-speed: 0.6s;
-    --card-radius: 16px;
-  }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vihaanaa Tech Hubs</title>
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        /* --- MACOS SYSTEM DESIGN VARIABLES --- */
+        :root {
+            /* Dynamic Wallpaper Themes */
+            --wp-sonoma: radial-gradient(at 10% 10%, #e0f2fe 0%, #f3e8ff 35%, #fce7f3 70%, #f8fafc 100%);
+            --wp-ventura: linear-gradient(135deg, #fef3c7 0%, #fed7aa 35%, #fce7f3 70%, #f1f5f9 100%);
+            --wp-aurora: linear-gradient(135deg, #0f172a 0%, #1e1b4b 40%, #311042 100%);
+            --wp-monterey: radial-gradient(at 90% 10%, #dbeafe 0%, #e0e7ff 40%, #fae8ff 100%);
 
-  body {
-    margin: 0;
-    padding: 2rem;
-    background: #0a0d14;
-    color: #ffffff;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
-  }
+            /* Surface & Accent Colors */
+            --accent-blue: #007aff;
+            --accent-cyan: #00c7be;
+            --accent-purple: #af52de;
+            --accent-pink: #ff2d55;
+            --accent-orange: #ff9500;
+            --accent-green: #34c759;
 
-  .title-bar {
-    text-align: center;
-    margin-bottom: 2rem;
-  }
+            /* Glassmorphism Surfaces */
+            --glass-surface: rgba(255, 255, 255, 0.68);
+            --glass-card: rgba(255, 255, 255, 0.82);
+            --glass-border: rgba(255, 255, 255, 0.9);
+            --glass-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.12);
+            --glass-blur: blur(30px);
 
-  .title-bar h1 {
-    font-size: 2rem;
-    letter-spacing: 2px;
-    margin-bottom: 0.5rem;
-    color: #00d2ff;
-  }
+            /* Dynamic Theme Text */
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-inverse: #ffffff;
+            --radius-sm: 14px;
+            --radius-md: 24px;
+            --radius-lg: 36px;
+            --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+        }
 
-  /* 3D Perspective Grid Container */
-  .grid-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
-    max-width: 1300px;
-    width: 100%;
-    perspective: 1200px;
-  }
+        /* Dark Wallpaper Override Mode */
+        [data-wallpaper="aurora"] {
+            --glass-surface: rgba(15, 23, 42, 0.65);
+            --glass-card: rgba(30, 41, 59, 0.75);
+            --glass-border: rgba(255, 255, 255, 0.12);
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --glass-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
 
-  /* 3D Card Construction */
-  .card-3d {
-    position: relative;
-    height: 380px;
-    border-radius: var(--card-radius);
-    overflow: hidden;
-    cursor: pointer;
-    transform-style: preserve-3d;
-    transform: rotateX(0deg) rotateY(0deg) translateZ(0px);
-    transition: transform var(--transition-speed) cubic-bezier(0.25, 1, 0.5, 1), 
-                box-shadow var(--transition-speed) ease;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-  }
+        /* --- GLOBAL RESET & TYPOGRAPHY --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+        html { scroll-behavior: smooth; background-color: #0f172a; }
+        body {
+            color: var(--text-primary);
+            min-height: 100vh;
+            background: var(--wp-sonoma);
+            transition: background 0.8s var(--ease-out);
+            overflow-x: hidden;
+        }
+        h1, h2, h3, h4 { font-family: 'Outfit', sans-serif; font-weight: 800; letter-spacing: -0.02em; }
+        .code-font { font-family: 'Space Grotesk', monospace; }
+        a { text-decoration: none; color: inherit; }
 
-  /* Dynamic Background Image Layers */
-  .card-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    transition: transform var(--transition-speed) ease, filter var(--transition-speed) ease;
-    filter: brightness(0.65) scale(1);
-    transform: translateZ(-20px);
-  }
+        /* --- MACOS MENU BAR & CONTROL CENTER --- */
+        .menubar {
+            position: fixed; top: 0; left: 0; right: 0; height: 52px;
+            background: var(--glass-surface);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border-bottom: 1px solid var(--glass-border);
+            z-index: 2000;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+        }
+        .menubar-brand { display: flex; align-items: center; gap: 12px; font-weight: 800; font-size: 1.05rem; }
+        
+        /* Integrated Brand Logo SVG Container */
+        .logo-container {
+            position: relative; width: 34px; height: 34px;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .logo-svg {
+            width: 100%; height: 100%;
+            filter: drop-shadow(0 2px 6px rgba(0,242,254,0.35));
+            transition: transform 0.4s var(--ease-out);
+        }
+        .logo-container:hover .logo-svg {
+            transform: rotate(45deg);
+        }
 
-  /* Section-Specific Background Attachments */
-  .sec-1 .card-bg { background-image: url('937101.jpg'); }
-  .sec-2 .card-bg { background-image: url('4232366.jpg'); }
-  .sec-3 .card-bg { background-image: url('AdobeStock_711599297-scaled.jpg'); }
-  .sec-4 .card-bg { background-image: url('close-up-steel-pipes-natural-gas-concrete-supports-supplying-propane-factory-tanks-valves-production-energy-resources-economy-pipeline-oil-industry-drainage-system-water-transport-photo.jpg'); }
-  .sec-5 .card-bg { background-image: url('images.jpeg'); }
-  .sec-6 .card-bg { background-image: url('istockphoto-505841831-612x612.jpg'); }
-  .sec-7 .card-bg { background-image: url('pngtree-wiring-circuit-of-power-plant-in-control-panel-distribution-image_15904642.jpg'); }
-  .sec-8 .card-bg { background-image: url('pngtree-abstract-blue-hexagon-pattern-picture-image_15930918.jpg'); }
+        .menubar-nav { display: flex; gap: 1.8rem; list-style: none; }
+        .menubar-link { font-size: 0.9rem; font-weight: 600; color: var(--text-secondary); transition: color 0.2s; }
+        .menubar-link:hover { color: var(--accent-blue); }
+        .menubar-controls { display: flex; align-items: center; gap: 1rem; }
+        
+        /* Control Toggles */
+        .control-pill {
+            background: var(--glass-card);
+            border: 1px solid var(--glass-border);
+            padding: 6px 14px; border-radius: 50px;
+            display: flex; align-items: center; gap: 8px;
+            font-size: 0.82rem; font-weight: 700; color: var(--text-primary);
+            cursor: pointer; transition: all 0.3s var(--ease-out);
+        }
+        .control-pill:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
 
-  /* Overlay Content Gradient */
-  .card-content {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 1.5rem;
-    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
-    transform: translateZ(30px);
-    transition: transform var(--transition-speed) ease;
-  }
+        /* --- CONTROL CENTER DROPDOWN --- */
+        .control-center-panel {
+            position: fixed; top: 62px; right: 2rem; width: 320px;
+            background: var(--glass-card);
+            backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            box-shadow: var(--glass-shadow);
+            z-index: 2001;
+            display: none; flex-direction: column; gap: 1.2rem;
+            animation: slideDown 0.3s var(--ease-out);
+        }
+        .control-center-panel.active { display: flex; }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .wallpaper-picker { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 8px; }
+        .wp-option {
+            height: 42px; border-radius: 10px; cursor: pointer; border: 2px solid transparent;
+            transition: transform 0.2s;
+        }
+        .wp-option:hover { transform: scale(1.08); }
+        .wp-option.active { border-color: var(--accent-blue); }
 
-  .card-content h3 {
-    margin: 0 0 8px 0;
-    font-size: 1.25rem;
-    color: #ffffff;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.8);
-  }
+        /* --- HERO & INTERACTIVE SHOWCASE --- */
+        .hero-container {
+            padding: 150px 6% 80px; max-width: 1400px; margin: 0 auto;
+            display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 4rem; align-items: center;
+        }
+        .hero-tag {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(0, 122, 255, 0.1); border: 1px solid rgba(0, 122, 255, 0.2);
+            color: var(--accent-blue); padding: 8px 18px; border-radius: 50px;
+            font-size: 0.85rem; font-weight: 800; text-transform: uppercase; margin-bottom: 1.5rem;
+        }
+        .hero-title { font-size: 3.8rem; line-height: 1.1; margin-bottom: 1.5rem; }
+        .hero-title span {
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple), var(--accent-pink));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .hero-subtitle { font-size: 1.2rem; color: var(--text-secondary); margin-bottom: 2.5rem; line-height: 1.6; }
 
-  .card-content p {
-    margin: 0;
-    font-size: 0.88rem;
-    color: #cccccc;
-    opacity: 0.8;
-  }
+        /* Apple Glass Button & Toggles */
+        .cta-group { display: flex; gap: 1.2rem; align-items: center; }
+        .btn-mac-primary {
+            background: linear-gradient(135deg, var(--accent-blue), #0051a8);
+            color: white; padding: 1rem 2.2rem; border-radius: 16px;
+            font-weight: 700; font-size: 1rem; border: none; cursor: pointer;
+            box-shadow: 0 10px 25px rgba(0, 122, 255, 0.3); transition: all 0.3s var(--ease-out);
+            display: inline-flex; align-items: center; gap: 10px;
+        }
+        .btn-mac-primary:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 15px 35px rgba(0, 122, 255, 0.45); }
+        
+        .btn-mac-glass {
+            background: var(--glass-card); border: 1px solid var(--glass-border);
+            color: var(--text-primary); padding: 1rem 2rem; border-radius: 16px;
+            font-weight: 700; font-size: 1rem; cursor: pointer; backdrop-filter: var(--glass-blur);
+            transition: all 0.3s var(--ease-out); display: inline-flex; align-items: center; gap: 10px;
+        }
+        .btn-mac-glass:hover { transform: translateY(-3px); background: rgba(255, 255, 255, 0.95); }
 
-  /* Active Hover & Auto-Hover Dynamic Transitions */
-  .card-3d:hover,
-  .card-3d.auto-hover {
-    transform: rotateX(8deg) rotateY(-8deg) translateZ(25px);
-    box-shadow: 0 20px 40px rgba(0, 210, 255, 0.3);
-    border-color: rgba(0, 210, 255, 0.5);
-  }
+        /* 3D INTERACTIVE TILT SHOWCASE & CONSTRUCTION IMAGE TRANSITION */
+        .perspective-wrapper { perspective: 1000px; }
+        .snippet-3d-card {
+            background: var(--glass-card); border: 1px solid var(--glass-border);
+            border-radius: var(--radius-md); padding: 1.8rem; box-shadow: var(--glass-shadow);
+            backdrop-filter: var(--glass-blur); transform-style: preserve-3d;
+            transition: transform 0.15s ease-out; position: relative;
+        }
+        .snippet-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.2rem; }
+        .traffic-lights { display: flex; gap: 8px; }
+        .light { width: 13px; height: 13px; border-radius: 50%; }
+        .light-red { background: #ff5f56; } .light-yellow { background: #ffbd2e; } .light-green { background: #27c93f; }
+        
+        /* Construction Image Transition Container */
+        .image-transition-container {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+            cursor: pointer;
+        }
+        .image-transition-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+        }
+        .img-base { z-index: 1; }
+        .img-overlay { z-index: 2; opacity: 0; }
+        .image-transition-container:hover .img-overlay { opacity: 1; transform: scale(1.04); }
+        .image-transition-container:hover .img-base { transform: scale(1.04); }
+        .transition-badge {
+            position: absolute;
+            bottom: 14px;
+            right: 14px;
+            z-index: 3;
+            background: rgba(15, 23, 42, 0.82);
+            color: #ffffff;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,255,255,0.25);
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
 
-  .card-3d:hover .card-bg,
-  .card-3d.auto-hover .card-bg {
-    filter: brightness(1) scale(1.1);
-  }
+        /* --- DESKTOP STACKS (INTERACTIVE CARD FAN OUT) --- */
+        .section-block { padding: 90px 6%; max-width: 1400px; margin: 0 auto; }
+        .section-header { text-align: center; max-width: 700px; margin: 0 auto 4rem; }
+        .section-header h2 { font-size: 2.8rem; margin-bottom: 1rem; }
+        .section-header p { font-size: 1.1rem; color: var(--text-secondary); }
 
-  .card-3d:hover .card-content,
-  .card-3d.auto-hover .card-content {
-    transform: translateZ(50px);
-  }
-</style>
+        .stacks-container {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem;
+        }
+        .stack-group { position: relative; height: 380px; cursor: pointer; }
+        .stack-card {
+            position: absolute; inset: 0; background: var(--glass-card);
+            border: 1px solid var(--glass-border); border-radius: var(--radius-md);
+            padding: 2.2rem; box-shadow: var(--glass-shadow); backdrop-filter: var(--glass-blur);
+            transition: all 0.4s var(--ease-out); display: flex; flex-direction: column; justify-content: space-between;
+        }
+        .stack-card:nth-child(1) { transform: translateY(0) scale(1); z-index: 3; }
+        .stack-card:nth-child(2) { transform: translateY(-14px) scale(0.95); z-index: 2; opacity: 0.85; }
+        .stack-card:nth-child(3) { transform: translateY(-28px) scale(0.9); z-index: 1; opacity: 0.6; }
+
+        .stack-group:hover .stack-card:nth-child(1) { transform: translateY(10px) rotate(-2deg); }
+        .stack-group:hover .stack-card:nth-child(2) { transform: translateY(-20px) rotate(3deg); opacity: 0.95; }
+        .stack-group:hover .stack-card:nth-child(3) { transform: translateY(-50px) rotate(-1deg); opacity: 0.9; }
+
+        .stack-icon {
+            width: 60px; height: 60px; border-radius: 18px;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+            color: white; display: flex; align-items: center; justify-content: center;
+            font-size: 1.6rem; margin-bottom: 1.5rem; box-shadow: 0 10px 20px rgba(0, 122, 255, 0.2);
+        }
+
+        /* --- INTERACTIVE MACOS WIDGETS GRID --- */
+        .widgets-grid { display: grid; grid-template-columns: 1.5fr 1.5fr 1fr; gap: 2rem; margin-top: 3rem; }
+        .widget {
+            background: var(--glass-card); border: 1px solid var(--glass-border);
+            border-radius: var(--radius-md); padding: 2rem; box-shadow: var(--glass-shadow);
+            backdrop-filter: var(--glass-blur); transition: transform 0.3s var(--ease-out);
+            display: flex; flex-direction: column; justify-content: space-between;
+        }
+        .widget:hover { transform: translateY(-5px); }
+        .widget-clock { background: linear-gradient(135deg, rgba(0,122,255,0.08), rgba(175,82,222,0.08)); }
+        .clock-time { font-size: 3.2rem; font-weight: 800; font-family: 'Space Grotesk'; color: var(--accent-blue); line-height: 1; margin: 0.5rem 0; }
+        
+        .metric-slider { width: 100%; margin-top: 1rem; accent-color: var(--accent-blue); cursor: pointer; }
+
+        /* --- ROUTINE SNIPPETS & COMPLIANCE TOGGLES --- */
+        .snippet-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+        .routine-box {
+            background: var(--glass-card); border: 1px solid var(--glass-border);
+            border-radius: var(--radius-md); padding: 2.2rem; box-shadow: var(--glass-shadow); backdrop-filter: var(--glass-blur);
+        }
+        .routine-box h3 { font-size: 1.4rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 10px; }
+
+        /* MacOS Toggle Switch */
+        .toggle-row { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-bottom: 1px solid rgba(0,0,0,0.06); font-weight: 600; }
+        .toggle-row:last-child { border-bottom: none; }
+        .mac-switch {
+            width: 50px; height: 28px; background: #cbd5e1; border-radius: 20px;
+            position: relative; cursor: pointer; transition: background 0.3s; flex-shrink: 0;
+        }
+        .mac-switch.active { background: var(--accent-green); }
+        .mac-switch::after {
+            content: ''; position: absolute; top: 2px; left: 2px; width: 24px; height: 24px;
+            background: white; border-radius: 50%; transition: transform 0.3s var(--ease-out);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .mac-switch.active::after { transform: translateX(22px); }
+
+        /* --- CONTACT & FOOTER --- */
+        .contact-card {
+            background: var(--glass-card); border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg); padding: 3.5rem; box-shadow: var(--glass-shadow);
+            backdrop-filter: var(--glass-blur); display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+        }
+        .mac-input {
+            width: 100%; padding: 1.1rem; border-radius: 14px; border: 1px solid var(--glass-border);
+            background: rgba(255, 255, 255, 0.6); color: var(--text-primary); font-size: 1rem;
+            outline: none; margin-top: 8px; transition: border 0.2s;
+        }
+        .mac-input:focus { border-color: var(--accent-blue); background: white; }
+
+        /* --- DOCK & FLOATING ACTION --- */
+        .dock-bar {
+            position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+            background: var(--glass-surface); border: 1px solid var(--glass-border);
+            border-radius: 24px; padding: 10px 18px; display: flex; gap: 16px;
+            box-shadow: var(--glass-shadow); backdrop-filter: var(--glass-blur); z-index: 2000;
+        }
+        .dock-icon {
+            width: 48px; height: 48px; border-radius: 14px; background: white;
+            display: flex; align-items: center; justify-content: center; font-size: 1.4rem;
+            color: var(--text-primary); transition: all 0.3s var(--ease-out); box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        .dock-icon:hover { transform: translateY(-12px) scale(1.2); }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 1024px) {
+            .hero-container, .stacks-container, .widgets-grid, .snippet-grid, .contact-card { grid-template-columns: 1fr; }
+            .hero-title { font-size: 2.8rem; }
+            .menubar-nav { display: none; }
+        }
+    </style>
 </head>
 <body>
 
-<div class="title-bar">
-  <h1>INDUSTRIAL OPERATIONS DASHBOARD</h1>
-  <p>Interactive 3D Infrastructure & Energy Systems</p>
-</div>
+    <!-- MACOS TOP MENU BAR -->
+    <header class="menubar">
+        <div class="menubar-brand">
+            <!-- Header Brand SVG Logo Integration -->
+            <div class="logo-container">
+                <svg class="logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="42" stroke="url(#paint0_linear)" stroke-width="3"/>
+                    <circle cx="50" cy="50" r="32" stroke="#00f2fe" stroke-width="1.5" stroke-dasharray="4 2"/>
+                    <path d="M18 50 C 18 30, 82 30, 82 50 C 82 70, 18 70, 18 50 Z" stroke="#00f2fe" stroke-width="1.2" opacity="0.7"/>
+                    <polygon points="50,6 55,22 50,18 45,22" fill="#0284c7"/>
+                    <polygon points="50,94 55,78 50,82 45,78" fill="#0284c7"/>
+                    <polygon points="50,22 56,44 78,50 56,56 50,78 44,56 22,50 44,44" fill="url(#paint1_linear)"/>
+                    <defs>
+                        <linearGradient id="paint0_linear" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#00f2fe"/>
+                            <stop offset="1" stop-color="#0284c7"/>
+                        </linearGradient>
+                        <linearGradient id="paint1_linear" x1="22" y1="22" x2="78" y2="78" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#00f2fe"/>
+                            <stop offset="1" stop-color="#d946ef"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+            <span>Vihaanaa Tech Hubs</span>
+        </div>
+        <nav>
+            <ul class="menubar-nav">
+                <li><a href="#hero" class="menubar-link">Overview</a></li>
+                <li><a href="#stacks" class="menubar-link">Capabilities</a></li>
+                <li><a href="#widgets" class="menubar-link">Operations</a></li>
+                <li><a href="#contact" class="menubar-link">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="menubar-controls">
+            <button class="control-pill" id="controlToggle">
+                <i class="fa-solid fa-sliders"></i> Dynamic Wallpapers
+            </button>
+        </div>
+    </header>
 
-<div class="grid-container" id="gridContainer">
-  <div class="card-3d sec-1">
-    <div class="card-bg"></div>
-    <div class="card-content">
-      <h3>Structural Engineering</h3>
-      <p>Heavy Steel Infrastructure & Bridge Networks</p>
+    <!-- CONTROL CENTER DROPDOWN -->
+    <div class="control-center-panel" id="controlPanel">
+        <h4 style="font-size: 0.95rem; color: var(--text-secondary);">Dynamic Wallpapers</h4>
+        <div class="wallpaper-picker">
+            <div class="wp-option active" style="background: var(--wp-sonoma);" data-wp="sonoma" title="Sonoma Light"></div>
+            <div class="wp-option" style="background: var(--wp-ventura);" data-wp="ventura" title="Ventura Warm"></div>
+            <div class="wp-option" style="background: var(--wp-aurora);" data-wp="aurora" title="Aurora Night"></div>
+            <div class="wp-option" style="background: var(--wp-monterey);" data-wp="monterey" title="Monterey Blue"></div>
+        </div>
     </div>
-  </div>
 
-  <div class="card-3d sec-2">
-    <div class="card-bg"></div>
-    <div class="card-content">
-      <h3>Offshore Rig Operations</h3>
-      <p>Deep-Sea Extraction & Flare Stacks</p>
+    <!-- HERO & 3D INTERACTIVE CONSTRUCTION SHOWCASE -->
+    <section class="hero-container" id="hero">
+        <div>
+            <div class="hero-tag">
+                <i class="fa-solid fa-microchip"></i> Engineering & Sourcing Platform
+            </div>
+            <h1 class="hero-title">Integrated Technical Operations <span>Made Effortless.</span></h1>
+            <p class="hero-subtitle">Turnkey civil engineering, mechanical installations, precision instrumentation, and global procurement hub operating nationwide in Malaysia.</p>
+            <div class="cta-group">
+                <a href="#contact" class="btn-mac-primary"><i class="fa-solid fa-paper-plane"></i> Request Quote</a>
+                <a href="#stacks" class="btn-mac-glass"><i class="fa-solid fa-layer-group"></i> Explore</a>
+            </div>
+        </div>
+
+        <!-- 3D INTERACTIVE TILT SHOWCASE WITH CONSTRUCTION IMAGE TRANSITION -->
+        <div class="perspective-wrapper">
+            <div class="snippet-3d-card" id="tiltSnippet">
+                <div class="snippet-header">
+                    <div class="traffic-lights">
+                        <span class="light light-red"></span>
+                        <span class="light light-yellow"></span>
+                        <span class="light light-green"></span>
+                    </div>
+                    <span class="code-font" style="font-size: 0.8rem; color: var(--text-secondary);">site_execution.view</span>
+                </div>
+                
+                <!-- Interactive Construction Phase Transition -->
+                <div class="image-transition-container">
+                    <img src="https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?auto=format&fit=crop&w=1000&q=80" alt="Civil Construction Phase" class="img-base">
+                    <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1000&q=80" alt="Completed Technical Hub" class="img-overlay">
+                    <div class="transition-badge">
+                        <i class="fa-solid fa-arrows-rotate"></i> Hover to Transition Phase
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DESKTOP STACKS (INTERACTIVE CARD FAN OUT) -->
+    <section class="section-block" id="stacks">
+        <div class="section-header">
+            <h2>Services & Solutions Provided</h2>
+            <p>Hover over to reveal full engineering and procurement capabilities.</p>
+        </div>
+
+        <div class="stacks-container">
+            <!-- Stack 1: Sourcing & Supply -->
+            <div class="stack-group">
+                <div class="stack-card">
+                    <div>
+                        <div class="stack-icon"><i class="fa-solid fa-boxes-packing"></i></div>
+                        <h3>Global Procurement</h3>
+                        <p style="color: var(--text-secondary); margin-top: 0.5rem;">Raw materials, certified fittings, import/export logistics.</p>
+                    </div>
+                    <span class="code-font" style="font-size: 0.85rem; color: var(--accent-blue);">3 Active Services &rarr;</span>
+                </div>
+                <div class="stack-card">
+                    <h4>Import & Export Clearance</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Seamless customs compliance & cross-border freight.</p>
+                </div>
+                <div class="stack-card">
+                    <h4>Industrial Supplies</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">OEM spare parts and factory consumables.</p>
+                </div>
+            </div>
+
+            <!-- Stack 2: Civil & Structural -->
+            <div class="stack-group">
+                <div class="stack-card">
+                    <div>
+                        <div class="stack-icon" style="background: linear-gradient(135deg, var(--accent-orange), var(--accent-pink));">
+                            <i class="fa-solid fa-building-user"></i>
+                        </div>
+                        <h3>Civil Engineering</h3>
+                        <p style="color: var(--text-secondary); margin-top: 0.5rem;">Foundation works, structural paving, trenching, site prep.</p>
+                    </div>
+                    <span class="code-font" style="font-size: 0.85rem; color: var(--accent-orange);">Structural Focus &rarr;</span>
+                </div>
+                <div class="stack-card">
+                    <h4>Structural Concrete</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">High-durability site preparation and foundations.</p>
+                </div>
+                <div class="stack-card">
+                    <h4>Facility Modifications</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Upgrades and structural maintenance.</p>
+                </div>
+            </div>
+
+            <!-- Stack 3: M&E Works -->
+            <div class="stack-group">
+                <div class="stack-card">
+                    <div>
+                        <div class="stack-icon" style="background: linear-gradient(135deg, var(--accent-green), var(--accent-cyan));">
+                            <i class="fa-solid fa-gears"></i>
+                        </div>
+                        <h3>Mechanical & Electrical</h3>
+                        <p style="color: var(--text-secondary); margin-top: 0.5rem;">HVAC, piping networks, pumps, and electrical systems.</p>
+                    </div>
+                    <span class="code-font" style="font-size: 0.85rem; color: var(--accent-green);">Turnkey Execution &rarr;</span>
+                </div>
+                <div class="stack-card">
+                    <h4>Piping & Skid Assembly</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Modular fabrication and pump alignment.</p>
+                </div>
+                <div class="stack-card">
+                    <h4>Testing & Maintenance</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">24/7 rapid technical field support.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE MACOS WIDGETS -->
+    <section class="section-block" id="widgets">
+        <div class="section-header">
+            <h2>HSE & Quality Policy</h2>
+            <p>Real-time system operational metrics</p>
+        </div>
+
+        <div class="widgets-grid">
+            <!-- Clock Widget -->
+            <div class="widget widget-clock">
+                <div>
+                    <span class="code-font" style="text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; color: var(--text-secondary);">Kuala Lumpur, MY</span>
+                    <div class="clock-time" id="liveClock">12:53</div>
+                </div>
+                <div>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary);" id="clockWidget">System Active • All Nodes Online</p>
+                </div>
+            </div>
+
+            <!-- Operational Metric Widget -->
+            <div class="widget">
+                <h4 style="margin-bottom: 0.5rem;"><i class="fa-solid fa-chart-line" style="color: var(--accent-blue);"></i> Operational Metric</h4>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1rem;">
+                    <span style="font-size: 0.9rem; font-weight: 700;">Site Target Readiness</span>
+                    <span class="code-font" id="sliderVal" style="font-size: 1.2rem; font-weight: 800; color: var(--accent-blue);">95%</span>
+                </div>
+                <input type="range" class="metric-slider" id="timelineSlider" min="0" max="100" value="95">
+            </div>
+
+            <!-- Fast Contact Manager Widget -->
+            <div class="widget" style="background: linear-gradient(135deg, rgba(52,199,89,0.1), rgba(0,199,190,0.1));">
+                <div>
+                    <h4 style="margin-bottom: 0.5rem;"><i class="fa-solid fa-headset" style="color: var(--accent-green);"></i> Key Contact</h4>
+                    <p style="font-weight: 800; font-size: 1.1rem;">Morghan</p>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary);">Manager</p>
+                </div>
+                <a href="https://wa.me/60149725722" target="_blank" class="btn-mac-primary" style="margin-top: 1rem; width: 100%; justify-content: center; padding: 0.6rem;">
+                    <i class="fa-brands fa-whatsapp"></i> Chat Now
+                </a>
+            </div>
+        </div>
+
+        <!-- ROUTINE COMPLIANCE SNIPPETS -->
+        <div class="snippet-grid" style="margin-top: 2rem;">
+            <div class="routine-box">
+                <h3><i class="fa-solid fa-shield-halved" style="color: var(--accent-pink);"></i> Safety Compliance Routine</h3>
+                <div class="toggle-row">
+                    <span>DOSH / JKKP Standard</span>
+                    <div class="mac-switch active" onclick="this.classList.toggle('active')"></div>
+                </div>
+                <div class="toggle-row">
+                    <span>HIRARC Risk Assessment</span>
+                    <div class="mac-switch active" onclick="this.classList.toggle('active')"></div>
+                </div>
+                <div class="toggle-row">
+                    <span>Zero Harm Site Protocols</span>
+                    <div class="mac-switch active" onclick="this.classList.toggle('active')"></div>
+                </div>
+            </div>
+
+            <div class="routine-box">
+                <h3><i class="fa-solid fa-award" style="color: var(--accent-green);"></i> Quality Assurance Checklist</h3>
+                <div class="toggle-row">
+                    <span>Material Inspection Plans</span>
+                    <div class="mac-switch active" onclick="this.classList.toggle('active')"></div>
+                </div>
+                <div class="toggle-row">
+                    <span>QA/QC Documentation</span>
+                    <div class="mac-switch active" onclick="this.classList.toggle('active')"></div>
+                </div>
+                <div class="toggle-row">
+                    <span>ISO Compliance Validation</span>
+                    <div class="mac-switch active" onclick="this.classList.toggle('active')"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT PANEL -->
+    <section class="section-block" id="contact">
+        <div class="contact-card">
+            <div>
+                <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Let's Build Together</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 2rem;">Send us your procurement specifications, civil requirements, or tender documents.</p>
+                <div style="display: flex; flex-direction: column; gap: 1rem; font-weight: 600;">
+                    <div><i class="fa-solid fa-envelope" style="color: var(--accent-blue);"></i> smorghan9@gmail.com</div>
+                    <div><i class="fa-solid fa-phone" style="color: var(--accent-green);"></i> +6014 972 5722</div>
+                    <div><i class="fa-solid fa-location-dot" style="color: var(--accent-pink);"></i> Malaysia</div>
+                </div>
+            </div>
+            <form onsubmit="event.preventDefault(); alert('Inquiry sent successfully!');">
+                <label style="font-weight: 700; font-size: 0.9rem;">Your Name / Company</label>
+                <input type="text" class="mac-input" placeholder="e.g. Alex Tan" required>
+                
+                <label style="font-weight: 700; font-size: 0.9rem; margin-top: 1rem; display: block;">Service Required</label>
+                <select class="mac-input">
+                    <option>Global Procurement & Supply</option>
+                    <option>Civil Construction Works</option>
+                    <option>Mechanical & Electrical Services</option>
+                </select>
+
+                <button type="submit" class="btn-mac-primary" style="width: 100%; margin-top: 1.5rem; justify-content: center;">
+                    Submit Inquiry &rarr;
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FLOATING DOCK -->
+    <div class="dock-bar">
+        <a href="#hero" class="dock-icon" title="Home"><i class="fa-solid fa-house" style="color: var(--accent-blue);"></i></a>
+        <a href="#stacks" class="dock-icon" title="Capabilities"><i class="fa-solid fa-layer-group" style="color: var(--accent-purple);"></i></a>
+        <a href="#widgets" class="dock-icon" title="Operations"><i class="fa-solid fa-chart-simple" style="color: var(--accent-green);"></i></a>
+        <a href="https://wa.me/60149725722" target="_blank" class="dock-icon" title="WhatsApp"><i class="fa-brands fa-whatsapp" style="color: #25d366;"></i></a>
     </div>
-  </div>
 
-  <div class="card-3d sec-3">
-    <div class="card-bg"></div>
-    <div class="card-content">
-      <h3>Petrochemical Refining</h3>
-      <p>Processing Towers & Industrial Plants</p>
-    </div>
-  </div>
+    <!-- SYSTEM INTERACTION SCRIPT -->
+    <script>
+        // Live Clock Widget
+        function updateClock() {
+            const now = new Date();
+            const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            const liveClock = document.getElementById('liveClock');
+            if(liveClock) liveClock.textContent = timeStr;
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
 
-  <div class="card-3d sec-4">
-    <div class="card-bg"></div>
-    <div class="card-content">
-      <h3>Gas & Energy Pipelines</h3>
-      <p>Distribution Valves & Pressure Transport</p>
-    </div>
-  </div>
+        // Control Panel Toggle
+        const controlToggle = document.getElementById('controlToggle');
+        const controlPanel = document.getElementById('controlPanel');
+        if(controlToggle && controlPanel) {
+            controlToggle.addEventListener('click', () => {
+                controlPanel.classList.toggle('active');
+            });
+        }
 
-  <div class="card-3d sec-5">
-    <div class="card-bg"></div>
-    <div class="card-content">
-      <h3>Green Hydrogen Energy</h3>
-      <p>Sustainable H2 Fuel Cell Ecosystems</p>
-    </div>
-  </div>
+        // Dynamic Wallpaper Switcher
+        document.querySelectorAll('.wp-option').forEach(option => {
+            option.addEventListener('click', (e) => {
+                document.querySelectorAll('.wp-option').forEach(op => op.classList.remove('active'));
+                const target = e.currentTarget;
+                target.classList.add('active');
+                const wpTheme = target.getAttribute('data-wp');
+                document.documentElement.setAttribute('data-wallpaper', wpTheme);
+                
+                // Background update
+                if(wpTheme === 'sonoma') document.body.style.background = 'var(--wp-sonoma)';
+                if(wpTheme === 'ventura') document.body.style.background = 'var(--wp-ventura)';
+                if(wpTheme === 'aurora') document.body.style.background = 'var(--wp-aurora)';
+                if(wpTheme === 'monterey') document.body.style.background = 'var(--wp-monterey)';
+            });
+        });
 
-  <div class="card-3d sec-6">
-    <div class="card-bg"></div>
-    <div class="card-content">
-      <h3>Chemical Plants</h3>
-      <p>Continuous Distillation & Thermal Utilities</p>
-    </div>
-  </div>
+        // 3D Card Interactive Tilt Effect
+        const tiltSnippet = document.getElementById('tiltSnippet');
+        if(tiltSnippet) {
+            document.addEventListener('mousemove', (e) => {
+                const x = (window.innerWidth / 2 - e.pageX) / 45;
+                const y = (window.innerHeight / 2 - e.pageY) / 45;
+                tiltSnippet.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
+            });
+        }
 
-  <div class="card-3d sec-7">
-    <div class="card-bg"></div>
-    <div class="card-content">
-      <h3>Electrical Automation</h3>
-      <p>Distribution Panels & Power Circuits</p>
-    </div>
-  </div>
-
-  <div class="card-3d sec-8">
-    <div class="card-bg"></div>
-    <div class="card-content">
-      <h3>Modular Grid Tech</h3>
-      <p>Abstract 3D Hexagonal Network Array</p>
-    </div>
-  </div>
-</div>
-
-<script>
-  // Automated Hover Routine
-  const cards = document.querySelectorAll('.card-3d');
-  let currentIndex = 0;
-  let autoHoverInterval = null;
-  let userInteracting = false;
-
-  function triggerAutoHover() {
-    if (userInteracting) return;
-    
-    cards.forEach(card => card.classList.remove('auto-hover'));
-    cards[currentIndex].classList.add('auto-hover');
-    
-    currentIndex = (currentIndex + 1) % cards.length;
-  }
-
-  // Start continuous hover sequence
-  function startRoutine() {
-    autoHoverInterval = setInterval(triggerAutoHover, 2200);
-  }
-
-  // Mouse Tracking Tilt Effect
-  cards.forEach(card => {
-    card.addEventListener('mouseenter', () => {
-      userInteracting = true;
-      cards.forEach(c => c.classList.remove('auto-hover'));
-    });
-
-    card.addEventListener('mousemove', (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left - rect.width / 2;
-      const y = e.clientY - rect.top - rect.height / 2;
-
-      const rotateX = (-y / rect.height) * 20;
-      const rotateY = (x / rect.width) * 20;
-
-      card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(30px)`;
-    });
-
-    card.addEventListener('mouseleave', () => {
-      card.style.transform = '';
-      userInteracting = false;
-    });
-  });
-
-  startRoutine();
-</script>
-
+        // Interactive Range Slider
+        const slider = document.getElementById('timelineSlider');
+        const sliderVal = document.getElementById('sliderVal');
+        if(slider && sliderVal) {
+            slider.addEventListener('input', (e) => {
+                sliderVal.textContent = `${e.target.value}%`;
+            });
+        }
+    </script>
 </body>
 </html>
