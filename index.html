@@ -1,1158 +1,600 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-wallpaper="sonoma">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vihaanaa Tech Hubs | Engineering & Technical Services Malaysia</title>
+    <title>Vihaanaa Tech Hubs | Engineering & Industrial OS</title>
     
-    <!-- Google Fonts -->
+    <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-    
-    <!-- FontAwesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
-        /* --- MACBOOK STUNNING LIGHT DESIGN SYSTEM & PALETTE --- */
+        /* --- MACOS SYSTEM DESIGN VARIABLES --- */
         :root {
-            /* Bright macOS Vibrant Wallpapers & Accent Colors */
-            --mac-bg-light: #f8fafc;
-            --mac-blue: #007aff;
-            --mac-cyan: #00c7be;
-            --mac-purple: #af52de;
-            --mac-pink: #ff2d55;
-            --mac-orange: #ff9500;
-            --mac-green: #34c759;
-            --mac-indigo: #5856d6;
-            
-            /* Glassmorphism Surface Defaults */
-            --glass-bg: rgba(255, 255, 255, 0.65);
-            --glass-card: rgba(255, 255, 255, 0.75);
+            /* Dynamic Wallpaper Themes */
+            --wp-sonoma: radial-gradient(at 10% 10%, #e0f2fe 0%, #f3e8ff 35%, #fce7f3 70%, #f8fafc 100%);
+            --wp-ventura: linear-gradient(135deg, #fef3c7 0%, #fed7aa 35%, #fce7f3 70%, #f1f5f9 100%);
+            --wp-aurora: linear-gradient(135deg, #0f172a 0%, #1e1b4b 40%, #311042 100%);
+            --wp-monterey: radial-gradient(at 90% 10%, #dbeafe 0%, #e0e7ff 40%, #fae8ff 100%);
+
+            /* Default Surface & Accent Colors */
+            --accent-blue: #007aff;
+            --accent-cyan: #00c7be;
+            --accent-purple: #af52de;
+            --accent-pink: #ff2d55;
+            --accent-orange: #ff9500;
+            --accent-green: #34c759;
+
+            /* Glassmorphism Surfaces */
+            --glass-surface: rgba(255, 255, 255, 0.68);
+            --glass-card: rgba(255, 255, 255, 0.82);
             --glass-border: rgba(255, 255, 255, 0.9);
-            --glass-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.07);
-            --mac-glow: 0 10px 30px rgba(0, 122, 255, 0.15);
-            
-            /* Section Dynamic Themes */
-            --hero-bg: radial-gradient(circle at 10% 20%, #e0f2fe 0%, #f3e8ff 40%, #fce7f3 70%, #f8fafc 100%);
-            --about-bg: linear-gradient(135deg, rgba(254, 243, 199, 0.6) 0%, rgba(254, 215, 170, 0.6) 50%, rgba(253, 230, 138, 0.4) 100%);
-            --services-bg: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 50%, #e0e7ff 100%);
-            --hse-bg: linear-gradient(135deg, #dcfce7 0%, #fef3c7 50%, #ffe4e6 100%);
-            
-            --text-main: #0f172a;
-            --text-muted: #475569;
-            --text-light: #ffffff;
-            --radius-md: 22px;
+            --glass-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.12);
+            --glass-blur: blur(30px);
+
+            /* Dynamic Theme Text */
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-inverse: #ffffff;
+            --radius-sm: 14px;
+            --radius-md: 24px;
             --radius-lg: 36px;
-            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        /* --- GLOBAL RESET & SMOOTH SCROLL --- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Plus Jakarta Sans', sans-serif;
+        /* Dark Wallpaper Override Mode */
+        [data-wallpaper="aurora"] {
+            --glass-surface: rgba(15, 23, 42, 0.65);
+            --glass-card: rgba(30, 41, 59, 0.75);
+            --glass-border: rgba(255, 255, 255, 0.12);
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --glass-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
         }
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 90px;
-            background-color: var(--mac-bg-light);
-        }
+
+        /* --- GLOBAL RESET & TYPOGRAPHY --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+        html { scroll-behavior: smooth; background-color: #0f172a; }
         body {
-            color: var(--text-main);
+            color: var(--text-primary);
+            min-height: 100vh;
+            background: var(--wp-sonoma);
+            transition: background 0.8s var(--ease-out);
             overflow-x: hidden;
-            line-height: 1.6;
-            background: var(--mac-bg-light);
         }
-        h1, h2, h3, h4, h5 {
-            font-family: 'Outfit', sans-serif;
-            font-weight: 800;
-        }
-        .code-font {
-            font-family: 'Space Grotesk', monospace;
-        }
+        h1, h2, h3, h4 { font-family: 'Outfit', sans-serif; font-weight: 800; letter-spacing: -0.02em; }
+        .code-font { font-family: 'Space Grotesk', monospace; }
         a { text-decoration: none; color: inherit; }
 
-        /* --- AMBIENT VIBRANT MESH OVERLAY --- */
-        .ambient-grid {
-            position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
-            background-image: 
-                radial-gradient(rgba(0, 122, 255, 0.05) 1px, transparent 0),
-                linear-gradient(to right, rgba(0, 0, 0, 0.015) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(0, 0, 0, 0.015) 1px, transparent 1px);
-            background-size: 40px 40px, 80px 80px, 80px 80px;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        /* --- MACBOOK FROSTED GLASS NAVBAR --- */
-        .navbar {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 85px;
-            background: rgba(255, 255, 255, 0.72);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
+        /* --- MACOS MENU BAR & CONTROL CENTER --- */
+        .menubar {
+            position: fixed; top: 0; left: 0; right: 0; height: 52px;
+            background: var(--glass-surface);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
             border-bottom: 1px solid var(--glass-border);
-            z-index: 1000;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 6%;
-            transition: var(--transition);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+            z-index: 2000;
+            display: flex; justify-space-between; align-items: center;
+            padding: 0 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
         }
-        .navbar.scrolled {
-            height: 72px;
-            background: rgba(255, 255, 255, 0.88);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            border-bottom-color: rgba(0, 122, 255, 0.15);
-        }
-        .brand-logo {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
-        .logo-svg {
-            width: 48px;
-            height: 48px;
-            filter: drop-shadow(0 4px 10px rgba(0,122,255,0.25));
-            transition: var(--transition);
-        }
-        .brand-logo:hover .logo-svg {
-            transform: rotate(90deg) scale(1.08);
-        }
-        .brand-title {
-            font-size: 1.35rem;
-            font-weight: 900;
-            color: var(--text-main);
-            letter-spacing: 0.5px;
-            line-height: 1;
-        }
-        .brand-subtitle {
-            font-size: 0.75rem;
-            font-weight: 800;
-            color: var(--mac-blue);
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-        .nav-menu {
-            display: flex;
-            align-items: center;
-            gap: 2.2rem;
-            list-style: none;
-        }
-        .nav-link {
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: var(--text-muted);
-            position: relative;
-            padding: 8px 0;
-            transition: var(--transition);
-        }
-        .nav-link:hover, .nav-link.active {
-            color: var(--mac-blue);
-        }
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: 0; left: 0; width: 0%; height: 2px;
-            background: linear-gradient(90deg, var(--mac-blue), var(--mac-purple));
-            transition: var(--transition);
-            border-radius: 2px;
-        }
-        .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+        .menubar-brand { display: flex; align-items: center; gap: 12px; font-weight: 800; font-size: 1.05rem; }
+        .apple-logo { font-size: 1.2rem; color: var(--accent-blue); }
+        .menubar-nav { display: flex; gap: 1.8rem; list-style: none; }
+        .menubar-link { font-size: 0.9rem; font-weight: 600; color: var(--text-secondary); transition: color 0.2s; }
+        .menubar-link:hover { color: var(--accent-blue); }
+        .menubar-controls { display: flex; align-items: center; gap: 1rem; }
         
-        .btn-header {
-            background: linear-gradient(135deg, var(--mac-blue) 0%, var(--mac-indigo) 100%);
-            color: #ffffff !important;
-            padding: 0.7rem 1.5rem;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 0.9rem;
-            box-shadow: var(--mac-glow);
-            transition: var(--transition);
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .btn-header:hover {
-            transform: translateY(-2px) scale(1.02);
-            box-shadow: 0 12px 35px rgba(0, 122, 255, 0.35);
-        }
-        .mobile-toggle {
-            display: none;
-            font-size: 1.8rem;
-            color: var(--text-main);
-            cursor: pointer;
-        }
-
-        /* --- 1. HERO SECTION (BRIGHT DYNAMIC DESKTOP WALLPAPER) --- */
-        .hero {
-            position: relative;
-            padding: 170px 6% 120px;
-            background: var(--hero-bg);
-            color: var(--text-main);
-            overflow: hidden;
-            z-index: 1;
-        }
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1.15fr 0.85fr;
-            gap: 4rem;
-            align-items: center;
-            max-width: 1350px;
-            margin: 0 auto;
-        }
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: rgba(255, 255, 255, 0.8);
+        /* Stunning Control Toggles */
+        .control-pill {
+            background: var(--glass-card);
             border: 1px solid var(--glass-border);
-            padding: 8px 20px;
-            border-radius: 50px;
-            font-size: 0.88rem;
-            font-weight: 800;
-            color: var(--mac-blue);
-            box-shadow: 0 10px 25px rgba(0, 122, 255, 0.08);
-            margin-bottom: 1.8rem;
-            backdrop-filter: blur(15px);
+            padding: 6px 14px; border-radius: 50px;
+            display: flex; align-items: center; gap: 8px;
+            font-size: 0.82rem; font-weight: 700; color: var(--text-primary);
+            cursor: pointer; transition: all 0.3s var(--ease-out);
         }
-        .hero-badge i { animation: pulse 2s infinite; }
-        @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.6; transform: scale(1.2); } }
+        .control-pill:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
 
-        .hero h1 {
-            font-size: 3.8rem;
-            line-height: 1.15;
-            margin-bottom: 1.5rem;
-            letter-spacing: -1px;
-            color: #0f172a;
-        }
-        .hero h1 span {
-            background: linear-gradient(135deg, var(--mac-blue) 0%, var(--mac-purple) 50%, var(--mac-pink) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .hero p {
-            font-size: 1.18rem;
-            color: var(--text-muted);
-            margin-bottom: 2.5rem;
-            max-width: 650px;
-            font-weight: 500;
-        }
-        .hero-actions {
-            display: flex;
-            gap: 1.4rem;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-        .btn-primary-glow {
-            background: linear-gradient(135deg, var(--mac-blue) 0%, var(--mac-indigo) 100%);
-            color: #ffffff;
-            padding: 1.05rem 2.4rem;
-            border-radius: 16px;
-            font-weight: 700;
-            font-size: 1rem;
-            box-shadow: 0 12px 30px rgba(0, 122, 255, 0.3);
-            transition: var(--transition);
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .btn-primary-glow:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 18px 40px rgba(0, 122, 255, 0.45);
-        }
-        .btn-outline-glow {
-            background: rgba(255, 255, 255, 0.7);
-            color: var(--text-main);
+        /* --- CONTROL CENTER DROPDOWN --- */
+        .control-center-panel {
+            position: fixed; top: 62px; right: 2rem; width: 320px;
+            background: var(--glass-card);
+            backdrop-filter: var(--glass-blur);
             border: 1px solid var(--glass-border);
-            padding: 1.05rem 2.2rem;
-            border-radius: 16px;
-            font-weight: 700;
-            font-size: 1rem;
-            backdrop-filter: blur(15px);
-            transition: var(--transition);
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.03);
-        }
-        .btn-outline-glow:hover {
-            background: #ffffff;
-            border-color: var(--mac-blue);
-            box-shadow: 0 15px 35px rgba(0, 122, 255, 0.15);
-        }
-
-        /* HERO LIGHT MAC OS WINDOW APPS VISUAL */
-        .hero-snippet-window {
-            background: rgba(255, 255, 255, 0.85);
-            border: 1px solid rgba(255, 255, 255, 0.9);
             border-radius: var(--radius-md);
-            padding: 1.8rem;
-            box-shadow: 0 30px 60px rgba(15, 23, 42, 0.08), 0 0 40px rgba(0, 122, 255, 0.08);
-            backdrop-filter: blur(30px);
-            position: relative;
-        }
-        .snippet-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding-bottom: 12px;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-            margin-bottom: 15px;
-        }
-        .snippet-dots { display: flex; gap: 8px; }
-        .dot { width: 12px; height: 12px; border-radius: 50%; }
-        .dot-red { background: #ff5f56; border: 0.5px solid #e0443e; }
-        .dot-yellow { background: #ffbd2e; border: 0.5px solid #dea123; }
-        .dot-green { background: #27c93f; border: 0.5px solid #1aab29; }
-        .snippet-title { font-size: 0.8rem; color: var(--text-muted); letter-spacing: 1px; font-weight: 600; }
-        .snippet-body { font-size: 0.9rem; line-height: 1.8; color: #1e293b; }
-        .code-keyword { color: var(--mac-pink); font-weight: bold; }
-        .code-func { color: var(--mac-blue); font-weight: 600; }
-        .code-string { color: var(--mac-green); font-weight: 600; }
-        .code-num { color: var(--mac-orange); font-weight: bold; }
-
-        .card-logo-container {
-            width: 95px;
-            height: 95px;
-            margin: 1.5rem auto 0;
-            background: radial-gradient(circle, rgba(224,242,254,0.8) 0%, rgba(255,255,255,0.95) 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px solid #ffffff;
-            box-shadow: 0 15px 30px rgba(0, 122, 255, 0.15);
-            animation: floatAnim 4s ease-in-out infinite;
-        }
-        @keyframes floatAnim {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-
-        /* --- 2. STATS QUICK BAR (FROSTED GLASS CARD) --- */
-        .stats-bar-wrapper {
-            max-width: 1300px;
-            margin: -50px auto 0;
-            padding: 0 20px;
-            position: relative;
-            z-index: 20;
-        }
-        .stats-grid {
-            background: rgba(255, 255, 255, 0.82);
-            border-radius: var(--radius-md);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            padding: 2rem 2.2rem;
-            gap: 1.5rem;
-            border: 1px solid var(--glass-border);
-            backdrop-filter: blur(30px);
-        }
-        .stat-item {
-            display: flex;
-            align-items: center;
-            gap: 1.2rem;
-            border-right: 1px solid rgba(0, 0, 0, 0.06);
-            padding-right: 1rem;
-        }
-        .stat-item:last-child { border-right: none; }
-        .stat-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--mac-green) 0%, #16a34a 100%);
-            color: #ffffff;
-            border-radius: 18px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.6rem;
-            box-shadow: 0 10px 20px rgba(52, 199, 89, 0.25);
-            flex-shrink: 0;
-        }
-        .stat-num {
-            font-size: 1.65rem;
-            font-weight: 900;
-            color: #065f46;
-            line-height: 1.1;
-        }
-        .stat-label {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            font-weight: 700;
-        }
-
-        /* --- SECTION BASE HEADERS --- */
-        section, .section-block {
-            padding: 110px 6%;
-            max-width: 1350px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-        .section-header {
-            text-align: center;
-            max-width: 750px;
-            margin: 0 auto 4.5rem;
-        }
-        .section-tag {
-            font-size: 0.88rem;
-            font-weight: 800;
-            letter-spacing: 2.5px;
-            text-transform: uppercase;
-            margin-bottom: 0.8rem;
-            display: inline-block;
-            padding: 6px 18px;
-            border-radius: 30px;
-            background: rgba(255, 255, 255, 0.8);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-            border: 1px solid var(--glass-border);
-        }
-        .section-title {
-            font-size: 2.8rem;
-            line-height: 1.2;
-            margin-bottom: 1rem;
-            color: var(--text-main);
-        }
-        .section-desc {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            font-weight: 500;
-        }
-
-        /* --- 3. ABOUT SECTION (SUNSET BRIGHT ACCENT) --- */
-        #about-container {
-            background: var(--about-bg);
-            border-radius: var(--radius-lg);
-            margin: 80px auto;
-            padding: 90px 6%;
-            max-width: 1350px;
-            box-shadow: var(--glass-shadow);
-            border: 1px solid var(--glass-border);
-        }
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4.5rem;
-            align-items: center;
-        }
-        .about-content h3 {
-            font-size: 2.1rem;
-            color: #854d0e;
-            margin-bottom: 1.2rem;
-            line-height: 1.25;
-        }
-        .about-content p {
-            color: #713f12;
-            font-size: 1.05rem;
-            margin-bottom: 1.5rem;
-        }
-        .values-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.4rem;
-            margin-top: 2rem;
-        }
-        .value-box {
-            background: rgba(255, 255, 255, 0.85);
             padding: 1.5rem;
-            border-radius: 18px;
-            border-left: 6px solid var(--mac-orange);
-            box-shadow: 0 10px 25px rgba(245, 158, 11, 0.08);
-            backdrop-filter: blur(15px);
-            transition: var(--transition);
-        }
-        .value-box:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 15px 30px rgba(245, 158, 11, 0.15);
-        }
-        .value-box h4 {
-            color: var(--mac-orange);
-            font-size: 1.15rem;
-            margin-bottom: 0.4rem;
-        }
-        .value-box p {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            margin: 0;
-        }
-        .about-image-wrapper { position: relative; }
-        .about-img {
-            width: 100%;
-            border-radius: var(--radius-md);
-            box-shadow: 0 25px 50px rgba(133, 77, 14, 0.15);
-            object-fit: cover;
-            height: 480px;
-        }
-        .about-floating-badge {
-            position: absolute;
-            bottom: -25px;
-            left: -25px;
-            background: rgba(255, 255, 255, 0.92);
-            color: var(--text-main);
-            padding: 1.5rem 1.8rem;
-            border-radius: var(--radius-md);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            display: flex;
-            align-items: center;
-            gap: 1.2rem;
-            border: 1px solid var(--glass-border);
-            backdrop-filter: blur(20px);
-        }
-
-        /* --- 4. SERVICES SECTION (BRIGHT SKY MESH) --- */
-        .services-bg-wrapper {
-            background: var(--services-bg);
-            padding: 100px 6%;
-            color: var(--text-main);
-            border-radius: var(--radius-lg);
-            max-width: 1380px;
-            margin: 0 auto;
             box-shadow: var(--glass-shadow);
-            border: 1px solid var(--glass-border);
+            z-index: 2001;
+            display: none; flex-direction: column; gap: 1.2rem;
+            animation: slideDown 0.3s var(--ease-out);
         }
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2.2rem;
-        }
-        .service-card {
-            background: rgba(255, 255, 255, 0.75);
-            backdrop-filter: blur(20px);
-            border-radius: var(--radius-md);
-            padding: 2.5rem 2rem;
-            border: 1px solid var(--glass-border);
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
-        }
-        .service-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            background: rgba(255, 255, 255, 0.95);
-            border-color: var(--mac-blue);
-            box-shadow: 0 20px 40px rgba(0, 122, 255, 0.12);
-        }
-        .service-card-icon {
-            width: 62px;
-            height: 62px;
-            background: linear-gradient(135deg, var(--mac-blue) 0%, var(--mac-cyan) 100%);
-            color: #ffffff;
-            border-radius: 18px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.7rem;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 10px 22px rgba(0, 122, 255, 0.25);
-        }
-        .service-card h3 {
-            font-size: 1.4rem;
-            color: var(--text-main);
-            margin-bottom: 0.9rem;
-        }
-        .service-card p {
-            color: var(--text-muted);
-            font-size: 0.98rem;
-            line-height: 1.6;
-        }
-
-        /* --- 5. HSE & QUALITY SECTION --- */
-        #hse-container {
-            background: var(--hse-bg);
-            padding: 90px 6%;
-            border-radius: var(--radius-lg);
-            margin: 80px auto;
-            max-width: 1350px;
-            box-shadow: var(--glass-shadow);
-            border: 1px solid var(--glass-border);
-        }
-        .hse-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-        }
-        .hse-card {
-            background: rgba(255, 255, 255, 0.88);
-            border-radius: var(--radius-md);
-            padding: 3rem 2.5rem;
-            transition: var(--transition);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-        }
-        .hse-card:hover { transform: translateY(-5px); }
-        .hse-card.safety {
-            border-top: 6px solid var(--mac-pink);
-            box-shadow: 0 15px 35px rgba(255, 45, 85, 0.1);
-        }
-        .hse-card.quality {
-            border-top: 6px solid var(--mac-green);
-            box-shadow: 0 15px 35px rgba(52, 199, 89, 0.1);
-        }
-        .hse-card-header {
-            display: flex;
-            align-items: center;
-            gap: 1.2rem;
-            margin-bottom: 1.8rem;
-            padding-bottom: 1.2rem;
-            border-bottom: 2px solid rgba(0, 0, 0, 0.05);
-        }
-        .hse-card-header.safety i { font-size: 2rem; color: var(--mac-pink); }
-        .hse-card-header.quality i { font-size: 2rem; color: var(--mac-green); }
-        .hse-card-header h3 { font-size: 1.6rem; color: var(--text-main); }
-        .hse-list { list-style: none; }
-        .hse-list li {
-            display: flex;
-            align-items: flex-start;
-            gap: 14px;
-            margin-bottom: 1.2rem;
-            color: var(--text-muted);
-            font-size: 1.02rem;
-            font-weight: 500;
-        }
-
-        /* --- 6. CONTACT SECTION (MAC STYLED GLASS CARDS) --- */
-        #contact {
-            padding: 90px 6% 120px;
-        }
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 0.85fr 1.15fr;
-            gap: 3.5rem;
-            align-items: start;
-        }
-        .contact-info-panel {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            color: #ffffff;
-            border-radius: var(--radius-md);
-            padding: 3.5rem 2.8rem;
-            border-left: 8px solid var(--mac-orange);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.12);
-        }
-        .contact-info-panel h3 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            color: #ffffff;
-        }
-        .contact-info-panel p {
-            color: #94a3b8;
-            margin-bottom: 2.8rem;
-            font-size: 1.05rem;
-        }
-        .info-row {
-            display: flex;
-            align-items: flex-start;
-            gap: 1.4rem;
-            margin-bottom: 2rem;
-        }
-        .info-row-icon {
-            width: 52px;
-            height: 52px;
-            background: rgba(255, 149, 0, 0.18);
-            color: var(--mac-orange);
-            border: 1px solid rgba(255, 149, 0, 0.3);
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.4rem;
-            flex-shrink: 0;
-        }
-        .info-row label {
-            display: block;
-            font-size: 0.82rem;
-            color: #94a3b8;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            font-weight: 800;
-            margin-bottom: 2px;
-        }
-        .info-row span {
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: #ffffff;
-        }
+        .control-center-panel.active { display: flex; }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
         
-        .contact-form-panel {
-            background: rgba(255, 255, 255, 0.85);
-            border-radius: var(--radius-md);
-            padding: 3.5rem 3rem;
-            box-shadow: var(--glass-shadow);
-            border: 1px solid var(--glass-border);
-            backdrop-filter: blur(25px);
+        .wallpaper-picker { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 8px; }
+        .wp-option {
+            height: 42px; border-radius: 10px; cursor: pointer; border: 2px solid transparent;
+            transition: transform 0.2s;
         }
-        .form-group { margin-bottom: 1.6rem; }
-        .form-group label {
-            display: block;
-            margin-bottom: 0.6rem;
-            font-weight: 700;
-            font-size: 0.95rem;
-            color: var(--text-main);
+        .wp-option:hover { transform: scale(1.08); }
+        .wp-option.active { border-color: var(--accent-blue); }
+
+        /* --- HERO & INTERACTIVE 3D SNIPPETS --- */
+        .hero-container {
+            padding: 150px 6% 80px; max-width: 1400px; margin: 0 auto;
+            display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 4rem; align-items: center;
         }
-        .form-control {
-            width: 100%;
-            padding: 1rem 1.2rem;
-            border: 1.5px solid rgba(0, 0, 0, 0.08);
-            border-radius: 14px;
-            font-size: 1rem;
-            transition: var(--transition);
-            outline: none;
-            background: rgba(255, 255, 255, 0.9);
-            color: var(--text-main);
+        .hero-tag {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(0, 122, 255, 0.1); border: 1px solid rgba(0, 122, 255, 0.2);
+            color: var(--accent-blue); padding: 8px 18px; border-radius: 50px;
+            font-size: 0.85rem; font-weight: 800; text-transform: uppercase; margin-bottom: 1.5rem;
         }
-        .form-control:focus {
-            border-color: var(--mac-blue);
-            background: #ffffff;
-            box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.15);
+        .hero-title { font-size: 3.8rem; line-height: 1.1; margin-bottom: 1.5rem; }
+        .hero-title span {
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple), var(--accent-pink));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .hero-subtitle { font-size: 1.2rem; color: var(--text-secondary); margin-bottom: 2.5rem; line-height: 1.6; }
+
+        /* Apple Glass Button & Toggles */
+        .cta-group { display: flex; gap: 1.2rem; align-items: center; }
+        .btn-mac-primary {
+            background: linear-gradient(135deg, var(--accent-blue), #0051a8);
+            color: white; padding: 1rem 2.2rem; border-radius: 16px;
+            font-weight: 700; font-size: 1rem; border: none; cursor: pointer;
+            box-shadow: 0 10px 25px rgba(0, 122, 255, 0.3); transition: all 0.3s var(--ease-out);
+            display: inline-flex; align-items: center; gap: 10px;
+        }
+        .btn-mac-primary:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 15px 35px rgba(0, 122, 255, 0.45); }
+        
+        .btn-mac-glass {
+            background: var(--glass-card); border: 1px solid var(--glass-border);
+            color: var(--text-primary); padding: 1rem 2rem; border-radius: 16px;
+            font-weight: 700; font-size: 1rem; cursor: pointer; backdrop-filter: var(--glass-blur);
+            transition: all 0.3s var(--ease-out); display: inline-flex; align-items: center; gap: 10px;
+        }
+        .btn-mac-glass:hover { transform: translateY(-3px); background: rgba(255, 255, 255, 0.95); }
+
+        /* 3D INTERACTIVE TILT SNIPPET */
+        .perspective-wrapper { perspective: 1000px; }
+        .snippet-3d-card {
+            background: var(--glass-card); border: 1px solid var(--glass-border);
+            border-radius: var(--radius-md); padding: 2rem; box-shadow: var(--glass-shadow);
+            backdrop-filter: var(--glass-blur); transform-style: preserve-3d;
+            transition: transform 0.15s ease-out; position: relative;
+        }
+        .snippet-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
+        .traffic-lights { display: flex; gap: 8px; }
+        .light { width: 13px; height: 13px; border-radius: 50%; }
+        .light-red { background: #ff5f56; } .light-yellow { background: #ffbd2e; } .light-green { background: #27c93f; }
+        
+        /* Larger High Contrast Interactive Snippet Content */
+        .snippet-content { font-size: 1.05rem; line-height: 1.8; color: var(--text-primary); }
+        .code-tag { color: var(--accent-pink); font-weight: 700; }
+        .code-val { color: var(--accent-green); font-weight: 600; }
+        .code-func { color: var(--accent-blue); font-weight: 700; }
+
+        /* --- DESKTOP STACKS (INTERACTIVE CARD FAN OUT) --- */
+        .section-block { padding: 90px 6%; max-width: 1400px; margin: 0 auto; }
+        .section-header { text-align: center; max-width: 700px; margin: 0 auto 4rem; }
+        .section-header h2 { font-size: 2.8rem; margin-bottom: 1rem; }
+        .section-header p { font-size: 1.1rem; color: var(--text-secondary); }
+
+        .stacks-container {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem;
+        }
+        .stack-group { position: relative; height: 380px; cursor: pointer; }
+        .stack-card {
+            position: absolute; inset: 0; background: var(--glass-card);
+            border: 1px solid var(--glass-border); border-radius: var(--radius-md);
+            padding: 2.2rem; box-shadow: var(--glass-shadow); backdrop-filter: var(--glass-blur);
+            transition: all 0.4s var(--ease-out); display: flex; flex-direction: column; justify-content: space-between;
+        }
+        /* Stack Card Offsets for 3D Fan Effect */
+        .stack-card:nth-child(1) { transform: translateY(0) scale(1); z-index: 3; }
+        .stack-card:nth-child(2) { transform: translateY(-14px) scale(0.95); z-index: 2; opacity: 0.85; }
+        .stack-card:nth-child(3) { transform: translateY(-28px) scale(0.9); z-index: 1; opacity: 0.6; }
+
+        .stack-group:hover .stack-card:nth-child(1) { transform: translateY(10px) rotate(-2deg); }
+        .stack-group:hover .stack-card:nth-child(2) { transform: translateY(-20px) rotate(3deg); opacity: 0.95; }
+        .stack-group:hover .stack-card:nth-child(3) { transform: translateY(-50px) rotate(-1deg); opacity: 0.9; }
+
+        .stack-icon {
+            width: 60px; height: 60px; border-radius: 18px;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+            color: white; display: flex; align-items: center; justify-content: center;
+            font-size: 1.6rem; margin-bottom: 1.5rem; box-shadow: 0 10px 20px rgba(0, 122, 255, 0.2);
         }
 
-        /* FOOTER */
-        footer {
-            background: #ffffff;
-            color: var(--text-muted);
-            text-align: center;
-            padding: 2.5rem 6%;
-            border-top: 1px solid rgba(0,0,0,0.06);
-            font-size: 0.95rem;
-            position: relative;
-            z-index: 1;
-            font-weight: 600;
+        /* --- INTERACTIVE MACOS WIDGETS GRID --- */
+        .widgets-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 2rem; margin-top: 3rem; }
+        .widget {
+            background: var(--glass-card); border: 1px solid var(--glass-border);
+            border-radius: var(--radius-md); padding: 2rem; box-shadow: var(--glass-shadow);
+            backdrop-filter: var(--glass-blur); transition: transform 0.3s var(--ease-out);
         }
+        .widget:hover { transform: translateY(-5px); }
+        .widget-clock { display: flex; flex-direction: column; justify-content: space-between; background: linear-gradient(135deg, rgba(0,122,255,0.1), rgba(175,82,222,0.1)); }
+        .clock-time { font-size: 3.5rem; font-weight: 800; font-family: 'Space Grotesk'; color: var(--accent-blue); line-height: 1; }
+        
+        .metric-slider { width: 100%; margin-top: 1rem; accent-color: var(--accent-blue); cursor: pointer; }
 
-        /* FLOATING WHATSAPP CTA */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 35px;
-            right: 35px;
-            width: 65px;
-            height: 65px;
-            background: #25d366;
-            color: #ffffff;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.2rem;
-            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
-            z-index: 999;
-            transition: var(--transition);
-            animation: waPulse 2s infinite;
+        /* --- ROUTINE SNIPPETS & COMPLIANCE TOGGLES --- */
+        .snippet-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+        .routine-box {
+            background: var(--glass-card); border: 1px solid var(--glass-border);
+            border-radius: var(--radius-md); padding: 2.2rem; box-shadow: var(--glass-shadow); backdrop-filter: var(--glass-blur);
         }
-        @keyframes waPulse {
-            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6); }
-            70% { box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
-        }
-        .whatsapp-float:hover {
-            transform: scale(1.12) rotate(8deg);
-        }
+        .routine-box h3 { font-size: 1.5rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 10px; }
 
-        /* RESPONSIVE BREAKPOINTS */
+        /* MacOS Toggle Switch */
+        .toggle-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .mac-switch {
+            width: 50px; height: 28px; background: #cbd5e1; border-radius: 20px;
+            position: relative; cursor: pointer; transition: background 0.3s;
+        }
+        .mac-switch.active { background: var(--accent-green); }
+        .mac-switch::after {
+            content: ''; position: absolute; top: 2px; left: 2px; width: 24px; height: 24px;
+            background: white; border-radius: 50%; transition: transform 0.3s var(--ease-out);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .mac-switch.active::after { transform: translateX(22px); }
+
+        /* --- CONTACT & FOOTER --- */
+        .contact-card {
+            background: var(--glass-card); border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg); padding: 3.5rem; box-shadow: var(--glass-shadow);
+            backdrop-filter: var(--glass-blur); display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+        }
+        .mac-input {
+            width: 100%; padding: 1.1rem; border-radius: 14px; border: 1px solid var(--glass-border);
+            background: rgba(255, 255, 255, 0.6); color: var(--text-primary); font-size: 1rem;
+            outline: none; margin-top: 8px; transition: border 0.2s;
+        }
+        .mac-input:focus { border-color: var(--accent-blue); background: white; }
+
+        /* --- DOCK & FLOATING ACTION --- */
+        .dock-bar {
+            position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+            background: var(--glass-surface); border: 1px solid var(--glass-border);
+            border-radius: 24px; padding: 10px 18px; display: flex; gap: 16px;
+            box-shadow: var(--glass-shadow); backdrop-filter: var(--glass-blur); z-index: 2000;
+        }
+        .dock-icon {
+            width: 48px; height: 48px; border-radius: 14px; background: white;
+            display: flex; align-items: center; justify-content: center; font-size: 1.4rem;
+            color: var(--text-primary); transition: all 0.3s var(--ease-out); box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        .dock-icon:hover { transform: translateY(-12px) scale(1.2); }
+
+        /* Responsive Breakpoints */
         @media (max-width: 1024px) {
-            .hero-grid, .about-grid, .contact-grid, .hse-grid { grid-template-columns: 1fr; }
-            .services-grid { grid-template-columns: repeat(2, 1fr); }
-            .stats-grid { grid-template-columns: repeat(2, 1fr); }
-            .stat-item {
-                border-right: none;
-                border-bottom: 1px solid rgba(0,0,0,0.06);
-                padding-bottom: 1.2rem;
-            }
-            .hero h1 { font-size: 3rem; }
-        }
-        @media (max-width: 768px) {
-            .nav-menu {
-                position: fixed;
-                top: 85px;
-                left: -100%;
-                width: 100%;
-                height: calc(100vh - 85px);
-                background: rgba(255, 255, 255, 0.96);
-                backdrop-filter: blur(25px);
-                flex-direction: column;
-                justify-content: flex-start;
-                padding: 3rem 2rem;
-                transition: var(--transition);
-                box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            }
-            .nav-menu.active { left: 0; }
-            .mobile-toggle { display: block; }
-            .hero h1 { font-size: 2.4rem; }
-            .services-grid, .stats-grid { grid-template-columns: 1fr; }
-            .hero-actions { flex-direction: column; align-items: stretch; }
+            .hero-container, .stacks-container, .widgets-grid, .snippet-grid, .contact-card { grid-template-columns: 1fr; }
+            .hero-title { font-size: 2.8rem; }
+            .menubar-nav { display: none; }
         }
     </style>
 </head>
 <body>
 
-    <!-- AMBIENT BACKGROUND GRID MESH -->
-    <div class="ambient-grid"></div>
-
-    <!-- NAVBAR -->
-    <nav class="navbar" id="navbar">
-        <a href="#home" class="brand-logo">
-            <svg class="logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="50" cy="50" r="42" stroke="url(#paint0_linear)" stroke-width="3"/>
-                <circle cx="50" cy="50" r="32" stroke="#007aff" stroke-width="1.5" stroke-dasharray="4 2"/>
-                <path d="M18 50 C 18 30, 82 30, 82 50 C 82 70, 18 70, 18 50 Z" stroke="#007aff" stroke-width="1.2" opacity="0.7"/>
-                <polygon points="50,6 55,22 50,18 45,22" fill="#007aff"/>
-                <polygon points="50,94 55,78 50,82 45,78" fill="#007aff"/>
-                <polygon points="50,22 56,44 78,50 56,56 50,78 44,56 22,50 44,44" fill="url(#paint1_linear)"/>
-                <defs>
-                    <linearGradient id="paint0_linear" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
-                        <stop stop-color="#007aff"/>
-                        <stop offset="1" stop-color="#af52de"/>
-                    </linearGradient>
-                    <linearGradient id="paint1_linear" x1="22" y1="22" x2="78" y2="78" gradientUnits="userSpaceOnUse">
-                        <stop stop-color="#007aff"/>
-                        <stop offset="1" stop-color="#ff2d55"/>
-                    </linearGradient>
-                </defs>
-            </svg>
-            <div class="brand-text">
-                <span class="brand-title">VIHAANAA</span>
-                <span class="brand-subtitle">TECH HUBS</span>
-            </div>
-        </a>
-        <ul class="nav-menu" id="navMenu">
-            <li><a href="#home" class="nav-link active">Home</a></li>
-            <li><a href="#about-container" class="nav-link">About Us</a></li>
-            <li><a href="#services" class="nav-link">Services</a></li>
-            <li><a href="#hse-container" class="nav-link">HSE & Quality</a></li>
-            <li><a href="#contact" class="btn-header"><i class="fa-solid fa-paper-plane"></i> Contact Us</a></li>
-        </ul>
-        <div class="mobile-toggle" id="mobileToggle">
-            <i class="fa-solid fa-bars-staggered"></i>
+    <!-- MACOS TOP MENU BAR -->
+    <header class="menubar">
+        <div class="menubar-brand">
+            <i class="fa-brands fa-apple apple-logo"></i>
+            <span>Vihaanaa OS</span>
         </div>
-    </nav>
-
-    <!-- HERO SECTION -->
-    <section class="hero" id="home">
-        <div class="hero-grid">
-            <div class="hero-text-content">
-                <div class="hero-badge">
-                    <i class="fa-solid fa-shield-halved"></i> Registered Technical Partner Malaysia
-                </div>
-                <h1>Integrated Engineering, Procurement & <span>Technical Solutions</span></h1>
-                <p>Delivering turnkey civil works, M&E engineering, precision instrumentation, import/export, and specialized industrial supplies nationwide.</p>
-                <div class="hero-actions">
-                    <a href="#services" class="btn-primary-glow"><i class="fa-solid fa-compass"></i> Explore Services</a>
-                    <a href="#contact" class="btn-outline-glow"><i class="fa-solid fa-paper-plane"></i> Get Quote</a>
-                </div>
+        <nav>
+            <ul class="menubar-nav">
+                <li><a href="#hero" class="menubar-link">Overview</a></li>
+                <li><a href="#stacks" class="menubar-link">Capabilities Stack</a></li>
+                <li><a href="#widgets" class="menubar-link">System Operations</a></li>
+                <li><a href="#contact" class="menubar-link">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="menubar-controls">
+            <div class="control-pill" id="clockWidget">12:00 PM</div>
+            <div class="control-pill" id="controlToggle">
+                <i class="fa-solid fa-sliders"></i>
+                <span>Control Center</span>
             </div>
-            
-            <!-- FUTURISTIC LIGHT MAC OS CODE VISUAL -->
-            <div class="hero-snippet-window">
+        </div>
+    </header>
+
+    <!-- CONTROL CENTER DROPDOWN -->
+    <div class="control-center-panel" id="controlPanel">
+        <h4 style="font-size: 0.95rem; color: var(--text-secondary);">Dynamic Wallpapers</h4>
+        <div class="wallpaper-picker">
+            <div class="wp-option active" style="background: var(--wp-sonoma);" data-wp="sonoma" title="Sonoma Light"></div>
+            <div class="wp-option" style="background: var(--wp-ventura);" data-wp="ventura" title="Ventura Warm"></div>
+            <div class="wp-option" style="background: var(--wp-aurora);" data-wp="aurora" title="Aurora Night"></div>
+            <div class="wp-option" style="background: var(--wp-monterey);" data-wp="monterey" title="Monterey Blue"></div>
+        </div>
+    </div>
+
+    <!-- HERO & 3D INTERACTIVE SNIPPET -->
+    <section class="hero-container" id="hero">
+        <div>
+            <div class="hero-tag">
+                <i class="fa-solid fa-microchip"></i> Engineering & Sourcing Platform
+            </div>
+            <h1 class="hero-title">Integrated Technical Operations <span>Made Effortless.</span></h1>
+            <p class="hero-subtitle">Turnkey civil engineering, mechanical installations, precision instrumentation, and global procurement hub operating nationwide in Malaysia.</p>
+            <div class="cta-group">
+                <a href="#contact" class="btn-mac-primary"><i class="fa-solid fa-paper-plane"></i> Request Quote</a>
+                <a href="#stacks" class="btn-mac-glass"><i class="fa-solid fa-layer-group"></i> View Stacks</a>
+            </div>
+        </div>
+
+        <!-- 3D INTERACTIVE CODE & ROUTINE SNIPPET -->
+        <div class="perspective-wrapper">
+            <div class="snippet-3d-card" id="tiltSnippet">
                 <div class="snippet-header">
-                    <div class="snippet-dots">
-                        <span class="dot dot-red"></span>
-                        <span class="dot dot-yellow"></span>
-                        <span class="dot dot-green"></span>
+                    <div class="traffic-lights">
+                        <span class="light light-red"></span>
+                        <span class="light light-yellow"></span>
+                        <span class="light light-green"></span>
                     </div>
-                    <span class="snippet-title code-font">VIHAANAA_TECH_CORE_v2.6.sh</span>
+                    <span class="code-font" style="font-size: 0.85rem; color: var(--text-secondary);">vihaanaa_deploy.js</span>
                 </div>
-                <div class="snippet-body code-font">
-                    <div><span class="code-keyword">const</span> techHub = <span class="code-keyword">new</span> <span class="code-func">VihaanaaTechHubs</span>();</div>
-                    <div>techHub.<span class="code-func">setCompliance</span>(<span class="code-string">"DOSH / JKKP 100%"</span>);</div>
-                    <div>techHub.<span class="code-func">loadServices</span>([</div>
-                    <div>&nbsp;&nbsp;<span class="code-string">"Civil Works"</span>, <span class="code-string">"M&E Engineering"</span>,</div>
-                    <div>&nbsp;&nbsp;<span class="code-string">"Global Procurement"</span>, <span class="code-string">"Instrumentation"</span></div>
-                    <div>]);</div>
-                    <div>techHub.<span class="code-func">executeProject</span>({ status: <span class="code-string">"OPERATIONAL"</span>, quality: <span class="code-num">1.00</span> });</div>
-                </div>
-                <div class="card-logo-container">
-                    <svg class="logo-svg" style="width: 55px; height: 55px;" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="50" cy="50" r="42" stroke="url(#p1)" stroke-width="3"/>
-                        <circle cx="50" cy="50" r="32" stroke="#007aff" stroke-width="1.5" stroke-dasharray="4 2"/>
-                        <polygon points="50,22 56,44 78,50 56,56 50,78 44,56 22,50 44,44" fill="url(#p2)"/>
-                        <defs>
-                            <linearGradient id="p1" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
-                                <stop stop-color="#007aff"/><stop offset="1" stop-color="#5856d6"/>
-                            </linearGradient>
-                            <linearGradient id="p2" x1="22" y1="22" x2="78" y2="78" gradientUnits="userSpaceOnUse">
-                                <stop stop-color="#007aff"/><stop offset="1" stop-color="#ff2d55"/>
-                            </linearGradient>
-                        </defs>
-                    </svg>
+                <div class="snippet-content code-font">
+                    <div><span class="code-tag">import</span> { Civil, Mechanical } <span class="code-tag">from</span> <span class="code-val">'@vihaanaa/core'</span>;</div>
+                    <br>
+                    <div><span class="code-func">const</span> project = <span class="code-tag">new</span> <span class="code-func">EngineeringHub</span>({</div>
+                    <div>&nbsp;&nbsp;compliance: <span class="code-val">'DOSH_JKKP_100%'</span>,</div>
+                    <div>&nbsp;&nbsp;location: <span class="code-val">'Malaysia_Nationwide'</span>,</div>
+                    <div>&nbsp;&nbsp;safetyRating: <span class="code-val">'ZERO_HARM'</span></div>
+                    <div>});</div>
+                    <br>
+                    <div>project.<span class="code-func">executeServiceStack</span>();</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- STATS QUICK BAR -->
-    <div class="stats-bar-wrapper">
-        <div class="stats-grid">
-            <div class="stat-item">
-                <div class="stat-icon"><i class="fa-solid fa-award"></i></div>
-                <div>
-                    <div class="stat-num">100%</div>
-                    <div class="stat-label">HSE & DOSH Compliance</div>
-                </div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-icon" style="background: linear-gradient(135deg, var(--mac-blue) 0%, var(--mac-indigo) 100%); box-shadow: 0 10px 20px rgba(0,122,255,0.25);">
-                    <i class="fa-solid fa-screwdriver-wrench"></i>
-                </div>
-                <div>
-                    <div class="stat-num" style="color: #1e3a8a;">Multi-Disciplinary</div>
-                    <div class="stat-label">Civil, M&E & Instrumentation</div>
-                </div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-icon" style="background: linear-gradient(135deg, var(--mac-purple) 0%, var(--mac-pink) 100%); box-shadow: 0 10px 20px rgba(175,82,222,0.25);">
-                    <i class="fa-solid fa-globe"></i>
-                </div>
-                <div>
-                    <div class="stat-num" style="color: #581c87;">Global</div>
-                    <div class="stat-label">Import & Export Sourcing</div>
-                </div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-icon" style="background: linear-gradient(135deg, var(--mac-orange) 0%, #d97706 100%); box-shadow: 0 10px 20px rgba(255,149,0,0.25);">
-                    <i class="fa-solid fa-clock"></i>
-                </div>
-                <div>
-                    <div class="stat-num" style="color: #78350f;">24/7</div>
-                    <div class="stat-label">Rapid Technical Support</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ABOUT SECTION -->
-    <div id="about-container">
+    <!-- DESKTOP STACKS (INTERACTIVE CARD FAN OUT) -->
+    <section class="section-block" id="stacks">
         <div class="section-header">
-            <span class="section-tag" style="color: #854d0e;">About Company</span>
-            <h2 class="section-title" style="color: #713f12;">Multi-Disciplinary Engineering & Procurement Excellence</h2>
-            <p class="section-desc" style="color: #a16207;">Delivering high-precision technical services and comprehensive supply chain solutions across Malaysia.</p>
+            <h2>Desktop Capabilities Stack</h2>
+            <p>Hover over stacks to reveal full engineering and procurement capabilities.</p>
         </div>
-        <div class="about-grid">
-            <div class="about-content">
-                <h3>End-to-End Solutions for Industrial & Energy Sectors</h3>
-                <p>VIHAANAA TECH HUBS is a dynamic Malaysian technical solutions provider. We offer complete end-to-end capabilities spanning local/international material sourcing, global trade logistics, civil construction, M&E installations, and routine facility maintenance.</p>
-                <div class="values-grid">
-                    <div class="value-box">
-                        <h4>Integrity</h4>
-                        <p>Transparent and honest client partnerships.</p>
-                    </div>
-                    <div class="value-box" style="border-left-color: var(--mac-purple);">
-                        <h4 style="color: var(--mac-purple);">Safety First</h4>
-                        <p>Uncompromising HSE protocols on site.</p>
-                    </div>
-                    <div class="value-box" style="border-left-color: var(--mac-blue);">
-                        <h4 style="color: var(--mac-blue);">Precision</h4>
-                        <p>Standard-compliant technical execution.</p>
-                    </div>
-                    <div class="value-box" style="border-left-color: var(--mac-green);">
-                        <h4 style="color: var(--mac-green);">Reliability</h4>
-                        <p>Swift response for emergency repairs.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="about-image-wrapper">
-                <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1000&q=80" alt="Engineering Team" class="about-img">
-                <div class="about-floating-badge">
-                    <i class="fa-solid fa-circle-check" style="font-size: 2.2rem; color: var(--mac-blue);"></i>
-                    <div>
-                        <strong style="display:block; font-size:1.1rem; color: var(--text-main);">ISO & DOSH Compliant</strong>
-                        <span style="font-size:0.88rem; color: var(--text-muted);">Rigorous Quality Standards</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <!-- SERVICES SECTION -->
-    <div class="services-bg-wrapper" id="services">
-        <div class="section-header">
-            <span class="section-tag" style="color: var(--mac-blue);">Capabilities</span>
-            <h2 class="section-title">Services & Solutions Provided</h2>
-            <p class="section-desc">Comprehensive execution across trade, contracting, and technical engineering.</p>
-        </div>
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="service-card-icon"><i class="fa-solid fa-boxes-packing"></i></div>
-                <h3>Supply & Distribution</h3>
-                <p>Local procurement and distribution of certified industrial hardware, raw materials, electrical fittings, and factory consumables.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-card-icon" style="background: linear-gradient(135deg, var(--mac-pink) 0%, var(--mac-purple) 100%); shadow: 0 10px 22px rgba(255,45,85,0.25);">
-                    <i class="fa-solid fa-plane-departure"></i>
+        <div class="stacks-container">
+            <!-- Stack 1: Sourcing & Supply -->
+            <div class="stack-group">
+                <div class="stack-card">
+                    <div>
+                        <div class="stack-icon"><i class="fa-solid fa-boxes-packing"></i></div>
+                        <h3>Global Procurement Stack</h3>
+                        <p style="color: var(--text-secondary); margin-top: 0.5rem;">Raw materials, certified fittings, import/export logistics.</p>
+                    </div>
+                    <span class="code-font" style="font-size: 0.85rem; color: var(--accent-blue);">3 Active Services &rarr;</span>
                 </div>
-                <h3>Import & Export</h3>
-                <p>Cross-border sourcing, technical machinery trading, customs clearance, and international supply chain logistics.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-card-icon" style="background: linear-gradient(135deg, var(--mac-orange) 0%, #d97706 100%); shadow: 0 10px 22px rgba(255,149,0,0.25);">
-                    <i class="fa-solid fa-toolbox"></i>
+                <div class="stack-card">
+                    <h4>Import & Export Clearance</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Seamless customs compliance & cross-border freight.</p>
                 </div>
-                <h3>Tools & Spare Parts</h3>
-                <p>Provision of specialized hand/power tools, pneumatic equipment, and OEM replacement components for industrial plants.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-card-icon" style="background: linear-gradient(135deg, var(--mac-green) 0%, #16a34a 100%); shadow: 0 10px 22px rgba(52,199,89,0.25);">
-                    <i class="fa-solid fa-bridge"></i>
+                <div class="stack-card">
+                    <h4>Industrial Supplies</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">OEM spare parts and factory consumables.</p>
                 </div>
-                <h3>Civil Works</h3>
-                <p>Structural concrete, site preparation, foundation works, industrial paving, trenching, and facility upgrades.</p>
             </div>
-            <div class="service-card">
-                <div class="service-card-icon" style="background: linear-gradient(135deg, var(--mac-indigo) 0%, #4338ca 100%); shadow: 0 10px 22px rgba(88,86,214,0.25);">
-                    <i class="fa-solid fa-helmet-safety"></i>
-                </div>
-                <h3>Installation & Construction</h3>
-                <p>Full-scale structural steel erection, modular skid assembly, piping fabrication, and site construction management.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-card-icon" style="background: linear-gradient(135deg, #00c7be 0%, #0284c7 100%); shadow: 0 10px 22px rgba(0,199,190,0.25);">
-                    <i class="fa-solid fa-gears"></i>
-                </div>
-                <h3>Mechanical Services</h3>
-                <p>HVAC systems, industrial piping networks, pump alignment, pressure vessel installation, and rotating equipment overhaul.</p>
-            </div>
-        </div>
-    </div>
 
-    <!-- HSE & QUALITY -->
-    <div id="hse-container">
-        <div class="section-header">
-            <span class="section-tag" style="color: var(--mac-pink);">Safety Standards</span>
-            <h2 class="section-title">HSE & Quality Policy</h2>
-            <p class="section-desc">Our core commitment to occupational health, safety, and operational precision.</p>
-        </div>
-        <div class="hse-grid">
-            <div class="hse-card safety">
-                <div class="hse-card-header safety">
-                    <i class="fa-solid fa-shield-halved"></i>
-                    <h3>Health & Safety First</h3>
+            <!-- Stack 2: Civil & Structural -->
+            <div class="stack-group">
+                <div class="stack-card">
+                    <div>
+                        <div class="stack-icon" style="background: linear-gradient(135deg, var(--accent-orange), var(--accent-pink));">
+                            <i class="fa-solid fa-building-user"></i>
+                        </div>
+                        <h3>Civil Engineering Stack</h3>
+                        <p style="color: var(--text-secondary); margin-top: 0.5rem;">Foundation works, structural paving, trenching, site prep.</p>
+                    </div>
+                    <span class="code-font" style="font-size: 0.85rem; color: var(--accent-orange);">Structural Focus &rarr;</span>
                 </div>
-                <ul class="hse-list">
-                    <li><i class="fa-solid fa-circle-check" style="color: var(--mac-pink);"></i> Zero Harm policy for workplace safety and environment.</li>
-                    <li><i class="fa-solid fa-circle-check" style="color: var(--mac-pink);"></i> Mandatory Hazard Identification, Risk Assessment (HIRARC).</li>
-                    <li><i class="fa-solid fa-circle-check" style="color: var(--mac-pink);"></i> Full compliance with Malaysian DOSH / JKKP regulations.</li>
-                </ul>
-            </div>
-            <div class="hse-card quality">
-                <div class="hse-card-header quality">
-                    <i class="fa-solid fa-award"></i>
-                    <h3>Quality Assurance</h3>
+                <div class="stack-card">
+                    <h4>Structural Concrete</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">High-durability site preparation and foundations.</p>
                 </div>
-                <ul class="hse-list">
-                    <li><i class="fa-solid fa-circle-check" style="color: var(--mac-green);"></i> Standardized QA/QC inspection plans on all materials.</li>
-                    <li><i class="fa-solid fa-circle-check" style="color: var(--mac-green);"></i> Complete technical documentation & loop check validation.</li>
-                    <li><i class="fa-solid fa-circle-check" style="color: var(--mac-green);"></i> Adherence to ISO standards and client technical specs.</li>
-                </ul>
+                <div class="stack-card">
+                    <h4>Facility Modifications</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Upgrades and structural maintenance.</p>
+                </div>
             </div>
-        </div>
-    </div>
 
-    <!-- CONTACT SECTION -->
-    <section id="contact">
-        <div class="section-header">
-            <span class="section-tag" style="color: var(--mac-orange);">Get In Touch</span>
-            <h2 class="section-title">Contact Management</h2>
-            <p class="section-desc">Reach out directly for project quotations, tenders, and technical inquiries.</p>
-        </div>
-        <div class="contact-grid">
-            <div class="contact-info-panel">
-                <h3>VIHAANAA TECH HUBS</h3>
-                <p>Get direct access to key operational management for immediate support.</p>
-                <div class="info-row">
-                    <div class="info-row-icon"><i class="fa-solid fa-user-gear"></i></div>
+            <!-- Stack 3: M&E Works -->
+            <div class="stack-group">
+                <div class="stack-card">
                     <div>
-                        <label>Contact Person</label>
-                        <span>MOGHAN (Manager)</span>
+                        <div class="stack-icon" style="background: linear-gradient(135deg, var(--accent-green), var(--accent-cyan));">
+                            <i class="fa-solid fa-gears"></i>
+                        </div>
+                        <h3>Mechanical & Electrical</h3>
+                        <p style="color: var(--text-secondary); margin-top: 0.5rem;">HVAC, piping networks, pumps, and electrical systems.</p>
                     </div>
+                    <span class="code-font" style="font-size: 0.85rem; color: var(--accent-green);">Turnkey Execution &rarr;</span>
                 </div>
-                <div class="info-row">
-                    <div class="info-row-icon"><i class="fa-solid fa-phone"></i></div>
-                    <div>
-                        <label>Phone / WhatsApp</label>
-                        <span>+6014 972 5722</span>
-                    </div>
+                <div class="stack-card">
+                    <h4>Piping & Skid Assembly</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Modular fabrication and pump alignment.</p>
                 </div>
-                <div class="info-row">
-                    <div class="info-row-icon"><i class="fa-solid fa-envelope"></i></div>
-                    <div>
-                        <label>Email Address</label>
-                        <span>smorghan9@gmail.com</span>
-                    </div>
+                <div class="stack-card">
+                    <h4>Testing & Maintenance</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">24/7 rapid technical field support.</p>
                 </div>
-            </div>
-            <div class="contact-form-panel">
-                <form id="contactForm">
-                    <div class="form-group">
-                        <label for="name">Your Name / Organization</label>
-                        <input type="text" id="name" class="form-control" required placeholder="e.g. Alex Tan / ABC Engineering">
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" class="form-control" required placeholder="name@company.com">
-                    </div>
-                    <div class="form-group">
-                        <label for="service">Service Required</label>
-                        <select id="service" class="form-control">
-                            <option>Supply & Distribution</option>
-                            <option>Import & Export</option>
-                            <option>Civil & Construction Works</option>
-                            <option>Mechanical / Electrical Services</option>
-                            <option>Instrumentation / Testing & Commissioning</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Project Requirements</label>
-                        <textarea id="message" class="form-control" rows="4" required placeholder="Describe your project details..."></textarea>
-                    </div>
-                    <button type="submit" class="btn-primary-glow" style="width: 100%; border: none; cursor: pointer; justify-content: center;">
-                        <i class="fa-solid fa-paper-plane"></i> Submit Inquiry
-                    </button>
-                </form>
             </div>
         </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer>
-        <p>&copy; 2026 VIHAANAA TECH HUBS (Malaysia). All Rights Reserved.</p>
-    </footer>
+    <!-- INTERACTIVE MACOS WIDGETS -->
+    <section class="section-block" id="widgets">
+        <div class="section-header">
+            <h2>Operations Control & Glanceable Widgets</h2>
+            <p>Real-time system operational metrics and HSE toggle routines.</p>
+        </div>
 
-    <!-- FLOATING WHATSAPP CTA -->
-    <a href="https://wa.me/60149725722?text=Hello%20Moghan,%20I%20would%20like%20to%20enquire%20about%20Vihaanaa%20Tech%20Hubs%20services." target="_blank" class="whatsapp-float" title="Chat on WhatsApp">
-        <i class="fa-brands fa-whatsapp"></i>
-    </a>
+        <div class="widgets-grid">
+            <!-- Clock & Location Widget -->
+            <div class="widget widget-clock">
+                <div>
+                    <span class="code-font" style="text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; color: var(--text-secondary);">Kuala Lumpur, MY</span>
+                    <div class="clock-time" id="liveClock">12:53</div>
+                </div>
+                <div>
+                    <span style="font-weight: 700;">Vihaanaa Core Services Operational</span>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary);">Status: All Systems Active</p>
+                </div>
+            </div>
 
-    <!-- INTERACTIVE JAVASCRIPT -->
+            <!-- Capacity Simulator Widget -->
+            <div class="widget">
+                <h4 style="margin-bottom: 0.5rem;"><i class="fa-solid fa-gauge-high" style="color: var(--accent-blue);"></i> Field Readiness</h4>
+                <p style="font-size: 0.85rem; color: var(--text-secondary);">Adjust project timeline scale:</p>
+                <input type="range" class="metric-slider" id="timelineSlider" min="1" max="100" value="85">
+                <div style="display: flex; justify-content: space-between; margin-top: 1rem; font-size: 0.85rem; font-weight: 700;">
+                    <span>Readiness Scale:</span>
+                    <span id="sliderVal" style="color: var(--accent-blue);">85%</span>
+                </div>
+            </div>
+
+            <!-- Fast Contact Manager Widget -->
+            <div class="widget" style="background: linear-gradient(135deg, rgba(52,199,89,0.1), rgba(0,199,190,0.1));">
+                <h4 style="margin-bottom: 0.5rem;"><i class="fa-solid fa-headset" style="color: var(--accent-green);"></i> Key Contact</h4>
+                <p style="font-weight: 800; font-size: 1.1rem;">Moghan</p>
+                <p style="font-size: 0.85rem; color: var(--text-secondary);">Manager / Tech Lead</p>
+                <a href="https://wa.me/60149725722" target="_blank" class="btn-mac-primary" style="margin-top: 1rem; width: 100%; justify-content: center; padding: 0.6rem;">
+                    <i class="fa-brands fa-whatsapp"></i> Chat Now
+                </a>
+            </div>
+        </div>
+
+        <!-- ROUTINE COMPLIANCE SNIPPETS -->
+        <div class="snippet-grid" style="margin-top: 2rem;">
+            <div class="routine-box">
+                <h3><i class="fa-solid fa-shield-halved" style="color: var(--accent-pink);"></i> Safety Compliance Routine</h3>
+                <div class="toggle-row">
+                    <span>DOSH / JKKP Standard</span>
+                    <div class="mac-switch active" onclick="this.classList.toggle('active')"></div>
+                </div>
+                <div class="toggle-row">
+                    <span>HIRARC Risk Assessment</span>
+                    <div class="mac-switch active" onclick="this.classList.toggle('active')"></div>
+                </div>
+                <div class="toggle-row">
+                    <span>Zero Harm Site Protocols</span>
+                    <div class="mac-switch active" onclick="this.classList.toggle('active')"></div>
+                </div>
+            </div>
+
+            <div class="routine-box">
+                <h3><i class="fa-solid fa-award" style="color: var(--accent-green);"></i> Quality Assurance Checklist</h3>
+                <div class="toggle-row">
+                    <span>Material Inspection Plans</span>
+                    <div class="mac-switch active" onclick="this.classList.toggle('active')"></div>
+                </div>
+                <div class="toggle-row">
+                    <span>QA/QC Documentation</span>
+                    <div class="mac-switch active" onclick="this.classList.toggle('active')"></div>
+                </div>
+                <div class="toggle-row">
+                    <span>ISO Compliance Validation</span>
+                    <div class="mac-switch active" onclick="this.classList.toggle('active')"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT PANEL -->
+    <section class="section-block" id="contact">
+        <div class="contact-card">
+            <div>
+                <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Let's Build Together</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 2rem;">Send us your procurement specifications, civil requirements, or tender documents.</p>
+                <div style="display: flex; flex-direction: column; gap: 1rem; font-weight: 600;">
+                    <div><i class="fa-solid fa-envelope" style="color: var(--accent-blue);"></i> smorghan9@gmail.com</div>
+                    <div><i class="fa-solid fa-phone" style="color: var(--accent-green);"></i> +6014 972 5722</div>
+                    <div><i class="fa-solid fa-location-dot" style="color: var(--accent-pink);"></i> Malaysia</div>
+                </div>
+            </div>
+            <form onsubmit="event.preventDefault(); alert('Inquiry sent successfully!');">
+                <label style="font-weight: 700; font-size: 0.9rem;">Your Name / Company</label>
+                <input type="text" class="mac-input" placeholder="e.g. Alex Tan" required>
+                
+                <label style="font-weight: 700; font-size: 0.9rem; margin-top: 1rem; display: block;">Service Required</label>
+                <select class="mac-input">
+                    <option>Global Procurement & Supply</option>
+                    <option>Civil Construction Works</option>
+                    <option>Mechanical & Electrical Services</option>
+                </select>
+
+                <button type="submit" class="btn-mac-primary" style="width: 100%; margin-top: 1.5rem; justify-content: center;">
+                    Submit Inquiry &rarr;
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FLOATING DOCK -->
+    <div class="dock-bar">
+        <a href="#hero" class="dock-icon" title="Home"><i class="fa-solid fa-house" style="color: var(--accent-blue);"></i></a>
+        <a href="#stacks" class="dock-icon" title="Capabilities"><i class="fa-solid fa-layer-group" style="color: var(--accent-purple);"></i></a>
+        <a href="#widgets" class="dock-icon" title="Operations"><i class="fa-solid fa-chart-simple" style="color: var(--accent-green);"></i></a>
+        <a href="https://wa.me/60149725722" target="_blank" class="dock-icon" title="WhatsApp"><i class="fa-brands fa-whatsapp" style="color: #25d366;"></i></a>
+    </div>
+
+    <!-- SYSTEM INTERACTION SCRIPT -->
     <script>
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 40) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
+        // Live Clock Widget
+        function updateClock() {
+            const now = new Date();
+            const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            document.getElementById('liveClock').textContent = timeStr;
+            document.getElementById('clockWidget').textContent = timeStr;
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        // Control Panel Toggle
+        const controlToggle = document.getElementById('controlToggle');
+        const controlPanel = document.getElementById('controlPanel');
+        controlToggle.addEventListener('click', () => {
+            controlPanel.classList.toggle('active');
         });
 
-        const mobileToggle = document.getElementById('mobileToggle');
-        const navMenu = document.getElementById('navMenu');
-        mobileToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-        });
-
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
+        // Dynamic Wallpaper Switcher
+        document.querySelectorAll('.wp-option').forEach(option => {
+            option.addEventListener('click', (e) => {
+                document.querySelectorAll('.wp-option').forEach(op => op.classList.remove('active'));
+                e.target.classList.add('active');
+                const wpTheme = e.target.getAttribute('data-wp');
+                document.documentElement.setAttribute('data-wallpaper', wpTheme);
+                
+                // Background update
+                if(wpTheme === 'sonoma') document.body.style.background = 'var(--wp-sonoma)';
+                if(wpTheme === 'ventura') document.body.style.background = 'var(--wp-ventura)';
+                if(wpTheme === 'aurora') document.body.style.background = 'var(--wp-aurora)';
+                if(wpTheme === 'monterey') document.body.style.background = 'var(--wp-monterey)';
             });
         });
 
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const name = document.getElementById('name').value;
-            const service = document.getElementById('service').value;
-            alert(`Thank you ${name}! Your inquiry regarding ${service} has been received. Moghan (Manager) will get back to you shortly.`);
-            this.reset();
+        // 3D Card Interactive Tilt Effect
+        const tiltSnippet = document.getElementById('tiltSnippet');
+        document.addEventListener('mousemove', (e) => {
+            const x = (window.innerWidth / 2 - e.pageX) / 30;
+            const y = (window.innerHeight / 2 - e.pageY) / 30;
+            tiltSnippet.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
+        });
+
+        // Interactive Range Slider
+        const slider = document.getElementById('timelineSlider');
+        const sliderVal = document.getElementById('sliderVal');
+        slider.addEventListener('input', (e) => {
+            sliderVal.textContent = `${e.target.value}%`;
         });
     </script>
 </body>
