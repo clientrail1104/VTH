@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-wallpaper="sequoia">
+<html lang="en" data-wallpaper="sonoma">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,7 +20,7 @@
             --wp-aurora: linear-gradient(135deg, #0f172a 0%, #1e1b4b 40%, #311042 100%);
             --wp-monterey: radial-gradient(at 90% 10%, #dbeafe 0%, #e0e7ff 40%, #fae8ff 100%);
 
-            /* Default Surface & Accent Colors */
+            /* Surface & Accent Colors */
             --accent-blue: #007aff;
             --accent-cyan: #00c7be;
             --accent-purple: #af52de;
@@ -77,12 +77,27 @@
             -webkit-backdrop-filter: var(--glass-blur);
             border-bottom: 1px solid var(--glass-border);
             z-index: 2000;
-            display: flex; justify-space-between; align-items: center;
+            display: flex; justify-content: space-between; align-items: center;
             padding: 0 2rem;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
         }
         .menubar-brand { display: flex; align-items: center; gap: 12px; font-weight: 800; font-size: 1.05rem; }
-        .apple-logo { font-size: 1.2rem; color: var(--accent-blue); }
+        
+        /* Fixed Header Logo Container */
+        .logo-container {
+            position: relative; width: 32px; height: 32px;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .logo-compass {
+            position: absolute; font-size: 28px;
+            background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-purple) 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            transform: rotate(45deg); filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
+        }
+        .logo-globe {
+            position: absolute; font-size: 16px; color: var(--accent-blue);
+        }
+
         .menubar-nav { display: flex; gap: 1.8rem; list-style: none; }
         .menubar-link { font-size: 0.9rem; font-weight: 600; color: var(--text-secondary); transition: color 0.2s; }
         .menubar-link:hover { color: var(--accent-blue); }
@@ -195,7 +210,6 @@
             padding: 2.2rem; box-shadow: var(--glass-shadow); backdrop-filter: var(--glass-blur);
             transition: all 0.4s var(--ease-out); display: flex; flex-direction: column; justify-content: space-between;
         }
-        /* Stack Card Offsets for 3D Fan Effect */
         .stack-card:nth-child(1) { transform: translateY(0) scale(1); z-index: 3; }
         .stack-card:nth-child(2) { transform: translateY(-14px) scale(0.95); z-index: 2; opacity: 0.85; }
         .stack-card:nth-child(3) { transform: translateY(-28px) scale(0.9); z-index: 1; opacity: 0.6; }
@@ -212,15 +226,16 @@
         }
 
         /* --- INTERACTIVE MACOS WIDGETS GRID --- */
-        .widgets-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 2rem; margin-top: 3rem; }
+        .widgets-grid { display: grid; grid-template-columns: 1.5fr 1.5fr 1fr; gap: 2rem; margin-top: 3rem; }
         .widget {
             background: var(--glass-card); border: 1px solid var(--glass-border);
             border-radius: var(--radius-md); padding: 2rem; box-shadow: var(--glass-shadow);
             backdrop-filter: var(--glass-blur); transition: transform 0.3s var(--ease-out);
+            display: flex; flex-direction: column; justify-content: space-between;
         }
         .widget:hover { transform: translateY(-5px); }
-        .widget-clock { display: flex; flex-direction: column; justify-content: space-between; background: linear-gradient(135deg, rgba(0,122,255,0.1), rgba(175,82,222,0.1)); }
-        .clock-time { font-size: 3.5rem; font-weight: 800; font-family: 'Space Grotesk'; color: var(--accent-blue); line-height: 1; }
+        .widget-clock { background: linear-gradient(135deg, rgba(0,122,255,0.08), rgba(175,82,222,0.08)); }
+        .clock-time { font-size: 3.2rem; font-weight: 800; font-family: 'Space Grotesk'; color: var(--accent-blue); line-height: 1; margin: 0.5rem 0; }
         
         .metric-slider { width: 100%; margin-top: 1rem; accent-color: var(--accent-blue); cursor: pointer; }
 
@@ -230,13 +245,14 @@
             background: var(--glass-card); border: 1px solid var(--glass-border);
             border-radius: var(--radius-md); padding: 2.2rem; box-shadow: var(--glass-shadow); backdrop-filter: var(--glass-blur);
         }
-        .routine-box h3 { font-size: 1.5rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 10px; }
+        .routine-box h3 { font-size: 1.4rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 10px; }
 
         /* MacOS Toggle Switch */
-        .toggle-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .toggle-row { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-bottom: 1px solid rgba(0,0,0,0.06); font-weight: 600; }
+        .toggle-row:last-child { border-bottom: none; }
         .mac-switch {
             width: 50px; height: 28px; background: #cbd5e1; border-radius: 20px;
-            position: relative; cursor: pointer; transition: background 0.3s;
+            position: relative; cursor: pointer; transition: background 0.3s; flex-shrink: 0;
         }
         .mac-switch.active { background: var(--accent-green); }
         .mac-switch::after {
@@ -286,12 +302,10 @@
     <!-- MACOS TOP MENU BAR -->
     <header class="menubar">
         <div class="menubar-brand">
-<div class="logo-container">
-<div style="position: relative; width: 150px; height: 150px; display: flex; align-items: center; justify-content: center;">
-  <i class="fa-solid fa-compass" style="position: absolute; font-size: 150px; background: linear-gradient(135deg, #a5c4d4 0%, #467699 50%, #1e3a52 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; transform: rotate(45deg); filter: drop-shadow(0 2px 5px rgba(0,0,0,0.15));"></i>
-  <i class="fa-solid fa-globe" style="position: absolute; font-size: 98px; background: linear-gradient(135deg, #7bb3df 0%, #1d507d 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; border-radius: 50%;"></i>
-</div>
-
+            <div class="logo-container">
+                <i class="fa-solid fa-compass logo-compass"></i>
+                <i class="fa-solid fa-globe logo-globe"></i>
+            </div>
             <span>Vihaanaa Tech Hubs</span>
         </div>
         <nav>
@@ -302,6 +316,10 @@
                 <li><a href="#contact" class="menubar-link">Contact</a></li>
             </ul>
         </nav>
+        <div class="menubar-controls">
+            <button class="control-pill" id="controlToggle">
+                <i class="fa-solid fa-sliders"></i> Dynamic Wallpapers
+            </button>
         </div>
     </header>
 
@@ -339,6 +357,21 @@
                         <span class="light light-yellow"></span>
                         <span class="light light-green"></span>
                     </div>
+                    <span class="code-font" style="font-size: 0.8rem; color: var(--text-secondary);">ops_engine.ts</span>
+                </div>
+                <div class="snippet-content">
+                    <div style="font-size: 1.3rem; font-weight: 800; margin-bottom: 1rem; color: var(--accent-blue);">
+                        <i class="fa-solid fa-bolt"></i> Operational Engine Routine
+                    </div>
+                    <pre class="code-font" style="font-size: 0.95rem; line-height: 1.6; font-weight: 600;">
+<span class="code-tag">const</span> deployOperations = <span class="code-func">async</span> () =&gt; {
+  <span class="code-tag">await</span> <span class="code-func">verifyCompliance</span>({
+    dosh: <span class="code-val">"PASSED"</span>,
+    hirarc: <span class="code-val">"VERIFIED"</span>,
+    iso_9001: <span class="code-val">true</span>
+  });
+  <span class="code-func">executeProject</span>();
+};</pre>
                 </div>
             </div>
         </div>
@@ -426,22 +459,34 @@
         </div>
 
         <div class="widgets-grid">
-            <!-- Clock & Location Widget -->
+            <!-- Clock Widget -->
             <div class="widget widget-clock">
                 <div>
                     <span class="code-font" style="text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; color: var(--text-secondary);">Kuala Lumpur, MY</span>
                     <div class="clock-time" id="liveClock">12:53</div>
                 </div>
                 <div>
-                    <p style="font-size: 0.85rem; color: var(--text-secondary);"></p>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary);" id="clockWidget">System Active • All Nodes Online</p>
                 </div>
+            </div>
+
+            <!-- Operational Metric Widget -->
+            <div class="widget">
+                <h4 style="margin-bottom: 0.5rem;"><i class="fa-solid fa-chart-line" style="color: var(--accent-blue);"></i> Operational Metric</h4>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1rem;">
+                    <span style="font-size: 0.9rem; font-weight: 700;">Site Target Readiness</span>
+                    <span class="code-font" id="sliderVal" style="font-size: 1.2rem; font-weight: 800; color: var(--accent-blue);">95%</span>
+                </div>
+                <input type="range" class="metric-slider" id="timelineSlider" min="0" max="100" value="95">
             </div>
 
             <!-- Fast Contact Manager Widget -->
             <div class="widget" style="background: linear-gradient(135deg, rgba(52,199,89,0.1), rgba(0,199,190,0.1));">
-                <h4 style="margin-bottom: 0.5rem;"><i class="fa-solid fa-headset" style="color: var(--accent-green);"></i> Key Contact</h4>
-                <p style="font-weight: 800; font-size: 1.1rem;">Morghan</p>
-                <p style="font-size: 0.85rem; color: var(--text-secondary);">Manager</p>
+                <div>
+                    <h4 style="margin-bottom: 0.5rem;"><i class="fa-solid fa-headset" style="color: var(--accent-green);"></i> Key Contact</h4>
+                    <p style="font-weight: 800; font-size: 1.1rem;">Morghan</p>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary);">Manager</p>
+                </div>
                 <a href="https://wa.me/60149725722" target="_blank" class="btn-mac-primary" style="margin-top: 1rem; width: 100%; justify-content: center; padding: 0.6rem;">
                     <i class="fa-brands fa-whatsapp"></i> Chat Now
                 </a>
@@ -456,21 +501,27 @@
                     <span>DOSH / JKKP Standard</span>
                     <div class="mac-switch active" onclick="this.classList.toggle('active')"></div>
                 </div>
+                <div class="toggle-row">
                     <span>HIRARC Risk Assessment</span>
                     <div class="mac-switch active" onclick="this.classList.toggle('active')"></div>
                 </div>
+                <div class="toggle-row">
                     <span>Zero Harm Site Protocols</span>
                     <div class="mac-switch active" onclick="this.classList.toggle('active')"></div>
                 </div>
             </div>
+
             <div class="routine-box">
                 <h3><i class="fa-solid fa-award" style="color: var(--accent-green);"></i> Quality Assurance Checklist</h3>
+                <div class="toggle-row">
                     <span>Material Inspection Plans</span>
                     <div class="mac-switch active" onclick="this.classList.toggle('active')"></div>
                 </div>
+                <div class="toggle-row">
                     <span>QA/QC Documentation</span>
                     <div class="mac-switch active" onclick="this.classList.toggle('active')"></div>
                 </div>
+                <div class="toggle-row">
                     <span>ISO Compliance Validation</span>
                     <div class="mac-switch active" onclick="this.classList.toggle('active')"></div>
                 </div>
@@ -522,8 +573,8 @@
         function updateClock() {
             const now = new Date();
             const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-            document.getElementById('liveClock').textContent = timeStr;
-            document.getElementById('clockWidget').textContent = timeStr;
+            const liveClock = document.getElementById('liveClock');
+            if(liveClock) liveClock.textContent = timeStr;
         }
         setInterval(updateClock, 1000);
         updateClock();
@@ -531,16 +582,19 @@
         // Control Panel Toggle
         const controlToggle = document.getElementById('controlToggle');
         const controlPanel = document.getElementById('controlPanel');
-        controlToggle.addEventListener('click', () => {
-            controlPanel.classList.toggle('active');
-        });
+        if(controlToggle && controlPanel) {
+            controlToggle.addEventListener('click', () => {
+                controlPanel.classList.toggle('active');
+            });
+        }
 
         // Dynamic Wallpaper Switcher
         document.querySelectorAll('.wp-option').forEach(option => {
             option.addEventListener('click', (e) => {
                 document.querySelectorAll('.wp-option').forEach(op => op.classList.remove('active'));
-                e.target.classList.add('active');
-                const wpTheme = e.target.getAttribute('data-wp');
+                const target = e.currentTarget;
+                target.classList.add('active');
+                const wpTheme = target.getAttribute('data-wp');
                 document.documentElement.setAttribute('data-wallpaper', wpTheme);
                 
                 // Background update
@@ -553,18 +607,22 @@
 
         // 3D Card Interactive Tilt Effect
         const tiltSnippet = document.getElementById('tiltSnippet');
-        document.addEventListener('mousemove', (e) => {
-            const x = (window.innerWidth / 2 - e.pageX) / 30;
-            const y = (window.innerHeight / 2 - e.pageY) / 30;
-            tiltSnippet.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
-        });
+        if(tiltSnippet) {
+            document.addEventListener('mousemove', (e) => {
+                const x = (window.innerWidth / 2 - e.pageX) / 45;
+                const y = (window.innerHeight / 2 - e.pageY) / 45;
+                tiltSnippet.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
+            });
+        }
 
         // Interactive Range Slider
         const slider = document.getElementById('timelineSlider');
         const sliderVal = document.getElementById('sliderVal');
-        slider.addEventListener('input', (e) => {
-            sliderVal.textContent = `${e.target.value}%`;
-        });
+        if(slider && sliderVal) {
+            slider.addEventListener('input', (e) => {
+                sliderVal.textContent = `${e.target.value}%`;
+            });
+        }
     </script>
 </body>
 </html>
