@@ -19,7 +19,7 @@
             --wp-ventura: linear-gradient(135deg, #fef3c7 0%, #fed7aa 35%, #fce7f3 70%, #f1f5f9 100%);
             --wp-aurora: linear-gradient(135deg, #0f172a 0%, #1e1b4b 40%, #311042 100%);
             --wp-monterey: radial-gradient(at 90% 10%, #dbeafe 0%, #e0e7ff 40%, #fae8ff 100%);
-            --wp-cyber: url('pngtree-abstract-blue-hexagon-pattern-picture-image_15930918.jpg') center/cover no-repeat fixed;
+            --wp-cyber: linear-gradient(135deg, #0f172a 0%, #1e293b 100%), url('pngtree-abstract-blue-hexagon-pattern-picture-image_15930918.jpg') center/cover no-repeat fixed;
 
             /* Surface & Accent Colors */
             --accent-blue: #007aff;
@@ -180,9 +180,9 @@
         }
         .hero-img-box {
             width: 100%; height: 260px; border-radius: var(--radius-sm);
-            overflow: hidden; position: relative; margin-bottom: 1.2rem;
+            overflow: hidden; position: relative; margin-bottom: 1.2rem; background: #e2e8f0;
         }
-        .hero-img-box img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+        .hero-img-box img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; display: block; }
         .hero-visual-card:hover .hero-img-box img { transform: scale(1.05); }
 
         .traffic-lights { display: flex; gap: 8px; margin-bottom: 0.8rem; }
@@ -214,9 +214,9 @@
 
         .card-img-wrapper {
             width: 100%; height: 160px; border-radius: var(--radius-sm);
-            overflow: hidden; margin-bottom: 1rem;
+            overflow: hidden; margin-bottom: 1rem; background: #e2e8f0;
         }
-        .card-img-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+        .card-img-wrapper img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
         /* --- PROJECT GALLERY SHOWCASE --- */
         .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 2rem; }
@@ -226,8 +226,8 @@
             backdrop-filter: var(--glass-blur); transition: transform 0.3s var(--ease-out);
         }
         .gallery-card:hover { transform: translateY(-8px); }
-        .gallery-img-container { width: 100%; height: 210px; overflow: hidden; position: relative; }
-        .gallery-img-container img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+        .gallery-img-container { width: 100%; height: 210px; overflow: hidden; position: relative; background: #e2e8f0; }
+        .gallery-img-container img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; display: block; }
         .gallery-card:hover .gallery-img-container img { transform: scale(1.08); }
         .gallery-content { padding: 1.5rem; }
         .gallery-badge {
@@ -342,7 +342,7 @@
             <div class="wp-option" style="background: var(--wp-ventura);" data-wp="ventura" title="Ventura Warm"></div>
             <div class="wp-option" style="background: var(--wp-aurora);" data-wp="aurora" title="Aurora Night"></div>
             <div class="wp-option" style="background: var(--wp-monterey);" data-wp="monterey" title="Monterey Blue"></div>
-            <div class="wp-option" style="background-image: url('pngtree-abstract-blue-hexagon-pattern-picture-image_15930918.jpg');" data-wp="cyber" title="Cyber Tech"></div>
+            <div class="wp-option" style="background-image: url('pngtree-abstract-blue-hexagon-pattern-picture-image_15930918.jpg'), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80');" data-wp="cyber" title="Cyber Tech"></div>
         </div>
     </div>
 
@@ -369,7 +369,7 @@
                     <span class="light light-green"></span>
                 </div>
                 <div class="hero-img-box">
-                    <img src="4232366.jpg" alt="Offshore Energy Platform">
+                    <img src="4232366.jpg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80';" alt="Offshore Energy Platform">
                 </div>
                 <div style="font-size: 1.1rem; font-weight: 800; color: var(--accent-blue);">
                     <i class="fa-solid fa-bolt"></i> Offshore & Heavy Industrial Sourcing
@@ -392,7 +392,7 @@
                 <div class="stack-card">
                     <div>
                         <div class="card-img-wrapper">
-                            <img src="istockphoto-505841831-612x612.jpg" alt="Industrial Processing Facility">
+                            <img src="istockphoto-505841831-612x612.jpg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80';" alt="Industrial Processing Facility">
                         </div>
                         <h3>Global Procurement</h3>
                         <p style="color: var(--text-secondary); margin-top: 0.3rem;">Refinery supplies, certified fittings, import/export logistics.</p>
@@ -414,7 +414,7 @@
                 <div class="stack-card">
                     <div>
                         <div class="card-img-wrapper">
-                            <img src="937101.jpg" alt="Steel Truss Structural Bridge">
+                            <img src="937101.jpg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1541888946425-d0fbb186a5b2?auto=format&fit=crop&w=800&q=80';" alt="Steel Truss Structural Bridge">
                         </div>
                         <h3>Civil & Structural</h3>
                         <p style="color: var(--text-secondary); margin-top: 0.3rem;">Steel truss structures, foundations, site prep, civil works.</p>
@@ -436,7 +436,7 @@
                 <div class="stack-card">
                     <div>
                         <div class="card-img-wrapper">
-                            <img src="pngtree-wiring-circuit-of-power-plant-in-control-panel-distribution-image_15904642.jpg" alt="Power Circuit Automation Panel">
+                            <img src="pngtree-wiring-circuit-of-power-plant-in-control-panel-distribution-image_15904642.jpg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=800&q=80';" alt="Power Circuit Automation Panel">
                         </div>
                         <h3>Mechanical & Electrical</h3>
                         <p style="color: var(--text-secondary); margin-top: 0.3rem;">Power panels, wiring circuits, skids, and control systems.</p>
@@ -465,7 +465,7 @@
         <div class="gallery-grid">
             <div class="gallery-card">
                 <div class="gallery-img-container">
-                    <img src="AdobeStock_711599297-scaled.jpg" alt="Petrochemical Pipeline Facilities">
+                    <img src="AdobeStock_711599297-scaled.jpg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80';" alt="Petrochemical Pipeline Facilities">
                 </div>
                 <div class="gallery-content">
                     <span class="gallery-badge">Petrochemical</span>
@@ -476,7 +476,7 @@
 
             <div class="gallery-card">
                 <div class="gallery-img-container">
-                    <img src="pngtree-a-large-oil-and-gas-production-plant-at-dusk-with-reflecting-image_15995971.jpg" alt="Oil and Gas Processing Plant">
+                    <img src="pngtree-a-large-oil-and-gas-production-plant-at-dusk-with-reflecting-image_15995971.jpg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80';" alt="Oil and Gas Processing Plant">
                 </div>
                 <div class="gallery-content">
                     <span class="gallery-badge">Gas Operations</span>
@@ -487,7 +487,7 @@
 
             <div class="gallery-card">
                 <div class="gallery-img-container">
-                    <img src="close-up-steel-pipes-natural-gas-concrete-supports-supplying-propane-factory-tanks-valves-production-energy-resources-economy-pipeline-oil-industry-drainage-system-water-transport-photo.jpg" alt="Precision Valves and Steel Piping">
+                    <img src="close-up-steel-pipes-natural-gas-concrete-supports-supplying-propane-factory-tanks-valves-production-energy-resources-economy-pipeline-oil-industry-drainage-system-water-transport-photo.jpg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=800&q=80';" alt="Precision Valves and Steel Piping">
                 </div>
                 <div class="gallery-content">
                     <span class="gallery-badge">Mechanical</span>
@@ -498,7 +498,7 @@
 
             <div class="gallery-card">
                 <div class="gallery-img-container">
-                    <img src="images.jpeg" alt="Green Hydrogen Energy Systems">
+                    <img src="images.jpeg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?auto=format&fit=crop&w=800&q=80';" alt="Green Hydrogen Energy Systems">
                 </div>
                 <div class="gallery-content">
                     <span class="gallery-badge" style="background: rgba(52,199,89,0.15); color: var(--accent-green);">Green Energy</span>
@@ -509,7 +509,7 @@
 
             <div class="gallery-card">
                 <div class="gallery-img-container">
-                    <img src="pngtree-wiring-circuit-of-power-plant-in-control-panel-distribution-image_15904642.jpg" alt="Power Plant Control Panel Wiring">
+                    <img src="pngtree-wiring-circuit-of-power-plant-in-control-panel-distribution-image_15904642.jpg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=800&q=80';" alt="Power Plant Control Panel Wiring">
                 </div>
                 <div class="gallery-content">
                     <span class="gallery-badge" style="background: rgba(175,82,222,0.15); color: var(--accent-purple);">Electrical</span>
@@ -520,7 +520,7 @@
 
             <div class="gallery-card">
                 <div class="gallery-img-container">
-                    <img src="pngtree-abstract-blue-hexagon-pattern-picture-image_15930918.jpg" alt="Digital Operational Matrix Grid">
+                    <img src="pngtree-abstract-blue-hexagon-pattern-picture-image_15930918.jpg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80';" alt="Digital Operational Matrix Grid">
                 </div>
                 <div class="gallery-content">
                     <span class="gallery-badge" style="background: rgba(0,199,190,0.15); color: var(--accent-cyan);">Smart Operations</span>
