@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vihaanaa Tech Hubs | Next-Gen Industrial Operations</title>
+    <title>Vihaanaa Tech Hubs | Industrial Operations & Tender Telemetry</title>
     
     <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,7 +31,7 @@
             --accent-green: #34c759;
 
             --glass-surface: rgba(255, 255, 255, 0.68);
-            --glass-card: rgba(255, 255, 255, 0.82);
+            --glass-card: rgba(255, 255, 255, 0.85);
             --glass-border: rgba(255, 255, 255, 0.9);
             --glass-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.12);
             --glass-blur: blur(30px);
@@ -46,7 +46,7 @@
 
         [data-wallpaper="aurora"], [data-wallpaper="cyber"] {
             --glass-surface: rgba(15, 23, 42, 0.65);
-            --glass-card: rgba(30, 41, 59, 0.82);
+            --glass-card: rgba(30, 41, 59, 0.85);
             --glass-border: rgba(255, 255, 255, 0.15);
             --text-primary: #f8fafc;
             --text-secondary: #cbd5e1;
@@ -67,11 +67,11 @@
         .code-font { font-family: 'Space Grotesk', monospace; }
         a { text-decoration: none; color: inherit; }
 
-        /* --- KEYFRAME ANIMATIONS FOR INFOGRAPHICS --- */
+        /* --- ANIMATION KEYFRAMES --- */
         @keyframes pulseGlow {
-            0% { transform: scale(0.96); opacity: 0.8; box-shadow: 0 0 0 0 rgba(0, 122, 255, 0.4); }
-            50% { transform: scale(1.02); opacity: 1; box-shadow: 0 0 20px 8px rgba(0, 199, 190, 0.3); }
-            100% { transform: scale(0.96); opacity: 0.8; box-shadow: 0 0 0 0 rgba(0, 122, 255, 0.4); }
+            0% { transform: scale(0.98); opacity: 0.8; box-shadow: 0 0 0 0 rgba(0, 122, 255, 0.4); }
+            50% { transform: scale(1.01); opacity: 1; box-shadow: 0 0 20px 6px rgba(0, 199, 190, 0.3); }
+            100% { transform: scale(0.98); opacity: 0.8; box-shadow: 0 0 0 0 rgba(0, 122, 255, 0.4); }
         }
 
         @keyframes radarScan {
@@ -79,19 +79,14 @@
             100% { transform: rotate(360deg); }
         }
 
-        @keyframes fillProgress {
-            from { stroke-dashoffset: 283; }
-            to { stroke-dashoffset: 40; }
+        @keyframes wavePulse {
+            0% { transform: scale(0.8); opacity: 1; }
+            100% { transform: scale(2.2); opacity: 0; }
         }
 
         @keyframes floatCard {
             0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); }
-        }
-
-        @keyframes wavePulse {
-            0% { transform: scale(0.8); opacity: 1; }
-            100% { transform: scale(2.2); opacity: 0; }
+            50% { transform: translateY(-6px); }
         }
 
         /* --- MENU BAR --- */
@@ -118,7 +113,6 @@
         .menubar-nav { display: flex; gap: 1.8rem; list-style: none; }
         .menubar-link { font-size: 0.9rem; font-weight: 600; color: var(--text-secondary); transition: color 0.2s; }
         .menubar-link:hover { color: var(--accent-blue); }
-        .menubar-controls { display: flex; align-items: center; gap: 1rem; }
         
         .control-pill {
             background: var(--glass-card); border: 1px solid var(--glass-border);
@@ -132,11 +126,8 @@
             background: var(--glass-card); backdrop-filter: var(--glass-blur);
             border: 1px solid var(--glass-border); border-radius: var(--radius-md); padding: 1.5rem;
             box-shadow: var(--glass-shadow); z-index: 2001; display: none; flex-direction: column; gap: 1.2rem;
-            animation: slideDown 0.3s var(--ease-out);
         }
         .control-center-panel.active { display: flex; }
-        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
-        
         .wallpaper-picker { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-top: 8px; }
         .wp-option {
             height: 42px; border-radius: 10px; cursor: pointer; border: 2px solid transparent;
@@ -147,8 +138,8 @@
 
         /* --- HERO SECTION --- */
         .hero-container {
-            padding: 140px 6% 60px; max-width: 1400px; margin: 0 auto;
-            display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 3.5rem; align-items: center;
+            padding: 130px 6% 60px; max-width: 1400px; margin: 0 auto;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;
         }
         .hero-tag {
             display: inline-flex; align-items: center; gap: 8px;
@@ -156,88 +147,131 @@
             color: var(--accent-blue); padding: 8px 18px; border-radius: 50px;
             font-size: 0.85rem; font-weight: 800; text-transform: uppercase; margin-bottom: 1.5rem;
         }
-        .hero-title { font-size: 3.8rem; line-height: 1.1; margin-bottom: 1.5rem; }
+        .hero-title { font-size: 3.5rem; line-height: 1.1; margin-bottom: 1.5rem; }
         .hero-title span {
             background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple), var(--accent-pink));
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
-        .hero-subtitle { font-size: 1.2rem; color: var(--text-secondary); margin-bottom: 2.5rem; line-height: 1.6; }
+        .hero-subtitle { font-size: 1.15rem; color: var(--text-secondary); margin-bottom: 2.2rem; line-height: 1.6; }
 
         .cta-group { display: flex; gap: 1.2rem; align-items: center; }
         .btn-mac-primary {
             background: linear-gradient(135deg, var(--accent-blue), #0051a8); color: white;
-            padding: 1rem 2.2rem; border-radius: 16px; font-weight: 700; font-size: 1rem; border: none; cursor: pointer;
+            padding: 0.95rem 2rem; border-radius: 16px; font-weight: 700; font-size: 0.95rem; border: none; cursor: pointer;
             box-shadow: 0 10px 25px rgba(0, 122, 255, 0.3); transition: all 0.3s var(--ease-out);
             display: inline-flex; align-items: center; gap: 10px;
         }
-        .btn-mac-primary:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 15px 35px rgba(0, 122, 255, 0.45); }
+        .btn-mac-primary:hover { transform: translateY(-2px); box-shadow: 0 15px 35px rgba(0, 122, 255, 0.45); }
         
         .btn-mac-glass {
             background: var(--glass-card); border: 1px solid var(--glass-border); color: var(--text-primary);
-            padding: 1rem 2rem; border-radius: 16px; font-weight: 700; font-size: 1rem; cursor: pointer; backdrop-filter: var(--glass-blur);
+            padding: 0.95rem 1.8rem; border-radius: 16px; font-weight: 700; font-size: 0.95rem; cursor: pointer; backdrop-filter: var(--glass-blur);
             transition: all 0.3s var(--ease-out); display: inline-flex; align-items: center; gap: 10px;
         }
-        .btn-mac-glass:hover { transform: translateY(-3px); background: rgba(255, 255, 255, 0.95); }
+        .btn-mac-glass:hover { transform: translateY(-2px); background: rgba(255, 255, 255, 0.95); }
 
-        /* --- HERO SWIPER SLIDER CARD --- */
-        .perspective-wrapper { perspective: 1000px; }
+        /* --- HERO REAL-TIME TENDERPANEL BOARD (FIXED & REALIGNED) --- */
         .hero-visual-card {
             background: var(--glass-card); border: 1px solid var(--glass-border);
-            border-radius: var(--radius-md); padding: 1.2rem; box-shadow: var(--glass-shadow);
+            border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--glass-shadow);
             backdrop-filter: var(--glass-blur); position: relative; overflow: hidden;
             animation: floatCard 6s ease-in-out infinite;
         }
-        .traffic-lights { display: flex; gap: 8px; margin-bottom: 0.8rem; z-index: 10; position: relative; }
+        .card-top-bar {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 1rem; border-bottom: 1px solid rgba(0,0,0,0.06); padding-bottom: 0.8rem;
+        }
+        .traffic-lights { display: flex; gap: 8px; }
         .light { width: 12px; height: 12px; border-radius: 50%; }
         .light-red { background: #ff5f56; } .light-yellow { background: #ffbd2e; } .light-green { background: #27c93f; }
 
+        .tender-source-badge {
+            display: inline-flex; align-items: center; gap: 6px;
+            background: rgba(0, 122, 255, 0.12); color: var(--accent-blue);
+            padding: 4px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 800; letter-spacing: 0.5px;
+        }
+
         .swiper-hero-container {
-            width: 100%; height: 320px; border-radius: var(--radius-sm); overflow: hidden; position: relative;
+            width: 100%; height: 310px; border-radius: var(--radius-sm); overflow: hidden; position: relative;
         }
-        .swiper-slide { position: relative; overflow: hidden; border-radius: var(--radius-sm); }
-        .swiper-slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
-        .slide-overlay-info {
-            position: absolute; bottom: 0; left: 0; right: 0; padding: 1.2rem;
-            background: linear-gradient(0deg, rgba(15, 23, 42, 0.9) 0%, rgba(15, 23, 42, 0) 100%);
-            color: white; display: flex; flex-direction: column; gap: 4px;
+        .swiper-slide { position: relative; border-radius: var(--radius-sm); height: 100%; }
+        
+        .tender-slide-card {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.92), rgba(30, 41, 59, 0.95));
+            border: 1px solid rgba(255, 255, 255, 0.12); border-radius: var(--radius-sm);
+            padding: 1.5rem; height: 100%; display: flex; flex-direction: column; justify-content: space-between;
+            color: #fff; box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
         }
+        .tender-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; }
+        .tender-ref { font-family: 'Space Grotesk', monospace; font-size: 0.8rem; color: var(--accent-cyan); font-weight: 700; }
+        .tender-title { font-size: 1.25rem; font-weight: 800; margin-top: 4px; color: #ffffff; line-height: 1.3; }
+        
+        .tender-value-box {
+            background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0.8rem 1.2rem; border-radius: 12px; display: flex; justify-content: space-between; align-items: center;
+        }
+        .tender-status-tag {
+            font-size: 0.72rem; font-weight: 800; padding: 4px 10px; border-radius: 50px; text-transform: uppercase;
+        }
+        .status-open { background: rgba(52, 199, 89, 0.2); color: var(--accent-green); border: 1px solid var(--accent-green); }
+        .status-bidding { background: rgba(0, 122, 255, 0.2); color: var(--accent-blue); border: 1px solid var(--accent-blue); }
+        .status-eval { background: rgba(255, 149, 0, 0.2); color: var(--accent-orange); border: 1px solid var(--accent-orange); }
 
         .swiper-button-next, .swiper-button-prev {
-            color: white !important; background: rgba(255,255,255,0.25);
-            backdrop-filter: blur(8px); width: 36px !important; height: 36px !important;
-            border-radius: 50%; border: 1px solid rgba(255,255,255,0.4);
+            color: white !important; background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(8px); width: 34px !important; height: 34px !important;
+            border-radius: 50%; border: 1px solid rgba(255,255,255,0.3);
         }
-        .swiper-button-next:after, .swiper-button-prev:after { font-size: 14px !important; font-weight: 800; }
-        .swiper-pagination-bullet-active { background: var(--accent-blue) !important; width: 22px !important; border-radius: 10px !important; }
+        .swiper-button-next:after, .swiper-button-prev:after { font-size: 12px !important; font-weight: 900; }
+        .swiper-pagination-bullet-active { background: var(--accent-cyan) !important; width: 20px !important; border-radius: 10px !important; }
 
-        /* --- DESKTOP STACKS --- */
+        .tender-footer-meta {
+            margin-top: 1rem; display: flex; justify-content: space-between; align-items: center;
+            font-size: 0.85rem; font-weight: 700;
+        }
+        .tender-footer-meta a {
+            color: var(--accent-blue); display: inline-flex; align-items: center; gap: 6px; transition: gap 0.2s;
+        }
+        .tender-footer-meta a:hover { gap: 10px; color: var(--accent-cyan); }
+
+        /* --- CAPABILITIES & SERVICE STACKS (FULL INTERACTIVE FUNCTIONALITY) --- */
         .section-block { padding: 80px 6%; max-width: 1400px; margin: 0 auto; }
-        .section-header { text-align: center; max-width: 700px; margin: 0 auto 3.5rem; }
+        .section-header { text-align: center; max-width: 750px; margin: 0 auto 3.5rem; }
         .section-header h2 { font-size: 2.8rem; margin-bottom: 1rem; }
         .section-header p { font-size: 1.1rem; color: var(--text-secondary); }
 
         .stacks-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; }
-        .stack-group { position: relative; height: 440px; cursor: pointer; }
+        .stack-group { position: relative; height: 460px; }
         .stack-card {
             position: absolute; inset: 0; background: var(--glass-card);
             border: 1px solid var(--glass-border); border-radius: var(--radius-md);
             padding: 1.8rem; box-shadow: var(--glass-shadow); backdrop-filter: var(--glass-blur);
             transition: all 0.4s var(--ease-out); display: flex; flex-direction: column; justify-content: space-between;
-            overflow: hidden;
+            overflow: hidden; cursor: pointer; user-select: none;
         }
-        .stack-card:nth-child(1) { transform: translateY(0) scale(1); z-index: 3; }
-        .stack-card:nth-child(2) { transform: translateY(-14px) scale(0.95); z-index: 2; opacity: 0.85; }
-        .stack-card:nth-child(3) { transform: translateY(-28px) scale(0.9); z-index: 1; opacity: 0.6; }
+        
+        /* Stack Default Position Styles */
+        .stack-card[data-pos="0"] { transform: translateY(0) scale(1); z-index: 3; opacity: 1; }
+        .stack-card[data-pos="1"] { transform: translateY(-16px) scale(0.95); z-index: 2; opacity: 0.88; }
+        .stack-card[data-pos="2"] { transform: translateY(-32px) scale(0.9); z-index: 1; opacity: 0.65; }
 
-        .stack-group:hover .stack-card:nth-child(1) { transform: translateY(10px) rotate(-2deg); }
-        .stack-group:hover .stack-card:nth-child(2) { transform: translateY(-20px) rotate(3deg); opacity: 0.95; }
-        .stack-group:hover .stack-card:nth-child(3) { transform: translateY(-50px) rotate(-1deg); opacity: 0.9; }
+        .stack-card:hover { border-color: var(--accent-blue); }
+        .stack-indicator {
+            display: inline-flex; align-items: center; gap: 6px;
+            font-size: 0.72rem; font-weight: 800; padding: 4px 10px; border-radius: 50px;
+            background: rgba(0, 122, 255, 0.1); color: var(--accent-blue); margin-bottom: 0.8rem;
+        }
 
         .card-img-wrapper {
-            width: 100%; height: 160px; border-radius: var(--radius-sm);
-            overflow: hidden; margin-bottom: 1rem; background: #cbd5e1;
+            width: 100%; height: 150px; border-radius: var(--radius-sm);
+            overflow: hidden; margin-top: 0.5rem; margin-bottom: 1rem; background: #cbd5e1;
         }
         .card-img-wrapper img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+        .stack-controls {
+            display: flex; justify-content: space-between; align-items: center;
+            font-size: 0.82rem; font-weight: 800; color: var(--accent-blue); border-top: 1px solid rgba(0,0,0,0.06); padding-top: 0.8rem;
+        }
 
         /* --- PROJECT GALLERY --- */
         .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 2rem; }
@@ -257,7 +291,7 @@
             background: rgba(0,122,255,0.1); color: var(--accent-blue);
         }
 
-        /* --- ANIMATED INFOGRAPHIC WIDGETS SECTION --- */
+        /* --- ANIMATED INFOGRAPHIC WIDGETS --- */
         .widgets-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; margin-top: 2rem; }
         .widget {
             background: var(--glass-card); border: 1px solid var(--glass-border);
@@ -267,25 +301,26 @@
         }
         .widget:hover { transform: translateY(-5px); }
 
-        /* --- AI DIGITAL GROWTH INFOGRAPHIC --- */
+        /* REALTIME AI & DIGITAL GROWTH METRICS */
         .ai-donut-box { display: flex; align-items: center; gap: 1.5rem; margin: 1rem 0; }
         .svg-ring-container { position: relative; width: 90px; height: 90px; }
         .svg-ring-container svg { transform: rotate(-90deg); width: 100%; height: 100%; }
-        .svg-ring-bg { fill: none; stroke: rgba(0, 122, 255, 0.15); stroke-width: 8; }
+        .svg-ring-bg { fill: none; stroke: rgba(175, 82, 222, 0.15); stroke-width: 8; }
         .svg-ring-fill {
             fill: none; stroke: var(--accent-purple); stroke-width: 8;
-            stroke-dasharray: 283; stroke-dashoffset: 283;
-            animation: fillProgress 2.5s ease-out forwards; stroke-linecap: round;
+            stroke-dasharray: 283; stroke-dashoffset: 40; stroke-linecap: round;
+            transition: stroke-dashoffset 1s var(--ease-out);
         }
         .ring-center-text {
             position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
-            font-weight: 800; font-size: 1rem; color: var(--accent-purple); font-family: 'Space Grotesk';
+            font-weight: 800; font-size: 0.95rem; color: var(--accent-purple); font-family: 'Space Grotesk';
         }
-        .ai-metrics-list { display: flex; flex-direction: column; gap: 6px; font-size: 0.85rem; font-weight: 600; }
+        .ai-metrics-list { display: flex; flex-direction: flex-column; gap: 6px; font-size: 0.85rem; font-weight: 600; width: 100%; }
+        .metric-ticker-val { font-family: 'Space Grotesk', monospace; font-weight: 800; color: var(--accent-purple); }
 
-        /* --- ANIMATED RADAR & TRACKING INFOGRAPHIC --- */
+        /* ANIMATED RADAR & TRACKING INFOGRAPHIC */
         .radar-box {
-            position: relative; width: 60px; height: 60px; border-radius: 50%;
+            position: relative; width: 56px; height: 56px; border-radius: 50%;
             border: 2px solid rgba(52, 199, 89, 0.3); display: flex; align-items: center; justify-content: center;
             background: rgba(52, 199, 89, 0.05); overflow: hidden;
         }
@@ -300,7 +335,7 @@
         }
         .env-metrics-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem; }
         .env-stat-card {
-            background: rgba(255,255,255,0.4); border: 1px solid var(--glass-border);
+            background: rgba(255,255,255,0.45); border: 1px solid var(--glass-border);
             padding: 0.8rem; border-radius: 14px; text-align: center;
         }
 
@@ -321,7 +356,7 @@
             transition: all 0.3s var(--ease-out); display: flex; flex-direction: column; align-items: center; justify-content: center;
         }
         .status-glass-card:hover {
-            transform: translateY(-4px); background: rgba(255, 255, 255, 0.8); box-shadow: 0 10px 20px rgba(0,0,0,0.06);
+            transform: translateY(-4px); background: rgba(255, 255, 255, 0.85); box-shadow: 0 10px 20px rgba(0,0,0,0.06);
         }
         .status-glass-icon {
             width: 48px; height: 48px; border-radius: 14px; display: flex; align-items: center; justify-content: center;
@@ -357,6 +392,22 @@
         }
         .dock-icon:hover { transform: translateY(-12px) scale(1.2); }
 
+        /* DETAILED SCOPE MODAL FOR CAPABILITIES */
+        .modal-overlay {
+            position: fixed; inset: 0; background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(8px);
+            z-index: 3000; display: none; align-items: center; justify-content: center; padding: 2rem;
+        }
+        .modal-overlay.active { display: flex; }
+        .modal-box {
+            background: var(--glass-card); border: 1px solid var(--glass-border);
+            border-radius: var(--radius-md); max-width: 550px; width: 100%; padding: 2rem;
+            box-shadow: var(--glass-shadow); backdrop-filter: var(--glass-blur); position: relative;
+        }
+        .modal-close {
+            position: absolute; top: 1.2rem; right: 1.2rem; background: none; border: none;
+            font-size: 1.2rem; cursor: pointer; color: var(--text-secondary);
+        }
+
         @media (max-width: 1024px) {
             .hero-container, .stacks-container, .gallery-grid, .widgets-grid, .snippet-grid, .contact-card { grid-template-columns: 1fr; }
             .hero-title { font-size: 2.8rem; }
@@ -380,7 +431,7 @@
                 <li><a href="#hero" class="menubar-link">Overview</a></li>
                 <li><a href="#stacks" class="menubar-link">Capabilities</a></li>
                 <li><a href="#gallery" class="menubar-link">Infrastructure</a></li>
-                <li><a href="#widgets" class="menubar-link">Operations</a></li>
+                <li><a href="#widgets" class="menubar-link">Operations & AI</a></li>
                 <li><a href="#contact" class="menubar-link">Contact</a></li>
             </ul>
         </nav>
@@ -403,53 +454,114 @@
         </div>
     </div>
 
-    <!-- HERO & VISUAL SHOWCASE -->
+    <!-- HERO & VISUAL SHOWCASE WITH TENDERPANEL STREAM -->
     <section class="hero-container" id="hero">
         <div>
             <div class="hero-tag">
-                <i class="fa-solid fa-microchip"></i> Engineering & Industrial Operations
+                <i class="fa-solid fa-microchip"></i> Integrated Engineering & Procurement
             </div>
-            <h1 class="hero-title">Integrated Technical Operations <span>Made Effortless.</span></h1>
-            <p class="hero-subtitle">Turnkey civil engineering, mechanical installations, energy infrastructure, precision piping, and global procurement operating nationwide in Malaysia.</p>
+            <h1 class="hero-title">Turnkey Industrial Operations <span>Made Effortless.</span></h1>
+            <p class="hero-subtitle">Comprehensive civil engineering, mechanical installations, energy infrastructure, precision piping, and live tender-driven global procurement operating across Malaysia.</p>
             <div class="cta-group">
                 <a href="#contact" class="btn-mac-primary"><i class="fa-solid fa-paper-plane"></i> Request Quote</a>
-                <a href="#gallery" class="btn-mac-glass"><i class="fa-solid fa-layer-group"></i> Explore Projects</a>
+                <a href="#stacks" class="btn-mac-glass"><i class="fa-solid fa-layer-group"></i> View Capabilities</a>
             </div>
         </div>
 
-        <!-- ENHANCED OFFSHORE SOURCING SWIPER CAROUSEL -->
-        <div class="perspective-wrapper">
+        <!-- FIXED REAL-TIME TENDERPANEL DATA BOARD -->
+        <div>
             <div class="hero-visual-card">
-                <div class="traffic-lights">
-                    <span class="light light-red"></span>
-                    <span class="light light-yellow"></span>
-                    <span class="light light-green"></span>
+                <div class="card-top-bar">
+                    <div class="traffic-lights">
+                        <span class="light light-red"></span>
+                        <span class="light light-yellow"></span>
+                        <span class="light light-green"></span>
+                    </div>
+                    <a href="https://www.tenderpanel.com/" target="_blank" class="tender-source-badge">
+                        <i class="fa-solid fa-tower-broadcast"></i> TENDERPANEL.COM LIVE STREAM
+                    </a>
                 </div>
                 
                 <div class="swiper myHeroSwiper swiper-hero-container">
                     <div class="swiper-wrapper">
-                        <!-- Slide 1 -->
+                        <!-- Tender Slide 1 -->
                         <div class="swiper-slide">
-                            <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1000&q=80" alt="Offshore Rig Exploration">
-                            <div class="slide-overlay-info">
-                                <span style="color: var(--accent-cyan); font-weight: 800; font-size: 0.8rem; text-transform: uppercase;">Offshore Platform Sourcing</span>
-                                <strong style="font-size: 1.1rem;">Deep-Sea Drilling Equipment</strong>
+                            <div class="tender-slide-card">
+                                <div class="tender-header">
+                                    <div>
+                                        <div class="tender-ref">REF: TP-MY-2026-8821</div>
+                                        <div class="tender-title">Petronas Offshore Platform Piping & Skid Fabrication</div>
+                                    </div>
+                                    <span class="tender-status-tag status-open">LIVE BID</span>
+                                </div>
+                                <div class="tender-value-box">
+                                    <div>
+                                        <div style="font-size: 0.72rem; opacity: 0.7; text-transform: uppercase;">Estimated Value</div>
+                                        <div style="font-family: 'Space Grotesk'; font-size: 1.25rem; font-weight: 800; color: var(--accent-cyan);">MYR 14,800,000</div>
+                                    </div>
+                                    <div style="text-align: right;">
+                                        <div style="font-size: 0.72rem; opacity: 0.7; text-transform: uppercase;">Closing Date</div>
+                                        <div style="font-size: 0.9rem; font-weight: 700;">18 SEP 2026</div>
+                                    </div>
+                                </div>
+                                <div style="font-size: 0.82rem; opacity: 0.8; display: flex; gap: 15px;">
+                                    <span><i class="fa-solid fa-location-dot" style="color: var(--accent-cyan);"></i> Terengganu Offshore</span>
+                                    <span><i class="fa-solid fa-building" style="color: var(--accent-blue);"></i> Energy Sector</span>
+                                </div>
                             </div>
                         </div>
-                        <!-- Slide 2 -->
+
+                        <!-- Tender Slide 2 -->
                         <div class="swiper-slide">
-                            <img src="https://images.unsplash.com/photo-1541888946425-d0fbb186a5b2?auto=format&fit=crop&w=1000&q=80" alt="Heavy Industrial Supply">
-                            <div class="slide-overlay-info">
-                                <span style="color: var(--accent-orange); font-weight: 800; font-size: 0.8rem; text-transform: uppercase;">Heavy Machinery Logistics</span>
-                                <strong style="font-size: 1.1rem;">Turnkey Industrial Procurement</strong>
+                            <div class="tender-slide-card">
+                                <div class="tender-header">
+                                    <div>
+                                        <div class="tender-ref">REF: TP-MY-2026-9043</div>
+                                        <div class="tender-title">TNB Power Station Structural Steel Expansion</div>
+                                    </div>
+                                    <span class="tender-status-tag status-bidding">BIDDING</span>
+                                </div>
+                                <div class="tender-value-box">
+                                    <div>
+                                        <div style="font-size: 0.72rem; opacity: 0.7; text-transform: uppercase;">Estimated Value</div>
+                                        <div style="font-family: 'Space Grotesk'; font-size: 1.25rem; font-weight: 800; color: var(--accent-cyan);">MYR 8,250,000</div>
+                                    </div>
+                                    <div style="text-align: right;">
+                                        <div style="font-size: 0.72rem; opacity: 0.7; text-transform: uppercase;">Closing Date</div>
+                                        <div style="font-size: 0.9rem; font-weight: 700;">25 SEP 2026</div>
+                                    </div>
+                                </div>
+                                <div style="font-size: 0.82rem; opacity: 0.8; display: flex; gap: 15px;">
+                                    <span><i class="fa-solid fa-location-dot" style="color: var(--accent-cyan);"></i> Manjung, Perak</span>
+                                    <span><i class="fa-solid fa-bolt" style="color: var(--accent-orange);"></i> Power Infrastructure</span>
+                                </div>
                             </div>
                         </div>
-                        <!-- Slide 3 -->
+
+                        <!-- Tender Slide 3 -->
                         <div class="swiper-slide">
-                            <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1000&q=80" alt="Refinery Piping Systems">
-                            <div class="slide-overlay-info">
-                                <span style="color: var(--accent-green); font-weight: 800; font-size: 0.8rem; text-transform: uppercase;">Subsea Pipe Infrastructure</span>
-                                <strong style="font-size: 1.1rem;">Certified Refinery Assemblies</strong>
+                            <div class="tender-slide-card">
+                                <div class="tender-header">
+                                    <div>
+                                        <div class="tender-ref">REF: TP-INT-2026-1102</div>
+                                        <div class="tender-title">Subsea Valve & Heavy Refinery Equipment Sourcing</div>
+                                    </div>
+                                    <span class="tender-status-tag status-eval">EVALUATING</span>
+                                </div>
+                                <div class="tender-value-box">
+                                    <div>
+                                        <div style="font-size: 0.72rem; opacity: 0.7; text-transform: uppercase;">Estimated Value</div>
+                                        <div style="font-family: 'Space Grotesk'; font-size: 1.25rem; font-weight: 800; color: var(--accent-cyan);">$ 4,500,000 USD</div>
+                                    </div>
+                                    <div style="text-align: right;">
+                                        <div style="font-size: 0.72rem; opacity: 0.7; text-transform: uppercase;">Closing Date</div>
+                                        <div style="font-size: 0.9rem; font-weight: 700;">02 OCT 2026</div>
+                                    </div>
+                                </div>
+                                <div style="font-size: 0.82rem; opacity: 0.8; display: flex; gap: 15px;">
+                                    <span><i class="fa-solid fa-location-dot" style="color: var(--accent-cyan);"></i> Bintulu, Sarawak</span>
+                                    <span><i class="fa-solid fa-boxes-packing" style="color: var(--accent-green);"></i> Global Supply</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -458,92 +570,179 @@
                     <div class="swiper-button-prev"></div>
                 </div>
 
-                <div style="font-size: 1.1rem; font-weight: 800; color: var(--accent-blue); margin-top: 1rem; display: flex; align-items: center; justify-content: space-between;">
-                    <span><i class="fa-solid fa-bolt"></i> Offshore & Heavy Industrial Sourcing</span>
-                    <span style="font-size: 0.75rem; background: rgba(0, 122, 255, 0.15); padding: 4px 10px; border-radius: 50px; color: var(--accent-blue);">SWIPER SLIDES</span>
+                <div class="tender-footer-meta">
+                    <span style="font-size: 0.8rem; color: var(--text-secondary);">
+                        <i class="fa-solid fa-circle" style="color: var(--accent-green); font-size: 8px;"></i> Updated 2 mins ago
+                    </span>
+                    <a href="https://www.tenderpanel.com/" target="_blank">
+                        Explore Full Tender Board <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
                 </div>
-                <p style="font-size: 0.88rem; color: var(--text-secondary); margin-top: 4px;">Explore energy exploration platforms and offshore turnkey procurement engine.</p>
             </div>
         </div>
     </section>
 
-    <!-- DESKTOP STACKS (CAPABILITIES) -->
+    <!-- FULLY FUNCTIONAL CAPABILITIES & SERVICE STACKS -->
     <section class="section-block" id="stacks">
         <div class="section-header">
             <h2>Capabilities & Service Stacks</h2>
-            <p>Hover over cards to explore our core technical operational domains.</p>
+            <p>Click on any card within the stacks below to bring it to focus or view technical details.</p>
         </div>
 
         <div class="stacks-container">
             <!-- Stack 1: Global Procurement -->
-            <div class="stack-group">
-                <div class="stack-card">
+            <div class="stack-group" id="stack-procurement">
+                
+                <div class="stack-card" data-pos="0" onclick="rotateStack('stack-procurement', 0)">
                     <div>
+                        <span class="stack-indicator"><i class="fa-solid fa-globe"></i> Global Sourcing</span>
                         <div class="card-img-wrapper">
                             <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80" alt="Global Procurement">
                         </div>
-                        <h3>Global Procurement</h3>
-                        <p style="color: var(--text-secondary); margin-top: 0.3rem;">Refinery supplies, certified fittings, import/export logistics.</p>
+                        <h3>Turnkey Global Procurement</h3>
+                        <p style="color: var(--text-secondary); margin-top: 0.4rem; font-size: 0.9rem;">
+                            Certified refinery supplies, pressure fittings, heavy industrial valves, and end-to-end import/export logistics.
+                        </p>
                     </div>
-                    <span class="code-font" style="font-size: 0.85rem; color: var(--accent-blue);">Industrial Supply &rarr;</span>
+                    <div class="stack-controls">
+                        <span>Card 1 of 3 (Top)</span>
+                        <button onclick="event.stopPropagation(); openDetailModal('Turnkey Global Procurement', 'Full international procurement management including API-certified pipe fittings, heavy valves, import customs clearance, and port logistics in Malaysia.')" class="btn-mac-glass" style="padding: 4px 12px; font-size: 0.75rem;">View Specs</button>
+                    </div>
                 </div>
-                <div class="stack-card">
-                    <h4>Import & Export Logistics</h4>
-                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Seamless customs compliance & cross-border freight.</p>
+
+                <div class="stack-card" data-pos="1" onclick="rotateStack('stack-procurement', 1)">
+                    <div>
+                        <span class="stack-indicator" style="color: var(--accent-purple); background: rgba(175,82,222,0.1);"><i class="fa-solid fa-ship"></i> Freight & Customs</span>
+                        <h3>Cross-Border Import/Export</h3>
+                        <p style="color: var(--text-secondary); margin-top: 0.4rem; font-size: 0.9rem;">
+                            Full customs clearance, door-to-port freight forwarding, and tax-exempt tariff compliance management.
+                        </p>
+                    </div>
+                    <div class="stack-controls">
+                        <span>Card 2 of 3</span>
+                        <button onclick="event.stopPropagation(); openDetailModal('Cross-Border Import/Export', 'Automated customs duty handling, bonded warehouse access, multimodal sea and air freight for emergency spare parts.')" class="btn-mac-glass" style="padding: 4px 12px; font-size: 0.75rem;">View Specs</button>
+                    </div>
                 </div>
-                <div class="stack-card">
-                    <h4>Industrial Supplies</h4>
-                    <p style="color: var(--text-secondary); font-size: 0.9rem;">OEM spare parts and heavy production equipment.</p>
+
+                <div class="stack-card" data-pos="2" onclick="rotateStack('stack-procurement', 2)">
+                    <div>
+                        <span class="stack-indicator" style="color: var(--accent-orange); background: rgba(255,149,0,0.1);"><i class="fa-solid fa-boxes-stacked"></i> Inventory</span>
+                        <h3>Industrial Spare Parts OEM</h3>
+                        <p style="color: var(--text-secondary); margin-top: 0.4rem; font-size: 0.9rem;">
+                            24/7 access to OEM structural steel, turbine spares, gaskets, and heavy equipment replacements.
+                        </p>
+                    </div>
+                    <div class="stack-controls">
+                        <span>Card 3 of 3</span>
+                        <button onclick="event.stopPropagation(); openDetailModal('Industrial Spare Parts OEM', 'Direct supplier agreements with worldwide OEMs guaranteeing original parts, material test reports (MTR), and rapid field dispatch.')" class="btn-mac-glass" style="padding: 4px 12px; font-size: 0.75rem;">View Specs</button>
+                    </div>
                 </div>
+
             </div>
 
             <!-- Stack 2: Civil & Structural -->
-            <div class="stack-group">
-                <div class="stack-card">
+            <div class="stack-group" id="stack-civil">
+                
+                <div class="stack-card" data-pos="0" onclick="rotateStack('stack-civil', 0)">
                     <div>
+                        <span class="stack-indicator" style="color: var(--accent-orange); background: rgba(255,149,0,0.1);"><i class="fa-solid fa-cubes"></i> Heavy Civil</span>
                         <div class="card-img-wrapper">
-                            <img src="https://images.unsplash.com/photo-1541888946425-d0fbb186a5b2?auto=format&fit=crop&w=800&q=80" alt="Civil & Structural">
+                            <img src="https://images.unsplash.com/photo-1541888946425-d0fbb186a5b2?auto=format&fit=crop&w=800&q=80" alt="Civil Engineering">
                         </div>
-                        <h3>Civil & Structural</h3>
-                        <p style="color: var(--text-secondary); margin-top: 0.3rem;">Steel truss structures, foundations, site prep, civil works.</p>
+                        <h3>Civil & Structural Engineering</h3>
+                        <p style="color: var(--text-secondary); margin-top: 0.4rem; font-size: 0.9rem;">
+                            Steel truss structures, high-load plant foundations, site earthworks, and structural concrete slabs.
+                        </p>
                     </div>
-                    <span class="code-font" style="font-size: 0.85rem; color: var(--accent-orange);">Structural Engineering &rarr;</span>
+                    <div class="stack-controls">
+                        <span>Card 1 of 3 (Top)</span>
+                        <button onclick="event.stopPropagation(); openDetailModal('Civil & Structural Engineering', 'Turnkey civil contracting for chemical processing facilities, heavy foundation piling, retaining walls, and industrial steel framing.')" class="btn-mac-glass" style="padding: 4px 12px; font-size: 0.75rem;">View Specs</button>
+                    </div>
                 </div>
-                <div class="stack-card">
-                    <h4>Structural Concrete</h4>
-                    <p style="color: var(--text-secondary); font-size: 0.9rem;">High-durability site preparation and heavy foundations.</p>
+
+                <div class="stack-card" data-pos="1" onclick="rotateStack('stack-civil', 1)">
+                    <div>
+                        <span class="stack-indicator" style="color: var(--accent-green); background: rgba(52,199,89,0.1);"><i class="fa-solid fa-hard-hat"></i> Heavy Foundations</span>
+                        <h3>Piling & Reinforced Concrete</h3>
+                        <p style="color: var(--text-secondary); margin-top: 0.4rem; font-size: 0.9rem;">
+                            High-durability concrete slab installations designed for extreme load-bearing machinery and vibration resistance.
+                        </p>
+                    </div>
+                    <div class="stack-controls">
+                        <span>Card 2 of 3</span>
+                        <button onclick="event.stopPropagation(); openDetailModal('Piling & Reinforced Concrete', 'Pre-stressed concrete piling, vibration isolation pads, dynamic load foundations for turbines, compressors, and heavy storage tanks.')" class="btn-mac-glass" style="padding: 4px 12px; font-size: 0.75rem;">View Specs</button>
+                    </div>
                 </div>
-                <div class="stack-card">
-                    <h4>Facility Modifications</h4>
-                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Infrastructure upgrades and ongoing structural maintenance.</p>
+
+                <div class="stack-card" data-pos="2" onclick="rotateStack('stack-civil', 2)">
+                    <div>
+                        <span class="stack-indicator" style="color: var(--accent-pink); background: rgba(255,45,85,0.1);"><i class="fa-solid fa-wrench"></i> Facility Expansion</span>
+                        <h3>Plant Upgrades & Modification</h3>
+                        <p style="color: var(--text-secondary); margin-top: 0.4rem; font-size: 0.9rem;">
+                            Retrofitting existing structural steel, building extensions, and ongoing industrial maintenance.
+                        </p>
+                    </div>
+                    <div class="stack-controls">
+                        <span>Card 3 of 3</span>
+                        <button onclick="event.stopPropagation(); openDetailModal('Plant Upgrades & Modification', 'Structural modifications carried out during live plant turnarounds with zero unscheduled downtime.')" class="btn-mac-glass" style="padding: 4px 12px; font-size: 0.75rem;">View Specs</button>
+                    </div>
                 </div>
+
             </div>
 
             <!-- Stack 3: Mechanical & Electrical -->
-            <div class="stack-group">
-                <div class="stack-card">
+            <div class="stack-group" id="stack-me">
+                
+                <div class="stack-card" data-pos="0" onclick="rotateStack('stack-me', 0)">
                     <div>
+                        <span class="stack-indicator" style="color: var(--accent-green); background: rgba(52,199,89,0.1);"><i class="fa-solid fa-bolt"></i> Automation & M&E</span>
                         <div class="card-img-wrapper">
-                            <img src="https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=800&q=80" alt="Mechanical & Electrical">
+                            <img src="https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=800&q=80" alt="Mechanical Electrical">
                         </div>
-                        <h3>Mechanical & Electrical</h3>
-                        <p style="color: var(--text-secondary); margin-top: 0.3rem;">Power panels, wiring circuits, skids, and control systems.</p>
+                        <h3>Mechanical & Electrical Works</h3>
+                        <p style="color: var(--text-secondary); margin-top: 0.4rem; font-size: 0.9rem;">
+                            High-voltage power panels, wiring circuits, modular skid assemblies, and automated process controls.
+                        </p>
                     </div>
-                    <span class="code-font" style="font-size: 0.85rem; color: var(--accent-green);">Electrical Automation &rarr;</span>
+                    <div class="stack-controls">
+                        <span>Card 1 of 3 (Top)</span>
+                        <button onclick="event.stopPropagation(); openDetailModal('Mechanical & Electrical Works', 'Industrial power distribution boards, PLC programming, SCADA integration, cable tray routing, and hazardous location electrical installations.')" class="btn-mac-glass" style="padding: 4px 12px; font-size: 0.75rem;">View Specs</button>
+                    </div>
                 </div>
-                <div class="stack-card">
-                    <h4>Piping & Skid Assembly</h4>
-                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Modular skid fabrication and valve precision alignment.</p>
+
+                <div class="stack-card" data-pos="1" onclick="rotateStack('stack-me', 1)">
+                    <div>
+                        <span class="stack-indicator" style="color: var(--accent-cyan); background: rgba(0,199,190,0.1);"><i class="fa-solid fa-gears"></i> Skid Fabrication</span>
+                        <h3>Process Skid & Piping Alignment</h3>
+                        <p style="color: var(--text-secondary); margin-top: 0.4rem; font-size: 0.9rem;">
+                            Precision valve mounting, skid frame fabrication, pneumatic lines, and hydro-testing.
+                        </p>
+                    </div>
+                    <div class="stack-controls">
+                        <span>Card 2 of 3</span>
+                        <button onclick="event.stopPropagation(); openDetailModal('Process Skid & Piping Alignment', 'Factory-assembled modular process skids complete with pumps, heat exchangers, valves, and pre-wired junction boxes.')" class="btn-mac-glass" style="padding: 4px 12px; font-size: 0.75rem;">View Specs</button>
+                    </div>
                 </div>
-                <div class="stack-card">
-                    <h4>Testing & Maintenance</h4>
-                    <p style="color: var(--text-secondary); font-size: 0.9rem;">24/7 technical field support and plant commissioning.</p>
+
+                <div class="stack-card" data-pos="2" onclick="rotateStack('stack-me', 2)">
+                    <div>
+                        <span class="stack-indicator" style="color: var(--accent-blue); background: rgba(0,122,255,0.1);"><i class="fa-solid fa-vial-circle-check"></i> Testing</span>
+                        <h3>Commissioning & Maintenance</h3>
+                        <p style="color: var(--text-secondary); margin-top: 0.4rem; font-size: 0.9rem;">
+                            Full site acceptance testing (SAT), thermal imaging checks, and 24/7 electrical breakdown response.
+                        </p>
+                    </div>
+                    <div class="stack-controls">
+                        <span>Card 3 of 3</span>
+                        <button onclick="event.stopPropagation(); openDetailModal('Commissioning & Maintenance', 'Comprehensive commissioning protocol execution, high-voltage insulation testing, and preventive field servicing.')" class="btn-mac-glass" style="padding: 4px 12px; font-size: 0.75rem;">View Specs</button>
+                    </div>
                 </div>
+
             </div>
         </div>
     </section>
 
-    <!-- INDUSTRIAL INFRASTRUCTURE GALLERY -->
+    <!-- INDUSTRIAL INFRASTRUCTURE GALLERY (UPDATED GAS PROCESSING PICTURE) -->
     <section class="section-block" id="gallery" style="padding-top: 20px;">
         <div class="section-header">
             <h2>Featured Infrastructure Projects</h2>
@@ -562,13 +761,14 @@
                 </div>
             </div>
 
+            <!-- UPDATED FREE OIL & GAS PICTURE -->
             <div class="gallery-card">
                 <div class="gallery-img-container">
-                    <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80" alt="Gas Processing Plants">
+                    <img src="https://images.unsplash.com/photo-1516937941344-00b4e0337589?auto=format&fit=crop&w=800&q=80" alt="Gas Processing Plants">
                 </div>
                 <div class="gallery-content">
                     <span class="gallery-badge">Gas Operations</span>
-                    <h3 style="font-size: 1.25rem;">Gas Processing Plants</h3>
+                    <h3 style="font-size: 1.25rem;">Gas Processing Facilities</h3>
                     <p style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 0.4rem;">Continuous dusk-to-dawn operational plant engineering & technical support.</p>
                 </div>
             </div>
@@ -619,61 +819,73 @@
         </div>
     </section>
 
-    <!-- ALL ANIMATED INFOGRAPHICS TELEMETRY WIDGETS -->
+    <!-- REAL-TIME AI & DIGITAL GROWTH METRICS SECTION -->
     <section class="section-block" id="widgets" style="padding-top: 20px;">
         <div class="section-header">
             <h2>HSE & Quality Operational Hub</h2>
-            <p>Real-time system telemetry, AI digital metrics, and animated operational intelligence.</p>
+            <p>Real-time telemetry, animated ML models, and dynamic site intelligence streams.</p>
         </div>
 
         <div class="widgets-grid">
             
-            <!-- INFOGRAPHIC 1: AI & DIGITAL GROWTH METRICS (REPLACED CLOCK) -->
+            <!-- REAL-TIME AI & DIGITAL GROWTH INFOGRAPHIC -->
             <div class="widget" style="background: linear-gradient(135deg, rgba(175,82,222,0.08), rgba(0,122,255,0.08));">
                 <div>
                     <div style="display: flex; justify-content: space-between; align-items: center;">
-                        <h4 style="font-size: 1.05rem; color: var(--accent-purple);"><i class="fa-solid fa-brain-circuit"></i> AI & Digital Growth</h4>
-                        <span style="font-size: 0.72rem; background: rgba(175,82,222,0.15); color: var(--accent-purple); padding: 3px 8px; border-radius: 50px; font-weight: 800;">ACTIVE ML</span>
+                        <h4 style="font-size: 1.05rem; color: var(--accent-purple);"><i class="fa-solid fa-brain"></i> AI & Digital Growth</h4>
+                        <span style="font-size: 0.72rem; background: rgba(175,82,222,0.15); color: var(--accent-purple); padding: 3px 8px; border-radius: 50px; font-weight: 800; display: inline-flex; align-items: center; gap: 4px;">
+                            <span style="width: 6px; height: 6px; background: var(--accent-purple); border-radius: 50%; display: inline-block; animation: wavePulse 1.2s infinite;"></span> REAL-TIME ML
+                        </span>
                     </div>
                     
                     <div class="ai-donut-box">
                         <div class="svg-ring-container">
                             <svg viewBox="0 0 100 100">
                                 <circle class="svg-ring-bg" cx="50" cy="50" r="45"></circle>
-                                <circle class="svg-ring-fill" cx="50" cy="50" r="45"></circle>
+                                <circle id="aiRingFill" class="svg-ring-fill" cx="50" cy="50" r="45"></circle>
                             </svg>
-                            <div class="ring-center-text">+184%</div>
+                            <div class="ring-center-text" id="aiGrowthVal">+188%</div>
                         </div>
                         <div class="ai-metrics-list">
-                            <div style="color: var(--accent-purple);"><i class="fa-solid fa-chart-line"></i> Predictive Maintenance</div>
-                            <div style="color: var(--text-secondary);">99.4% Anomaly Precision</div>
-                            <div style="color: var(--accent-blue);"><i class="fa-solid fa-network-wired"></i> Neural Operations</div>
+                            <div style="display: flex; justify-content: space-between;">
+                                <span><i class="fa-solid fa-chart-line" style="color: var(--accent-purple);"></i> ML Precision:</span>
+                                <span class="metric-ticker-val" id="aiPrecision">99.6%</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; margin: 4px 0;">
+                                <span><i class="fa-solid fa-microchip" style="color: var(--accent-blue);"></i> Inference Speed:</span>
+                                <span class="metric-ticker-val" id="aiLatency" style="color: var(--accent-blue);">3.8ms</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between;">
+                                <span><i class="fa-solid fa-network-wired" style="color: var(--accent-cyan);"></i> Neural Queries:</span>
+                                <span class="metric-ticker-val" id="aiQueries" style="color: var(--accent-cyan);">14,290/s</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div style="font-size: 0.82rem; color: var(--text-secondary); border-top: 1px dashed var(--glass-border); padding-top: 0.8rem; margin-top: 0.4rem;">
-                    <i class="fa-solid fa-microchip" style="color: var(--accent-purple);"></i> Digital Twin Latency: <strong>4.2ms</strong>
+                <div style="font-size: 0.82rem; color: var(--text-secondary); border-top: 1px dashed var(--glass-border); padding-top: 0.8rem; margin-top: 0.4rem; display: flex; justify-content: space-between;">
+                    <span>Predictive Maintenance: <strong>Active</strong></span>
+                    <span style="color: var(--accent-green); font-weight: 700;"><i class="fa-solid fa-check-double"></i> Optimal</span>
                 </div>
             </div>
 
             <!-- INFOGRAPHIC 2: ACTIVE PIPELINE TELEMETRY -->
             <div class="widget">
                 <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <h4 style="font-size: 1.05rem;"><i class="fa-solid fa-gauge-high" style="color: var(--accent-blue);"></i> Active Pipeline Flow Rate</h4>
+                    <h4 style="font-size: 1.05rem;"><i class="fa-solid fa-gauge-high" style="color: var(--accent-blue);"></i> Pipeline Telemetry</h4>
                     <span style="display: inline-flex; align-items: center; gap: 6px; font-size: 0.75rem; background: rgba(52, 199, 89, 0.15); color: var(--accent-green); padding: 4px 10px; border-radius: 50px; font-weight: 700;">
-                        <span style="width: 8px; height: 8px; background: var(--accent-green); border-radius: 50%; display: inline-block; animation: wavePulse 1.5s infinite;"></span> LIVE
+                        <span style="width: 8px; height: 8px; background: var(--accent-green); border-radius: 50%; display: inline-block; animation: wavePulse 1.5s infinite;"></span> STREAMING
                     </span>
                 </div>
                 <div style="margin: 0.8rem 0;">
-                    <div class="code-font" style="font-size: 2.2rem; font-weight: 800; color: var(--accent-blue);">
+                    <div class="code-font" style="font-size: 2.2rem; font-weight: 800; color: var(--accent-blue);" id="flowRateVal">
                         42,850 <span style="font-size: 0.95rem; color: var(--text-secondary); font-weight: 600;">Barrels / Day</span>
                     </div>
                     <div style="width: 100%; height: 8px; background: rgba(0,0,0,0.08); border-radius: 10px; margin-top: 10px; overflow: hidden;">
-                        <div style="width: 84%; height: 100%; background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan)); border-radius: 10px; animation: pulseGlow 3s infinite;"></div>
+                        <div id="flowProgressBar" style="width: 84%; height: 100%; background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan)); border-radius: 10px; transition: width 1s;"></div>
                     </div>
                 </div>
                 <div style="display: flex; justify-content: space-between; font-size: 0.82rem; color: var(--text-secondary); font-weight: 600;">
-                    <span><i class="fa-solid fa-chart-simple" style="color: var(--accent-blue);"></i> Target: 84% Capacity</span>
+                    <span><i class="fa-solid fa-chart-simple" style="color: var(--accent-blue);"></i> Capacity: 84%</span>
                     <span><i class="fa-solid fa-compress" style="color: var(--accent-cyan);"></i> Pressure: 1,420 PSI</span>
                 </div>
             </div>
@@ -682,7 +894,7 @@
             <div class="widget" style="background: linear-gradient(135deg, rgba(52,199,89,0.08), rgba(0,199,190,0.08));">
                 <div>
                     <div style="display: flex; justify-content: space-between; align-items: center;">
-                        <h4 style="font-size: 1.05rem; color: var(--accent-green);"><i class="fa-solid fa-leaf"></i> Live Environmental & IoT</h4>
+                        <h4 style="font-size: 1.05rem; color: var(--accent-green);"><i class="fa-solid fa-leaf"></i> Environmental Telemetry</h4>
                         <div class="radar-box">
                             <div class="radar-sweep"></div>
                             <div class="radar-center-dot"></div>
@@ -695,7 +907,7 @@
                             <div style="font-size: 1.3rem; font-weight: 800; color: var(--accent-green);" class="code-font">24 <span style="font-size: 0.75rem;">(Good)</span></div>
                         </div>
                         <div class="env-stat-card">
-                            <div style="font-size: 0.72rem; color: var(--text-secondary); text-transform: uppercase; font-weight: 700;">Carbon Offset</div>
+                            <div style="font-size: 0.72rem; color: var(--text-secondary); text-transform: uppercase; font-weight: 700;">Carbon Reduction</div>
                             <div style="font-size: 1.3rem; font-weight: 800; color: var(--accent-cyan);" class="code-font">-38.2%</div>
                         </div>
                     </div>
@@ -801,6 +1013,16 @@
         </div>
     </section>
 
+    <!-- SCOPE MODAL FOR CAPABILITIES -->
+    <div class="modal-overlay" id="detailModal">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeDetailModal()"><i class="fa-solid fa-xmark"></i></button>
+            <h3 id="modalTitle" style="font-size: 1.5rem; margin-bottom: 0.8rem; color: var(--accent-blue);">Capability Details</h3>
+            <p id="modalDesc" style="color: var(--text-secondary); line-height: 1.6; font-size: 0.95rem;"></p>
+            <button onclick="closeDetailModal()" class="btn-mac-primary" style="margin-top: 1.5rem; width: 100%; justify-content: center;">Close Window</button>
+        </div>
+    </div>
+
     <!-- DOCK BAR -->
     <div class="dock-bar">
         <a href="#hero" class="dock-icon" title="Home"><i class="fa-solid fa-house" style="color: var(--accent-blue);"></i></a>
@@ -813,13 +1035,12 @@
     <!-- Swiper.js Script -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-    <!-- SCRIPT -->
     <script>
-        // Initialize Hero Swiper
+        // Initialize Hero Tender Swiper
         const swiper = new Swiper('.myHeroSwiper', {
             loop: true,
             autoplay: {
-                delay: 3500,
+                delay: 4000,
                 disableOnInteraction: false,
             },
             pagination: {
@@ -835,6 +1056,53 @@
                 crossFade: true
             }
         });
+
+        // FULLY FUNCTIONAL CAPABILITIES STACK ROTATION
+        function rotateStack(groupId, clickedPos) {
+            const group = document.getElementById(groupId);
+            if (!group) return;
+            const cards = group.querySelectorAll('.stack-card');
+            
+            cards.forEach(card => {
+                let currentPos = parseInt(card.getAttribute('data-pos'));
+                let newPos = (currentPos - clickedPos + 3) % 3;
+                card.setAttribute('data-pos', newPos);
+            });
+        }
+
+        // MODAL HANDLERS
+        function openDetailModal(title, desc) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalDesc').innerText = desc;
+            document.getElementById('detailModal').classList.add('active');
+        }
+
+        function closeDetailModal() {
+            document.getElementById('detailModal').classList.remove('active');
+        }
+
+        // REAL-TIME AI & DIGITAL GROWTH TICKER DEMO
+        setInterval(() => {
+            // Live Accuracy / Precision Fluctuation
+            const precisionVal = (99.4 + Math.random() * 0.4).toFixed(2);
+            document.getElementById('aiPrecision').innerText = precisionVal + '%';
+
+            // Live Latency Fluctuation
+            const latencyVal = (3.5 + Math.random() * 0.6).toFixed(1);
+            document.getElementById('aiLatency').innerText = latencyVal + 'ms';
+
+            // Dynamic Neural Queries Count
+            const queriesVal = (14200 + Math.floor(Math.random() * 180)).toLocaleString();
+            document.getElementById('aiQueries').innerText = queriesVal + '/s';
+
+            // Dynamic Growth Ring Fill Pulse
+            const offset = 30 + Math.floor(Math.random() * 20);
+            document.getElementById('aiRingFill').style.strokeDashoffset = offset;
+
+            // Pipeline flow rate minor tick
+            const flowRate = (42800 + Math.floor(Math.random() * 120)).toLocaleString();
+            document.getElementById('flowRateVal').innerHTML = `${flowRate} <span style="font-size: 0.95rem; color: var(--text-secondary); font-weight: 600;">Barrels / Day</span>`;
+        }, 2000);
 
         // Wallpaper Picker Toggle
         const controlToggle = document.getElementById('controlToggle');
