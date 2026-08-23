@@ -55,7 +55,7 @@
         .code-font { font-family: 'Space Grotesk', monospace; }
         a { text-decoration: none; color: inherit; }
 
-        /* --- MACOS MENU BAR (SYSTEM THEMES REMOVED) --- */
+        /* --- MACOS MENU BAR --- */
         .menubar {
             position: fixed; top: 0; left: 0; right: 0; height: 52px;
             background: var(--glass-surface);
@@ -172,7 +172,7 @@
         .tender-item-title { font-size: 0.85rem; font-weight: 700; color: #38bdf8; display: flex; justify-content: space-between; }
         .tender-item-desc { font-size: 0.76rem; color: #94a3b8; margin-top: 3px; display: flex; justify-content: space-between; align-items: center; }
 
-        /* --- DESKTOP STACKS & ANIMATED PICTURES --- */
+        /* --- DESKTOP STACKS & CONTINUOUS VIDEO WRAPPERS --- */
         .section-block { padding: 80px 6%; max-width: 1400px; margin: 0 auto; }
         .section-header { text-align: center; max-width: 700px; margin: 0 auto 3.5rem; }
         .section-header h2 { font-size: 2.8rem; margin-bottom: 1rem; }
@@ -195,19 +195,13 @@
         .stack-group:hover .stack-card:nth-child(2) { transform: translateY(-20px) rotate(3deg); opacity: 0.95; }
         .stack-group:hover .stack-card:nth-child(3) { transform: translateY(-50px) rotate(-1deg); opacity: 0.9; }
 
-        /* ANIMATED PICTURE WRAPPERS & KEYFRAMES */
+        /* CONTINUOUS VIDEO & IMAGE CONTAINER */
         .card-img-wrapper {
             width: 100%; height: 160px; border-radius: var(--radius-sm);
             overflow: hidden; margin-bottom: 1rem; background: #0f172a; position: relative;
         }
-        .animated-img {
+        .animated-img, .continuous-video {
             width: 100%; height: 100%; object-fit: cover; display: block;
-            animation: continuousPanZoom 12s ease-in-out infinite alternate;
-        }
-        @keyframes continuousPanZoom {
-            0% { transform: scale(1) translate(0, 0); }
-            50% { transform: scale(1.12) translate(-2%, -2%); }
-            100% { transform: scale(1.05) translate(2%, 1%); }
         }
 
         /* --- PROJECT GALLERY SHOWCASE --- */
@@ -220,10 +214,12 @@
         }
         .gallery-card:hover { transform: translateY(-8px); }
         .gallery-img-container { width: 100%; height: 230px; overflow: hidden; position: relative; background: #0f172a; }
-        .gallery-img-container img.animated-img {
+        .gallery-img-container .animated-img, 
+        .gallery-img-container .continuous-video {
             width: 100%; height: 100%; object-fit: cover; object-position: center; transition: transform 0.5s; display: block;
         }
-        .gallery-card:hover .gallery-img-container img.animated-img { transform: scale(1.15); }
+        .gallery-card:hover .gallery-img-container .animated-img,
+        .gallery-card:hover .gallery-img-container .continuous-video { transform: scale(1.1); }
         .gallery-content { padding: 1.4rem 1.5rem; text-align: left; }
         .gallery-badge {
             display: inline-block; padding: 4px 12px; border-radius: 50px;
@@ -295,7 +291,7 @@
         }
         .progress-fill-3d { height: 100%; border-radius: 10px; transition: width 1s ease-in-out; }
 
-        /* --- ENHANCED NEAT CONTACT SECTION (REQUIREMENT 1) --- */
+        /* --- CONTACT SECTION --- */
         .contact-card {
             background: var(--glass-card); border: 1px solid var(--glass-border);
             border-radius: var(--radius-lg); padding: 3.5rem; box-shadow: var(--glass-shadow);
@@ -335,7 +331,7 @@
         .mac-input:focus { border-color: var(--accent-blue); background: #ffffff; box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.15); }
         select.mac-input { cursor: pointer; appearance: none; background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%22%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%230F172A%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E"); background-repeat: no-repeat; background-position: right 1.2rem center; background-size: 0.7rem auto; padding-right: 2.5rem; }
 
-        /* --- GLOWING WHATSAPP CHATBOT WIDGET (REQUIREMENT 2) --- */
+        /* --- GLOWING WHATSAPP CHATBOT WIDGET --- */
         .wa-widget-wrapper { position: fixed; bottom: 25px; right: 25px; z-index: 2005; }
         .wa-glow-button {
             width: 62px; height: 62px; border-radius: 50%;
@@ -422,7 +418,7 @@
 </head>
 <body>
 
-    <!-- MACOS TOP MENU BAR (SYSTEM THEMES REMOVED) -->
+    <!-- MACOS TOP MENU BAR -->
     <header class="menubar">
         <div class="menubar-brand">
             <div class="logo-container">
@@ -515,7 +511,7 @@
         </div>
     </section>
 
-    <!-- DESKTOP STACKS (CAPABILITIES WITH ANIMATED IMAGES - REQUIREMENT 4) -->
+    <!-- CAPABILITIES & SERVICES -->
     <section class="section-block" id="stacks">
         <div class="section-header">
             <h2>Capabilities & Services</h2>
@@ -523,7 +519,7 @@
         </div>
 
         <div class="stacks-container">
-            <!-- Stack 1: Global Procurement & Energy Sourcing -->
+            <!-- Stack 1: Global Procurement -->
             <div class="stack-group">
                 <div class="stack-card">
                     <div>
@@ -545,12 +541,14 @@
                 </div>
             </div>
 
-            <!-- Stack 2: Civil & Structural Engineering -->
+            <!-- Stack 2: Civil & Structural Engineering (WITH CONTINUOUS VIDEO) -->
             <div class="stack-group">
                 <div class="stack-card">
                     <div>
                         <div class="card-img-wrapper">
-                            <img class="animated-img" src="https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?auto=format&fit=crop&w=800&q=80" alt="Civil Construction Bridge Infrastructure">
+                            <video class="continuous-video" autoplay loop muted playsinline>
+                                <source src="video_3.mp4" type="video/mp4">
+                            </video>
                         </div>
                         <h3>Civil & Structural</h3>
                         <p style="color: var(--text-secondary); margin-top: 0.3rem;">Steel truss structures, foundations, site prep, civil works.</p>
@@ -567,12 +565,14 @@
                 </div>
             </div>
 
-            <!-- Stack 3: M&E Works & Automation -->
+            <!-- Stack 3: Mechanical & Electrical (WITH CONTINUOUS VIDEO) -->
             <div class="stack-group">
                 <div class="stack-card">
                     <div>
                         <div class="card-img-wrapper">
-                            <img class="animated-img" src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=800&q=80" alt="Electrical Power Panel Control">
+                            <video class="continuous-video" autoplay loop muted playsinline>
+                                <source src="video_0.mp4" type="video/mp4">
+                            </video>
                         </div>
                         <h3>Mechanical & Electrical</h3>
                         <p style="color: var(--text-secondary); margin-top: 0.3rem;">Power panels, wiring circuits, skids, and control systems.</p>
@@ -591,7 +591,7 @@
         </div>
     </section>
 
-    <!-- FEATURED INFRASTRUCTURE PROJECTS (ANIMATED IMAGES VISIBLE TO ALL - REQUIREMENT 4) -->
+    <!-- FEATURED INFRASTRUCTURE PROJECTS SHOWCASE (WITH CONTINUOUS VIDEOS) -->
     <section class="section-block" id="gallery" style="padding-top: 20px;">
         <div class="section-header">
             <h2>Featured Infrastructure Projects</h2>
@@ -599,9 +599,12 @@
         </div>
 
         <div class="gallery-grid">
+            <!-- 1. Refinery Pipeline Systems -->
             <div class="gallery-card">
                 <div class="gallery-img-container">
-                    <img class="animated-img" src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80" alt="Refinery Pipeline Systems">
+                    <video class="continuous-video" autoplay loop muted playsinline>
+                        <source src="video_2.mp4" type="video/mp4">
+                    </video>
                 </div>
                 <div class="gallery-content">
                     <span class="gallery-badge">Petrochemical</span>
@@ -609,9 +612,12 @@
                 </div>
             </div>
 
+            <!-- 2. Gas Processing Plants -->
             <div class="gallery-card">
                 <div class="gallery-img-container">
-                    <img class="animated-img" src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80" alt="Gas Processing Plants">
+                    <video class="continuous-video" autoplay loop muted playsinline>
+                        <source src="video_5.mp4" type="video/mp4">
+                    </video>
                 </div>
                 <div class="gallery-content">
                     <span class="gallery-badge">Gas Operations</span>
@@ -619,9 +625,12 @@
                 </div>
             </div>
 
+            <!-- 3. Piping & Valve Assemblies -->
             <div class="gallery-card">
                 <div class="gallery-img-container">
-                    <img class="animated-img" src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80" alt="Piping & Valve Assemblies">
+                    <video class="continuous-video" autoplay loop muted playsinline>
+                        <source src="video_1.mp4" type="video/mp4">
+                    </video>
                 </div>
                 <div class="gallery-content">
                     <span class="gallery-badge">Mechanical</span>
@@ -629,6 +638,7 @@
                 </div>
             </div>
 
+            <!-- 4. Hydrogen & ESG Tech -->
             <div class="gallery-card">
                 <div class="gallery-img-container">
                     <img class="animated-img" src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=800&q=80" alt="Hydrogen & ESG Tech">
@@ -639,9 +649,12 @@
                 </div>
             </div>
 
+            <!-- 5. Control Panel Distribution -->
             <div class="gallery-card">
                 <div class="gallery-img-container">
-                    <img class="animated-img" src="https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=800&q=80" alt="Control Panel Distribution">
+                    <video class="continuous-video" autoplay loop muted playsinline>
+                        <source src="video_0.mp4" type="video/mp4">
+                    </video>
                 </div>
                 <div class="gallery-content">
                     <span class="gallery-badge" style="background: rgba(175,82,222,0.15); color: var(--accent-purple);">Electrical</span>
@@ -649,9 +662,12 @@
                 </div>
             </div>
 
+            <!-- 6. Tech-Hub Operations Matrix -->
             <div class="gallery-card">
                 <div class="gallery-img-container">
-                    <img class="animated-img" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80" alt="Tech-Hub Operations Matrix">
+                    <video class="continuous-video" autoplay loop muted playsinline>
+                        <source src="video_4.mp4" type="video/mp4">
+                    </video>
                 </div>
                 <div class="gallery-content">
                     <span class="gallery-badge" style="background: rgba(0,199,190,0.15); color: var(--accent-cyan);">Smart Operations</span>
@@ -776,7 +792,7 @@
         </div>
     </section>
 
-    <!-- CONTACT PANEL (NEATLY ALIGNED - REQUIREMENT 1) -->
+    <!-- CONTACT PANEL -->
     <section class="section-block" id="contact">
         <div class="contact-card">
             <div class="contact-info-col">
@@ -831,7 +847,7 @@
         </div>
     </section>
 
-    <!-- FLOATING GLOWING WHATSAPP CHATBOT WIDGET (REQUIREMENT 2) -->
+    <!-- FLOATING GLOWING WHATSAPP CHATBOT WIDGET -->
     <div class="wa-widget-wrapper">
         <div class="wa-chat-box" id="waChatBox">
             <div class="wa-chat-header">
