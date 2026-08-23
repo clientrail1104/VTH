@@ -3,661 +3,714 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vihaanaa Tech Hubs | Engineering & Technical Services Malaysia</title>
-    <!-- Fonts & Icons -->
+    <title>Vihaanaa Tech Hubs | Engineering & Technical Services Malaysia[cite: 1]</title>
+    
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
+        /* --- HIGH-VALUE DESIGN SYSTEM & VIBRANT PALETTE --- */
         :root {
+            /* Neon Cyber Gradients & Palette */
             --bg-dark: #030712;
-            --bg-card: rgba(15, 23, 42, 0.65);
-            --cyan-glow: #00f2fe;
-            --blue-accent: #3b82f6;
-            --flame-accent: #ff6b35;
-            --emerald-glow: #10b981;
-            --purple-accent: #7928ca;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --border-glass: rgba(255, 255, 255, 0.08);
-            --radius-xl: 24px;
-            --radius-lg: 16px;
+            --bg-card-dark: rgba(15, 23, 42, 0.65);
+            --primary-cyan: #00f2fe;
+            --primary-blue: #3b82f6;
+            --neon-magenta: #f43f5e;
+            --neon-purple: #a855f7;
+            --neon-amber: #f59e0b;
+            --neon-emerald: #10b981;
+            
+            /* Section Dynamic Light Themes */
+            --hero-bg: radial-gradient(circle at 80% 20%, rgba(0, 242, 254, 0.15) 0%, rgba(168, 85, 247, 0.12) 35%, #030712 70%);
+            --stats-glow: 0 20px 50px rgba(16, 185, 129, 0.25);
+            --about-bg: linear-gradient(135deg, #fff7ed 0%, #ffedd5 50%, #fef3c7 100%);
+            --about-accent: #ea580c;
+            --services-bg: radial-gradient(circle at 20% 50%, #0f172a 0%, #0284c7 60%, #030712 100%);
+            --hse-bg: linear-gradient(135deg, #f0fdf4 0%, #fef2f2 100%);
+            
+            --text-main: #0f172a;
+            --text-light: #f8fafc;
+            --text-muted: #64748b;
+            --radius-md: 20px;
+            --radius-lg: 32px;
             --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
+        /* --- GLOBAL RESET & SMOOTH SCROLL --- */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Plus Jakarta Sans', sans-serif;
         }
-
         html {
             scroll-behavior: smooth;
-            scroll-padding-top: 100px;
+            scroll-padding-top: 90px;
             background-color: var(--bg-dark);
-            color: var(--text-main);
         }
-
         body {
+            color: var(--text-main);
             overflow-x: hidden;
-            background: #030712;
+            line-height: 1.6;
         }
-
-        h1, h2, h3, h4 {
+        h1, h2, h3, h4, h5 {
             font-family: 'Outfit', sans-serif;
-            letter-spacing: -0.02em;
+            font-weight: 800;
         }
+        .code-font {
+            font-family: 'Space Grotesk', monospace;
+        }
+        a { text-decoration: none; color: inherit; }
 
-        /* --- BACKGROUND AMBIENT MESH --- */
-        .ambient-mesh {
+        /* --- BACKGROUND ANIMATED MESH GRID --- */
+        .ambient-grid {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: -1;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background-image: 
+                radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 0),
+                linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 40px 40px, 80px 80px, 80px 80px;
             pointer-events: none;
-            overflow: hidden;
+            z-index: 0;
         }
 
-        .ambient-orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(120px);
-            opacity: 0.18;
-            animation: orbFloat 20s ease-in-out infinite alternate;
-        }
-
-        .orb-1 {
-            top: -10%;
-            left: -10%;
-            width: 50vw;
-            height: 50vw;
-            background: var(--cyan-glow);
-        }
-
-        .orb-2 {
-            bottom: 10%;
-            right: -10%;
-            width: 45vw;
-            height: 45vw;
-            background: var(--purple-accent);
-            animation-delay: -7s;
-        }
-
-        .orb-3 {
-            top: 40%;
-            left: 30%;
-            width: 35vw;
-            height: 35vw;
-            background: var(--flame-accent);
-            animation-delay: -14s;
-        }
-
-        @keyframes orbFloat {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(80px, 60px) scale(1.15); }
-        }
-
-        /* --- NAVIGATION --- */
+        /* --- ULTRA GLASS NAVBAR --- */
         .navbar {
             position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 90%;
-            max-width: 1280px;
-            height: 70px;
-            background: rgba(15, 23, 42, 0.7);
+            top: 0; left: 0; width: 100%; height: 90px;
+            background: rgba(3, 7, 18, 0.75);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--border-glass);
-            border-radius: 100px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
             z-index: 1000;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 2rem;
+            padding: 0 6%;
             transition: var(--transition);
         }
-
+        .navbar.scrolled {
+            height: 75px;
+            background: rgba(3, 7, 18, 0.92);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border-bottom-color: rgba(0, 242, 254, 0.2);
+        }
         .brand-logo {
             display: flex;
             align-items: center;
-            gap: 12px;
-            text-decoration: none;
+            gap: 14px;
         }
-
         .logo-svg {
-            width: 40px;
-            height: 40px;
-            filter: drop-shadow(0 0 10px rgba(0, 242, 254, 0.5));
+            width: 52px;
+            height: 52px;
+            filter: drop-shadow(0 0 12px rgba(0,242,254,0.6));
             transition: var(--transition);
         }
-
         .brand-logo:hover .logo-svg {
-            transform: rotate(180deg);
+            transform: rotate(90deg) scale(1.08);
         }
-
         .brand-title {
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             font-weight: 900;
-            color: #fff;
+            color: #ffffff;
             letter-spacing: 1px;
+            line-height: 1;
         }
-
         .brand-subtitle {
-            font-size: 0.65rem;
+            font-size: 0.75rem;
             font-weight: 800;
-            color: var(--cyan-glow);
-            letter-spacing: 2px;
-            display: block;
+            color: var(--primary-cyan);
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
         }
-
         .nav-menu {
             display: flex;
             align-items: center;
-            gap: 2rem;
+            gap: 2.5rem;
             list-style: none;
         }
-
         .nav-link {
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             font-weight: 600;
-            color: var(--text-muted);
-            text-decoration: none;
+            color: rgba(255,255,255,0.8);
+            position: relative;
+            padding: 8px 0;
             transition: var(--transition);
         }
-
-        .nav-link:hover {
-            color: #fff;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        .nav-link:hover, .nav-link.active {
+            color: #ffffff;
+            text-shadow: 0 0 10px rgba(0,242,254,0.5);
         }
-
-        .btn-glow-header {
-            background: linear-gradient(135deg, var(--cyan-glow), var(--blue-accent));
-            color: #000 !important;
-            padding: 0.6rem 1.4rem;
-            border-radius: 100px;
-            font-weight: 700;
-            font-size: 0.85rem;
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; width: 0%; height: 2px;
+            background: linear-gradient(90deg, var(--primary-cyan), var(--neon-magenta));
+            transition: var(--transition);
+            border-radius: 2px;
+        }
+        .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+        
+        .btn-header {
+            background: linear-gradient(135deg, var(--primary-cyan) 0%, var(--primary-blue) 100%);
+            color: #030712 !important;
+            padding: 0.75rem 1.6rem;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 0.9rem;
             box-shadow: 0 0 20px rgba(0, 242, 254, 0.4);
             transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
-
-        .btn-glow-header:hover {
-            transform: translateY(-2px) scale(1.03);
+        .btn-header:hover {
+            transform: translateY(-3px) scale(1.03);
             box-shadow: 0 0 30px rgba(0, 242, 254, 0.8);
         }
+        .mobile-toggle {
+            display: none;
+            font-size: 1.8rem;
+            color: #ffffff;
+            cursor: pointer;
+        }
 
-        /* --- HERO SECTION --- */
+        /* --- 1. HERO SECTION WITH SNIPPET / DASHBOARD GRAPHIC --- */
         .hero {
             position: relative;
-            padding: 200px 8% 120px;
-            max-width: 1400px;
-            margin: 0 auto;
+            padding: 190px 6% 130px;
+            background: var(--hero-bg);
+            color: #ffffff;
+            overflow: hidden;
+            z-index: 1;
         }
-
         .hero-grid {
             display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
+            grid-template-columns: 1.15fr 0.85fr;
             gap: 4rem;
             align-items: center;
+            max-width: 1350px;
+            margin: 0 auto;
         }
-
-        .status-badge-1m {
+        .hero-badge {
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(0, 242, 254, 0.3);
+            background: rgba(0, 242, 254, 0.1);
+            border: 1px solid rgba(0, 242, 254, 0.5);
             padding: 8px 20px;
-            border-radius: 100px;
-            backdrop-filter: blur(12px);
-            box-shadow: 0 0 25px rgba(0, 242, 254, 0.15);
-            margin-bottom: 2rem;
+            border-radius: 50px;
+            font-size: 0.88rem;
+            font-weight: 800;
+            color: var(--primary-cyan);
+            box-shadow: 0 0 25px rgba(0, 242, 254, 0.2);
+            margin-bottom: 1.8rem;
+            backdrop-filter: blur(10px);
         }
-
-        .pulse-dot {
-            width: 8px;
-            height: 8px;
-            background-color: var(--cyan-glow);
-            border-radius: 50%;
-            box-shadow: 0 0 12px var(--cyan-glow);
-            animation: livePulse 1.5s infinite;
-        }
-
-        @keyframes livePulse {
-            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 242, 254, 0.7); }
-            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(0, 242, 254, 0); }
-            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 242, 254, 0); }
-        }
+        .hero-badge i { animation: pulse 2s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.2); } }
 
         .hero h1 {
             font-size: 3.8rem;
-            line-height: 1.08;
-            font-weight: 800;
+            line-height: 1.1;
             margin-bottom: 1.5rem;
-            background: linear-gradient(180deg, #ffffff 0%, #94a3b8 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
         }
-
         .hero h1 span {
-            background: linear-gradient(135deg, var(--cyan-glow) 0%, #60a5fa 100%);
+            background: linear-gradient(135deg, #00f2fe 0%, #a855f7 50%, #f43f5e 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-
         .hero p {
-            font-size: 1.15rem;
-            color: var(--text-muted);
+            font-size: 1.18rem;
+            color: #94a3b8;
             margin-bottom: 2.5rem;
-            max-width: 600px;
-            line-height: 1.7;
+            max-width: 650px;
+            font-weight: 400;
         }
-
         .hero-actions {
             display: flex;
-            gap: 1.5rem;
+            gap: 1.4rem;
+            align-items: center;
+            flex-wrap: wrap;
         }
-
-        .btn-hero-flame {
-            background: linear-gradient(135deg, var(--flame-accent), #e11d48);
-            color: #fff;
-            padding: 1rem 2.2rem;
-            border-radius: 100px;
+        .btn-primary-glow {
+            background: linear-gradient(135deg, #f43f5e 0%, #a855f7 100%);
+            color: #ffffff;
+            padding: 1.05rem 2.4rem;
+            border-radius: 14px;
+            font-weight: 800;
+            font-size: 1rem;
+            box-shadow: 0 10px 30px rgba(244, 63, 94, 0.4);
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .btn-primary-glow:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(244, 63, 94, 0.7);
+        }
+        .btn-outline-glow {
+            background: rgba(255, 255, 255, 0.03);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 1.05rem 2.2rem;
+            border-radius: 14px;
             font-weight: 700;
-            text-decoration: none;
-            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.35);
+            font-size: 1rem;
+            backdrop-filter: blur(12px);
             transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
         }
-
-        .btn-hero-flame:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(255, 107, 53, 0.6);
-        }
-
-        .btn-hero-glass {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--border-glass);
-            color: #fff;
-            padding: 1rem 2.2rem;
-            border-radius: 100px;
-            font-weight: 600;
-            text-decoration: none;
-            backdrop-filter: blur(10px);
-            transition: var(--transition);
-        }
-
-        .btn-hero-glass:hover {
+        .btn-outline-glow:hover {
             background: rgba(255, 255, 255, 0.12);
-            border-color: rgba(255, 255, 255, 0.3);
+            border-color: var(--primary-cyan);
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.3);
         }
 
-        /* --- 3D HERO CARD VISUAL --- */
-        .hero-card-container {
+        /* Hero Futuristic Interactive Snippet Visual */
+        .hero-snippet-window {
+            background: rgba(15, 23, 42, 0.85);
+            border: 1px solid rgba(0, 242, 254, 0.3);
+            border-radius: var(--radius-md);
+            padding: 1.8rem;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(0, 242, 254, 0.15);
+            backdrop-filter: blur(20px);
             position: relative;
-            perspective: 1000px;
         }
-
-        .hero-3d-card {
-            background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01));
-            border: 1px solid var(--border-glass);
-            border-radius: var(--radius-xl);
-            padding: 3rem;
-            backdrop-filter: blur(30px);
-            box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.5);
-            text-align: center;
-            transform-style: preserve-3d;
-            transition: transform 0.2s ease-out;
+        .snippet-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 15px;
         }
+        .snippet-dots { display: flex; gap: 8px; }
+        .dot { width: 12px; height: 12px; border-radius: 50%; }
+        .dot-red { background: #ef4444; }
+        .dot-yellow { background: #f59e0b; }
+        .dot-green { background: #10b981; }
+        .snippet-title { font-size: 0.8rem; color: #94a3b8; letter-spacing: 1px; }
+        .snippet-body { font-size: 0.88rem; line-height: 1.8; color: #cbd5e1; }
+        .code-keyword { color: #f43f5e; font-weight: bold; }
+        .code-func { color: #00f2fe; }
+        .code-string { color: #10b981; }
+        .code-num { color: #f59e0b; }
 
-        .card-core-glow {
-            width: 140px;
-            height: 140px;
-            margin: 0 auto 1.5rem;
+        /* Floating Logo Overlay on Card */
+        .card-logo-container {
+            width: 100px;
+            height: 100px;
+            margin: 1.5rem auto 0;
+            background: radial-gradient(circle, rgba(0,242,254,0.25) 0%, rgba(15,23,42,0.9) 100%);
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(0, 242, 254, 0.2), transparent 70%);
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 1px solid rgba(0, 242, 254, 0.4);
-            box-shadow: 0 0 50px rgba(0, 242, 254, 0.3);
+            border: 2px solid var(--primary-cyan);
+            box-shadow: 0 0 35px rgba(0, 242, 254, 0.5);
+            animation: floatAnim 4s ease-in-out infinite;
+        }
+        @keyframes floatAnim {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
         }
 
-        /* --- STATS QUICK BAR --- */
-        .stats-section {
-            max-width: 1280px;
-            margin: -40px auto 100px;
-            padding: 0 2rem;
+        /* --- 2. STATS QUICK BAR (EMERALD HIGH GLOW) --- */
+        .stats-bar-wrapper {
+            max-width: 1300px;
+            margin: -60px auto 0;
+            padding: 0 20px;
             position: relative;
-            z-index: 10;
+            z-index: 20;
         }
-
-        .stats-glass-grid {
-            background: rgba(15, 23, 42, 0.75);
-            border: 1px solid var(--border-glass);
-            border-radius: var(--radius-xl);
-            padding: 2.5rem;
-            backdrop-filter: blur(20px);
+        .stats-grid {
+            background: linear-gradient(135deg, rgba(255,255,255,0.98) 0%, rgba(240,253,244,0.98) 100%);
+            border-radius: var(--radius-md);
+            box-shadow: var(--stats-glow);
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+            padding: 2.2rem;
+            gap: 1.5rem;
+            border: 2px solid var(--neon-emerald);
+            backdrop-filter: blur(15px);
         }
-
-        .stat-card {
+        .stat-item {
             display: flex;
             align-items: center;
             gap: 1.2rem;
-            border-right: 1px solid rgba(255, 255, 255, 0.05);
+            border-right: 1px solid rgba(16, 185, 129, 0.25);
             padding-right: 1rem;
         }
-
-        .stat-card:last-child {
-            border-right: none;
-        }
-
-        .stat-icon-wrapper {
-            width: 54px;
-            height: 54px;
-            border-radius: 14px;
-            background: rgba(0, 242, 254, 0.1);
-            border: 1px solid rgba(0, 242, 254, 0.3);
-            color: var(--cyan-glow);
+        .stat-item:last-child { border-right: none; }
+        .stat-icon {
+            width: 62px;
+            height: 62px;
+            background: linear-gradient(135deg, #10b981 0%, #047857 100%);
+            color: #ffffff;
+            border-radius: 18px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.4rem;
+            font-size: 1.7rem;
+            box-shadow: 0 10px 20px rgba(16, 185, 129, 0.35);
+            flex-shrink: 0;
         }
-
         .stat-num {
-            font-size: 1.6rem;
-            font-weight: 800;
-            color: #fff;
+            font-size: 1.7rem;
+            font-weight: 900;
+            color: #064e3b;
             line-height: 1.1;
         }
-
         .stat-label {
-            font-size: 0.8rem;
+            font-size: 0.85rem;
+            color: #374151;
+            font-weight: 700;
+        }
+
+        /* --- SECTION BASE HEADERS --- */
+        section, .section-block {
+            padding: 110px 6%;
+            max-width: 1350px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        .section-header {
+            text-align: center;
+            max-width: 750px;
+            margin: 0 auto 4.5rem;
+        }
+        .section-tag {
+            font-size: 0.88rem;
+            font-weight: 900;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 0.8rem;
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 30px;
+            background: rgba(255,255,255,0.08);
+        }
+        .section-title {
+            font-size: 2.8rem;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+        .section-desc {
+            font-size: 1.1rem;
             color: var(--text-muted);
             font-weight: 500;
         }
 
-        /* --- SECTION HEADERS --- */
-        .section-wrapper {
-            max-width: 1300px;
-            margin: 0 auto 120px;
-            padding: 0 2rem;
+        /* --- 3. ABOUT SECTION (SUNSET ORANGE WARMTH) --- */
+        #about-container {
+            background: var(--about-bg);
+            border-radius: var(--radius-lg);
+            margin: 80px auto;
+            padding: 90px 6%;
+            max-width: 1350px;
+            box-shadow: 0 25px 50px rgba(234, 88, 12, 0.15);
         }
-
-        .section-header {
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto 4rem;
-        }
-
-        .section-tag {
-            font-size: 0.8rem;
-            font-weight: 800;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: var(--cyan-glow);
-            margin-bottom: 0.8rem;
-            display: block;
-        }
-
-        .section-title {
-            font-size: 2.8rem;
-            color: #fff;
-            margin-bottom: 1rem;
-            font-weight: 800;
-        }
-
-        .section-desc {
-            color: var(--text-muted);
-            font-size: 1.05rem;
-        }
-
-        /* --- ABOUT SECTION --- */
-        .about-glass-panel {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
-            border: 1px solid var(--border-glass);
-            border-radius: var(--radius-xl);
-            padding: 4rem;
-            backdrop-filter: blur(20px);
-        }
-
         .about-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            gap: 4.5rem;
             align-items: center;
         }
-
+        .about-content h3 {
+            font-size: 2.1rem;
+            color: #7c2d12;
+            margin-bottom: 1.2rem;
+            line-height: 1.25;
+        }
+        .about-content p {
+            color: #431407;
+            font-size: 1.05rem;
+            margin-bottom: 1.5rem;
+        }
         .values-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1.2rem;
+            gap: 1.4rem;
             margin-top: 2rem;
         }
-
-        .value-card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid var(--border-glass);
-            padding: 1.2rem 1.5rem;
-            border-radius: var(--radius-lg);
+        .value-box {
+            background: #ffffff;
+            padding: 1.5rem;
+            border-radius: 16px;
+            border-left: 6px solid var(--about-accent);
+            box-shadow: 0 12px 25px rgba(234, 88, 12, 0.1);
             transition: var(--transition);
         }
-
-        .value-card:hover {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(255, 255, 255, 0.2);
-            transform: translateY(-3px);
+        .value-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 18px 30px rgba(234, 88, 12, 0.2);
         }
-
-        .value-card h4 {
-            color: #fff;
-            font-size: 1rem;
-            margin-bottom: 0.3rem;
+        .value-box h4 {
+            color: var(--about-accent);
+            font-size: 1.15rem;
+            margin-bottom: 0.4rem;
         }
-
-        .value-card p {
-            color: var(--text-muted);
-            font-size: 0.85rem;
+        .value-box p {
+            font-size: 0.9rem;
+            color: #64748b;
+            margin: 0;
         }
-
-        .about-image-container {
-            position: relative;
-            border-radius: var(--radius-xl);
-            overflow: hidden;
-            border: 1px solid var(--border-glass);
-        }
-
+        .about-image-wrapper { position: relative; }
         .about-img {
             width: 100%;
-            height: 480px;
+            border-radius: var(--radius-md);
+            box-shadow: 0 25px 50px rgba(124, 45, 18, 0.25);
             object-fit: cover;
-            filter: brightness(0.85) contrast(1.1);
+            height: 500px;
         }
-
-        /* --- 3D INTERACTIVE SERVICES GRID --- */
-        .glow-card-container {
-            position: relative;
-            border-radius: var(--radius-xl);
-            padding: 1px;
-            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.02));
-            overflow: hidden;
-            transition: transform 0.3s ease;
-            transform-style: preserve-3d;
-            perspective: 1000px;
-        }
-
-        .glow-card-container::before {
-            content: '';
+        .about-floating-badge {
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: conic-gradient(transparent, transparent, transparent, var(--cyan-glow), var(--purple-accent));
-            animation: rotateBorder 4s linear infinite;
-            opacity: 0;
-            transition: opacity 0.4s ease;
+            bottom: -25px;
+            left: -25px;
+            background: #7c2d12;
+            color: #ffffff;
+            padding: 1.6rem 2rem;
+            border-radius: var(--radius-md);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
         }
 
-        .glow-card-container:hover::before {
-            opacity: 1;
+        /* --- 4. SERVICES SECTION (GLASSMORPHIC ELECTRIC BLUE) --- */
+        .services-bg-wrapper {
+            background: var(--services-bg);
+            padding: 110px 6%;
+            color: #ffffff;
+            border-radius: 40px;
+            max-width: 1380px;
+            margin: 0 auto;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
         }
-
-        @keyframes rotateBorder {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .card-content-3d {
-            position: relative;
-            z-index: 2;
-            background: rgba(15, 23, 42, 0.92);
-            backdrop-filter: blur(20px);
-            border-radius: 23px;
-            padding: 2.5rem 2rem;
-            height: 100%;
-        }
-
         .services-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
+            gap: 2.2rem;
         }
-
-        .service-icon-box {
-            width: 56px;
-            height: 56px;
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            color: #fff;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-        }
-
-        /* --- HSE & QUALITY DUAL PANEL --- */
-        .hse-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2.5rem;
-        }
-
-        .hse-panel {
-            background: rgba(15, 23, 42, 0.6);
-            border: 1px solid var(--border-glass);
-            border-radius: var(--radius-xl);
-            padding: 3rem;
-            backdrop-filter: blur(15px);
+        .service-card {
+            background: rgba(255, 255, 255, 0.07);
+            backdrop-filter: blur(16px);
+            border-radius: var(--radius-md);
+            padding: 2.5rem 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            transition: var(--transition);
             position: relative;
             overflow: hidden;
         }
-
-        .hse-panel.safety::before {
+        .service-card::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, #e11d48, #f43f5e);
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at top right, rgba(0, 242, 254, 0.15), transparent 60%);
+            opacity: 0;
+            transition: var(--transition);
         }
-
-        .hse-panel.quality::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, #10b981, #34d399);
+        .service-card:hover::before { opacity: 1; }
+        .service-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            background: rgba(255, 255, 255, 0.14);
+            border-color: var(--primary-cyan);
+            box-shadow: 0 20px 40px rgba(0, 242, 254, 0.3);
         }
-
-        .hse-list {
-            list-style: none;
-            margin-top: 1.5rem;
-        }
-
-        .hse-list li {
+        .service-card-icon {
+            width: 65px;
+            height: 65px;
+            background: linear-gradient(135deg, #00f2fe 0%, #3b82f6 100%);
+            color: #ffffff;
+            border-radius: 18px;
             display: flex;
             align-items: center;
-            gap: 12px;
-            color: var(--text-muted);
-            margin-bottom: 1rem;
-            font-size: 0.95rem;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 10px 25px rgba(0, 242, 254, 0.4);
+        }
+        .service-card h3 {
+            font-size: 1.4rem;
+            color: #ffffff;
+            margin-bottom: 0.9rem;
+        }
+        .service-card p {
+            color: #cbd5e1;
+            font-size: 0.98rem;
+            line-height: 1.6;
         }
 
-        /* --- EXECUTIVE CONTACT PANEL --- */
-        .contact-executive-wrapper {
-            display: grid;
-            grid-template-columns: 0.9fr 1.1fr;
-            gap: 3rem;
-            background: linear-gradient(145deg, #090d16 0%, #111827 100%);
-            border: 1px solid rgba(255, 107, 53, 0.2);
+        /* --- 5. HSE & QUALITY SECTION (DUAL HIGH CONTRAST) --- */
+        #hse-container {
+            background: var(--hse-bg);
+            padding: 90px 6%;
             border-radius: 32px;
-            padding: 3.5rem;
-            box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.8);
-            position: relative;
+            margin: 80px auto;
+            max-width: 1350px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
         }
-
-        .form-input-glow {
-            width: 100%;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 1.1rem 1.4rem;
-            border-radius: 14px;
-            color: #fff;
-            outline: none;
-            font-size: 0.95rem;
+        .hse-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+        .hse-card {
+            background: #ffffff;
+            border-radius: var(--radius-md);
+            padding: 3rem 2.5rem;
             transition: var(--transition);
         }
-
-        .form-input-glow:focus {
-            border-color: var(--flame-accent);
-            background: rgba(255, 255, 255, 0.06);
-            box-shadow: 0 0 25px rgba(255, 107, 53, 0.25);
+        .hse-card:hover { transform: translateY(-6px); }
+        .hse-card.safety {
+            border-top: 8px solid var(--neon-magenta);
+            box-shadow: 0 15px 35px rgba(244, 63, 94, 0.12);
+        }
+        .hse-card.quality {
+            border-top: 8px solid var(--neon-emerald);
+            box-shadow: 0 15px 35px rgba(16, 185, 129, 0.12);
+        }
+        .hse-card-header {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            margin-bottom: 1.8rem;
+            padding-bottom: 1.2rem;
+            border-bottom: 2px solid #f1f5f9;
+        }
+        .hse-card-header.safety i { font-size: 2rem; color: var(--neon-magenta); }
+        .hse-card-header.quality i { font-size: 2rem; color: var(--neon-emerald); }
+        .hse-card-header h3 { font-size: 1.6rem; color: var(--text-main); }
+        .hse-list { list-style: none; }
+        .hse-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            margin-bottom: 1.2rem;
+            color: #475569;
+            font-size: 1.05rem;
+            font-weight: 500;
         }
 
-        .btn-magnetic {
-            background: linear-gradient(135deg, var(--flame-accent) 0%, #e11d48 100%);
-            color: #fff;
+        /* --- 6. CONTACT SECTION (NEON SLATE & FLAME ACCENTS) --- */
+        #contact {
+            padding: 100px 6% 120px;
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 0.85fr 1.15fr;
+            gap: 3.5rem;
+            align-items: start;
+        }
+        .contact-info-panel {
+            background: linear-gradient(135deg, #090d16 0%, #1e293b 100%);
+            color: #ffffff;
+            border-radius: var(--radius-md);
+            padding: 3.5rem 2.8rem;
+            border-left: 8px solid #f97316;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+        }
+        .contact-info-panel h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+        .contact-info-panel p {
+            color: #94a3b8;
+            margin-bottom: 2.8rem;
+            font-size: 1.05rem;
+        }
+        .info-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.4rem;
+            margin-bottom: 2rem;
+        }
+        .info-row-icon {
+            width: 52px;
+            height: 52px;
+            background: rgba(249, 115, 22, 0.15);
+            color: #f97316;
+            border: 1px solid rgba(249, 115, 22, 0.4);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            flex-shrink: 0;
+        }
+        .info-row label {
+            display: block;
+            font-size: 0.82rem;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 800;
+            margin-bottom: 2px;
+        }
+        .info-row span {
+            font-size: 1.15rem;
             font-weight: 700;
-            padding: 1.2rem 2.5rem;
-            border-radius: 14px;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 10px 25px rgba(255, 107, 53, 0.4);
-            transition: var(--transition);
+            color: #ffffff;
+        }
+        
+        .contact-form-panel {
+            background: #ffffff;
+            border-radius: var(--radius-md);
+            padding: 3.5rem 3rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            border: 1px solid #e2e8f0;
+        }
+        .form-group { margin-bottom: 1.6rem; }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.6rem;
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: var(--text-main);
+        }
+        .form-control {
             width: 100%;
+            padding: 1rem 1.2rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
             font-size: 1rem;
+            transition: var(--transition);
+            outline: none;
+            background: #f8fafc;
+        }
+        .form-control:focus {
+            border-color: #f97316;
+            background: #ffffff;
+            box-shadow: 0 0 0 5px rgba(249, 115, 22, 0.15);
         }
 
-        .btn-magnetic:hover {
-            transform: translateY(-3px) scale(1.01);
-            box-shadow: 0 15px 35px rgba(255, 107, 53, 0.6);
-        }
-
-        /* --- FOOTER & FLOATING CTA --- */
+        /* FOOTER */
         footer {
-            border-top: 1px solid var(--border-glass);
-            padding: 3rem 8%;
+            background: #030712;
+            color: #94a3b8;
             text-align: center;
-            color: var(--text-muted);
-            font-size: 0.9rem;
+            padding: 3rem 6%;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            font-size: 0.95rem;
+            position: relative;
+            z-index: 1;
         }
 
+        /* FLOATING WHATSAPP CTA WITH PULSE */
         .whatsapp-float {
             position: fixed;
             bottom: 35px;
@@ -665,7 +718,7 @@
             width: 65px;
             height: 65px;
             background: #25d366;
-            color: #fff;
+            color: #ffffff;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -674,332 +727,411 @@
             box-shadow: 0 10px 30px rgba(37, 211, 102, 0.5);
             z-index: 999;
             transition: var(--transition);
-            text-decoration: none;
+            animation: waPulse 2s infinite;
         }
-
+        @keyframes waPulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
         .whatsapp-float:hover {
-            transform: scale(1.12) rotate(10deg);
-            box-shadow: 0 15px 40px rgba(37, 211, 102, 0.8);
+            transform: scale(1.15) rotate(10deg);
         }
 
-        /* --- RESPONSIVE --- */
+        /* RESPONSIVE BREAKPOINTS */
         @media (max-width: 1024px) {
-            .hero-grid, .about-grid, .services-grid, .hse-grid, .contact-executive-wrapper {
-                grid-template-columns: 1fr;
+            .hero-grid, .about-grid, .contact-grid, .hse-grid { grid-template-columns: 1fr; }
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .stat-item {
+                border-right: none;
+                border-bottom: 1px solid rgba(16, 185, 129, 0.25);
+                padding-bottom: 1.2rem;
             }
-            .stats-glass-grid {
-                grid-template-columns: repeat(2, 1fr);
+            .hero h1 { font-size: 3rem; }
+        }
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 90px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 90px);
+                background: #030712;
+                flex-direction: column;
+                justify-content: flex-start;
+                padding: 3rem 2rem;
+                transition: var(--transition);
+                box-shadow: 0 20px 40px rgba(0,0,0,0.8);
             }
-            .hero h1 { font-size: 2.8rem; }
+            .nav-menu.active { left: 0; }
+            .mobile-toggle { display: block; }
+            .hero h1 { font-size: 2.4rem; }
+            .services-grid, .stats-grid { grid-template-columns: 1fr; }
+            .hero-actions { flex-direction: column; align-items: stretch; }
         }
     </style>
 </head>
 <body>
 
-    <!-- AMBIENT GLOW MESH BACKGROUND -->
-    <div class="ambient-mesh">
-        <div class="ambient-orb orb-1"></div>
-        <div class="ambient-orb orb-2"></div>
-        <div class="ambient-orb orb-3"></div>
-    </div>
+    <!-- AMBIENT BACKGROUND GRID MESH -->
+    <div class="ambient-grid"></div>
 
-    <!-- GLASS NAVIGATION -->
-    <nav class="navbar">
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
         <a href="#home" class="brand-logo">
             <svg class="logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="50" cy="50" r="42" stroke="url(#paint0_linear)" stroke-width="3"/>
                 <circle cx="50" cy="50" r="32" stroke="#00f2fe" stroke-width="1.5" stroke-dasharray="4 2"/>
+                <path d="M18 50 C 18 30, 82 30, 82 50 C 82 70, 18 70, 18 50 Z" stroke="#00f2fe" stroke-width="1.2" opacity="0.7"/>
+                <polygon points="50,6 55,22 50,18 45,22" fill="#0284c7"/>
+                <polygon points="50,94 55,78 50,82 45,78" fill="#0284c7"/>
                 <polygon points="50,22 56,44 78,50 56,56 50,78 44,56 22,50 44,44" fill="url(#paint1_linear)"/>
                 <defs>
-                    <linearGradient id="paint0_linear" x1="0" y1="0" x2="100" y2="100">
+                    <linearGradient id="paint0_linear" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
                         <stop stop-color="#00f2fe"/>
-                        <stop offset="1" stop-color="#3b82f6"/>
+                        <stop offset="1" stop-color="#0284c7"/>
                     </linearGradient>
-                    <linearGradient id="paint1_linear" x1="22" y1="22" x2="78" y2="78">
+                    <linearGradient id="paint1_linear" x1="22" y1="22" x2="78" y2="78" gradientUnits="userSpaceOnUse">
                         <stop stop-color="#00f2fe"/>
-                        <stop offset="1" stop-color="#7928ca"/>
+                        <stop offset="1" stop-color="#f43f5e"/>
                     </linearGradient>
                 </defs>
             </svg>
-            <div>
-                <span class="brand-title">VIHAANAA</span>[cite: 1, 2]
-                <span class="brand-subtitle">TECH HUBS</span>[cite: 1, 2]
+            <div class="brand-text">
+                <span class="brand-title">VIHAANAA</span>[cite: 1]
+                <span class="brand-subtitle">TECH HUBS</span>[cite: 1]
             </div>
         </a>
-        <ul class="nav-menu">
-            <li><a href="#about" class="nav-link">About Us</a></li>
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="#home" class="nav-link active">Home</a></li>
+            <li><a href="#about-container" class="nav-link">About Us</a></li>
             <li><a href="#services" class="nav-link">Services</a></li>
-            <li><a href="#hse" class="nav-link">HSE & Quality</a></li>
-            <li><a href="#contact" class="btn-glow-header">Contact Us</a></li>
+            <li><a href="#hse-container" class="nav-link">HSE & Quality</a></li>
+            <li><a href="#contact" class="btn-header"><i class="fa-solid fa-paper-plane"></i> Contact Us</a></li>
         </ul>
+        <div class="mobile-toggle" id="mobileToggle">
+            <i class="fa-solid fa-bars-staggered"></i>
+        </div>
     </nav>
 
     <!-- HERO SECTION -->
     <section class="hero" id="home">
         <div class="hero-grid">
-            <div>
-                <div class="status-badge-1m">
-                    <span class="pulse-dot"></span>
-                    <span style="color: var(--cyan-glow); font-weight: 700; font-size: 0.8rem; letter-spacing: 1.5px;">REGISTERED TECHNICAL PARTNER MALAYSIA</span>[cite: 1, 2]
+            <div class="hero-text-content">
+                <div class="hero-badge">
+                    <i class="fa-solid fa-shield-halved"></i> Registered Technical Partner Malaysia[cite: 1]
                 </div>
-                <h1>Integrated Engineering, Procurement & <span>Technical Solutions</span></h1>[cite: 1, 2]
-                <p>Delivering turnkey civil works, M&E engineering, precision instrumentation, import/export, and specialized industrial supplies nationwide.</p>[cite: 1, 2]
+                <h1>Integrated Engineering, Procurement & <span>Technical Solutions</span>[cite: 1]</h1>
+                <p>Delivering turnkey civil works, M&E engineering, precision instrumentation, import/export, and specialized industrial supplies nationwide.[cite: 1]</p>
                 <div class="hero-actions">
-                    <a href="#services" class="btn-hero-flame"><i class="fa-solid fa-compass me-2"></i> Explore Services</a>
-                    <a href="#contact" class="btn-hero-glass"><i class="fa-solid fa-paper-plane me-2"></i> Get Quote</a>
+                    <a href="#services" class="btn-primary-glow"><i class="fa-solid fa-compass"></i> Explore Services</a>
+                    <a href="#contact" class="btn-outline-glow"><i class="fa-solid fa-paper-plane"></i> Get Quote</a>
                 </div>
             </div>
-            <div class="hero-card-container">
-                <div class="hero-3d-card" data-tilt>
-                    <div class="card-core-glow">
-                        <i class="fa-solid fa-atom" style="font-size: 3rem; color: var(--cyan-glow);"></i>
+            
+            <!-- FUTURISTIC INTERACTIVE CODE/SYSTEM SNIPPET VISUAL -->
+            <div class="hero-snippet-window">
+                <div class="snippet-header">
+                    <div class="snippet-dots">
+                        <span class="dot dot-red"></span>
+                        <span class="dot dot-yellow"></span>
+                        <span class="dot dot-green"></span>
                     </div>
-                    <h3 style="color: #fff; font-size: 1.5rem; margin-bottom: 0.5rem;">VIHAANAA TECH HUBS</h3>[cite: 1, 2]
-                    <p style="color: var(--text-muted); font-size: 0.9rem;">Multi-Disciplinary Operational Excellence</p>[cite: 1, 2]
+                    <span class="snippet-title code-font">VIHAANAA_TECH_CORE_v2.6.sh</span>
+                </div>
+                <div class="snippet-body code-font">
+                    <div><span class="code-keyword">const</span> techHub = <span class="code-keyword">new</span> <span class="code-func">VihaanaaTechHubs</span>();</div>
+                    <div>techHub.<span class="code-func">setCompliance</span>(<span class="code-string">"DOSH / JKKP 100%"</span>);</div>
+                    <div>techHub.<span class="code-func">loadServices</span>([</div>
+                    <div>&nbsp;&nbsp;<span class="code-string">"Civil Works"</span>, <span class="code-string">"M&E Engineering"</span>,</div>
+                    <div>&nbsp;&nbsp;<span class="code-string">"Global Procurement"</span>, <span class="code-string">"Instrumentation"</span></div>
+                    <div>]);</div>
+                    <div>techHub.<span class="code-func">executeProject</span>({ status: <span class="code-string">"OPERATIONAL"</span>, quality: <span class="code-num">1.00</span> });</div>
+                </div>
+                <div class="card-logo-container">
+                    <svg class="logo-svg" style="width: 60px; height: 60px;" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="50" cy="50" r="42" stroke="url(#p1)" stroke-width="3"/>
+                        <circle cx="50" cy="50" r="32" stroke="#00f2fe" stroke-width="1.5" stroke-dasharray="4 2"/>
+                        <polygon points="50,22 56,44 78,50 56,56 50,78 44,56 22,50 44,44" fill="url(#p2)"/>
+                        <defs>
+                            <linearGradient id="p1" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#00f2fe"/><stop offset="1" stop-color="#3b82f6"/>
+                            </linearGradient>
+                            <linearGradient id="p2" x1="22" y1="22" x2="78" y2="78" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#00f2fe"/><stop offset="1" stop-color="#f43f5e"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- STATS QUICK BAR -->
-    <div class="stats-section">
-        <div class="stats-glass-grid">
-            <div class="stat-card">
-                <div class="stat-icon-wrapper"><i class="fa-solid fa-shield-halved"></i></div>
+    <div class="stats-bar-wrapper">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-icon"><i class="fa-solid fa-award"></i></div>
                 <div>
-                    <div class="stat-num">100%</div>[cite: 1, 2]
-                    <div class="stat-label">HSE & DOSH Compliance</div>[cite: 1, 2]
+                    <div class="stat-num">100%</div>[cite: 1]
+                    <div class="stat-label">HSE & DOSH Compliance[cite: 1]</div>
                 </div>
             </div>
-            <div class="stat-card">
-                <div class="stat-icon-wrapper"><i class="fa-solid fa-gears"></i></div>
+            <div class="stat-item">
+                <div class="stat-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
                 <div>
-                    <div class="stat-num">Multi-Disciplinary</div>[cite: 1, 2]
-                    <div class="stat-label">Civil, M&E & Instrumentation</div>[cite: 1, 2]
+                    <div class="stat-num">Multi-Disciplinary</div>[cite: 1]
+                    <div class="stat-label">Civil, M&E & Instrumentation[cite: 1]</div>
                 </div>
             </div>
-            <div class="stat-card">
-                <div class="stat-icon-wrapper"><i class="fa-solid fa-globe"></i></div>
+            <div class="stat-item">
+                <div class="stat-icon"><i class="fa-solid fa-globe"></i></div>
                 <div>
-                    <div class="stat-num">Global</div>[cite: 1, 2]
-                    <div class="stat-label">Import & Export Sourcing</div>[cite: 1, 2]
+                    <div class="stat-num">Global</div>[cite: 1]
+                    <div class="stat-label">Import & Export Sourcing[cite: 1]</div>
                 </div>
             </div>
-            <div class="stat-card">
-                <div class="stat-icon-wrapper"><i class="fa-solid fa-clock"></i></div>
+            <div class="stat-item">
+                <div class="stat-icon"><i class="fa-solid fa-clock"></i></div>
                 <div>
-                    <div class="stat-num">24/7</div>[cite: 1, 2]
-                    <div class="stat-label">Rapid Technical Support</div>[cite: 1, 2]
+                    <div class="stat-num">24/7</div>[cite: 1]
+                    <div class="stat-label">Rapid Technical Support[cite: 1]</div>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- ABOUT SECTION -->
-    <section class="section-wrapper" id="about">
-        <div class="about-glass-panel">
-            <div class="about-grid">
-                <div>
-                    <span class="section-tag">About Company</span>[cite: 1, 2]
-                    <h2 class="section-title">Multi-Disciplinary Engineering & Procurement Excellence</h2>[cite: 1, 2]
-                    <p style="color: var(--text-muted); line-height: 1.7; margin-bottom: 1.5rem;">
-                        VIHAANAA TECH HUBS is a dynamic Malaysian technical solutions provider.[cite: 1, 2] We offer complete end-to-end capabilities spanning local/international material sourcing, global trade logistics, civil construction, M&E installations, and routine facility maintenance.[cite: 1, 2]
-                    </p>
-                    <div class="values-grid">
-                        <div class="value-card">
-                            <h4>Integrity</h4>[cite: 1, 2]
-                            <p>Transparent client partnerships.</p>[cite: 1, 2]
-                        </div>
-                        <div class="value-card">
-                            <h4 style="color: var(--cyan-glow);">Safety First</h4>[cite: 1, 2]
-                            <p>Uncompromising HSE site protocols.</p>[cite: 1, 2]
-                        </div>
-                        <div class="value-card">
-                            <h4 style="color: var(--purple-accent);">Precision</h4>[cite: 1, 2]
-                            <p>Standard-compliant execution.</p>[cite: 1, 2]
-                        </div>
-                        <div class="value-card">
-                            <h4 style="color: var(--emerald-glow);">Reliability</h4>[cite: 1, 2]
-                            <p>Swift response emergency repairs.</p>[cite: 1, 2]
-                        </div>
-                    </div>
-                </div>
-                <div class="about-image-container">
-                    <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1000&q=80" alt="Engineering" class="about-img">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 3D INTERACTIVE SERVICES SECTION -->
-    <section class="section-wrapper" id="services">
+    <div id="about-container">
         <div class="section-header">
-            <span class="section-tag">Capabilities</span>[cite: 1, 2]
-            <h2 class="section-title">Services & Solutions Provided</h2>[cite: 1, 2]
-            <p class="section-desc">Comprehensive execution across trade, contracting, and technical engineering.</p>[cite: 1, 2]
+            <span class="section-tag" style="color: var(--about-accent);">About Company[cite: 1]</span>
+            <h2 class="section-title" style="color: #7c2d12;">Multi-Disciplinary Engineering & Procurement Excellence[cite: 1]</h2>
+            <p class="section-desc" style="color: #9a3412;">Delivering high-precision technical services and comprehensive supply chain solutions across Malaysia.[cite: 1]</p>
         </div>
+        <div class="about-grid">
+            <div class="about-content">
+                <h3>End-to-End Solutions for Industrial & Energy Sectors[cite: 1]</h3>
+                <p>VIHAANAA TECH HUBS is a dynamic Malaysian technical solutions provider.[cite: 1] We offer complete end-to-end capabilities spanning local/international material sourcing, global trade logistics, civil construction, M&E installations, and routine facility maintenance.[cite: 1]</p>
+                <div class="values-grid">
+                    <div class="value-box">
+                        <h4>Integrity[cite: 1]</h4>
+                        <p>Transparent and honest client partnerships.[cite: 1]</p>
+                    </div>
+                    <div class="value-box" style="border-left-color: #a855f7;">
+                        <h4 style="color: #a855f7;">Safety First[cite: 1]</h4>
+                        <p>Uncompromising HSE protocols on site.[cite: 1]</p>
+                    </div>
+                    <div class="value-box" style="border-left-color: #06b6d4;">
+                        <h4 style="color: #06b6d4;">Precision[cite: 1]</h4>
+                        <p>Standard-compliant technical execution.[cite: 1]</p>
+                    </div>
+                    <div class="value-box" style="border-left-color: #10b981;">
+                        <h4 style="color: #10b981;">Reliability[cite: 1]</h4>
+                        <p>Swift response for emergency repairs.[cite: 1]</p>
+                    </div>
+                </div>
+            </div>
+            <div class="about-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1000&q=80" alt="Engineering Team" class="about-img">
+                <div class="about-floating-badge">
+                    <i class="fa-solid fa-circle-check" style="font-size: 2.5rem; color: #00f2fe;"></i>
+                    <div>
+                        <strong style="display:block; font-size:1.15rem; color:#fff;">ISO & DOSH Compliant[cite: 1]</strong>
+                        <span style="font-size:0.9rem; color:#fed7aa;">Rigorous Quality Standards[cite: 1]</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <!-- SERVICES SECTION -->
+    <div class="services-bg-wrapper" id="services">
+        <div class="section-header">
+            <span class="section-tag" style="color: #00f2fe; background: rgba(0,242,254,0.15);">Capabilities[cite: 1]</span>
+            <h2 class="section-title" style="color: #ffffff;">Services & Solutions Provided[cite: 1]</h2>
+            <p class="section-desc" style="color: #cbd5e1;">Comprehensive execution across trade, contracting, and technical engineering.[cite: 1]</p>
+        </div>
         <div class="services-grid">
-            <!-- Service 1 -->
-            <div class="glow-card-container" data-tilt>
-                <div class="card-content-3d">
-                    <div class="service-icon-box" style="background: linear-gradient(135deg, #00f2fe, #3b82f6);">
-                        <i class="fa-solid fa-boxes-packing"></i>
-                    </div>
-                    <h3 style="color: #fff; font-size: 1.3rem; margin-bottom: 0.8rem;">Supply & Distribution</h3>[cite: 1, 2]
-                    <p style="color: var(--text-muted); font-size: 0.92rem; line-height: 1.6;">Local procurement and distribution of certified industrial hardware, raw materials, electrical fittings, and factory consumables.</p>[cite: 1, 2]
-                </div>
+            <div class="service-card">
+                <div class="service-card-icon"><i class="fa-solid fa-boxes-packing"></i></div>
+                <h3>Supply & Distribution[cite: 1]</h3>
+                <p>Local procurement and distribution of certified industrial hardware, raw materials, electrical fittings, and factory consumables.[cite: 1]</p>
             </div>
-
-            <!-- Service 2 -->
-            <div class="glow-card-container" data-tilt>
-                <div class="card-content-3d">
-                    <div class="service-icon-box" style="background: linear-gradient(135deg, #ff007f, #7928ca);">
-                        <i class="fa-solid fa-plane-departure"></i>
-                    </div>
-                    <h3 style="color: #fff; font-size: 1.3rem; margin-bottom: 0.8rem;">Import & Export</h3>[cite: 1, 2]
-                    <p style="color: var(--text-muted); font-size: 0.92rem; line-height: 1.6;">Cross-border sourcing, technical machinery trading, customs clearance, and international supply chain logistics.</p>[cite: 1, 2]
+            <div class="service-card">
+                <div class="service-card-icon" style="background: linear-gradient(135deg, #f43f5e 0%, #a855f7 100%);">
+                    <i class="fa-solid fa-plane-departure"></i>
                 </div>
+                <h3>Import & Export[cite: 1]</h3>
+                <p>Cross-border sourcing, technical machinery trading, customs clearance, and international supply chain logistics.[cite: 1]</p>
             </div>
-
-            <!-- Service 3 -->
-            <div class="glow-card-container" data-tilt>
-                <div class="card-content-3d">
-                    <div class="service-icon-box" style="background: linear-gradient(135deg, #f59e0b, #d97706);">
-                        <i class="fa-solid fa-toolbox"></i>
-                    </div>
-                    <h3 style="color: #fff; font-size: 1.3rem; margin-bottom: 0.8rem;">Tools & Spare Parts</h3>[cite: 1, 2]
-                    <p style="color: var(--text-muted); font-size: 0.92rem; line-height: 1.6;">Provision of specialized hand/power tools, pneumatic equipment, and OEM replacement components for industrial plants.</p>[cite: 1, 2]
+            <div class="service-card">
+                <div class="service-card-icon" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">
+                    <i class="fa-solid fa-toolbox"></i>
                 </div>
+                <h3>Tools & Spare Parts[cite: 1]</h3>
+                <p>Provision of specialized hand/power tools, pneumatic equipment, and OEM replacement components for industrial plants.[cite: 1]</p>
             </div>
-
-            <!-- Service 4 -->
-            <div class="glow-card-container" data-tilt>
-                <div class="card-content-3d">
-                    <div class="service-icon-box" style="background: linear-gradient(135deg, #10b981, #059669);">
-                        <i class="fa-solid fa-bridge"></i>
-                    </div>
-                    <h3 style="color: #fff; font-size: 1.3rem; margin-bottom: 0.8rem;">Civil Works</h3>[cite: 1, 2]
-                    <p style="color: var(--text-muted); font-size: 0.92rem; line-height: 1.6;">Structural concrete, site preparation, foundation works, industrial paving, trenching, and facility upgrades.</p>[cite: 1, 2]
+            <div class="service-card">
+                <div class="service-card-icon" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
+                    <i class="fa-solid fa-bridge"></i>
                 </div>
+                <h3>Civil Works[cite: 1]</h3>
+                <p>Structural concrete, site preparation, foundation works, industrial paving, trenching, and facility upgrades.[cite: 1]</p>
             </div>
-
-            <!-- Service 5 -->
-            <div class="glow-card-container" data-tilt>
-                <div class="card-content-3d">
-                    <div class="service-icon-box" style="background: linear-gradient(135deg, #6366f1, #4338ca);">
-                        <i class="fa-solid fa-helmet-safety"></i>
-                    </div>
-                    <h3 style="color: #fff; font-size: 1.3rem; margin-bottom: 0.8rem;">Installation & Construction</h3>[cite: 1, 2]
-                    <p style="color: var(--text-muted); font-size: 0.92rem; line-height: 1.6;">Full-scale structural steel erection, modular skid assembly, piping fabrication, and site construction management.</p>[cite: 1, 2]
+            <div class="service-card">
+                <div class="service-card-icon" style="background: linear-gradient(135deg, #6366f1 0%, #4338ca 100%);">
+                    <i class="fa-solid fa-helmet-safety"></i>
                 </div>
+                <h3>Installation & Construction[cite: 1]</h3>
+                <p>Full-scale structural steel erection, modular skid assembly, piping fabrication, and site construction management.[cite: 1]</p>
             </div>
-
-            <!-- Service 6 -->
-            <div class="glow-card-container" data-tilt>
-                <div class="card-content-3d">
-                    <div class="service-icon-box" style="background: linear-gradient(135deg, #ec4899, #be185d);">
-                        <i class="fa-solid fa-gears"></i>
-                    </div>
-                    <h3 style="color: #fff; font-size: 1.3rem; margin-bottom: 0.8rem;">Mechanical Services</h3>[cite: 1, 2]
-                    <p style="color: var(--text-muted); font-size: 0.92rem; line-height: 1.6;">HVAC systems, industrial piping networks, pump alignment, pressure vessel installation, and rotating equipment overhaul.</p>[cite: 1, 2]
+            <div class="service-card">
+                <div class="service-card-icon" style="background: linear-gradient(135deg, #ec4899 0%, #be185d 100%);">
+                    <i class="fa-solid fa-gears"></i>
                 </div>
+                <h3>Mechanical Services[cite: 1]</h3>
+                <p>HVAC systems, industrial piping networks, pump alignment, pressure vessel installation, and rotating equipment overhaul.[cite: 1]</p>
             </div>
         </div>
-    </section>
+    </div>
 
     <!-- HSE & QUALITY -->
-    <section class="section-wrapper" id="hse">
+    <div id="hse-container">
         <div class="section-header">
-            <span class="section-tag" style="color: #f43f5e;">Safety Standards</span>[cite: 1, 2]
-            <h2 class="section-title">HSE & Quality Policy</h2>[cite: 1, 2]
-            <p class="section-desc">Our core commitment to occupational health, safety, and operational precision.</p>[cite: 1, 2]
+            <span class="section-tag" style="color: var(--neon-magenta); background: rgba(244,63,94,0.1);">Safety Standards[cite: 1]</span>
+            <h2 class="section-title">HSE & Quality Policy[cite: 1]</h2>
+            <p class="section-desc">Our core commitment to occupational health, safety, and operational precision.[cite: 1]</p>
         </div>
-
         <div class="hse-grid">
-            <div class="hse-panel safety">
-                <h3 style="color: #fff; font-size: 1.5rem; margin-bottom: 0.5rem;"><i class="fa-solid fa-shield-halved me-2" style="color: #f43f5e;"></i> Health & Safety First</h3>[cite: 1, 2]
+            <div class="hse-card safety">
+                <div class="hse-card-header safety">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <h3>Health & Safety First[cite: 1]</h3>
+                </div>
                 <ul class="hse-list">
-                    <li><i class="fa-solid fa-circle-check" style="color: #f43f5e;"></i> Zero Harm policy for workplace safety and environment.</li>[cite: 1, 2]
-                    <li><i class="fa-solid fa-circle-check" style="color: #f43f5e;"></i> Mandatory Hazard Identification, Risk Assessment (HIRARC).</li>[cite: 1, 2]
-                    <li><i class="fa-solid fa-circle-check" style="color: #f43f5e;"></i> Full compliance with Malaysian DOSH / JKKP regulations.</li>[cite: 1, 2]
+                    <li><i class="fa-solid fa-circle-check" style="color: var(--neon-magenta);"></i> Zero Harm policy for workplace safety and environment.[cite: 1]</li>
+                    <li><i class="fa-solid fa-circle-check" style="color: var(--neon-magenta);"></i> Mandatory Hazard Identification, Risk Assessment (HIRARC).[cite: 1]</li>
+                    <li><i class="fa-solid fa-circle-check" style="color: var(--neon-magenta);"></i> Full compliance with Malaysian DOSH / JKKP regulations.[cite: 1]</li>
                 </ul>
             </div>
-
-            <div class="hse-panel quality">
-                <h3 style="color: #fff; font-size: 1.5rem; margin-bottom: 0.5rem;"><i class="fa-solid fa-award me-2" style="color: #10b981;"></i> Quality Assurance</h3>[cite: 1, 2]
+            <div class="hse-card quality">
+                <div class="hse-card-header quality">
+                    <i class="fa-solid fa-award"></i>
+                    <h3>Quality Assurance[cite: 1]</h3>
+                </div>
                 <ul class="hse-list">
-                    <li><i class="fa-solid fa-circle-check" style="color: #10b981;"></i> Standardized QA/QC inspection plans on all materials.</li>[cite: 1, 2]
-                    <li><i class="fa-solid fa-circle-check" style="color: #10b981;"></i> Complete technical documentation & loop check validation.</li>[cite: 1, 2]
-                    <li><i class="fa-solid fa-circle-check" style="color: #10b981;"></i> Adherence to ISO standards and client technical specs.</li>[cite: 1, 2]
+                    <li><i class="fa-solid fa-circle-check" style="color: var(--neon-emerald);"></i> Standardized QA/QC inspection plans on all materials.[cite: 1]</li>
+                    <li><i class="fa-solid fa-circle-check" style="color: var(--neon-emerald);"></i> Complete technical documentation & loop check validation.[cite: 1]</li>
+                    <li><i class="fa-solid fa-circle-check" style="color: var(--neon-emerald);"></i> Adherence to ISO standards and client technical specs.[cite: 1]</li>
                 </ul>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- EXECUTIVE CONTACT SECTION -->
-    <section class="section-wrapper" id="contact">
-        <div class="contact-executive-wrapper">
-            <div>
-                <span style="color: var(--flame-accent); font-weight: 800; letter-spacing: 2px; text-transform: uppercase; font-size: 0.8rem;">EXECUTIVE DIRECT LINK</span>[cite: 1]
-                <h3 style="color: #fff; font-size: 2.2rem; margin: 0.5rem 0 1rem;">VIHAANAA TECH HUBS</h3>[cite: 1, 2]
-                <p style="color: var(--text-muted); margin-bottom: 2.5rem; line-height: 1.6;">Direct Manager Operations: <strong style="color: #fff;">MOGHAN</strong></p>[cite: 1, 2]
-                
-                <div style="margin-bottom: 1.5rem;">
-                    <div style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Phone / WhatsApp</div>
-                    <div style="font-size: 1.2rem; color: #fff; font-weight: 700;">+6014 972 5722</div>[cite: 1, 2]
+    <!-- CONTACT SECTION -->
+    <section id="contact">
+        <div class="section-header">
+            <span class="section-tag" style="color: #f97316; background: rgba(249,115,22,0.15);">Get In Touch[cite: 1]</span>
+            <h2 class="section-title" style="color: #ffffff;">Contact Management[cite: 1]</h2>
+            <p class="section-desc">Reach out directly for project quotations, tenders, and technical inquiries.[cite: 1]</p>
+        </div>
+        <div class="contact-grid">
+            <div class="contact-info-panel">
+                <h3>VIHAANAA TECH HUBS[cite: 1]</h3>
+                <p>Get direct access to key operational management for immediate support.[cite: 1]</p>
+                <div class="info-row">
+                    <div class="info-row-icon"><i class="fa-solid fa-user-gear"></i></div>
+                    <div>
+                        <label>Contact Person[cite: 1]</label>
+                        <span>MOGHAN (Manager)[cite: 1]</span>
+                    </div>
                 </div>
-
-                <div>
-                    <div style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Email Address</div>
-                    <div style="font-size: 1.2rem; color: #fff; font-weight: 700;">smorghan9@gmail.com</div>[cite: 1, 2]
+                <div class="info-row">
+                    <div class="info-row-icon"><i class="fa-solid fa-phone"></i></div>
+                    <div>
+                        <label>Phone / WhatsApp[cite: 1]</label>
+                        <span>+6014 972 5722[cite: 1]</span>
+                    </div>
+                </div>
+                <div class="info-row">
+                    <div class="info-row-icon"><i class="fa-solid fa-envelope"></i></div>
+                    <div>
+                        <label>Email Address[cite: 1]</label>
+                        <span>smorghan9@gmail.com[cite: 1]</span>
+                    </div>
                 </div>
             </div>
-
-            <form id="executiveForm">
-                <div style="margin-bottom: 1.2rem;">
-                    <input type="text" class="form-input-glow" placeholder="Your Name / Organization" required>[cite: 1, 2]
-                </div>
-                <div style="margin-bottom: 1.2rem;">
-                    <input type="email" class="form-input-glow" placeholder="Email Address" required>[cite: 1, 2]
-                </div>
-                <div style="margin-bottom: 1.2rem;">
-                    <textarea class="form-input-glow" rows="4" placeholder="Describe Project Requirements..." required></textarea>[cite: 1, 2]
-                </div>
-                <button type="submit" class="btn-magnetic">
-                    <i class="fa-solid fa-paper-plane me-2"></i> Launch RFQ Inquiry[cite: 1, 2]
-                </button>
-            </form>
+            <div class="contact-form-panel">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Your Name / Organization[cite: 1]</label>
+                        <input type="text" id="name" class="form-control" required placeholder="e.g. Alex Tan / ABC Engineering">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address[cite: 1]</label>
+                        <input type="email" id="email" class="form-control" required placeholder="name@company.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="service">Service Required[cite: 1]</label>
+                        <select id="service" class="form-control">
+                            <option>Supply & Distribution[cite: 1]</option>
+                            <option>Import & Export[cite: 1]</option>
+                            <option>Civil & Construction Works[cite: 1]</option>
+                            <option>Mechanical / Electrical Services[cite: 1]</option>
+                            <option>Instrumentation / Testing & Commissioning[cite: 1]</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Project Requirements[cite: 1]</label>
+                        <textarea id="message" class="form-control" rows="4" required placeholder="Describe your project details..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary-glow" style="width: 100%; border: none; cursor: pointer; justify-content: center;">
+                        <i class="fa-solid fa-paper-plane"></i> Submit Inquiry[cite: 1]
+                    </button>
+                </form>
+            </div>
         </div>
     </section>
 
     <!-- FOOTER -->
     <footer>
-        <p>&copy; 2026 VIHAANAA TECH HUBS (Malaysia). All Rights Reserved.</p>[cite: 1, 2]
+        <p>&copy; 2026 VIHAANAA TECH HUBS (Malaysia). All Rights Reserved.[cite: 1]</p>
     </footer>
 
-    <!-- FLOATING WHATSAPP -->
-    <a href="https://wa.me/60149725722?text=Hello%20Moghan,%20I%20would%20like%20to%20enquire%20about%20Vihaanaa%20Tech%20Hubs%20services." target="_blank" class="whatsapp-float">
+    <!-- FLOATING WHATSAPP CTA -->
+    <a href="https://wa.me/60149725722?text=Hello%20Moghan,%20I%20would%20like%20to%20enquire%20about%20Vihaanaa%20Tech%20Hubs%20services." target="_blank" class="whatsapp-float" title="Chat on WhatsApp">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
-    <!-- 3D PARALLAX INTERACTIVE TILT SCRIPT -->
+    <!-- INTERACTIVE JAVASCRIPT -->
     <script>
-        document.querySelectorAll('[data-tilt]').forEach(card => {
-            card.addEventListener('mousemove', e => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left - rect.width / 2;
-                const y = e.clientY - rect.top - rect.height / 2;
-                card.style.transform = `rotateX(${-y / 15}deg) rotateY(${x / 15}deg) scale3d(1.02, 1.02, 1.02)`;
-            });
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navMenu = document.getElementById('navMenu');
+        mobileToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
             });
         });
 
-        document.getElementById('executiveForm').addEventListener('submit', function(e) {
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('Your executive enquiry has been transmitted directly to Moghan (Manager).');
+            const name = document.getElementById('name').value;
+            const service = document.getElementById('service').value;
+            alert(`Thank you ${name}! Your inquiry regarding ${service} has been received. Moghan (Manager) will get back to you shortly.`);
             this.reset();
         });
     </script>
