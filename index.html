@@ -19,6 +19,7 @@
             --wp-ventura: linear-gradient(135deg, #fef3c7 0%, #fed7aa 35%, #fce7f3 70%, #f1f5f9 100%);
             --wp-aurora: linear-gradient(135deg, #0f172a 0%, #1e1b4b 40%, #311042 100%);
             --wp-monterey: radial-gradient(at 90% 10%, #dbeafe 0%, #e0e7ff 40%, #fae8ff 100%);
+            --wp-cyber: url('pngtree-abstract-blue-hexagon-pattern-picture-image_15930918.jpg') center/cover no-repeat fixed;
 
             /* Surface & Accent Colors */
             --accent-blue: #007aff;
@@ -46,10 +47,10 @@
         }
 
         /* Dark Wallpaper Override Mode */
-        [data-wallpaper="aurora"] {
+        [data-wallpaper="aurora"], [data-wallpaper="cyber"] {
             --glass-surface: rgba(15, 23, 42, 0.65);
-            --glass-card: rgba(30, 41, 59, 0.75);
-            --glass-border: rgba(255, 255, 255, 0.12);
+            --glass-card: rgba(30, 41, 59, 0.82);
+            --glass-border: rgba(255, 255, 255, 0.15);
             --text-primary: #f8fafc;
             --text-secondary: #cbd5e1;
             --glass-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
@@ -83,26 +84,23 @@
         }
         .menubar-brand { display: flex; align-items: center; gap: 12px; font-weight: 800; font-size: 1.05rem; }
         
-        /* Integrated Brand Logo SVG Container */
         .logo-container {
-            position: relative; width: 34px; height: 34px;
+            position: relative; width: 32px; height: 32px;
             display: flex; align-items: center; justify-content: center;
         }
-        .logo-svg {
-            width: 100%; height: 100%;
-            filter: drop-shadow(0 2px 6px rgba(0,242,254,0.35));
-            transition: transform 0.4s var(--ease-out);
+        .logo-compass {
+            position: absolute; font-size: 28px;
+            background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-purple) 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            transform: rotate(45deg); filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
         }
-        .logo-container:hover .logo-svg {
-            transform: rotate(45deg);
-        }
+        .logo-globe { position: absolute; font-size: 16px; color: var(--accent-blue); }
 
         .menubar-nav { display: flex; gap: 1.8rem; list-style: none; }
         .menubar-link { font-size: 0.9rem; font-weight: 600; color: var(--text-secondary); transition: color 0.2s; }
         .menubar-link:hover { color: var(--accent-blue); }
         .menubar-controls { display: flex; align-items: center; gap: 1rem; }
         
-        /* Control Toggles */
         .control-pill {
             background: var(--glass-card);
             border: 1px solid var(--glass-border);
@@ -113,7 +111,6 @@
         }
         .control-pill:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
 
-        /* --- CONTROL CENTER DROPDOWN --- */
         .control-center-panel {
             position: fixed; top: 62px; right: 2rem; width: 320px;
             background: var(--glass-card);
@@ -129,18 +126,18 @@
         .control-center-panel.active { display: flex; }
         @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
         
-        .wallpaper-picker { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 8px; }
+        .wallpaper-picker { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-top: 8px; }
         .wp-option {
             height: 42px; border-radius: 10px; cursor: pointer; border: 2px solid transparent;
-            transition: transform 0.2s;
+            transition: transform 0.2s; background-size: cover; background-position: center;
         }
         .wp-option:hover { transform: scale(1.08); }
         .wp-option.active { border-color: var(--accent-blue); }
 
-        /* --- HERO & INTERACTIVE SHOWCASE --- */
+        /* --- HERO SECTION --- */
         .hero-container {
-            padding: 150px 6% 80px; max-width: 1400px; margin: 0 auto;
-            display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 4rem; align-items: center;
+            padding: 140px 6% 60px; max-width: 1400px; margin: 0 auto;
+            display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 3.5rem; align-items: center;
         }
         .hero-tag {
             display: inline-flex; align-items: center; gap: 8px;
@@ -155,7 +152,6 @@
         }
         .hero-subtitle { font-size: 1.2rem; color: var(--text-secondary); margin-bottom: 2.5rem; line-height: 1.6; }
 
-        /* Apple Glass Button & Toggles */
         .cta-group { display: flex; gap: 1.2rem; align-items: center; }
         .btn-mac-primary {
             background: linear-gradient(135deg, var(--accent-blue), #0051a8);
@@ -174,76 +170,39 @@
         }
         .btn-mac-glass:hover { transform: translateY(-3px); background: rgba(255, 255, 255, 0.95); }
 
-        /* 3D INTERACTIVE TILT SHOWCASE & CONSTRUCTION IMAGE TRANSITION */
+        /* 3D Visual Card Hero */
         .perspective-wrapper { perspective: 1000px; }
-        .snippet-3d-card {
+        .hero-visual-card {
             background: var(--glass-card); border: 1px solid var(--glass-border);
-            border-radius: var(--radius-md); padding: 1.8rem; box-shadow: var(--glass-shadow);
+            border-radius: var(--radius-md); padding: 1.2rem; box-shadow: var(--glass-shadow);
             backdrop-filter: var(--glass-blur); transform-style: preserve-3d;
-            transition: transform 0.15s ease-out; position: relative;
+            transition: transform 0.15s ease-out; position: relative; overflow: hidden;
         }
-        .snippet-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.2rem; }
-        .traffic-lights { display: flex; gap: 8px; }
-        .light { width: 13px; height: 13px; border-radius: 50%; }
-        .light-red { background: #ff5f56; } .light-yellow { background: #ffbd2e; } .light-green { background: #27c93f; }
-        
-        /* Construction Image Transition Container */
-        .image-transition-container {
-            position: relative;
-            width: 100%;
-            height: 300px;
-            border-radius: var(--radius-sm);
-            overflow: hidden;
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
-            cursor: pointer;
+        .hero-img-box {
+            width: 100%; height: 260px; border-radius: var(--radius-sm);
+            overflow: hidden; position: relative; margin-bottom: 1.2rem;
         }
-        .image-transition-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            position: absolute;
-            top: 0;
-            left: 0;
-            transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
-        }
-        .img-base { z-index: 1; }
-        .img-overlay { z-index: 2; opacity: 0; }
-        .image-transition-container:hover .img-overlay { opacity: 1; transform: scale(1.04); }
-        .image-transition-container:hover .img-base { transform: scale(1.04); }
-        .transition-badge {
-            position: absolute;
-            bottom: 14px;
-            right: 14px;
-            z-index: 3;
-            background: rgba(15, 23, 42, 0.82);
-            color: #ffffff;
-            padding: 8px 16px;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255,255,255,0.25);
-            pointer-events: none;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
+        .hero-img-box img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+        .hero-visual-card:hover .hero-img-box img { transform: scale(1.05); }
 
-        /* --- DESKTOP STACKS (INTERACTIVE CARD FAN OUT) --- */
-        .section-block { padding: 90px 6%; max-width: 1400px; margin: 0 auto; }
-        .section-header { text-align: center; max-width: 700px; margin: 0 auto 4rem; }
+        .traffic-lights { display: flex; gap: 8px; margin-bottom: 0.8rem; }
+        .light { width: 12px; height: 12px; border-radius: 50%; }
+        .light-red { background: #ff5f56; } .light-yellow { background: #ffbd2e; } .light-green { background: #27c93f; }
+
+        /* --- DESKTOP STACKS --- */
+        .section-block { padding: 80px 6%; max-width: 1400px; margin: 0 auto; }
+        .section-header { text-align: center; max-width: 700px; margin: 0 auto 3.5rem; }
         .section-header h2 { font-size: 2.8rem; margin-bottom: 1rem; }
         .section-header p { font-size: 1.1rem; color: var(--text-secondary); }
 
-        .stacks-container {
-            display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem;
-        }
-        .stack-group { position: relative; height: 380px; cursor: pointer; }
+        .stacks-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; }
+        .stack-group { position: relative; height: 440px; cursor: pointer; }
         .stack-card {
             position: absolute; inset: 0; background: var(--glass-card);
             border: 1px solid var(--glass-border); border-radius: var(--radius-md);
-            padding: 2.2rem; box-shadow: var(--glass-shadow); backdrop-filter: var(--glass-blur);
+            padding: 1.8rem; box-shadow: var(--glass-shadow); backdrop-filter: var(--glass-blur);
             transition: all 0.4s var(--ease-out); display: flex; flex-direction: column; justify-content: space-between;
+            overflow: hidden;
         }
         .stack-card:nth-child(1) { transform: translateY(0) scale(1); z-index: 3; }
         .stack-card:nth-child(2) { transform: translateY(-14px) scale(0.95); z-index: 2; opacity: 0.85; }
@@ -253,15 +212,32 @@
         .stack-group:hover .stack-card:nth-child(2) { transform: translateY(-20px) rotate(3deg); opacity: 0.95; }
         .stack-group:hover .stack-card:nth-child(3) { transform: translateY(-50px) rotate(-1deg); opacity: 0.9; }
 
-        .stack-icon {
-            width: 60px; height: 60px; border-radius: 18px;
-            background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
-            color: white; display: flex; align-items: center; justify-content: center;
-            font-size: 1.6rem; margin-bottom: 1.5rem; box-shadow: 0 10px 20px rgba(0, 122, 255, 0.2);
+        .card-img-wrapper {
+            width: 100%; height: 160px; border-radius: var(--radius-sm);
+            overflow: hidden; margin-bottom: 1rem;
+        }
+        .card-img-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* --- PROJECT GALLERY SHOWCASE --- */
+        .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 2rem; }
+        .gallery-card {
+            background: var(--glass-card); border: 1px solid var(--glass-border);
+            border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--glass-shadow);
+            backdrop-filter: var(--glass-blur); transition: transform 0.3s var(--ease-out);
+        }
+        .gallery-card:hover { transform: translateY(-8px); }
+        .gallery-img-container { width: 100%; height: 210px; overflow: hidden; position: relative; }
+        .gallery-img-container img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+        .gallery-card:hover .gallery-img-container img { transform: scale(1.08); }
+        .gallery-content { padding: 1.5rem; }
+        .gallery-badge {
+            display: inline-block; padding: 4px 12px; border-radius: 50px;
+            font-size: 0.75rem; font-weight: 800; text-transform: uppercase; margin-bottom: 0.8rem;
+            background: rgba(0,122,255,0.1); color: var(--accent-blue);
         }
 
-        /* --- INTERACTIVE MACOS WIDGETS GRID --- */
-        .widgets-grid { display: grid; grid-template-columns: 1.5fr 1.5fr 1fr; gap: 2rem; margin-top: 3rem; }
+        /* --- INTERACTIVE WIDGETS GRID --- */
+        .widgets-grid { display: grid; grid-template-columns: 1.5fr 1.5fr 1fr; gap: 2rem; margin-top: 2rem; }
         .widget {
             background: var(--glass-card); border: 1px solid var(--glass-border);
             border-radius: var(--radius-md); padding: 2rem; box-shadow: var(--glass-shadow);
@@ -274,15 +250,14 @@
         
         .metric-slider { width: 100%; margin-top: 1rem; accent-color: var(--accent-blue); cursor: pointer; }
 
-        /* --- ROUTINE SNIPPETS & COMPLIANCE TOGGLES --- */
-        .snippet-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+        /* --- ROUTINE & COMPLIANCE TOGGLES --- */
+        .snippet-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem; }
         .routine-box {
             background: var(--glass-card); border: 1px solid var(--glass-border);
             border-radius: var(--radius-md); padding: 2.2rem; box-shadow: var(--glass-shadow); backdrop-filter: var(--glass-blur);
         }
         .routine-box h3 { font-size: 1.4rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 10px; }
 
-        /* MacOS Toggle Switch */
         .toggle-row { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-bottom: 1px solid rgba(0,0,0,0.06); font-weight: 600; }
         .toggle-row:last-child { border-bottom: none; }
         .mac-switch {
@@ -326,7 +301,7 @@
 
         /* Responsive Breakpoints */
         @media (max-width: 1024px) {
-            .hero-container, .stacks-container, .widgets-grid, .snippet-grid, .contact-card { grid-template-columns: 1fr; }
+            .hero-container, .stacks-container, .gallery-grid, .widgets-grid, .snippet-grid, .contact-card { grid-template-columns: 1fr; }
             .hero-title { font-size: 2.8rem; }
             .menubar-nav { display: none; }
         }
@@ -337,26 +312,9 @@
     <!-- MACOS TOP MENU BAR -->
     <header class="menubar">
         <div class="menubar-brand">
-            <!-- Header Brand SVG Logo Integration -->
             <div class="logo-container">
-                <svg class="logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="50" cy="50" r="42" stroke="url(#paint0_linear)" stroke-width="3"/>
-                    <circle cx="50" cy="50" r="32" stroke="#00f2fe" stroke-width="1.5" stroke-dasharray="4 2"/>
-                    <path d="M18 50 C 18 30, 82 30, 82 50 C 82 70, 18 70, 18 50 Z" stroke="#00f2fe" stroke-width="1.2" opacity="0.7"/>
-                    <polygon points="50,6 55,22 50,18 45,22" fill="#0284c7"/>
-                    <polygon points="50,94 55,78 50,82 45,78" fill="#0284c7"/>
-                    <polygon points="50,22 56,44 78,50 56,56 50,78 44,56 22,50 44,44" fill="url(#paint1_linear)"/>
-                    <defs>
-                        <linearGradient id="paint0_linear" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#00f2fe"/>
-                            <stop offset="1" stop-color="#0284c7"/>
-                        </linearGradient>
-                        <linearGradient id="paint1_linear" x1="22" y1="22" x2="78" y2="78" gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#00f2fe"/>
-                            <stop offset="1" stop-color="#d946ef"/>
-                        </linearGradient>
-                    </defs>
-                </svg>
+                <i class="fa-solid fa-compass logo-compass"></i>
+                <i class="fa-solid fa-globe logo-globe"></i>
             </div>
             <span>Vihaanaa Tech Hubs</span>
         </div>
@@ -364,175 +322,247 @@
             <ul class="menubar-nav">
                 <li><a href="#hero" class="menubar-link">Overview</a></li>
                 <li><a href="#stacks" class="menubar-link">Capabilities</a></li>
+                <li><a href="#gallery" class="menubar-link">Infrastructure</a></li>
                 <li><a href="#widgets" class="menubar-link">Operations</a></li>
                 <li><a href="#contact" class="menubar-link">Contact</a></li>
             </ul>
         </nav>
         <div class="menubar-controls">
             <button class="control-pill" id="controlToggle">
-                <i class="fa-solid fa-sliders"></i> Dynamic Wallpapers
+                <i class="fa-solid fa-sliders"></i> System Themes
             </button>
         </div>
     </header>
 
     <!-- CONTROL CENTER DROPDOWN -->
     <div class="control-center-panel" id="controlPanel">
-        <h4 style="font-size: 0.95rem; color: var(--text-secondary);">Dynamic Wallpapers</h4>
+        <h4 style="font-size: 0.95rem; color: var(--text-secondary);">Dynamic Desktop Wallpapers</h4>
         <div class="wallpaper-picker">
             <div class="wp-option active" style="background: var(--wp-sonoma);" data-wp="sonoma" title="Sonoma Light"></div>
             <div class="wp-option" style="background: var(--wp-ventura);" data-wp="ventura" title="Ventura Warm"></div>
             <div class="wp-option" style="background: var(--wp-aurora);" data-wp="aurora" title="Aurora Night"></div>
             <div class="wp-option" style="background: var(--wp-monterey);" data-wp="monterey" title="Monterey Blue"></div>
+            <div class="wp-option" style="background-image: url('pngtree-abstract-blue-hexagon-pattern-picture-image_15930918.jpg');" data-wp="cyber" title="Cyber Tech"></div>
         </div>
     </div>
 
-    <!-- HERO & 3D INTERACTIVE CONSTRUCTION SHOWCASE -->
+    <!-- HERO & VISUAL SHOWCASE -->
     <section class="hero-container" id="hero">
         <div>
             <div class="hero-tag">
-                <i class="fa-solid fa-microchip"></i> Engineering & Sourcing Platform
+                <i class="fa-solid fa-microchip"></i> Engineering & Industrial Operations
             </div>
             <h1 class="hero-title">Integrated Technical Operations <span>Made Effortless.</span></h1>
-            <p class="hero-subtitle">Turnkey civil engineering, mechanical installations, precision instrumentation, and global procurement hub operating nationwide in Malaysia.</p>
+            <p class="hero-subtitle">Turnkey civil engineering, mechanical installations, energy infrastructure, precision piping, and global procurement operating nationwide in Malaysia.</p>
             <div class="cta-group">
                 <a href="#contact" class="btn-mac-primary"><i class="fa-solid fa-paper-plane"></i> Request Quote</a>
-                <a href="#stacks" class="btn-mac-glass"><i class="fa-solid fa-layer-group"></i> Explore</a>
+                <a href="#gallery" class="btn-mac-glass"><i class="fa-solid fa-layer-group"></i> Explore Projects</a>
             </div>
         </div>
 
-        <!-- 3D INTERACTIVE TILT SHOWCASE WITH CONSTRUCTION IMAGE TRANSITION -->
+        <!-- 3D INTERACTIVE VISUAL HERO CARD -->
         <div class="perspective-wrapper">
-            <div class="snippet-3d-card" id="tiltSnippet">
-                <div class="snippet-header">
-                    <div class="traffic-lights">
-                        <span class="light light-red"></span>
-                        <span class="light light-yellow"></span>
-                        <span class="light light-green"></span>
-                    </div>
-                    <span class="code-font" style="font-size: 0.8rem; color: var(--text-secondary);">site_execution.view</span>
+            <div class="hero-visual-card" id="tiltSnippet">
+                <div class="traffic-lights">
+                    <span class="light light-red"></span>
+                    <span class="light light-yellow"></span>
+                    <span class="light light-green"></span>
                 </div>
-                
-                <!-- Interactive Construction Phase Transition -->
-                <div class="image-transition-container">
-                    <img src="https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?auto=format&fit=crop&w=1000&q=80" alt="Civil Construction Phase" class="img-base">
-                    <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1000&q=80" alt="Completed Technical Hub" class="img-overlay">
-                    <div class="transition-badge">
-                        <i class="fa-solid fa-arrows-rotate"></i> Hover to Transition Phase
+                <div class="hero-img-box">
+                    <img src="4232366.jpg" alt="Offshore Energy Platform">
+                </div>
+                <div style="font-size: 1.1rem; font-weight: 800; color: var(--accent-blue);">
+                    <i class="fa-solid fa-bolt"></i> Offshore & Heavy Industrial Sourcing
+                </div>
+                <p style="font-size: 0.88rem; color: var(--text-secondary); margin-top: 4px;">Energy exploration platforms and offshore turnkey procurement engine.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- DESKTOP STACKS (CAPABILITIES) -->
+    <section class="section-block" id="stacks">
+        <div class="section-header">
+            <h2>Capabilities & Service Stacks</h2>
+            <p>Hover over cards to explore our core technical operational domains.</p>
+        </div>
+
+        <div class="stacks-container">
+            <!-- Stack 1: Global Procurement & Energy Sourcing -->
+            <div class="stack-group">
+                <div class="stack-card">
+                    <div>
+                        <div class="card-img-wrapper">
+                            <img src="istockphoto-505841831-612x612.jpg" alt="Industrial Processing Facility">
+                        </div>
+                        <h3>Global Procurement</h3>
+                        <p style="color: var(--text-secondary); margin-top: 0.3rem;">Refinery supplies, certified fittings, import/export logistics.</p>
                     </div>
+                    <span class="code-font" style="font-size: 0.85rem; color: var(--accent-blue);">Industrial Supply &rarr;</span>
+                </div>
+                <div class="stack-card">
+                    <h4>Import & Export Logistics</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Seamless customs compliance & cross-border freight.</p>
+                </div>
+                <div class="stack-card">
+                    <h4>Industrial Supplies</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">OEM spare parts and heavy production equipment.</p>
+                </div>
+            </div>
+
+            <!-- Stack 2: Civil & Structural Engineering -->
+            <div class="stack-group">
+                <div class="stack-card">
+                    <div>
+                        <div class="card-img-wrapper">
+                            <img src="937101.jpg" alt="Steel Truss Structural Bridge">
+                        </div>
+                        <h3>Civil & Structural</h3>
+                        <p style="color: var(--text-secondary); margin-top: 0.3rem;">Steel truss structures, foundations, site prep, civil works.</p>
+                    </div>
+                    <span class="code-font" style="font-size: 0.85rem; color: var(--accent-orange);">Structural Engineering &rarr;</span>
+                </div>
+                <div class="stack-card">
+                    <h4>Structural Concrete</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">High-durability site preparation and heavy foundations.</p>
+                </div>
+                <div class="stack-card">
+                    <h4>Facility Modifications</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Infrastructure upgrades and ongoing structural maintenance.</p>
+                </div>
+            </div>
+
+            <!-- Stack 3: M&E Works & Automation -->
+            <div class="stack-group">
+                <div class="stack-card">
+                    <div>
+                        <div class="card-img-wrapper">
+                            <img src="pngtree-wiring-circuit-of-power-plant-in-control-panel-distribution-image_15904642.jpg" alt="Power Circuit Automation Panel">
+                        </div>
+                        <h3>Mechanical & Electrical</h3>
+                        <p style="color: var(--text-secondary); margin-top: 0.3rem;">Power panels, wiring circuits, skids, and control systems.</p>
+                    </div>
+                    <span class="code-font" style="font-size: 0.85rem; color: var(--accent-green);">Electrical Automation &rarr;</span>
+                </div>
+                <div class="stack-card">
+                    <h4>Piping & Skid Assembly</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Modular skid fabrication and valve precision alignment.</p>
+                </div>
+                <div class="stack-card">
+                    <h4>Testing & Maintenance</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">24/7 technical field support and plant commissioning.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- DESKTOP STACKS (INTERACTIVE CARD FAN OUT) -->
-    <section class="section-block" id="stacks">
+    <!-- INDUSTRIAL INFRASTRUCTURE GALLERY -->
+    <section class="section-block" id="gallery" style="padding-top: 20px;">
         <div class="section-header">
-            <h2>Services & Solutions Provided</h2>
-            <p>Hover over to reveal full engineering and procurement capabilities.</p>
+            <h2>Featured Infrastructure Projects</h2>
+            <p>Proven excellence across oil & gas, process plants, power systems, and sustainable energy infrastructure.</p>
         </div>
 
-        <div class="stacks-container">
-            <!-- Stack 1: Sourcing & Supply -->
-            <div class="stack-group">
-                <div class="stack-card">
-                    <div>
-                        <div class="stack-icon"><i class="fa-solid fa-boxes-packing"></i></div>
-                        <h3>Global Procurement</h3>
-                        <p style="color: var(--text-secondary); margin-top: 0.5rem;">Raw materials, certified fittings, import/export logistics.</p>
-                    </div>
-                    <span class="code-font" style="font-size: 0.85rem; color: var(--accent-blue);">3 Active Services &rarr;</span>
+        <div class="gallery-grid">
+            <div class="gallery-card">
+                <div class="gallery-img-container">
+                    <img src="AdobeStock_711599297-scaled.jpg" alt="Petrochemical Pipeline Facilities">
                 </div>
-                <div class="stack-card">
-                    <h4>Import & Export Clearance</h4>
-                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Seamless customs compliance & cross-border freight.</p>
-                </div>
-                <div class="stack-card">
-                    <h4>Industrial Supplies</h4>
-                    <p style="color: var(--text-secondary); font-size: 0.9rem;">OEM spare parts and factory consumables.</p>
+                <div class="gallery-content">
+                    <span class="gallery-badge">Petrochemical</span>
+                    <h3 style="font-size: 1.25rem;">Refinery Pipeline Systems</h3>
+                    <p style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 0.4rem;">High-pressure gas and liquid transfer pipeline network installation.</p>
                 </div>
             </div>
 
-            <!-- Stack 2: Civil & Structural -->
-            <div class="stack-group">
-                <div class="stack-card">
-                    <div>
-                        <div class="stack-icon" style="background: linear-gradient(135deg, var(--accent-orange), var(--accent-pink));">
-                            <i class="fa-solid fa-building-user"></i>
-                        </div>
-                        <h3>Civil Engineering</h3>
-                        <p style="color: var(--text-secondary); margin-top: 0.5rem;">Foundation works, structural paving, trenching, site prep.</p>
-                    </div>
-                    <span class="code-font" style="font-size: 0.85rem; color: var(--accent-orange);">Structural Focus &rarr;</span>
+            <div class="gallery-card">
+                <div class="gallery-img-container">
+                    <img src="pngtree-a-large-oil-and-gas-production-plant-at-dusk-with-reflecting-image_15995971.jpg" alt="Oil and Gas Processing Plant">
                 </div>
-                <div class="stack-card">
-                    <h4>Structural Concrete</h4>
-                    <p style="color: var(--text-secondary); font-size: 0.9rem;">High-durability site preparation and foundations.</p>
-                </div>
-                <div class="stack-card">
-                    <h4>Facility Modifications</h4>
-                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Upgrades and structural maintenance.</p>
+                <div class="gallery-content">
+                    <span class="gallery-badge">Gas Operations</span>
+                    <h3 style="font-size: 1.25rem;">Gas Processing Plants</h3>
+                    <p style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 0.4rem;">Continuous dusk-to-dawn operational plant engineering & technical support.</p>
                 </div>
             </div>
 
-            <!-- Stack 3: M&E Works -->
-            <div class="stack-group">
-                <div class="stack-card">
-                    <div>
-                        <div class="stack-icon" style="background: linear-gradient(135deg, var(--accent-green), var(--accent-cyan));">
-                            <i class="fa-solid fa-gears"></i>
-                        </div>
-                        <h3>Mechanical & Electrical</h3>
-                        <p style="color: var(--text-secondary); margin-top: 0.5rem;">HVAC, piping networks, pumps, and electrical systems.</p>
-                    </div>
-                    <span class="code-font" style="font-size: 0.85rem; color: var(--accent-green);">Turnkey Execution &rarr;</span>
+            <div class="gallery-card">
+                <div class="gallery-img-container">
+                    <img src="close-up-steel-pipes-natural-gas-concrete-supports-supplying-propane-factory-tanks-valves-production-energy-resources-economy-pipeline-oil-industry-drainage-system-water-transport-photo.jpg" alt="Precision Valves and Steel Piping">
                 </div>
-                <div class="stack-card">
-                    <h4>Piping & Skid Assembly</h4>
-                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Modular fabrication and pump alignment.</p>
+                <div class="gallery-content">
+                    <span class="gallery-badge">Mechanical</span>
+                    <h3 style="font-size: 1.25rem;">Piping & Valve Assemblies</h3>
+                    <p style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 0.4rem;">Industrial steel piping with heavy concrete supports and control valves.</p>
                 </div>
-                <div class="stack-card">
-                    <h4>Testing & Maintenance</h4>
-                    <p style="color: var(--text-secondary); font-size: 0.9rem;">24/7 rapid technical field support.</p>
+            </div>
+
+            <div class="gallery-card">
+                <div class="gallery-img-container">
+                    <img src="images.jpeg" alt="Green Hydrogen Energy Systems">
+                </div>
+                <div class="gallery-content">
+                    <span class="gallery-badge" style="background: rgba(52,199,89,0.15); color: var(--accent-green);">Green Energy</span>
+                    <h3 style="font-size: 1.25rem;">Hydrogen & ESG Tech</h3>
+                    <p style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 0.4rem;">Sustainable clean energy technologies and hydrogen infrastructure.</p>
+                </div>
+            </div>
+
+            <div class="gallery-card">
+                <div class="gallery-img-container">
+                    <img src="pngtree-wiring-circuit-of-power-plant-in-control-panel-distribution-image_15904642.jpg" alt="Power Plant Control Panel Wiring">
+                </div>
+                <div class="gallery-content">
+                    <span class="gallery-badge" style="background: rgba(175,82,222,0.15); color: var(--accent-purple);">Electrical</span>
+                    <h3 style="font-size: 1.25rem;">Control Panel Distribution</h3>
+                    <p style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 0.4rem;">Industrial power wiring circuits, switches, and automation distribution panels.</p>
+                </div>
+            </div>
+
+            <div class="gallery-card">
+                <div class="gallery-img-container">
+                    <img src="pngtree-abstract-blue-hexagon-pattern-picture-image_15930918.jpg" alt="Digital Operational Matrix Grid">
+                </div>
+                <div class="gallery-content">
+                    <span class="gallery-badge" style="background: rgba(0,199,190,0.15); color: var(--accent-cyan);">Smart Operations</span>
+                    <h3 style="font-size: 1.25rem;">Tech-Hub Operations Matrix</h3>
+                    <p style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 0.4rem;">Data-driven site monitoring and digital twin process execution.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- INTERACTIVE MACOS WIDGETS -->
-    <section class="section-block" id="widgets">
+    <section class="section-block" id="widgets" style="padding-top: 20px;">
         <div class="section-header">
-            <h2>HSE & Quality Policy</h2>
-            <p>Real-time system operational metrics</p>
+            <h2>HSE & Quality Operational Hub</h2>
+            <p>Real-time system operational metrics and active management</p>
         </div>
 
         <div class="widgets-grid">
-            <!-- Clock Widget -->
             <div class="widget widget-clock">
                 <div>
                     <span class="code-font" style="text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; color: var(--text-secondary);">Kuala Lumpur, MY</span>
                     <div class="clock-time" id="liveClock">12:53</div>
                 </div>
                 <div>
-                    <p style="font-size: 0.85rem; color: var(--text-secondary);" id="clockWidget">System Active • All Nodes Online</p>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary);" id="clockWidget">System Active • All Hubs Operational</p>
                 </div>
             </div>
 
-            <!-- Operational Metric Widget -->
             <div class="widget">
-                <h4 style="margin-bottom: 0.5rem;"><i class="fa-solid fa-chart-line" style="color: var(--accent-blue);"></i> Operational Metric</h4>
+                <h4 style="margin-bottom: 0.5rem;"><i class="fa-solid fa-chart-line" style="color: var(--accent-blue);"></i> Site Readiness Target</h4>
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1rem;">
-                    <span style="font-size: 0.9rem; font-weight: 700;">Site Target Readiness</span>
-                    <span class="code-font" id="sliderVal" style="font-size: 1.2rem; font-weight: 800; color: var(--accent-blue);">95%</span>
+                    <span style="font-size: 0.9rem; font-weight: 700;">Operational Index</span>
+                    <span class="code-font" id="sliderVal" style="font-size: 1.2rem; font-weight: 800; color: var(--accent-blue);">98%</span>
                 </div>
-                <input type="range" class="metric-slider" id="timelineSlider" min="0" max="100" value="95">
+                <input type="range" class="metric-slider" id="timelineSlider" min="0" max="100" value="98">
             </div>
 
-            <!-- Fast Contact Manager Widget -->
             <div class="widget" style="background: linear-gradient(135deg, rgba(52,199,89,0.1), rgba(0,199,190,0.1));">
                 <div>
                     <h4 style="margin-bottom: 0.5rem;"><i class="fa-solid fa-headset" style="color: var(--accent-green);"></i> Key Contact</h4>
                     <p style="font-weight: 800; font-size: 1.1rem;">Morghan</p>
-                    <p style="font-size: 0.85rem; color: var(--text-secondary);">Manager</p>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary);">Operations Manager</p>
                 </div>
                 <a href="https://wa.me/60149725722" target="_blank" class="btn-mac-primary" style="margin-top: 1rem; width: 100%; justify-content: center; padding: 0.6rem;">
                     <i class="fa-brands fa-whatsapp"></i> Chat Now
@@ -540,8 +570,7 @@
             </div>
         </div>
 
-        <!-- ROUTINE COMPLIANCE SNIPPETS -->
-        <div class="snippet-grid" style="margin-top: 2rem;">
+        <div class="snippet-grid">
             <div class="routine-box">
                 <h3><i class="fa-solid fa-shield-halved" style="color: var(--accent-pink);"></i> Safety Compliance Routine</h3>
                 <div class="toggle-row">
@@ -581,7 +610,7 @@
         <div class="contact-card">
             <div>
                 <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Let's Build Together</h2>
-                <p style="color: var(--text-secondary); margin-bottom: 2rem;">Send us your procurement specifications, civil requirements, or tender documents.</p>
+                <p style="color: var(--text-secondary); margin-bottom: 2rem;">Send us your procurement specifications, civil requirements, M&E plans, or tender documents.</p>
                 <div style="display: flex; flex-direction: column; gap: 1rem; font-weight: 600;">
                     <div><i class="fa-solid fa-envelope" style="color: var(--accent-blue);"></i> smorghan9@gmail.com</div>
                     <div><i class="fa-solid fa-phone" style="color: var(--accent-green);"></i> +6014 972 5722</div>
@@ -597,6 +626,7 @@
                     <option>Global Procurement & Supply</option>
                     <option>Civil Construction Works</option>
                     <option>Mechanical & Electrical Services</option>
+                    <option>Process Plant & Valve Engineering</option>
                 </select>
 
                 <button type="submit" class="btn-mac-primary" style="width: 100%; margin-top: 1.5rem; justify-content: center;">
@@ -610,6 +640,7 @@
     <div class="dock-bar">
         <a href="#hero" class="dock-icon" title="Home"><i class="fa-solid fa-house" style="color: var(--accent-blue);"></i></a>
         <a href="#stacks" class="dock-icon" title="Capabilities"><i class="fa-solid fa-layer-group" style="color: var(--accent-purple);"></i></a>
+        <a href="#gallery" class="dock-icon" title="Infrastructure"><i class="fa-solid fa-industry" style="color: var(--accent-orange);"></i></a>
         <a href="#widgets" class="dock-icon" title="Operations"><i class="fa-solid fa-chart-simple" style="color: var(--accent-green);"></i></a>
         <a href="https://wa.me/60149725722" target="_blank" class="dock-icon" title="WhatsApp"><i class="fa-brands fa-whatsapp" style="color: #25d366;"></i></a>
     </div>
@@ -644,15 +675,15 @@
                 const wpTheme = target.getAttribute('data-wp');
                 document.documentElement.setAttribute('data-wallpaper', wpTheme);
                 
-                // Background update
                 if(wpTheme === 'sonoma') document.body.style.background = 'var(--wp-sonoma)';
                 if(wpTheme === 'ventura') document.body.style.background = 'var(--wp-ventura)';
                 if(wpTheme === 'aurora') document.body.style.background = 'var(--wp-aurora)';
                 if(wpTheme === 'monterey') document.body.style.background = 'var(--wp-monterey)';
+                if(wpTheme === 'cyber') document.body.style.background = 'var(--wp-cyber)';
             });
         });
 
-        // 3D Card Interactive Tilt Effect
+        // 3D Visual Card Interactive Tilt Effect
         const tiltSnippet = document.getElementById('tiltSnippet');
         if(tiltSnippet) {
             document.addEventListener('mousemove', (e) => {
