@@ -14,14 +14,12 @@
     <style>
         /* --- MACOS SYSTEM DESIGN VARIABLES --- */
         :root {
-            /* Dynamic Wallpaper Themes */
             --wp-sonoma: radial-gradient(at 10% 10%, #e0f2fe 0%, #f3e8ff 35%, #fce7f3 70%, #f8fafc 100%);
             --wp-ventura: linear-gradient(135deg, #fef3c7 0%, #fed7aa 35%, #fce7f3 70%, #f1f5f9 100%);
             --wp-aurora: linear-gradient(135deg, #0f172a 0%, #1e1b4b 40%, #311042 100%);
             --wp-monterey: radial-gradient(at 90% 10%, #dbeafe 0%, #e0e7ff 40%, #fae8ff 100%);
-            --wp-cyber: linear-gradient(135deg, #0f172a 0%, #1e293b 100%), url('pngtree-abstract-blue-hexagon-pattern-picture-image_15930918.jpg') center/cover no-repeat fixed;
+            --wp-cyber: linear-gradient(135deg, #0f172a 0%, #1e293b 100%), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat fixed;
 
-            /* Surface & Accent Colors */
             --accent-blue: #007aff;
             --accent-cyan: #00c7be;
             --accent-purple: #af52de;
@@ -29,14 +27,12 @@
             --accent-orange: #ff9500;
             --accent-green: #34c759;
 
-            /* Glassmorphism Surfaces */
             --glass-surface: rgba(255, 255, 255, 0.68);
             --glass-card: rgba(255, 255, 255, 0.82);
             --glass-border: rgba(255, 255, 255, 0.9);
             --glass-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.12);
             --glass-blur: blur(30px);
 
-            /* Dynamic Theme Text */
             --text-primary: #0f172a;
             --text-secondary: #475569;
             --text-inverse: #ffffff;
@@ -46,7 +42,6 @@
             --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        /* Dark Wallpaper Override Mode */
         [data-wallpaper="aurora"], [data-wallpaper="cyber"] {
             --glass-surface: rgba(15, 23, 42, 0.65);
             --glass-card: rgba(30, 41, 59, 0.82);
@@ -70,7 +65,7 @@
         .code-font { font-family: 'Space Grotesk', monospace; }
         a { text-decoration: none; color: inherit; }
 
-        /* --- MACOS MENU BAR & CONTROL CENTER --- */
+        /* --- MENU BAR --- */
         .menubar {
             position: fixed; top: 0; left: 0; right: 0; height: 52px;
             background: var(--glass-surface);
@@ -170,7 +165,6 @@
         }
         .btn-mac-glass:hover { transform: translateY(-3px); background: rgba(255, 255, 255, 0.95); }
 
-        /* 3D Visual Card Hero */
         .perspective-wrapper { perspective: 1000px; }
         .hero-visual-card {
             background: var(--glass-card); border: 1px solid var(--glass-border);
@@ -180,7 +174,7 @@
         }
         .hero-img-box {
             width: 100%; height: 260px; border-radius: var(--radius-sm);
-            overflow: hidden; position: relative; margin-bottom: 1.2rem; background: #e2e8f0;
+            overflow: hidden; position: relative; margin-bottom: 1.2rem; background: #cbd5e1;
         }
         .hero-img-box img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; display: block; }
         .hero-visual-card:hover .hero-img-box img { transform: scale(1.05); }
@@ -214,11 +208,11 @@
 
         .card-img-wrapper {
             width: 100%; height: 160px; border-radius: var(--radius-sm);
-            overflow: hidden; margin-bottom: 1rem; background: #e2e8f0;
+            overflow: hidden; margin-bottom: 1rem; background: #cbd5e1;
         }
         .card-img-wrapper img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-        /* --- PROJECT GALLERY SHOWCASE --- */
+        /* --- PROJECT GALLERY --- */
         .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 2rem; }
         .gallery-card {
             background: var(--glass-card); border: 1px solid var(--glass-border);
@@ -226,7 +220,7 @@
             backdrop-filter: var(--glass-blur); transition: transform 0.3s var(--ease-out);
         }
         .gallery-card:hover { transform: translateY(-8px); }
-        .gallery-img-container { width: 100%; height: 210px; overflow: hidden; position: relative; background: #e2e8f0; }
+        .gallery-img-container { width: 100%; height: 210px; overflow: hidden; position: relative; background: #cbd5e1; }
         .gallery-img-container img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; display: block; }
         .gallery-card:hover .gallery-img-container img { transform: scale(1.08); }
         .gallery-content { padding: 1.5rem; }
@@ -236,8 +230,8 @@
             background: rgba(0,122,255,0.1); color: var(--accent-blue);
         }
 
-        /* --- INTERACTIVE WIDGETS GRID --- */
-        .widgets-grid { display: grid; grid-template-columns: 1.5fr 1.5fr 1fr; gap: 2rem; margin-top: 2rem; }
+        /* --- WIDGETS --- */
+        .widgets-grid { display: grid; grid-template-columns: 1.2fr 1.8fr 1fr; gap: 2rem; margin-top: 2rem; }
         .widget {
             background: var(--glass-card); border: 1px solid var(--glass-border);
             border-radius: var(--radius-md); padding: 2rem; box-shadow: var(--glass-shadow);
@@ -248,9 +242,13 @@
         .widget-clock { background: linear-gradient(135deg, rgba(0,122,255,0.08), rgba(175,82,222,0.08)); }
         .clock-time { font-size: 3.2rem; font-weight: 800; font-family: 'Space Grotesk'; color: var(--accent-blue); line-height: 1; margin: 0.5rem 0; }
         
-        .metric-slider { width: 100%; margin-top: 1rem; accent-color: var(--accent-blue); cursor: pointer; }
+        @keyframes pulse {
+            0% { transform: scale(0.95); opacity: 0.8; }
+            50% { transform: scale(1.15); opacity: 1; }
+            100% { transform: scale(0.95); opacity: 0.8; }
+        }
 
-        /* --- ROUTINE & COMPLIANCE TOGGLES --- */
+        /* --- GLASSMORPHISM ICON CARDS --- */
         .snippet-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem; }
         .routine-box {
             background: var(--glass-card); border: 1px solid var(--glass-border);
@@ -258,19 +256,48 @@
         }
         .routine-box h3 { font-size: 1.4rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 10px; }
 
-        .toggle-row { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-bottom: 1px solid rgba(0,0,0,0.06); font-weight: 600; }
-        .toggle-row:last-child { border-bottom: none; }
-        .mac-switch {
-            width: 50px; height: 28px; background: #cbd5e1; border-radius: 20px;
-            position: relative; cursor: pointer; transition: background 0.3s; flex-shrink: 0;
+        .status-icon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 1.2rem;
         }
-        .mac-switch.active { background: var(--accent-green); }
-        .mac-switch::after {
-            content: ''; position: absolute; top: 2px; left: 2px; width: 24px; height: 24px;
-            background: white; border-radius: 50%; transition: transform 0.3s var(--ease-out);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        .status-glass-card {
+            background: rgba(255, 255, 255, 0.45);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-sm);
+            padding: 1.2rem 1rem;
+            text-align: center;
+            backdrop-filter: blur(12px);
+            transition: all 0.3s var(--ease-out);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
-        .mac-switch.active::after { transform: translateX(22px); }
+        .status-glass-card:hover {
+            transform: translateY(-4px);
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.06);
+        }
+        .status-glass-icon {
+            width: 48px; height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.06);
+        }
+        .status-title { font-weight: 700; font-size: 0.88rem; margin-bottom: 0.4rem; color: var(--text-primary); }
+        .status-badge {
+            font-size: 0.72rem;
+            font-weight: 800;
+            padding: 3px 10px;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
 
         /* --- CONTACT & FOOTER --- */
         .contact-card {
@@ -285,7 +312,6 @@
         }
         .mac-input:focus { border-color: var(--accent-blue); background: white; }
 
-        /* --- DOCK & FLOATING ACTION --- */
         .dock-bar {
             position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
             background: var(--glass-surface); border: 1px solid var(--glass-border);
@@ -299,7 +325,6 @@
         }
         .dock-icon:hover { transform: translateY(-12px) scale(1.2); }
 
-        /* Responsive Breakpoints */
         @media (max-width: 1024px) {
             .hero-container, .stacks-container, .gallery-grid, .widgets-grid, .snippet-grid, .contact-card { grid-template-columns: 1fr; }
             .hero-title { font-size: 2.8rem; }
@@ -309,7 +334,7 @@
 </head>
 <body>
 
-    <!-- MACOS TOP MENU BAR -->
+    <!-- MACOS MENU BAR -->
     <header class="menubar">
         <div class="menubar-brand">
             <div class="logo-container">
@@ -342,7 +367,7 @@
             <div class="wp-option" style="background: var(--wp-ventura);" data-wp="ventura" title="Ventura Warm"></div>
             <div class="wp-option" style="background: var(--wp-aurora);" data-wp="aurora" title="Aurora Night"></div>
             <div class="wp-option" style="background: var(--wp-monterey);" data-wp="monterey" title="Monterey Blue"></div>
-            <div class="wp-option" style="background-image: url('pngtree-abstract-blue-hexagon-pattern-picture-image_15930918.jpg'), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80');" data-wp="cyber" title="Cyber Tech"></div>
+            <div class="wp-option" style="background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=400&q=80');" data-wp="cyber" title="Cyber Tech"></div>
         </div>
     </div>
 
@@ -360,11 +385,16 @@
             </div>
         </div>
 
-        <!-- 3D INTERACTIVE VISUAL HERO CARD -->
+        <!-- VISUAL HERO CARD WITH DIRECT UNSPLASH IMAGE -->
         <div class="perspective-wrapper">
             <div class="hero-visual-card" id="tiltSnippet">
+                <div class="traffic-lights">
+                    <span class="light light-red"></span>
+                    <span class="light light-yellow"></span>
+                    <span class="light light-green"></span>
+                </div>
                 <div class="hero-img-box">
-                    <img src="4232366.jpg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80';" alt="Offshore Energy Platform">
+                    <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1000&q=80" alt="Offshore & Heavy Industrial Sourcing">
                 </div>
                 <div style="font-size: 1.1rem; font-weight: 800; color: var(--accent-blue);">
                     <i class="fa-solid fa-bolt"></i> Offshore & Heavy Industrial Sourcing
@@ -382,12 +412,12 @@
         </div>
 
         <div class="stacks-container">
-            <!-- Stack 1: Global Procurement & Energy Sourcing -->
+            <!-- Stack 1: Global Procurement -->
             <div class="stack-group">
                 <div class="stack-card">
                     <div>
                         <div class="card-img-wrapper">
-                            <img src="istockphoto-505841831-612x612.jpg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80';" alt="Industrial Processing Facility">
+                            <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80" alt="Global Procurement">
                         </div>
                         <h3>Global Procurement</h3>
                         <p style="color: var(--text-secondary); margin-top: 0.3rem;">Refinery supplies, certified fittings, import/export logistics.</p>
@@ -404,12 +434,12 @@
                 </div>
             </div>
 
-            <!-- Stack 2: Civil & Structural Engineering -->
+            <!-- Stack 2: Civil & Structural -->
             <div class="stack-group">
                 <div class="stack-card">
                     <div>
                         <div class="card-img-wrapper">
-                            <img src="937101.jpg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1541888946425-d0fbb186a5b2?auto=format&fit=crop&w=800&q=80';" alt="Steel Truss Structural Bridge">
+                            <img src="https://images.unsplash.com/photo-1541888946425-d0fbb186a5b2?auto=format&fit=crop&w=800&q=80" alt="Civil & Structural">
                         </div>
                         <h3>Civil & Structural</h3>
                         <p style="color: var(--text-secondary); margin-top: 0.3rem;">Steel truss structures, foundations, site prep, civil works.</p>
@@ -426,12 +456,12 @@
                 </div>
             </div>
 
-            <!-- Stack 3: M&E Works & Automation -->
+            <!-- Stack 3: Mechanical & Electrical -->
             <div class="stack-group">
                 <div class="stack-card">
                     <div>
                         <div class="card-img-wrapper">
-                            <img src="pngtree-wiring-circuit-of-power-plant-in-control-panel-distribution-image_15904642.jpg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=800&q=80';" alt="Power Circuit Automation Panel">
+                            <img src="https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=800&q=80" alt="Mechanical & Electrical">
                         </div>
                         <h3>Mechanical & Electrical</h3>
                         <p style="color: var(--text-secondary); margin-top: 0.3rem;">Power panels, wiring circuits, skids, and control systems.</p>
@@ -460,7 +490,7 @@
         <div class="gallery-grid">
             <div class="gallery-card">
                 <div class="gallery-img-container">
-                    <img src="AdobeStock_711599297-scaled.jpg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80';" alt="Petrochemical Pipeline Facilities">
+                    <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80" alt="Refinery Pipeline Systems">
                 </div>
                 <div class="gallery-content">
                     <span class="gallery-badge">Petrochemical</span>
@@ -471,7 +501,7 @@
 
             <div class="gallery-card">
                 <div class="gallery-img-container">
-                    <img src="pngtree-a-large-oil-and-gas-production-plant-at-dusk-with-reflecting-image_15995971.jpg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80';" alt="Oil and Gas Processing Plant">
+                    <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80" alt="Gas Processing Plants">
                 </div>
                 <div class="gallery-content">
                     <span class="gallery-badge">Gas Operations</span>
@@ -482,7 +512,7 @@
 
             <div class="gallery-card">
                 <div class="gallery-img-container">
-                    <img src="close-up-steel-pipes-natural-gas-concrete-supports-supplying-propane-factory-tanks-valves-production-energy-resources-economy-pipeline-oil-industry-drainage-system-water-transport-photo.jpg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=800&q=80';" alt="Precision Valves and Steel Piping">
+                    <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=800&q=80" alt="Piping & Valve Assemblies">
                 </div>
                 <div class="gallery-content">
                     <span class="gallery-badge">Mechanical</span>
@@ -493,7 +523,7 @@
 
             <div class="gallery-card">
                 <div class="gallery-img-container">
-                    <img src="images.jpeg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?auto=format&fit=crop&w=800&q=80';" alt="Green Hydrogen Energy Systems">
+                    <img src="https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?auto=format&fit=crop&w=800&q=80" alt="Hydrogen & ESG Tech">
                 </div>
                 <div class="gallery-content">
                     <span class="gallery-badge" style="background: rgba(52,199,89,0.15); color: var(--accent-green);">Green Energy</span>
@@ -504,7 +534,7 @@
 
             <div class="gallery-card">
                 <div class="gallery-img-container">
-                    <img src="pngtree-wiring-circuit-of-power-plant-in-control-panel-distribution-image_15904642.jpg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=800&q=80';" alt="Power Plant Control Panel Wiring">
+                    <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80" alt="Control Panel Distribution">
                 </div>
                 <div class="gallery-content">
                     <span class="gallery-badge" style="background: rgba(175,82,222,0.15); color: var(--accent-purple);">Electrical</span>
@@ -515,7 +545,7 @@
 
             <div class="gallery-card">
                 <div class="gallery-img-container">
-                    <img src="pngtree-abstract-blue-hexagon-pattern-picture-image_15930918.jpg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80';" alt="Digital Operational Matrix Grid">
+                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80" alt="Tech-Hub Operations Matrix">
                 </div>
                 <div class="gallery-content">
                     <span class="gallery-badge" style="background: rgba(0,199,190,0.15); color: var(--accent-cyan);">Smart Operations</span>
@@ -526,11 +556,11 @@
         </div>
     </section>
 
-    <!-- INTERACTIVE MACOS WIDGETS -->
+    <!-- REAL-TIME TELEMETRY WIDGETS -->
     <section class="section-block" id="widgets" style="padding-top: 20px;">
         <div class="section-header">
             <h2>HSE & Quality Operational Hub</h2>
-            <p>Real-time system operational metrics and active management</p>
+            <p>Real-time system operational metrics and active telemetry</p>
         </div>
 
         <div class="widgets-grid">
@@ -544,13 +574,26 @@
                 </div>
             </div>
 
+            <!-- REPLACED SITE READINESS WITH LIVE PIPELINE DATA -->
             <div class="widget">
-                <h4 style="margin-bottom: 0.5rem;"><i class="fa-solid fa-chart-line" style="color: var(--accent-blue);"></i> Site Readiness Target</h4>
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1rem;">
-                    <span style="font-size: 0.9rem; font-weight: 700;">Operational Index</span>
-                    <span class="code-font" id="sliderVal" style="font-size: 1.2rem; font-weight: 800; color: var(--accent-blue);">98%</span>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <h4 style="font-size: 1.05rem;"><i class="fa-solid fa-gauge-high" style="color: var(--accent-blue);"></i> Active Pipeline Flow Rate</h4>
+                    <span style="display: inline-flex; align-items: center; gap: 6px; font-size: 0.75rem; background: rgba(52, 199, 89, 0.15); color: var(--accent-green); padding: 4px 10px; border-radius: 50px; font-weight: 700;">
+                        <span style="width: 8px; height: 8px; background: var(--accent-green); border-radius: 50%; display: inline-block; animation: pulse 1.5s infinite;"></span> TELEMETRY LIVE
+                    </span>
                 </div>
-                <input type="range" class="metric-slider" id="timelineSlider" min="0" max="100" value="98">
+                <div style="margin: 0.8rem 0;">
+                    <div class="code-font" style="font-size: 2.2rem; font-weight: 800; color: var(--accent-blue);">
+                        42,850 <span style="font-size: 0.95rem; color: var(--text-secondary); font-weight: 600;">Barrels / Day</span>
+                    </div>
+                    <div style="width: 100%; height: 8px; background: rgba(0,0,0,0.08); border-radius: 10px; margin-top: 10px; overflow: hidden;">
+                        <div style="width: 84%; height: 100%; background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan)); border-radius: 10px;"></div>
+                    </div>
+                </div>
+                <div style="display: flex; justify-content: space-between; font-size: 0.82rem; color: var(--text-secondary); font-weight: 600;">
+                    <span><i class="fa-solid fa-chart-simple" style="color: var(--accent-blue);"></i> Target: 84% Capacity</span>
+                    <span><i class="fa-solid fa-compress" style="color: var(--accent-cyan);"></i> Pressure: 1,420 PSI</span>
+                </div>
             </div>
 
             <div class="widget" style="background: linear-gradient(135deg, rgba(52,199,89,0.1), rgba(0,199,190,0.1));">
@@ -565,36 +608,63 @@
             </div>
         </div>
 
+        <!-- REPLACED TOGGLES WITH GLASSMORPHISM ICON CARDS -->
         <div class="snippet-grid">
             <div class="routine-box">
                 <h3><i class="fa-solid fa-shield-halved" style="color: var(--accent-pink);"></i> Safety Compliance Routine</h3>
-                <div class="toggle-row">
-                    <span>DOSH / JKKP Standard</span>
-                    <div class="mac-switch active" onclick="this.classList.toggle('active')"></div>
-                </div>
-                <div class="toggle-row">
-                    <span>HIRARC Risk Assessment</span>
-                    <div class="mac-switch active" onclick="this.classList.toggle('active')"></div>
-                </div>
-                <div class="toggle-row">
-                    <span>Zero Harm Site Protocols</span>
-                    <div class="mac-switch active" onclick="this.classList.toggle('active')"></div>
+                <div class="status-icon-grid">
+                    <div class="status-glass-card">
+                        <div class="status-glass-icon" style="background: rgba(0, 122, 255, 0.12); color: var(--accent-blue);">
+                            <i class="fa-solid fa-clipboard-check"></i>
+                        </div>
+                        <div class="status-title">DOSH / JKKP</div>
+                        <span class="status-badge" style="background: rgba(0, 122, 255, 0.15); color: var(--accent-blue);">Standard</span>
+                    </div>
+
+                    <div class="status-glass-card">
+                        <div class="status-glass-icon" style="background: rgba(255, 45, 85, 0.12); color: var(--accent-pink);">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                        </div>
+                        <div class="status-title">HIRARC</div>
+                        <span class="status-badge" style="background: rgba(255, 45, 85, 0.15); color: var(--accent-pink);">Assessed</span>
+                    </div>
+
+                    <div class="status-glass-card">
+                        <div class="status-glass-icon" style="background: rgba(52, 199, 89, 0.12); color: var(--accent-green);">
+                            <i class="fa-solid fa-shield-heart"></i>
+                        </div>
+                        <div class="status-title">Zero Harm</div>
+                        <span class="status-badge" style="background: rgba(52, 199, 89, 0.15); color: var(--accent-green);">Enforced</span>
+                    </div>
                 </div>
             </div>
 
             <div class="routine-box">
                 <h3><i class="fa-solid fa-award" style="color: var(--accent-green);"></i> Quality Assurance Checklist</h3>
-                <div class="toggle-row">
-                    <span>Material Inspection Plans</span>
-                    <div class="mac-switch active" onclick="this.classList.toggle('active')"></div>
-                </div>
-                <div class="toggle-row">
-                    <span>QA/QC Documentation</span>
-                    <div class="mac-switch active" onclick="this.classList.toggle('active')"></div>
-                </div>
-                <div class="toggle-row">
-                    <span>ISO Compliance Validation</span>
-                    <div class="mac-switch active" onclick="this.classList.toggle('active')"></div>
+                <div class="status-icon-grid">
+                    <div class="status-glass-card">
+                        <div class="status-glass-icon" style="background: rgba(255, 149, 0, 0.12); color: var(--accent-orange);">
+                            <i class="fa-solid fa-boxes-packing"></i>
+                        </div>
+                        <div class="status-title">Inspection</div>
+                        <span class="status-badge" style="background: rgba(255, 149, 0, 0.15); color: var(--accent-orange);">Passed</span>
+                    </div>
+
+                    <div class="status-glass-card">
+                        <div class="status-glass-icon" style="background: rgba(175, 82, 222, 0.12); color: var(--accent-purple);">
+                            <i class="fa-solid fa-file-signature"></i>
+                        </div>
+                        <div class="status-title">QA/QC Docs</div>
+                        <span class="status-badge" style="background: rgba(175, 82, 222, 0.15); color: var(--accent-purple);">Verified</span>
+                    </div>
+
+                    <div class="status-glass-card">
+                        <div class="status-glass-icon" style="background: rgba(0, 199, 190, 0.12); color: var(--accent-cyan);">
+                            <i class="fa-solid fa-certificate"></i>
+                        </div>
+                        <div class="status-title">ISO Standard</div>
+                        <span class="status-badge" style="background: rgba(0, 199, 190, 0.15); color: var(--accent-cyan);">Certified</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -631,7 +701,7 @@
         </div>
     </section>
 
-    <!-- FLOATING DOCK -->
+    <!-- DOCK BAR -->
     <div class="dock-bar">
         <a href="#hero" class="dock-icon" title="Home"><i class="fa-solid fa-house" style="color: var(--accent-blue);"></i></a>
         <a href="#stacks" class="dock-icon" title="Capabilities"><i class="fa-solid fa-layer-group" style="color: var(--accent-purple);"></i></a>
@@ -640,9 +710,8 @@
         <a href="https://wa.me/60149725722" target="_blank" class="dock-icon" title="WhatsApp"><i class="fa-brands fa-whatsapp" style="color: #25d366;"></i></a>
     </div>
 
-    <!-- SYSTEM INTERACTION SCRIPT -->
+    <!-- SCRIPT -->
     <script>
-        // Live Clock Widget
         function updateClock() {
             const now = new Date();
             const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
@@ -652,7 +721,6 @@
         setInterval(updateClock, 1000);
         updateClock();
 
-        // Control Panel Toggle
         const controlToggle = document.getElementById('controlToggle');
         const controlPanel = document.getElementById('controlPanel');
         if(controlToggle && controlPanel) {
@@ -661,7 +729,6 @@
             });
         }
 
-        // Dynamic Wallpaper Switcher
         document.querySelectorAll('.wp-option').forEach(option => {
             option.addEventListener('click', (e) => {
                 document.querySelectorAll('.wp-option').forEach(op => op.classList.remove('active'));
@@ -678,22 +745,12 @@
             });
         });
 
-        // 3D Visual Card Interactive Tilt Effect
         const tiltSnippet = document.getElementById('tiltSnippet');
         if(tiltSnippet) {
             document.addEventListener('mousemove', (e) => {
                 const x = (window.innerWidth / 2 - e.pageX) / 45;
                 const y = (window.innerHeight / 2 - e.pageY) / 45;
                 tiltSnippet.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
-            });
-        }
-
-        // Interactive Range Slider
-        const slider = document.getElementById('timelineSlider');
-        const sliderVal = document.getElementById('sliderVal');
-        if(slider && sliderVal) {
-            slider.addEventListener('input', (e) => {
-                sliderVal.textContent = `${e.target.value}%`;
             });
         }
     </script>
