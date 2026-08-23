@@ -195,14 +195,16 @@
         .stack-group:hover .stack-card:nth-child(2) { transform: translateY(-20px) rotate(3deg); opacity: 0.95; }
         .stack-group:hover .stack-card:nth-child(3) { transform: translateY(-50px) rotate(-1deg); opacity: 0.9; }
 
-        /* AUTO-FUNCTIONAL VIDEO & IMAGE CONTAINER */
+        /* AUTO-FUNCTIONAL VIDEO & IMAGE CONTAINER ENHANCEMENTS */
         .card-img-wrapper {
             width: 100%; height: 160px; border-radius: var(--radius-sm);
             overflow: hidden; margin-bottom: 1rem; background: #0f172a; position: relative;
+            display: block;
         }
         .animated-img, .continuous-video {
             width: 100%; height: 100%; object-fit: cover; display: block;
             pointer-events: none; /* Prevents user pause on click */
+            border: none; outline: none;
         }
 
         /* --- PROJECT GALLERY SHOWCASE --- */
@@ -214,7 +216,7 @@
             display: flex; flex-direction: column;
         }
         .gallery-card:hover { transform: translateY(-8px); }
-        .gallery-img-container { width: 100%; height: 230px; overflow: hidden; position: relative; background: #0f172a; }
+        .gallery-img-container { width: 100%; height: 230px; overflow: hidden; position: relative; background: #0f172a; display: block; }
         .gallery-img-container .animated-img, 
         .gallery-img-container .continuous-video {
             width: 100%; height: 100%; object-fit: cover; object-position: center; transition: transform 0.5s; display: block;
@@ -547,8 +549,8 @@
                 <div class="stack-card">
                     <div>
                         <div class="card-img-wrapper">
-                            <video class="continuous-video" autoplay loop muted playsinline preload="auto" disablePictureInPicture>
-                                <source src="video_3.mp4" type="video/mp4">
+                            <video class="continuous-video" autoplay loop muted playsinline webkit-playsinline preload="auto" disablePictureInPicture>
+                                <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4" type="video/mp4">
                             </video>
                         </div>
                         <h3>Civil & Structural</h3>
@@ -571,8 +573,8 @@
                 <div class="stack-card">
                     <div>
                         <div class="card-img-wrapper">
-                            <video class="continuous-video" autoplay loop muted playsinline preload="auto" disablePictureInPicture>
-                                <source src="video_0.mp4" type="video/mp4">
+                            <video class="continuous-video" autoplay loop muted playsinline webkit-playsinline preload="auto" disablePictureInPicture>
+                                <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4">
                             </video>
                         </div>
                         <h3>Mechanical & Electrical</h3>
@@ -603,8 +605,8 @@
             <!-- 1. Refinery Pipeline Systems -->
             <div class="gallery-card">
                 <div class="gallery-img-container">
-                    <video class="continuous-video" autoplay loop muted playsinline preload="auto" disablePictureInPicture>
-                        <source src="video_2.mp4" type="video/mp4">
+                    <video class="continuous-video" autoplay loop muted playsinline webkit-playsinline preload="auto" disablePictureInPicture>
+                        <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4" type="video/mp4">
                     </video>
                 </div>
                 <div class="gallery-content">
@@ -616,8 +618,8 @@
             <!-- 2. Gas Processing Plants -->
             <div class="gallery-card">
                 <div class="gallery-img-container">
-                    <video class="continuous-video" autoplay loop muted playsinline preload="auto" disablePictureInPicture>
-                        <source src="video_5.mp4" type="video/mp4">
+                    <video class="continuous-video" autoplay loop muted playsinline webkit-playsinline preload="auto" disablePictureInPicture>
+                        <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyBlasts.mp4" type="video/mp4">
                     </video>
                 </div>
                 <div class="gallery-content">
@@ -629,8 +631,8 @@
             <!-- 3. Piping & Valve Assemblies -->
             <div class="gallery-card">
                 <div class="gallery-img-container">
-                    <video class="continuous-video" autoplay loop muted playsinline preload="auto" disablePictureInPicture>
-                        <source src="video_1.mp4" type="video/mp4">
+                    <video class="continuous-video" autoplay loop muted playsinline webkit-playsinline preload="auto" disablePictureInPicture>
+                        <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4" type="video/mp4">
                     </video>
                 </div>
                 <div class="gallery-content">
@@ -653,8 +655,8 @@
             <!-- 5. Control Panel Distribution -->
             <div class="gallery-card">
                 <div class="gallery-img-container">
-                    <video class="continuous-video" autoplay loop muted playsinline preload="auto" disablePictureInPicture>
-                        <source src="video_0.mp4" type="video/mp4">
+                    <video class="continuous-video" autoplay loop muted playsinline webkit-playsinline preload="auto" disablePictureInPicture>
+                        <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4" type="video/mp4">
                     </video>
                 </div>
                 <div class="gallery-content">
@@ -666,8 +668,8 @@
             <!-- 6. Tech-Hub Operations Matrix -->
             <div class="gallery-card">
                 <div class="gallery-img-container">
-                    <video class="continuous-video" autoplay loop muted playsinline preload="auto" disablePictureInPicture>
-                        <source src="video_4.mp4" type="video/mp4">
+                    <video class="continuous-video" autoplay loop muted playsinline webkit-playsinline preload="auto" disablePictureInPicture>
+                        <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackSeeTheWorld.mp4" type="video/mp4">
                     </video>
                 </div>
                 <div class="gallery-content">
@@ -895,24 +897,31 @@
             const allVideos = document.querySelectorAll('video');
             allVideos.forEach(vid => {
                 vid.muted = true;
+                vid.defaultMuted = true;
                 vid.playsInline = true;
                 vid.loop = true;
+                vid.setAttribute('playsinline', '');
+                vid.setAttribute('webkit-playsinline', '');
                 
-                const playPromise = vid.play();
-                if (playPromise !== undefined) {
-                    playPromise.catch(() => {
-                        // Retry playing video automatically upon initial user interaction if blocked by browser policy
-                        const enablePlayOnTouch = () => {
-                            vid.play();
-                            window.removeEventListener('touchstart', enablePlayOnTouch);
-                            window.removeEventListener('click', enablePlayOnTouch);
-                            window.removeEventListener('scroll', enablePlayOnTouch);
-                        };
-                        window.addEventListener('touchstart', enablePlayOnTouch, { once: true });
-                        window.addEventListener('click', enablePlayOnTouch, { once: true });
-                        window.addEventListener('scroll', enablePlayOnTouch, { once: true });
-                    });
-                }
+                const tryPlay = () => {
+                    const playPromise = vid.play();
+                    if (playPromise !== undefined) {
+                        playPromise.catch(error => {
+                            console.log('Autoplay retry queued on user gesture', error);
+                        });
+                    }
+                };
+                
+                tryPlay();
+                
+                // Backup interaction listener for strict browser autoplay policies
+                const enablePlayOnTouch = () => {
+                    tryPlay();
+                };
+                
+                window.addEventListener('touchstart', enablePlayOnTouch, { once: true, passive: true });
+                window.addEventListener('click', enablePlayOnTouch, { once: true, passive: true });
+                window.addEventListener('scroll', enablePlayOnTouch, { once: true, passive: true });
             });
         }
 
