@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vihaanaa Tech Hubs</title>
+    <title>Vihaanaa Tech Hubs | Next-Gen Industrial Operations</title>
     
     <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,6 +11,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
+    <!-- Swiper.js CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
     <style>
         /* --- MACOS SYSTEM DESIGN VARIABLES --- */
         :root {
@@ -35,7 +38,6 @@
 
             --text-primary: #0f172a;
             --text-secondary: #475569;
-            --text-inverse: #ffffff;
             --radius-sm: 14px;
             --radius-md: 24px;
             --radius-lg: 36px;
@@ -65,6 +67,33 @@
         .code-font { font-family: 'Space Grotesk', monospace; }
         a { text-decoration: none; color: inherit; }
 
+        /* --- KEYFRAME ANIMATIONS FOR INFOGRAPHICS --- */
+        @keyframes pulseGlow {
+            0% { transform: scale(0.96); opacity: 0.8; box-shadow: 0 0 0 0 rgba(0, 122, 255, 0.4); }
+            50% { transform: scale(1.02); opacity: 1; box-shadow: 0 0 20px 8px rgba(0, 199, 190, 0.3); }
+            100% { transform: scale(0.96); opacity: 0.8; box-shadow: 0 0 0 0 rgba(0, 122, 255, 0.4); }
+        }
+
+        @keyframes radarScan {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes fillProgress {
+            from { stroke-dashoffset: 283; }
+            to { stroke-dashoffset: 40; }
+        }
+
+        @keyframes floatCard {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+
+        @keyframes wavePulse {
+            0% { transform: scale(0.8); opacity: 1; }
+            100% { transform: scale(2.2); opacity: 0; }
+        }
+
         /* --- MENU BAR --- */
         .menubar {
             position: fixed; top: 0; left: 0; right: 0; height: 52px;
@@ -78,11 +107,7 @@
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
         }
         .menubar-brand { display: flex; align-items: center; gap: 12px; font-weight: 800; font-size: 1.05rem; }
-        
-        .logo-container {
-            position: relative; width: 32px; height: 32px;
-            display: flex; align-items: center; justify-content: center;
-        }
+        .logo-container { position: relative; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; }
         .logo-compass {
             position: absolute; font-size: 28px;
             background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-purple) 100%);
@@ -90,32 +115,23 @@
             transform: rotate(45deg); filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
         }
         .logo-globe { position: absolute; font-size: 16px; color: var(--accent-blue); }
-
         .menubar-nav { display: flex; gap: 1.8rem; list-style: none; }
         .menubar-link { font-size: 0.9rem; font-weight: 600; color: var(--text-secondary); transition: color 0.2s; }
         .menubar-link:hover { color: var(--accent-blue); }
         .menubar-controls { display: flex; align-items: center; gap: 1rem; }
         
         .control-pill {
-            background: var(--glass-card);
-            border: 1px solid var(--glass-border);
-            padding: 6px 14px; border-radius: 50px;
-            display: flex; align-items: center; gap: 8px;
-            font-size: 0.82rem; font-weight: 700; color: var(--text-primary);
-            cursor: pointer; transition: all 0.3s var(--ease-out);
+            background: var(--glass-card); border: 1px solid var(--glass-border);
+            padding: 6px 14px; border-radius: 50px; display: flex; align-items: center; gap: 8px;
+            font-size: 0.82rem; font-weight: 700; color: var(--text-primary); cursor: pointer; transition: all 0.3s var(--ease-out);
         }
         .control-pill:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
 
         .control-center-panel {
             position: fixed; top: 62px; right: 2rem; width: 320px;
-            background: var(--glass-card);
-            backdrop-filter: var(--glass-blur);
-            border: 1px solid var(--glass-border);
-            border-radius: var(--radius-md);
-            padding: 1.5rem;
-            box-shadow: var(--glass-shadow);
-            z-index: 2001;
-            display: none; flex-direction: column; gap: 1.2rem;
+            background: var(--glass-card); backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--glass-border); border-radius: var(--radius-md); padding: 1.5rem;
+            box-shadow: var(--glass-shadow); z-index: 2001; display: none; flex-direction: column; gap: 1.2rem;
             animation: slideDown 0.3s var(--ease-out);
         }
         .control-center-panel.active { display: flex; }
@@ -149,39 +165,50 @@
 
         .cta-group { display: flex; gap: 1.2rem; align-items: center; }
         .btn-mac-primary {
-            background: linear-gradient(135deg, var(--accent-blue), #0051a8);
-            color: white; padding: 1rem 2.2rem; border-radius: 16px;
-            font-weight: 700; font-size: 1rem; border: none; cursor: pointer;
+            background: linear-gradient(135deg, var(--accent-blue), #0051a8); color: white;
+            padding: 1rem 2.2rem; border-radius: 16px; font-weight: 700; font-size: 1rem; border: none; cursor: pointer;
             box-shadow: 0 10px 25px rgba(0, 122, 255, 0.3); transition: all 0.3s var(--ease-out);
             display: inline-flex; align-items: center; gap: 10px;
         }
         .btn-mac-primary:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 15px 35px rgba(0, 122, 255, 0.45); }
         
         .btn-mac-glass {
-            background: var(--glass-card); border: 1px solid var(--glass-border);
-            color: var(--text-primary); padding: 1rem 2rem; border-radius: 16px;
-            font-weight: 700; font-size: 1rem; cursor: pointer; backdrop-filter: var(--glass-blur);
+            background: var(--glass-card); border: 1px solid var(--glass-border); color: var(--text-primary);
+            padding: 1rem 2rem; border-radius: 16px; font-weight: 700; font-size: 1rem; cursor: pointer; backdrop-filter: var(--glass-blur);
             transition: all 0.3s var(--ease-out); display: inline-flex; align-items: center; gap: 10px;
         }
         .btn-mac-glass:hover { transform: translateY(-3px); background: rgba(255, 255, 255, 0.95); }
 
+        /* --- HERO SWIPER SLIDER CARD --- */
         .perspective-wrapper { perspective: 1000px; }
         .hero-visual-card {
             background: var(--glass-card); border: 1px solid var(--glass-border);
             border-radius: var(--radius-md); padding: 1.2rem; box-shadow: var(--glass-shadow);
-            backdrop-filter: var(--glass-blur); transform-style: preserve-3d;
-            transition: transform 0.15s ease-out; position: relative; overflow: hidden;
+            backdrop-filter: var(--glass-blur); position: relative; overflow: hidden;
+            animation: floatCard 6s ease-in-out infinite;
         }
-        .hero-img-box {
-            width: 100%; height: 260px; border-radius: var(--radius-sm);
-            overflow: hidden; position: relative; margin-bottom: 1.2rem; background: #cbd5e1;
-        }
-        .hero-img-box img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; display: block; }
-        .hero-visual-card:hover .hero-img-box img { transform: scale(1.05); }
-
-        .traffic-lights { display: flex; gap: 8px; margin-bottom: 0.8rem; }
+        .traffic-lights { display: flex; gap: 8px; margin-bottom: 0.8rem; z-index: 10; position: relative; }
         .light { width: 12px; height: 12px; border-radius: 50%; }
         .light-red { background: #ff5f56; } .light-yellow { background: #ffbd2e; } .light-green { background: #27c93f; }
+
+        .swiper-hero-container {
+            width: 100%; height: 320px; border-radius: var(--radius-sm); overflow: hidden; position: relative;
+        }
+        .swiper-slide { position: relative; overflow: hidden; border-radius: var(--radius-sm); }
+        .swiper-slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .slide-overlay-info {
+            position: absolute; bottom: 0; left: 0; right: 0; padding: 1.2rem;
+            background: linear-gradient(0deg, rgba(15, 23, 42, 0.9) 0%, rgba(15, 23, 42, 0) 100%);
+            color: white; display: flex; flex-direction: column; gap: 4px;
+        }
+
+        .swiper-button-next, .swiper-button-prev {
+            color: white !important; background: rgba(255,255,255,0.25);
+            backdrop-filter: blur(8px); width: 36px !important; height: 36px !important;
+            border-radius: 50%; border: 1px solid rgba(255,255,255,0.4);
+        }
+        .swiper-button-next:after, .swiper-button-prev:after { font-size: 14px !important; font-weight: 800; }
+        .swiper-pagination-bullet-active { background: var(--accent-blue) !important; width: 22px !important; border-radius: 10px !important; }
 
         /* --- DESKTOP STACKS --- */
         .section-block { padding: 80px 6%; max-width: 1400px; margin: 0 auto; }
@@ -230,22 +257,51 @@
             background: rgba(0,122,255,0.1); color: var(--accent-blue);
         }
 
-        /* --- WIDGETS --- */
-        .widgets-grid { display: grid; grid-template-columns: 1.2fr 1.8fr 1fr; gap: 2rem; margin-top: 2rem; }
+        /* --- ANIMATED INFOGRAPHIC WIDGETS SECTION --- */
+        .widgets-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; margin-top: 2rem; }
         .widget {
             background: var(--glass-card); border: 1px solid var(--glass-border);
             border-radius: var(--radius-md); padding: 2rem; box-shadow: var(--glass-shadow);
             backdrop-filter: var(--glass-blur); transition: transform 0.3s var(--ease-out);
-            display: flex; flex-direction: column; justify-content: space-between;
+            display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden;
         }
         .widget:hover { transform: translateY(-5px); }
-        .widget-clock { background: linear-gradient(135deg, rgba(0,122,255,0.08), rgba(175,82,222,0.08)); }
-        .clock-time { font-size: 3.2rem; font-weight: 800; font-family: 'Space Grotesk'; color: var(--accent-blue); line-height: 1; margin: 0.5rem 0; }
-        
-        @keyframes pulse {
-            0% { transform: scale(0.95); opacity: 0.8; }
-            50% { transform: scale(1.15); opacity: 1; }
-            100% { transform: scale(0.95); opacity: 0.8; }
+
+        /* --- AI DIGITAL GROWTH INFOGRAPHIC --- */
+        .ai-donut-box { display: flex; align-items: center; gap: 1.5rem; margin: 1rem 0; }
+        .svg-ring-container { position: relative; width: 90px; height: 90px; }
+        .svg-ring-container svg { transform: rotate(-90deg); width: 100%; height: 100%; }
+        .svg-ring-bg { fill: none; stroke: rgba(0, 122, 255, 0.15); stroke-width: 8; }
+        .svg-ring-fill {
+            fill: none; stroke: var(--accent-purple); stroke-width: 8;
+            stroke-dasharray: 283; stroke-dashoffset: 283;
+            animation: fillProgress 2.5s ease-out forwards; stroke-linecap: round;
+        }
+        .ring-center-text {
+            position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+            font-weight: 800; font-size: 1rem; color: var(--accent-purple); font-family: 'Space Grotesk';
+        }
+        .ai-metrics-list { display: flex; flex-direction: column; gap: 6px; font-size: 0.85rem; font-weight: 600; }
+
+        /* --- ANIMATED RADAR & TRACKING INFOGRAPHIC --- */
+        .radar-box {
+            position: relative; width: 60px; height: 60px; border-radius: 50%;
+            border: 2px solid rgba(52, 199, 89, 0.3); display: flex; align-items: center; justify-content: center;
+            background: rgba(52, 199, 89, 0.05); overflow: hidden;
+        }
+        .radar-sweep {
+            position: absolute; inset: 0; border-radius: 50%;
+            background: conic-gradient(from 0deg, transparent 0%, transparent 70%, rgba(52, 199, 89, 0.4) 100%);
+            animation: radarScan 3s linear infinite;
+        }
+        .radar-center-dot {
+            width: 8px; height: 8px; background: var(--accent-green); border-radius: 50%;
+            box-shadow: 0 0 10px var(--accent-green); z-index: 2;
+        }
+        .env-metrics-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem; }
+        .env-stat-card {
+            background: rgba(255,255,255,0.4); border: 1px solid var(--glass-border);
+            padding: 0.8rem; border-radius: 14px; text-align: center;
         }
 
         /* --- GLASSMORPHISM ICON CARDS --- */
@@ -257,46 +313,23 @@
         .routine-box h3 { font-size: 1.4rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 10px; }
 
         .status-icon-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-            gap: 1.2rem;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 1.2rem;
         }
         .status-glass-card {
-            background: rgba(255, 255, 255, 0.45);
-            border: 1px solid var(--glass-border);
-            border-radius: var(--radius-sm);
-            padding: 1.2rem 1rem;
-            text-align: center;
-            backdrop-filter: blur(12px);
-            transition: all 0.3s var(--ease-out);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            background: rgba(255, 255, 255, 0.45); border: 1px solid var(--glass-border);
+            border-radius: var(--radius-sm); padding: 1.2rem 1rem; text-align: center; backdrop-filter: blur(12px);
+            transition: all 0.3s var(--ease-out); display: flex; flex-direction: column; align-items: center; justify-content: center;
         }
         .status-glass-card:hover {
-            transform: translateY(-4px);
-            background: rgba(255, 255, 255, 0.8);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.06);
+            transform: translateY(-4px); background: rgba(255, 255, 255, 0.8); box-shadow: 0 10px 20px rgba(0,0,0,0.06);
         }
         .status-glass-icon {
-            width: 48px; height: 48px;
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.3rem;
-            margin-bottom: 0.8rem;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.06);
+            width: 48px; height: 48px; border-radius: 14px; display: flex; align-items: center; justify-content: center;
+            font-size: 1.3rem; margin-bottom: 0.8rem; box-shadow: 0 6px 15px rgba(0,0,0,0.06);
         }
         .status-title { font-weight: 700; font-size: 0.88rem; margin-bottom: 0.4rem; color: var(--text-primary); }
         .status-badge {
-            font-size: 0.72rem;
-            font-weight: 800;
-            padding: 3px 10px;
-            border-radius: 50px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            font-size: 0.72rem; font-weight: 800; padding: 3px 10px; border-radius: 50px; text-transform: uppercase; letter-spacing: 0.5px;
         }
 
         /* --- CONTACT & FOOTER --- */
@@ -307,8 +340,7 @@
         }
         .mac-input {
             width: 100%; padding: 1.1rem; border-radius: 14px; border: 1px solid var(--glass-border);
-            background: rgba(255, 255, 255, 0.6); color: var(--text-primary); font-size: 1rem;
-            outline: none; margin-top: 8px; transition: border 0.2s;
+            background: rgba(255, 255, 255, 0.6); color: var(--text-primary); font-size: 1rem; outline: none; margin-top: 8px; transition: border 0.2s;
         }
         .mac-input:focus { border-color: var(--accent-blue); background: white; }
 
@@ -385,21 +417,52 @@
             </div>
         </div>
 
-        <!-- VISUAL HERO CARD WITH DIRECT UNSPLASH IMAGE -->
+        <!-- ENHANCED OFFSHORE SOURCING SWIPER CAROUSEL -->
         <div class="perspective-wrapper">
-            <div class="hero-visual-card" id="tiltSnippet">
+            <div class="hero-visual-card">
                 <div class="traffic-lights">
                     <span class="light light-red"></span>
                     <span class="light light-yellow"></span>
                     <span class="light light-green"></span>
                 </div>
-                <div class="hero-img-box">
-                    <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1000&q=80" alt="Offshore & Heavy Industrial Sourcing">
+                
+                <div class="swiper myHeroSwiper swiper-hero-container">
+                    <div class="swiper-wrapper">
+                        <!-- Slide 1 -->
+                        <div class="swiper-slide">
+                            <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1000&q=80" alt="Offshore Rig Exploration">
+                            <div class="slide-overlay-info">
+                                <span style="color: var(--accent-cyan); font-weight: 800; font-size: 0.8rem; text-transform: uppercase;">Offshore Platform Sourcing</span>
+                                <strong style="font-size: 1.1rem;">Deep-Sea Drilling Equipment</strong>
+                            </div>
+                        </div>
+                        <!-- Slide 2 -->
+                        <div class="swiper-slide">
+                            <img src="https://images.unsplash.com/photo-1541888946425-d0fbb186a5b2?auto=format&fit=crop&w=1000&q=80" alt="Heavy Industrial Supply">
+                            <div class="slide-overlay-info">
+                                <span style="color: var(--accent-orange); font-weight: 800; font-size: 0.8rem; text-transform: uppercase;">Heavy Machinery Logistics</span>
+                                <strong style="font-size: 1.1rem;">Turnkey Industrial Procurement</strong>
+                            </div>
+                        </div>
+                        <!-- Slide 3 -->
+                        <div class="swiper-slide">
+                            <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1000&q=80" alt="Refinery Piping Systems">
+                            <div class="slide-overlay-info">
+                                <span style="color: var(--accent-green); font-weight: 800; font-size: 0.8rem; text-transform: uppercase;">Subsea Pipe Infrastructure</span>
+                                <strong style="font-size: 1.1rem;">Certified Refinery Assemblies</strong>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
                 </div>
-                <div style="font-size: 1.1rem; font-weight: 800; color: var(--accent-blue);">
-                    <i class="fa-solid fa-bolt"></i> Offshore & Heavy Industrial Sourcing
+
+                <div style="font-size: 1.1rem; font-weight: 800; color: var(--accent-blue); margin-top: 1rem; display: flex; align-items: center; justify-content: space-between;">
+                    <span><i class="fa-solid fa-bolt"></i> Offshore & Heavy Industrial Sourcing</span>
+                    <span style="font-size: 0.75rem; background: rgba(0, 122, 255, 0.15); padding: 4px 10px; border-radius: 50px; color: var(--accent-blue);">SWIPER SLIDES</span>
                 </div>
-                <p style="font-size: 0.88rem; color: var(--text-secondary); margin-top: 4px;">Energy exploration platforms and offshore turnkey procurement engine.</p>
+                <p style="font-size: 0.88rem; color: var(--text-secondary); margin-top: 4px;">Explore energy exploration platforms and offshore turnkey procurement engine.</p>
             </div>
         </div>
     </section>
@@ -556,30 +619,49 @@
         </div>
     </section>
 
-    <!-- REAL-TIME TELEMETRY WIDGETS -->
+    <!-- ALL ANIMATED INFOGRAPHICS TELEMETRY WIDGETS -->
     <section class="section-block" id="widgets" style="padding-top: 20px;">
         <div class="section-header">
             <h2>HSE & Quality Operational Hub</h2>
-            <p>Real-time system operational metrics and active telemetry</p>
+            <p>Real-time system telemetry, AI digital metrics, and animated operational intelligence.</p>
         </div>
 
         <div class="widgets-grid">
-            <div class="widget widget-clock">
+            
+            <!-- INFOGRAPHIC 1: AI & DIGITAL GROWTH METRICS (REPLACED CLOCK) -->
+            <div class="widget" style="background: linear-gradient(135deg, rgba(175,82,222,0.08), rgba(0,122,255,0.08));">
                 <div>
-                    <span class="code-font" style="text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; color: var(--text-secondary);">Kuala Lumpur, MY</span>
-                    <div class="clock-time" id="liveClock">12:53</div>
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <h4 style="font-size: 1.05rem; color: var(--accent-purple);"><i class="fa-solid fa-brain-circuit"></i> AI & Digital Growth</h4>
+                        <span style="font-size: 0.72rem; background: rgba(175,82,222,0.15); color: var(--accent-purple); padding: 3px 8px; border-radius: 50px; font-weight: 800;">ACTIVE ML</span>
+                    </div>
+                    
+                    <div class="ai-donut-box">
+                        <div class="svg-ring-container">
+                            <svg viewBox="0 0 100 100">
+                                <circle class="svg-ring-bg" cx="50" cy="50" r="45"></circle>
+                                <circle class="svg-ring-fill" cx="50" cy="50" r="45"></circle>
+                            </svg>
+                            <div class="ring-center-text">+184%</div>
+                        </div>
+                        <div class="ai-metrics-list">
+                            <div style="color: var(--accent-purple);"><i class="fa-solid fa-chart-line"></i> Predictive Maintenance</div>
+                            <div style="color: var(--text-secondary);">99.4% Anomaly Precision</div>
+                            <div style="color: var(--accent-blue);"><i class="fa-solid fa-network-wired"></i> Neural Operations</div>
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    <p style="font-size: 0.85rem; color: var(--text-secondary);" id="clockWidget">System Active • All Hubs Operational</p>
+                <div style="font-size: 0.82rem; color: var(--text-secondary); border-top: 1px dashed var(--glass-border); padding-top: 0.8rem; margin-top: 0.4rem;">
+                    <i class="fa-solid fa-microchip" style="color: var(--accent-purple);"></i> Digital Twin Latency: <strong>4.2ms</strong>
                 </div>
             </div>
 
-            <!-- REPLACED SITE READINESS WITH LIVE PIPELINE DATA -->
+            <!-- INFOGRAPHIC 2: ACTIVE PIPELINE TELEMETRY -->
             <div class="widget">
                 <div style="display: flex; justify-content: space-between; align-items: center;">
                     <h4 style="font-size: 1.05rem;"><i class="fa-solid fa-gauge-high" style="color: var(--accent-blue);"></i> Active Pipeline Flow Rate</h4>
                     <span style="display: inline-flex; align-items: center; gap: 6px; font-size: 0.75rem; background: rgba(52, 199, 89, 0.15); color: var(--accent-green); padding: 4px 10px; border-radius: 50px; font-weight: 700;">
-                        <span style="width: 8px; height: 8px; background: var(--accent-green); border-radius: 50%; display: inline-block; animation: pulse 1.5s infinite;"></span> TELEMETRY LIVE
+                        <span style="width: 8px; height: 8px; background: var(--accent-green); border-radius: 50%; display: inline-block; animation: wavePulse 1.5s infinite;"></span> LIVE
                     </span>
                 </div>
                 <div style="margin: 0.8rem 0;">
@@ -587,7 +669,7 @@
                         42,850 <span style="font-size: 0.95rem; color: var(--text-secondary); font-weight: 600;">Barrels / Day</span>
                     </div>
                     <div style="width: 100%; height: 8px; background: rgba(0,0,0,0.08); border-radius: 10px; margin-top: 10px; overflow: hidden;">
-                        <div style="width: 84%; height: 100%; background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan)); border-radius: 10px;"></div>
+                        <div style="width: 84%; height: 100%; background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan)); border-radius: 10px; animation: pulseGlow 3s infinite;"></div>
                     </div>
                 </div>
                 <div style="display: flex; justify-content: space-between; font-size: 0.82rem; color: var(--text-secondary); font-weight: 600;">
@@ -596,19 +678,37 @@
                 </div>
             </div>
 
-            <div class="widget" style="background: linear-gradient(135deg, rgba(52,199,89,0.1), rgba(0,199,190,0.1));">
+            <!-- INFOGRAPHIC 3: LIVE ENVIRONMENTAL & TRACKING DATA -->
+            <div class="widget" style="background: linear-gradient(135deg, rgba(52,199,89,0.08), rgba(0,199,190,0.08));">
                 <div>
-                    <h4 style="margin-bottom: 0.5rem;"><i class="fa-solid fa-headset" style="color: var(--accent-green);"></i> Key Contact</h4>
-                    <p style="font-weight: 800; font-size: 1.1rem;">Morghan</p>
-                    <p style="font-size: 0.85rem; color: var(--text-secondary);">Operations Manager</p>
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <h4 style="font-size: 1.05rem; color: var(--accent-green);"><i class="fa-solid fa-leaf"></i> Live Environmental & IoT</h4>
+                        <div class="radar-box">
+                            <div class="radar-sweep"></div>
+                            <div class="radar-center-dot"></div>
+                        </div>
+                    </div>
+
+                    <div class="env-metrics-grid">
+                        <div class="env-stat-card">
+                            <div style="font-size: 0.72rem; color: var(--text-secondary); text-transform: uppercase; font-weight: 700;">AQI Index</div>
+                            <div style="font-size: 1.3rem; font-weight: 800; color: var(--accent-green);" class="code-font">24 <span style="font-size: 0.75rem;">(Good)</span></div>
+                        </div>
+                        <div class="env-stat-card">
+                            <div style="font-size: 0.72rem; color: var(--text-secondary); text-transform: uppercase; font-weight: 700;">Carbon Offset</div>
+                            <div style="font-size: 1.3rem; font-weight: 800; color: var(--accent-cyan);" class="code-font">-38.2%</div>
+                        </div>
+                    </div>
                 </div>
-                <a href="https://wa.me/60149725722" target="_blank" class="btn-mac-primary" style="margin-top: 1rem; width: 100%; justify-content: center; padding: 0.6rem;">
-                    <i class="fa-brands fa-whatsapp"></i> Chat Now
-                </a>
+                <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.82rem; color: var(--text-secondary); border-top: 1px dashed var(--glass-border); padding-top: 0.8rem; margin-top: 0.4rem;">
+                    <span><i class="fa-solid fa-location-crosshairs" style="color: var(--accent-green);"></i> Active GPS Nodes: <strong>1,240</strong></span>
+                    <span><i class="fa-solid fa-temperature-half" style="color: var(--accent-orange);"></i> 31°C</span>
+                </div>
             </div>
+
         </div>
 
-        <!-- REPLACED TOGGLES WITH GLASSMORPHISM ICON CARDS -->
+        <!-- GLASSMORPHISM ICON CARDS -->
         <div class="snippet-grid">
             <div class="routine-box">
                 <h3><i class="fa-solid fa-shield-halved" style="color: var(--accent-pink);"></i> Safety Compliance Routine</h3>
@@ -710,17 +810,33 @@
         <a href="https://wa.me/60149725722" target="_blank" class="dock-icon" title="WhatsApp"><i class="fa-brands fa-whatsapp" style="color: #25d366;"></i></a>
     </div>
 
+    <!-- Swiper.js Script -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
     <!-- SCRIPT -->
     <script>
-        function updateClock() {
-            const now = new Date();
-            const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-            const liveClock = document.getElementById('liveClock');
-            if(liveClock) liveClock.textContent = timeStr;
-        }
-        setInterval(updateClock, 1000);
-        updateClock();
+        // Initialize Hero Swiper
+        const swiper = new Swiper('.myHeroSwiper', {
+            loop: true,
+            autoplay: {
+                delay: 3500,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            effect: 'fade',
+            fadeEffect: {
+                crossFade: true
+            }
+        });
 
+        // Wallpaper Picker Toggle
         const controlToggle = document.getElementById('controlToggle');
         const controlPanel = document.getElementById('controlPanel');
         if(controlToggle && controlPanel) {
@@ -744,15 +860,6 @@
                 if(wpTheme === 'cyber') document.body.style.background = 'var(--wp-cyber)';
             });
         });
-
-        const tiltSnippet = document.getElementById('tiltSnippet');
-        if(tiltSnippet) {
-            document.addEventListener('mousemove', (e) => {
-                const x = (window.innerWidth / 2 - e.pageX) / 45;
-                const y = (window.innerHeight / 2 - e.pageY) / 45;
-                tiltSnippet.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
-            });
-        }
     </script>
 </body>
 </html>
