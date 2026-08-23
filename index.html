@@ -12,15 +12,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
-        /* --- MACOS SYSTEM DESIGN VARIABLES --- */
+        /* --- SYSTEM DESIGN VARIABLES --- */
         :root {
-            /* Dynamic Wallpaper Themes */
             --wp-sonoma: radial-gradient(at 10% 10%, #e0f2fe 0%, #f3e8ff 35%, #fce7f3 70%, #f8fafc 100%);
-            --wp-ventura: linear-gradient(135deg, #fef3c7 0%, #fed7aa 35%, #fce7f3 70%, #f1f5f9 100%);
-            --wp-aurora: linear-gradient(135deg, #0f172a 0%, #1e1b4b 40%, #311042 100%);
-            --wp-monterey: radial-gradient(at 90% 10%, #dbeafe 0%, #e0e7ff 40%, #fae8ff 100%);
-            --wp-cyber: linear-gradient(135deg, #0f172a 0%, #1e293b 100%), url('pngtree-abstract-blue-hexagon-pattern-picture-image_15930918_2.jpg') center/cover no-repeat fixed;
-
+            
             /* Surface & Accent Colors */
             --accent-blue: #007aff;
             --accent-cyan: #00c7be;
@@ -46,16 +41,6 @@
             --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        /* Dark Wallpaper Override Mode */
-        [data-wallpaper="aurora"], [data-wallpaper="cyber"] {
-            --glass-surface: rgba(15, 23, 42, 0.65);
-            --glass-card: rgba(30, 41, 59, 0.82);
-            --glass-border: rgba(255, 255, 255, 0.15);
-            --text-primary: #f8fafc;
-            --text-secondary: #cbd5e1;
-            --glass-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-        }
-
         /* --- GLOBAL RESET & TYPOGRAPHY --- */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
         html { scroll-behavior: smooth; background-color: #0f172a; }
@@ -70,7 +55,7 @@
         .code-font { font-family: 'Space Grotesk', monospace; }
         a { text-decoration: none; color: inherit; }
 
-        /* --- MACOS MENU BAR & CONTROL CENTER --- */
+        /* --- MACOS MENU BAR (SYSTEM THEMES REMOVED) --- */
         .menubar {
             position: fixed; top: 0; left: 0; right: 0; height: 52px;
             background: var(--glass-surface);
@@ -99,40 +84,6 @@
         .menubar-nav { display: flex; gap: 1.8rem; list-style: none; }
         .menubar-link { font-size: 0.9rem; font-weight: 600; color: var(--text-secondary); transition: color 0.2s; }
         .menubar-link:hover { color: var(--accent-blue); }
-        .menubar-controls { display: flex; align-items: center; gap: 1rem; }
-        
-        .control-pill {
-            background: var(--glass-card);
-            border: 1px solid var(--glass-border);
-            padding: 6px 14px; border-radius: 50px;
-            display: flex; align-items: center; gap: 8px;
-            font-size: 0.82rem; font-weight: 700; color: var(--text-primary);
-            cursor: pointer; transition: all 0.3s var(--ease-out);
-        }
-        .control-pill:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
-
-        .control-center-panel {
-            position: fixed; top: 62px; right: 2rem; width: 320px;
-            background: var(--glass-card);
-            backdrop-filter: var(--glass-blur);
-            border: 1px solid var(--glass-border);
-            border-radius: var(--radius-md);
-            padding: 1.5rem;
-            box-shadow: var(--glass-shadow);
-            z-index: 2001;
-            display: none; flex-direction: column; gap: 1.2rem;
-            animation: slideDown 0.3s var(--ease-out);
-        }
-        .control-center-panel.active { display: flex; }
-        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
-        
-        .wallpaper-picker { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-top: 8px; }
-        .wp-option {
-            height: 42px; border-radius: 10px; cursor: pointer; border: 2px solid transparent;
-            transition: transform 0.2s; background-size: cover; background-position: center;
-        }
-        .wp-option:hover { transform: scale(1.08); }
-        .wp-option.active { border-color: var(--accent-blue); }
 
         /* --- HERO SECTION --- */
         .hero-container {
@@ -221,11 +172,7 @@
         .tender-item-title { font-size: 0.85rem; font-weight: 700; color: #38bdf8; display: flex; justify-content: space-between; }
         .tender-item-desc { font-size: 0.76rem; color: #94a3b8; margin-top: 3px; display: flex; justify-content: space-between; align-items: center; }
 
-        .traffic-lights { display: flex; gap: 8px; margin-bottom: 0.8rem; }
-        .light { width: 12px; height: 12px; border-radius: 50%; }
-        .light-red { background: #ff5f56; } .light-yellow { background: #ffbd2e; } .light-green { background: #27c93f; }
-
-        /* --- DESKTOP STACKS --- */
+        /* --- DESKTOP STACKS & ANIMATED PICTURES --- */
         .section-block { padding: 80px 6%; max-width: 1400px; margin: 0 auto; }
         .section-header { text-align: center; max-width: 700px; margin: 0 auto 3.5rem; }
         .section-header h2 { font-size: 2.8rem; margin-bottom: 1rem; }
@@ -248,11 +195,20 @@
         .stack-group:hover .stack-card:nth-child(2) { transform: translateY(-20px) rotate(3deg); opacity: 0.95; }
         .stack-group:hover .stack-card:nth-child(3) { transform: translateY(-50px) rotate(-1deg); opacity: 0.9; }
 
+        /* ANIMATED PICTURE WRAPPERS & KEYFRAMES */
         .card-img-wrapper {
             width: 100%; height: 160px; border-radius: var(--radius-sm);
-            overflow: hidden; margin-bottom: 1rem; background: #e2e8f0;
+            overflow: hidden; margin-bottom: 1rem; background: #0f172a; position: relative;
         }
-        .card-img-wrapper img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .animated-img {
+            width: 100%; height: 100%; object-fit: cover; display: block;
+            animation: continuousPanZoom 12s ease-in-out infinite alternate;
+        }
+        @keyframes continuousPanZoom {
+            0% { transform: scale(1) translate(0, 0); }
+            50% { transform: scale(1.12) translate(-2%, -2%); }
+            100% { transform: scale(1.05) translate(2%, 1%); }
+        }
 
         /* --- PROJECT GALLERY SHOWCASE --- */
         .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 2rem; }
@@ -264,8 +220,10 @@
         }
         .gallery-card:hover { transform: translateY(-8px); }
         .gallery-img-container { width: 100%; height: 230px; overflow: hidden; position: relative; background: #0f172a; }
-        .gallery-img-container img { width: 100%; height: 100%; object-fit: cover; object-position: center; transition: transform 0.5s; display: block; }
-        .gallery-card:hover .gallery-img-container img { transform: scale(1.06); }
+        .gallery-img-container img.animated-img {
+            width: 100%; height: 100%; object-fit: cover; object-position: center; transition: transform 0.5s; display: block;
+        }
+        .gallery-card:hover .gallery-img-container img.animated-img { transform: scale(1.15); }
         .gallery-content { padding: 1.4rem 1.5rem; text-align: left; }
         .gallery-badge {
             display: inline-block; padding: 4px 12px; border-radius: 50px;
@@ -288,7 +246,7 @@
             border-radius: 50px; font-size: 0.78rem; font-weight: 800;
         }
 
-        /* --- 3D ANIMATED INFOGRAPHICS ICONS --- */
+        /* --- INFOGRAPHICS --- */
         .infographics-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem; }
         .info-box {
             background: var(--glass-card); border: 1px solid var(--glass-border);
@@ -303,16 +261,12 @@
             position: relative; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.03);
             transition: all 0.4s var(--ease-out); transform-style: preserve-3d;
         }
-        [data-wallpaper="aurora"] .info-3d-card, [data-wallpaper="cyber"] .info-3d-card {
-            background: rgba(255, 255, 255, 0.05);
-        }
         .info-3d-card:hover {
             transform: translateY(-4px) rotateX(4deg) rotateY(-2deg) scale(1.02);
             box-shadow: 0 15px 30px rgba(0, 122, 255, 0.15);
             background: rgba(255, 255, 255, 0.85);
         }
 
-        /* 3D Animated Icon Sphere / Cube */
         .icon-3d-wrapper {
             width: 52px; height: 52px; border-radius: 16px;
             display: flex; align-items: center; justify-content: center; font-size: 1.5rem;
@@ -341,34 +295,110 @@
         }
         .progress-fill-3d { height: 100%; border-radius: 10px; transition: width 1s ease-in-out; }
 
-        /* --- CONTACT & FOOTER --- */
+        /* --- ENHANCED NEAT CONTACT SECTION (REQUIREMENT 1) --- */
         .contact-card {
             background: var(--glass-card); border: 1px solid var(--glass-border);
             border-radius: var(--radius-lg); padding: 3.5rem; box-shadow: var(--glass-shadow);
-            backdrop-filter: var(--glass-blur); display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+            backdrop-filter: var(--glass-blur); display: grid; grid-template-columns: 1fr 1.1fr; gap: 3.5rem;
+            align-items: start;
         }
+
+        .contact-info-col { display: flex; flex-direction: column; height: 100%; justify-content: space-between; }
+        .contact-info-col h2 { font-size: 2.8rem; margin-bottom: 0.8rem; line-height: 1.15; }
+        .contact-desc { color: var(--text-secondary); margin-bottom: 2rem; font-size: 1.05rem; line-height: 1.6; }
         
         .key-contact-badge-box {
             background: linear-gradient(135deg, rgba(0, 122, 255, 0.08), rgba(52, 199, 89, 0.08));
             border: 1px solid rgba(0, 122, 255, 0.2);
-            border-radius: 20px; padding: 1.4rem; margin-bottom: 1.5rem;
+            border-radius: 20px; padding: 1.4rem; margin-bottom: 1.8rem;
             display: flex; align-items: center; gap: 1.2rem;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.02);
         }
         .contact-avatar {
-            width: 56px; height: 56px; border-radius: 50%;
+            width: 60px; height: 60px; border-radius: 50%;
             background: linear-gradient(135deg, var(--accent-blue), var(--accent-green));
             display: flex; align-items: center; justify-content: center;
-            color: white; font-size: 1.5rem; font-weight: 800; box-shadow: 0 8px 18px rgba(0,122,255,0.3);
+            color: white; font-size: 1.6rem; font-weight: 800; box-shadow: 0 8px 18px rgba(0,122,255,0.3);
+            flex-shrink: 0;
         }
+
+        .contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
+        .form-group { display: flex; flex-direction: column; gap: 6px; }
+        .form-group label { font-weight: 700; font-size: 0.92rem; color: var(--text-primary); }
 
         .mac-input {
-            width: 100%; padding: 1.1rem; border-radius: 14px; border: 1px solid var(--glass-border);
-            background: rgba(255, 255, 255, 0.6); color: var(--text-primary); font-size: 1rem;
-            outline: none; margin-top: 8px; transition: border 0.2s;
+            width: 100%; padding: 1rem 1.2rem; border-radius: 14px;
+            border: 1px solid rgba(15, 23, 42, 0.12);
+            background: rgba(255, 255, 255, 0.7); color: var(--text-primary); font-size: 0.98rem;
+            outline: none; transition: all 0.2s var(--ease-out);
         }
-        .mac-input:focus { border-color: var(--accent-blue); background: white; }
+        .mac-input:focus { border-color: var(--accent-blue); background: #ffffff; box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.15); }
+        select.mac-input { cursor: pointer; appearance: none; background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%22%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%230F172A%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E"); background-repeat: no-repeat; background-position: right 1.2rem center; background-size: 0.7rem auto; padding-right: 2.5rem; }
 
-        /* --- DOCK & FLOATING ACTION --- */
+        /* --- GLOWING WHATSAPP CHATBOT WIDGET (REQUIREMENT 2) --- */
+        .wa-widget-wrapper { position: fixed; bottom: 25px; right: 25px; z-index: 2005; }
+        .wa-glow-button {
+            width: 62px; height: 62px; border-radius: 50%;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white; border: none; font-size: 2rem;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; position: relative;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.45);
+            transition: transform 0.3s var(--ease-out);
+        }
+        .wa-glow-button:hover { transform: scale(1.08); }
+        
+        .wa-pulse-ring {
+            position: absolute; inset: -6px; border-radius: 50%;
+            border: 2px solid rgba(37, 211, 102, 0.6);
+            animation: ringPulse 2s infinite ease-out; pointer-events: none;
+        }
+        .wa-pulse-ring.delay { animation-delay: 0.8s; }
+        @keyframes ringPulse {
+            0% { transform: scale(0.9); opacity: 1; }
+            100% { transform: scale(1.6); opacity: 0; }
+        }
+
+        .wa-chat-box {
+            position: absolute; bottom: 75px; right: 0; width: 320px;
+            background: #ffffff; border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.22);
+            border: 1px solid rgba(0,0,0,0.08); overflow: hidden;
+            display: none; flex-direction: column;
+            animation: waPop 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            transform-origin: bottom right;
+        }
+        .wa-chat-box.active { display: flex; }
+        @keyframes waPop {
+            from { opacity: 0; transform: scale(0.8) translateY(20px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .wa-chat-header {
+            background: #075e54; color: white; padding: 1rem;
+            display: flex; align-items: center; gap: 12px; position: relative;
+        }
+        .wa-avatar { position: relative; width: 42px; height: 42px; background: rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
+        .wa-status-dot { position: absolute; bottom: 2px; right: 2px; width: 10px; height: 10px; background: #25D366; border-radius: 50%; border: 2px solid #075e54; }
+        .wa-chat-title { font-size: 0.95rem; font-weight: 700; }
+        .wa-chat-sub { font-size: 0.75rem; opacity: 0.85; }
+        .wa-close-btn { position: absolute; right: 12px; top: 12px; background: none; border: none; color: white; font-size: 1.2rem; cursor: pointer; opacity: 0.8; }
+        .wa-close-btn:hover { opacity: 1; }
+
+        .wa-chat-body { background: #e5ddd5; padding: 1.2rem; min-height: 120px; display: flex; flex-direction: column; gap: 10px; }
+        .wa-msg-bubble {
+            background: #ffffff; padding: 0.8rem 1rem; border-radius: 0 14px 14px 14px;
+            font-size: 0.86rem; color: #111b21; line-height: 1.4;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+        }
+        .wa-chat-cta {
+            padding: 0.9rem; text-align: center; background: #25D366; color: white;
+            font-weight: 700; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; gap: 8px;
+            transition: background 0.2s;
+        }
+        .wa-chat-cta:hover { background: #128C7E; }
+
+        /* --- DOCK --- */
         .dock-bar {
             position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
             background: var(--glass-surface); border: 1px solid var(--glass-border);
@@ -392,7 +422,7 @@
 </head>
 <body>
 
-    <!-- MACOS TOP MENU BAR -->
+    <!-- MACOS TOP MENU BAR (SYSTEM THEMES REMOVED) -->
     <header class="menubar">
         <div class="menubar-brand">
             <div class="logo-container">
@@ -410,24 +440,7 @@
                 <li><a href="#contact" class="menubar-link">Contact</a></li>
             </ul>
         </nav>
-        <div class="menubar-controls">
-            <button class="control-pill" id="controlToggle">
-                <i class="fa-solid fa-sliders"></i> System Themes
-            </button>
-        </div>
     </header>
-
-    <!-- CONTROL CENTER DROPDOWN -->
-    <div class="control-center-panel" id="controlPanel">
-        <h4 style="font-size: 0.95rem; color: var(--text-secondary);">Dynamic Desktop Wallpapers</h4>
-        <div class="wallpaper-picker">
-            <div class="wp-option active" style="background: var(--wp-sonoma);" data-wp="sonoma" title="Sonoma Light"></div>
-            <div class="wp-option" style="background: var(--wp-ventura);" data-wp="ventura" title="Ventura Warm"></div>
-            <div class="wp-option" style="background: var(--wp-aurora);" data-wp="aurora" title="Aurora Night"></div>
-            <div class="wp-option" style="background: var(--wp-monterey);" data-wp="monterey" title="Monterey Blue"></div>
-            <div class="wp-option" style="background-image: url('pngtree-abstract-blue-hexagon-pattern-picture-image_15930918_2.jpg');" data-wp="cyber" title="Cyber Tech"></div>
-        </div>
-    </div>
 
     <!-- HERO & VISUAL SHOWCASE -->
     <section class="hero-container" id="hero">
@@ -443,10 +456,9 @@
             </div>
         </div>
 
-        <!-- 3D INTERACTIVE VISUAL HERO CARD WITH REALTIME TENDER UPDATES FROM TENDERPANEL.COM -->
+        <!-- 3D INTERACTIVE VISUAL HERO CARD WITH REALTIME TENDER UPDATES -->
         <div class="perspective-wrapper">
             <div class="hero-visual-card" id="tiltSnippet">
-                <!-- Realtime Tender Updates Box -->
                 <div class="tender-widget-box">
                     <div class="tender-header">
                         <div>
@@ -499,13 +511,11 @@
                         </a>
                     </div>
                 </div>
-                Smart Insights of Malaysia's Procurement
-                </div>
             </div>
         </div>
     </section>
 
-    <!-- DESKTOP STACKS (CAPABILITIES) -->
+    <!-- DESKTOP STACKS (CAPABILITIES WITH ANIMATED IMAGES - REQUIREMENT 4) -->
     <section class="section-block" id="stacks">
         <div class="section-header">
             <h2>Capabilities & Services</h2>
@@ -518,7 +528,7 @@
                 <div class="stack-card">
                     <div>
                         <div class="card-img-wrapper">
-                            <img src="istockphoto-505841831-612x612_2.jpg" alt="Industrial Processing Facility">
+                            <img class="animated-img" src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80" alt="Industrial Procurement & Supplies">
                         </div>
                         <h3>Global Procurement</h3>
                         <p style="color: var(--text-secondary); margin-top: 0.3rem;">Refinery supplies, certified fittings, import/export logistics.</p>
@@ -540,7 +550,7 @@
                 <div class="stack-card">
                     <div>
                         <div class="card-img-wrapper">
-                            <img src="937101_2.jpg" alt="Steel Truss Structural Bridge">
+                            <img class="animated-img" src="https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?auto=format&fit=crop&w=800&q=80" alt="Civil Construction Bridge Infrastructure">
                         </div>
                         <h3>Civil & Structural</h3>
                         <p style="color: var(--text-secondary); margin-top: 0.3rem;">Steel truss structures, foundations, site prep, civil works.</p>
@@ -562,7 +572,7 @@
                 <div class="stack-card">
                     <div>
                         <div class="card-img-wrapper">
-                            <img src="pngtree-wiring-circuit-of-power-plant-in-control-panel-distribution-image_15904642_2.jpg" alt="Power Circuit Automation Panel">
+                            <img class="animated-img" src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=800&q=80" alt="Electrical Power Panel Control">
                         </div>
                         <h3>Mechanical & Electrical</h3>
                         <p style="color: var(--text-secondary); margin-top: 0.3rem;">Power panels, wiring circuits, skids, and control systems.</p>
@@ -581,7 +591,7 @@
         </div>
     </section>
 
-    <!-- INDUSTRIAL INFRASTRUCTURE GALLERY (NO DESCRIPTIONS, FULLY VISIBLE ATTACHED IMAGES) -->
+    <!-- FEATURED INFRASTRUCTURE PROJECTS (ANIMATED IMAGES VISIBLE TO ALL - REQUIREMENT 4) -->
     <section class="section-block" id="gallery" style="padding-top: 20px;">
         <div class="section-header">
             <h2>Featured Infrastructure Projects</h2>
@@ -591,7 +601,7 @@
         <div class="gallery-grid">
             <div class="gallery-card">
                 <div class="gallery-img-container">
-                    <img src="AdobeStock_711599297-scaled_2.jpg" alt="Refinery Pipeline Systems">
+                    <img class="animated-img" src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80" alt="Refinery Pipeline Systems">
                 </div>
                 <div class="gallery-content">
                     <span class="gallery-badge">Petrochemical</span>
@@ -601,7 +611,7 @@
 
             <div class="gallery-card">
                 <div class="gallery-img-container">
-                    <img src="pngtree-a-large-oil-and-gas-production-plant-at-dusk-with-reflecting-image_15995971_2.jpg" alt="Gas Processing Plants">
+                    <img class="animated-img" src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80" alt="Gas Processing Plants">
                 </div>
                 <div class="gallery-content">
                     <span class="gallery-badge">Gas Operations</span>
@@ -611,7 +621,7 @@
 
             <div class="gallery-card">
                 <div class="gallery-img-container">
-                    <img src="close-up-steel-pipes-natural-gas-concrete-supports-supplying-propane-factory-tanks-valves-production-energy-resources-economy-pipeline-oil-industry-drainage-system-water-transport-photo_2.jpg" alt="Piping & Valve Assemblies">
+                    <img class="animated-img" src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80" alt="Piping & Valve Assemblies">
                 </div>
                 <div class="gallery-content">
                     <span class="gallery-badge">Mechanical</span>
@@ -621,7 +631,7 @@
 
             <div class="gallery-card">
                 <div class="gallery-img-container">
-                    <img src="images_2.jpeg" alt="Hydrogen & ESG Tech">
+                    <img class="animated-img" src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=800&q=80" alt="Hydrogen & ESG Tech">
                 </div>
                 <div class="gallery-content">
                     <span class="gallery-badge" style="background: rgba(52,199,89,0.15); color: var(--accent-green);">Green Energy</span>
@@ -631,7 +641,7 @@
 
             <div class="gallery-card">
                 <div class="gallery-img-container">
-                    <img src="pngtree-wiring-circuit-of-power-plant-in-control-panel-distribution-image_15904642_2.jpg" alt="Control Panel Distribution">
+                    <img class="animated-img" src="https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=800&q=80" alt="Control Panel Distribution">
                 </div>
                 <div class="gallery-content">
                     <span class="gallery-badge" style="background: rgba(175,82,222,0.15); color: var(--accent-purple);">Electrical</span>
@@ -641,7 +651,7 @@
 
             <div class="gallery-card">
                 <div class="gallery-img-container">
-                    <img src="pngtree-abstract-blue-hexagon-pattern-picture-image_15930918_2.jpg" alt="Tech-Hub Operations Matrix">
+                    <img class="animated-img" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80" alt="Tech-Hub Operations Matrix">
                 </div>
                 <div class="gallery-content">
                     <span class="gallery-badge" style="background: rgba(0,199,190,0.15); color: var(--accent-cyan);">Smart Operations</span>
@@ -651,7 +661,7 @@
         </div>
     </section>
 
-    <!-- REALTIME DATA METRICS (REPLACED CLOCK, SITE READINESS, KEY CONTACT WITH MALAYSIA CO2, AI GROWTH, ESG DATA) -->
+    <!-- REALTIME DATA METRICS -->
     <section class="section-block" id="widgets" style="padding-top: 20px;">
         <div class="section-header">
             <h2>HSE & Quality Operational Hub</h2>
@@ -659,7 +669,6 @@
         </div>
 
         <div class="widgets-grid">
-            <!-- Metric 1: Realtime CO2 Emission Data Malaysia -->
             <div class="widget" style="background: linear-gradient(135deg, rgba(255,149,0,0.08), rgba(255,45,85,0.08));">
                 <div>
                     <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -670,11 +679,10 @@
                     <p style="font-size: 0.88rem; font-weight: 700;">Malaysia CO2 Emissions Rate</p>
                 </div>
                 <div style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.8rem; border-top: 1px solid rgba(0,0,0,0.06); padding-top: 0.6rem;">
-                    <i class="fa-solid fa-arrow-down" style="color: var(--accent-green);"></i> -2.4% Grid Emission Intensity YoY (0.68 tCO2/MWh)
+                    <i class="fa-solid fa-arrow-down" style="color: var(--accent-green);"></i> -2.4% Grid Emission Intensity YoY
                 </div>
             </div>
 
-            <!-- Metric 2: AI Growth Realtime Data -->
             <div class="widget" style="background: linear-gradient(135deg, rgba(0,122,255,0.08), rgba(175,82,222,0.08));">
                 <div>
                     <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -685,11 +693,10 @@
                     <p style="font-size: 0.88rem; font-weight: 700;">AI Industrial Adoption Growth</p>
                 </div>
                 <div style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.8rem; border-top: 1px solid rgba(0,0,0,0.06); padding-top: 0.6rem;">
-                    <i class="fa-solid fa-arrow-up" style="color: var(--accent-blue);"></i> Realtime Data Automation Scale • 142.5 TFLOPS
+                    <i class="fa-solid fa-arrow-up" style="color: var(--accent-blue);"></i> Realtime Data Automation Scale
                 </div>
             </div>
 
-            <!-- Metric 3: ESG Realtime Data Malaysia -->
             <div class="widget" style="background: linear-gradient(135deg, rgba(52,199,89,0.08), rgba(0,199,190,0.08));">
                 <div>
                     <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -705,107 +712,63 @@
             </div>
         </div>
 
-        <!-- 3D ANIMATED INFOGRAPHICS ICONS (TOGGLES REMOVED ENTIRELY) -->
+        <!-- 3D INFOGRAPHICS -->
         <div class="infographics-grid">
-            <!-- 3D Safety Standards -->
             <div class="info-box">
                 <h3><i class="fa-solid fa-shield-halved" style="color: var(--accent-pink);"></i> Safety Compliance Systems</h3>
                 
                 <div class="info-3d-list">
                     <div class="info-3d-card">
-                        <div class="icon-3d-wrapper icon-dosh">
-                            <i class="fa-solid fa-file-contract"></i>
-                        </div>
+                        <div class="icon-3d-wrapper icon-dosh"><i class="fa-solid fa-file-contract"></i></div>
                         <div class="info-3d-content">
-                            <div class="info-3d-title">
-                                <span>DOSH / JKKP Standard</span>
-                                <span class="status-pill-3d"><i class="fa-solid fa-check"></i> Adherence 100%</span>
-                            </div>
-                            <div class="progress-bar-3d">
-                                <div class="progress-fill-3d" style="width: 100%; background: linear-gradient(90deg, #ff2d55, #ff9500);"></div>
-                            </div>
+                            <div class="info-3d-title"><span>DOSH / JKKP Standard</span><span class="status-pill-3d"><i class="fa-solid fa-check"></i> 100%</span></div>
+                            <div class="progress-bar-3d"><div class="progress-fill-3d" style="width: 100%; background: linear-gradient(90deg, #ff2d55, #ff9500);"></div></div>
                         </div>
                     </div>
 
                     <div class="info-3d-card">
-                        <div class="icon-3d-wrapper icon-hirarc">
-                            <i class="fa-solid fa-triangle-exclamation"></i>
-                        </div>
+                        <div class="icon-3d-wrapper icon-hirarc"><i class="fa-solid fa-triangle-exclamation"></i></div>
                         <div class="info-3d-content">
-                            <div class="info-3d-title">
-                                <span>HIRARC Risk Assessment</span>
-                                <span class="status-pill-3d"><i class="fa-solid fa-check"></i> Audit Compliance</span>
-                            </div>
-                            <div class="progress-bar-3d">
-                                <div class="progress-fill-3d" style="width: 98%; background: linear-gradient(90deg, #af52de, #007aff);"></div>
-                            </div>
+                            <div class="info-3d-title"><span>HIRARC Risk Assessment</span><span class="status-pill-3d"><i class="fa-solid fa-check"></i> Verified</span></div>
+                            <div class="progress-bar-3d"><div class="progress-fill-3d" style="width: 98%; background: linear-gradient(90deg, #af52de, #007aff);"></div></div>
                         </div>
                     </div>
 
                     <div class="info-3d-card">
-                        <div class="icon-3d-wrapper icon-zero">
-                            <i class="fa-solid fa-heart-pulse"></i>
-                        </div>
+                        <div class="icon-3d-wrapper icon-zero"><i class="fa-solid fa-heart-pulse"></i></div>
                         <div class="info-3d-content">
-                            <div class="info-3d-title">
-                                <span>LTI Frequency Rate</span>
-                                <span class="status-pill-3d"><i class="fa-solid fa-check"></i> Zero LTI</span>
-                            </div>
-                            <div class="progress-bar-3d">
-                                <div class="progress-fill-3d" style="width: 100%; background: linear-gradient(90deg, #34c759, #00c7be);"></div>
-                            </div>
+                            <div class="info-3d-title"><span>LTI Frequency Rate</span><span class="status-pill-3d"><i class="fa-solid fa-check"></i> Zero LTI</span></div>
+                            <div class="progress-bar-3d"><div class="progress-fill-3d" style="width: 100%; background: linear-gradient(90deg, #34c759, #00c7be);"></div></div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- 3D Quality Assurance Checklist -->
             <div class="info-box">
                 <h3><i class="fa-solid fa-award" style="color: var(--accent-green);"></i> Quality Assurance Checklist</h3>
                 
                 <div class="info-3d-list">
                     <div class="info-3d-card">
-                        <div class="icon-3d-wrapper icon-mat">
-                            <i class="fa-solid fa-clipboard-check"></i>
-                        </div>
+                        <div class="icon-3d-wrapper icon-mat"><i class="fa-solid fa-clipboard-check"></i></div>
                         <div class="info-3d-content">
-                            <div class="info-3d-title">
-                                <span>Material Inspection Plans</span>
-                                <span class="status-pill-3d"><i class="fa-solid fa-check"></i> Verified</span>
-                            </div>
-                            <div class="progress-bar-3d">
-                                <div class="progress-fill-3d" style="width: 100%; background: linear-gradient(90deg, #007aff, #00c7be);"></div>
-                            </div>
+                            <div class="info-3d-title"><span>Material Inspection Plans</span><span class="status-pill-3d"><i class="fa-solid fa-check"></i> Verified</span></div>
+                            <div class="progress-bar-3d"><div class="progress-fill-3d" style="width: 100%; background: linear-gradient(90deg, #007aff, #00c7be);"></div></div>
                         </div>
                     </div>
 
                     <div class="info-3d-card">
-                        <div class="icon-3d-wrapper icon-qaqc">
-                            <i class="fa-solid fa-microscope"></i>
-                        </div>
+                        <div class="icon-3d-wrapper icon-qaqc"><i class="fa-solid fa-microscope"></i></div>
                         <div class="info-3d-content">
-                            <div class="info-3d-title">
-                                <span>QA/QC Documentation</span>
-                                <span class="status-pill-3d"><i class="fa-solid fa-check"></i> Validated</span>
-                            </div>
-                            <div class="progress-bar-3d">
-                                <div class="progress-fill-3d" style="width: 96%; background: linear-gradient(90deg, #ff9500, #ff2d55);"></div>
-                            </div>
+                            <div class="info-3d-title"><span>QA/QC Documentation</span><span class="status-pill-3d"><i class="fa-solid fa-check"></i> Validated</span></div>
+                            <div class="progress-bar-3d"><div class="progress-fill-3d" style="width: 96%; background: linear-gradient(90deg, #ff9500, #ff2d55);"></div></div>
                         </div>
                     </div>
 
                     <div class="info-3d-card">
-                        <div class="icon-3d-wrapper icon-iso">
-                            <i class="fa-solid fa-certificate"></i>
-                        </div>
+                        <div class="icon-3d-wrapper icon-iso"><i class="fa-solid fa-certificate"></i></div>
                         <div class="info-3d-content">
-                            <div class="info-3d-title">
-                                <span>ISO Compliance Validation</span>
-                                <span class="status-pill-3d"><i class="fa-solid fa-check"></i> Adherence 100%</span>
-                            </div>
-                            <div class="progress-bar-3d">
-                                <div class="progress-fill-3d" style="width: 100%; background: linear-gradient(90deg, #34c759, #af52de);"></div>
-                            </div>
+                            <div class="info-3d-title"><span>ISO Compliance Validation</span><span class="status-pill-3d"><i class="fa-solid fa-check"></i> 100%</span></div>
+                            <div class="progress-bar-3d"><div class="progress-fill-3d" style="width: 100%; background: linear-gradient(90deg, #34c759, #af52de);"></div></div>
                         </div>
                     </div>
                 </div>
@@ -813,52 +776,91 @@
         </div>
     </section>
 
-    <!-- CONTACT PANEL (WITH MOVED KEY CONTACT DETAILS) -->
+    <!-- CONTACT PANEL (NEATLY ALIGNED - REQUIREMENT 1) -->
     <section class="section-block" id="contact">
         <div class="contact-card">
-            <div>
-                <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Let's Build Together</h2>
-                
-                <!-- MOVED KEY CONTACT BADGE BOX HERE -->
-                <div class="key-contact-badge-box">
-                    <div class="contact-avatar">M</div>
-                    <div>
-                        <div style="font-size: 0.78rem; text-transform: uppercase; font-weight: 800; color: var(--accent-blue);">Key Contact Person</div>
-                        <h4 style="font-size: 1.2rem; color: var(--text-primary);">Morghan</h4>
-                        <p style="font-size: 0.85rem; color: var(--text-secondary);">Operations Manager</p>
-                    </div>
+            <div class="contact-info-col">
+                <div>
+                    <h2>Let's Build Together</h2>
+                    <p class="contact-desc">
+                        Send us your procurement specifications, civil requirements, M&E plans, or tender documents.
+                    </p>
                 </div>
+                
+                <div>
+                    <div class="key-contact-badge-box">
+                        <div class="contact-avatar">M</div>
+                        <div>
+                            <div style="font-size: 0.78rem; text-transform: uppercase; font-weight: 800; color: var(--accent-blue);">Key Contact Person</div>
+                            <h4 style="font-size: 1.2rem; color: var(--text-primary);">Morghan</h4>
+                            <p style="font-size: 0.85rem; color: var(--text-secondary);">Operations Manager</p>
+                        </div>
+                    </div>
 
-                <p style="color: var(--text-secondary); margin-bottom: 1.8rem; font-size: 1.05rem; line-height: 1.6;">
-                    Send us your procurement specifications, civil requirements, M&E plans, or tender documents.
-                </p>
-
-                <a href="https://wa.me/60149725722" target="_blank" class="btn-mac-primary" style="margin-top: 2rem; width: 100%; justify-content: center; background: linear-gradient(135deg, #25d366, #128c7e);">
-                    <i class="fa-brands fa-whatsapp" style="font-size: 1.3rem;"></i> Direct Chat on WhatsApp
-                </a>
+                    <a href="https://wa.me/60149725722?text=Hello%20Morghan,%20I%20have%20an%20inquiry%20regarding%20procurement%2Fservices." target="_blank" class="btn-mac-primary" style="width: 100%; justify-content: center; background: linear-gradient(135deg, #25d366, #128c7e);">
+                        <i class="fa-brands fa-whatsapp" style="font-size: 1.3rem;"></i> Direct Chat on WhatsApp
+                    </a>
+                </div>
             </div>
 
-            <form onsubmit="event.preventDefault(); alert('Inquiry sent successfully!');">
-                <label style="font-weight: 700; font-size: 0.9rem;">Your Name / Company</label>
-                <input type="text" class="mac-input" placeholder="e.g. Alex Tan" required>
+            <form class="contact-form" onsubmit="event.preventDefault(); alert('Inquiry sent successfully!');">
+                <div class="form-group">
+                    <label for="contactName">Your Name / Company</label>
+                    <input type="text" id="contactName" class="mac-input" placeholder="e.g. Alex Tan / Tech Corp" required>
+                </div>
                 
-                <label style="font-weight: 700; font-size: 0.9rem; margin-top: 1rem; display: block;">Service Required</label>
-                <select class="mac-input">
-                    <option>Global Procurement & Supply</option>
-                    <option>Civil Construction Works</option>
-                    <option>Mechanical & Electrical Services</option>
-                    <option>Process Plant & Valve Engineering</option>
-                </select>
+                <div class="form-group">
+                    <label for="contactService">Service Required</label>
+                    <select id="contactService" class="mac-input">
+                        <option>Global Procurement & Supply</option>
+                        <option>Civil Construction Works</option>
+                        <option>Mechanical & Electrical Services</option>
+                        <option>Process Plant & Valve Engineering</option>
+                    </select>
+                </div>
 
-                <label style="font-weight: 700; font-size: 0.9rem; margin-top: 1rem; display: block;">Message / Details</label>
-                <textarea class="mac-input" rows="3" placeholder="Attach details or tender reference..." style="resize: vertical;"></textarea>
+                <div class="form-group">
+                    <label for="contactMsg">Message / Details</label>
+                    <textarea id="contactMsg" class="mac-input" rows="4" placeholder="Attach details or tender reference..."></textarea>
+                </div>
 
-                <button type="submit" class="btn-mac-primary" style="width: 100%; margin-top: 1.5rem; justify-content: center;">
+                <button type="submit" class="btn-mac-primary" style="width: 100%; justify-content: center; margin-top: 0.5rem;">
                     Submit Inquiry &rarr;
                 </button>
             </form>
         </div>
     </section>
+
+    <!-- FLOATING GLOWING WHATSAPP CHATBOT WIDGET (REQUIREMENT 2) -->
+    <div class="wa-widget-wrapper">
+        <div class="wa-chat-box" id="waChatBox">
+            <div class="wa-chat-header">
+                <div class="wa-avatar">
+                    <i class="fa-solid fa-user-tie"></i>
+                    <span class="wa-status-dot"></span>
+                </div>
+                <div>
+                    <div class="wa-chat-title">Morghan</div>
+                    <div class="wa-chat-sub">Operations Manager • Online</div>
+                </div>
+                <button class="wa-close-btn" onclick="toggleWaBox()">&times;</button>
+            </div>
+            <div class="wa-chat-body">
+                <div class="wa-msg-bubble">
+                    Hello! 👋 Welcome to Vihaanaa Tech Hubs. How can we assist with your procurement, civil, or M&E requirements today?
+                </div>
+            </div>
+            <a href="https://wa.me/60149725722?text=Hello%20Morghan,%20I%20have%20an%20inquiry%20regarding%20procurement%2Fservices." target="_blank" class="wa-chat-cta">
+                <i class="fa-brands fa-whatsapp" style="font-size: 1.1rem;"></i> Start Chat on WhatsApp
+            </a>
+        </div>
+
+        <button class="wa-glow-button" onclick="toggleWaBox()" aria-label="WhatsApp Assistance">
+            <i class="fa-brands fa-whatsapp"></i>
+            <span class="wa-pulse-ring"></span>
+            <span class="wa-pulse-ring delay"></span>
+        </button>
+    </div>
 
     <!-- FLOATING DOCK -->
     <div class="dock-bar">
@@ -871,31 +873,11 @@
 
     <!-- SYSTEM INTERACTION SCRIPT -->
     <script>
-        // Control Panel Toggle
-        const controlToggle = document.getElementById('controlToggle');
-        const controlPanel = document.getElementById('controlPanel');
-        if(controlToggle && controlPanel) {
-            controlToggle.addEventListener('click', () => {
-                controlPanel.classList.toggle('active');
-            });
+        // WhatsApp Floating Chatbot Toggle
+        function toggleWaBox() {
+            const box = document.getElementById('waChatBox');
+            if (box) box.classList.toggle('active');
         }
-
-        // Dynamic Wallpaper Switcher
-        document.querySelectorAll('.wp-option').forEach(option => {
-            option.addEventListener('click', (e) => {
-                document.querySelectorAll('.wp-option').forEach(op => op.classList.remove('active'));
-                const target = e.currentTarget;
-                target.classList.add('active');
-                const wpTheme = target.getAttribute('data-wp');
-                document.documentElement.setAttribute('data-wallpaper', wpTheme);
-                
-                if(wpTheme === 'sonoma') document.body.style.background = 'var(--wp-sonoma)';
-                if(wpTheme === 'ventura') document.body.style.background = 'var(--wp-ventura)';
-                if(wpTheme === 'aurora') document.body.style.background = 'var(--wp-aurora)';
-                if(wpTheme === 'monterey') document.body.style.background = 'var(--wp-monterey)';
-                if(wpTheme === 'cyber') document.body.style.background = 'var(--wp-cyber)';
-            });
-        });
 
         // 3D Visual Card Interactive Tilt Effect
         const tiltSnippet = document.getElementById('tiltSnippet');
@@ -907,7 +889,7 @@
             });
         }
 
-        // Realtime Data Micro-Fluctuations (Simulated Realtime Monitoring Feed)
+        // Realtime Data Micro-Fluctuations
         setInterval(() => {
             const co2 = document.getElementById('co2Meter');
             if(co2) {
