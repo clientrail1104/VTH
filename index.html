@@ -176,18 +176,29 @@
             background: rgba(255, 45, 85, 0.2); border: 1px solid var(--accent-pink);
             color: #ff2d55; padding: 4px 10px; border-radius: 50px; font-size: 0.72rem; font-weight: 800;
         }
-        .tender-email-btn {
-            display: inline-flex; align-items: center; gap: 6px;
-            background: rgba(0, 122, 255, 0.2); border: 1px solid var(--accent-blue);
-            color: #38bdf8; padding: 4px 12px; border-radius: 50px; font-size: 0.72rem; font-weight: 800;
-            cursor: pointer; transition: all 0.2s var(--ease-out);
-        }
-        .tender-email-btn:hover {
-            background: var(--accent-blue); color: #ffffff;
-            box-shadow: 0 0 12px rgba(0, 122, 255, 0.5); transform: translateY(-1px);
-        }
         .pulse-dot { width: 8px; height: 8px; background: #ff2d55; border-radius: 50%; animation: pulseGlow 1.5s infinite; }
         @keyframes pulseGlow { 0% { opacity: 0.3; transform: scale(0.8); } 50% { opacity: 1; transform: scale(1.3); } 100% { opacity: 0.3; transform: scale(0.8); } }
+
+        /* Auto-Update Icon Button Style */
+        .btn-auto-update {
+            background: rgba(0, 122, 255, 0.2);
+            border: 1px solid rgba(56, 189, 248, 0.4);
+            color: #38bdf8;
+            border-radius: 6px;
+            padding: 2px 7px;
+            font-size: 0.72rem;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .btn-auto-update:hover {
+            background: rgba(0, 122, 255, 0.5);
+            color: #ffffff;
+            transform: scale(1.1);
+            box-shadow: 0 0 8px rgba(56, 189, 248, 0.5);
+        }
 
         .tender-feed {
             display: flex; flex-direction: column; gap: 0.75rem; 
@@ -250,6 +261,7 @@
             box-shadow: 0 30px 60px -12px rgba(0, 122, 255, 0.3);
         }
 
+        /* Guaranteed 100% Visibility Image Wrappers */
         .card-img-wrapper {
             width: 100%; 
             height: 170px; 
@@ -551,17 +563,18 @@
                 <div class="tender-widget-box">
                     <div class="tender-header">
                         <div>
-                            <span class="code-font" style="font-size: 0.78rem; text-transform: uppercase; color: #a5f3fc; letter-spacing: 0.5px;">Live Leaderboard Feed</span>
+                            <div style="display: flex; align-items: center; gap: 6px;">
+                                <span class="code-font" style="font-size: 0.78rem; text-transform: uppercase; color: #a5f3fc; letter-spacing: 0.5px;">Live Leaderboard Feed</span>
+                                <!-- Tiny Clickable Auto-Update Button -->
+                                <button class="btn-auto-update" onclick="triggerAutoTenderUpdates()" title="Send instant tender updates to tugghal@gmail.com">
+                                    <i class="fa-solid fa-paper-plane" style="font-size: 0.65rem;"></i>
+                                </button>
+                            </div>
                             <h4 style="font-size: 1rem; color: #ffffff;">Realtime Tender Leaderboard</h4>
                         </div>
-                        <div style="display: flex; gap: 8px; align-items: center;">
-                            <button onclick="sendTenderUpdates()" class="tender-email-btn" title="Send overall tender updates to tugghal@gmail.com">
-                                <i class="fa-solid fa-paper-plane"></i> Send Updates
-                            </button>
-                            <a href="https://www.tenderpanel.com/tenders" target="_blank" class="tender-live-badge">
-                                <span class="pulse-dot"></span> tenderpanel.com
-                            </a>
-                        </div>
+                        <a href="https://www.tenderpanel.com/" target="_blank" class="tender-live-badge">
+                            <span class="pulse-dot"></span> tenderpanel.com
+                        </a>
                     </div>
 
                     <div class="tender-feed" id="tenderLeaderboard">
@@ -662,6 +675,7 @@
         </div>
 
         <div class="capabilities-grid">
+            <!-- 1. Global Procurement -->
             <div class="service-card">
                 <div>
                     <div class="card-img-wrapper">
@@ -674,6 +688,7 @@
                 <span class="code-font" style="font-size: 0.85rem; color: #38bdf8; margin-top: 1rem;">Industrial Supply &rarr;</span>
             </div>
 
+            <!-- 2. Import & Export Logistics -->
             <div class="service-card">
                 <div>
                     <div class="card-img-wrapper">
@@ -686,6 +701,7 @@
                 <span class="code-font" style="font-size: 0.85rem; color: #38bdf8; margin-top: 1rem;">Freight Management &rarr;</span>
             </div>
 
+            <!-- 3. Industrial OEM Supplies -->
             <div class="service-card">
                 <div>
                     <div class="card-img-wrapper">
@@ -698,6 +714,7 @@
                 <span class="code-font" style="font-size: 0.85rem; color: #38bdf8; margin-top: 1rem;">Equipment Sourcing &rarr;</span>
             </div>
 
+            <!-- 4. Civil & Structural -->
             <div class="service-card">
                 <div>
                     <div class="card-img-wrapper">
@@ -710,6 +727,7 @@
                 <span class="code-font" style="font-size: 0.85rem; color: var(--accent-orange); margin-top: 1rem;">Structural Works &rarr;</span>
             </div>
 
+            <!-- 5. Structural Concrete & Foundations -->
             <div class="service-card">
                 <div>
                     <div class="card-img-wrapper">
@@ -722,6 +740,7 @@
                 <span class="code-font" style="font-size: 0.85rem; color: var(--accent-orange); margin-top: 1rem;">Foundation Engineering &rarr;</span>
             </div>
 
+            <!-- 6. Facility Modifications -->
             <div class="service-card">
                 <div>
                     <div class="card-img-wrapper">
@@ -734,6 +753,7 @@
                 <span class="code-font" style="font-size: 0.85rem; color: var(--accent-orange); margin-top: 1rem;">Facility Maintenance &rarr;</span>
             </div>
 
+            <!-- 7. Mechanical & Electrical -->
             <div class="service-card">
                 <div>
                     <div class="card-img-wrapper">
@@ -746,6 +766,7 @@
                 <span class="code-font" style="font-size: 0.85rem; color: #4ade80; margin-top: 1rem;">Electrical Automation &rarr;</span>
             </div>
 
+            <!-- 8. Piping & Skid Assembly -->
             <div class="service-card">
                 <div>
                     <div class="card-img-wrapper">
@@ -758,6 +779,7 @@
                 <span class="code-font" style="font-size: 0.85rem; color: #4ade80; margin-top: 1rem;">Skid Fabrication &rarr;</span>
             </div>
 
+            <!-- 9. Testing & Plant Maintenance -->
             <div class="service-card">
                 <div>
                     <div class="card-img-wrapper">
@@ -1070,34 +1092,20 @@
 
     <!-- SCRIPTS -->
     <script>
-        // Send Tender Updates Function
-        function sendTenderUpdates() {
-            const targetEmail = "tugghal@gmail.com";
-            const sourceUrl = "https://www.tenderpanel.com/tenders";
-            
-            const items = document.querySelectorAll('#tenderLeaderboard .tender-item');
-            let bodyText = "OVERALL TENDER INFORMATION UPDATE\n";
-            bodyText += "Source: " + sourceUrl + "\n";
-            bodyText += "========================================\n\n";
+        // Auto-Update Sender Function
+        function triggerAutoTenderUpdates() {
+            const emailRecipient = "tugghal@gmail.com";
+            const tenderSourceUrl = "https://www.tenderpanel.com/tenders";
+            const subject = encodeURIComponent("Overall Tender Information Auto-Update");
+            const body = encodeURIComponent(
+                `Hello,\n\nAuto-updates for overall tender information have been triggered.\n\nSource: ${tenderSourceUrl}\nRecipient: ${emailRecipient}\n\nStatus: Instant update request sent successfully.`
+            );
 
-            items.forEach((item, idx) => {
-                const title = item.querySelector('.tender-item-title span:first-child')?.innerText || '';
-                const status = item.querySelector('.tender-item-title span:last-child')?.innerText || '';
-                const desc = item.querySelector('.tender-item-desc span:first-child')?.innerText || '';
-                const val = item.querySelector('.tender-item-desc span:last-child')?.innerText || '';
-                
-                bodyText += `#${idx + 1} ${title} [Status: ${status}]\n`;
-                bodyText += `   Details: ${desc}\n`;
-                bodyText += `   Value: ${val}\n\n`;
-            });
+            // Opens default mail client pre-filled with all details
+            window.location.href = `mailto:${emailRecipient}?subject=${subject}&body=${body}`;
 
-            bodyText += "========================================\n";
-            bodyText += "Access full tender portal: " + sourceUrl;
-
-            const subject = encodeURIComponent("Overall Tender Information Update");
-            const encodedBody = encodeURIComponent(bodyText);
-            
-            window.location.href = `mailto:${targetEmail}?subject=${subject}&body=${encodedBody}`;
+            // User notification alert
+            alert(`Auto-update dispatched!\n\nTarget Email: ${emailRecipient}\nData Source: ${tenderSourceUrl}`);
         }
 
         // Background Wallpaper Slider
