@@ -202,18 +202,18 @@
         .tender-item-title { font-size: 0.85rem; font-weight: 700; color: #f8fafc; display: flex; justify-content: space-between; gap: 8px; }
         .tender-item-desc { font-size: 0.75rem; color: #94a3b8; margin-top: 2px; display: flex; justify-content: space-between; align-items: center; }
 
-        /* --- SECTIONS & STACKS --- */
+        /* --- SECTIONS & STACKS (4-COLUMN GRID) --- */
         .section-block { padding: 80px 6%; max-width: 1400px; margin: 0 auto; }
         .section-header { text-align: center; max-width: 700px; margin: 0 auto 3.5rem; }
         .section-header h2 { font-size: 2.8rem; margin-bottom: 1rem; color: #fff; }
         .section-header p { font-size: 1.1rem; color: var(--text-secondary); }
 
-        .stacks-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; }
+        .stacks-container { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.8rem; }
         .stack-group { position: relative; height: 440px; cursor: pointer; }
         .stack-card {
             position: absolute; inset: 0; background: var(--glass-card);
             border: 1px solid var(--glass-border); border-radius: var(--radius-md);
-            padding: 1.8rem; box-shadow: var(--glass-shadow); backdrop-filter: var(--glass-blur);
+            padding: 1.6rem; box-shadow: var(--glass-shadow); backdrop-filter: var(--glass-blur);
             transition: all 0.4s var(--ease-out); display: flex; flex-direction: column; justify-content: space-between;
             overflow: hidden;
         }
@@ -226,7 +226,7 @@
         .stack-group:hover .stack-card:nth-child(3) { transform: translateY(-50px) rotate(-1deg); opacity: 0.9; }
 
         .card-img-wrapper {
-            width: 100%; height: 160px; border-radius: var(--radius-sm);
+            width: 100%; height: 140px; border-radius: var(--radius-sm);
             overflow: hidden; margin-bottom: 1rem; background: #000; position: relative;
         }
         .card-img-wrapper img {
@@ -436,6 +436,9 @@
         }
         .dock-icon:hover { transform: translateY(-12px) scale(1.2); background: rgba(255, 255, 255, 0.25); }
 
+        @media (max-width: 1200px) {
+            .stacks-container { grid-template-columns: repeat(2, 1fr); }
+        }
         @media (max-width: 1024px) {
             .hero-container, .stacks-container, .gallery-grid, .widgets-grid, .infographics-grid, .contact-card { grid-template-columns: 1fr; }
             .hero-title { font-size: 2.8rem; }
@@ -575,7 +578,7 @@
         </div>
     </section>
 
-    <!-- CAPABILITIES & SERVICES -->
+    <!-- CAPABILITIES & SERVICES (4-STACK SYSTEM) -->
     <section class="section-block" id="stacks">
         <div class="section-header">
             <h2>Capabilities & Services</h2>
@@ -627,7 +630,7 @@
                 </div>
             </div>
 
-            <!-- Stack 3: Mechanical & Electrical (FIXED & UPGRADED) -->
+            <!-- Stack 3: Mechanical & Electrical -->
             <div class="stack-group">
                 <div class="stack-card">
                     <div>
@@ -646,6 +649,28 @@
                 <div class="stack-card">
                     <h4>Testing & Maintenance</h4>
                     <p style="color: var(--text-secondary); font-size: 0.9rem;">24/7 technical field support and plant commissioning.</p>
+                </div>
+            </div>
+
+            <!-- Stack 4: Gas Processing Plants (Upgraded Capability Stack) -->
+            <div class="stack-group">
+                <div class="stack-card">
+                    <div>
+                        <div class="card-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1578328819058-b69f3a3b0f6b?auto=format&fit=crop&w=800&q=80" alt="Gas Processing Plants">
+                        </div>
+                        <h3>Gas Processing Plants</h3>
+                        <p style="color: var(--text-secondary); margin-top: 0.3rem;">Sweetening units, dehydration, high-pressure compression & NGL recovery.</p>
+                    </div>
+                    <span class="code-font" style="font-size: 0.85rem; color: var(--accent-cyan);">Gas Engineering &rarr;</span>
+                </div>
+                <div class="stack-card">
+                    <h4>Sweetening & Dehydration</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Advanced amine sweetening units and glycol dehydration systems for acid gas removal.</p>
+                </div>
+                <div class="stack-card">
+                    <h4>Compression & Fractionation</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Heavy-duty reciprocating gas compressors and precision NGL fractionator setups.</p>
                 </div>
             </div>
         </div>
@@ -669,7 +694,6 @@
                 </div>
             </div>
 
-            <!-- Gas Processing Plants (FIXED & UPGRADED) -->
             <div class="gallery-card">
                 <div class="gallery-img-container">
                     <img src="https://images.unsplash.com/photo-1578328819058-b69f3a3b0f6b?auto=format&fit=crop&w=800&q=80" alt="Gas Processing Plants">
@@ -890,7 +914,7 @@
                         <option>Global Procurement & Supply</option>
                         <option>Civil Construction Works</option>
                         <option>Mechanical & Electrical Services</option>
-                        <option>Process Plant & Valve Engineering</option>
+                        <option>Gas Processing Plants & Engineering</option>
                     </select>
                 </div>
                 <div class="form-group">
