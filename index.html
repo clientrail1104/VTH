@@ -52,7 +52,7 @@
         .code-font { font-family: 'Space Grotesk', monospace; }
         a { text-decoration: none; color: inherit; }
 
-        /* --- SMOOTH CONTINUOUS SLOW-MOTION BACKGROUND WALLPAPER CAROUSEL --- */
+        /* --- STATIC BACKGROUND WALLPAPER (TRANSITIONS REMOVED) --- */
         .bg-wallpaper-slider {
             position: fixed;
             top: 0; left: 0; width: 100vw; height: 100vh;
@@ -65,14 +65,10 @@
             inset: 0;
             background-size: cover;
             background-position: center;
-            opacity: 0;
-            transform: scale(1);
-            transition: opacity 3.5s ease-in-out, transform 12s linear;
-            will-change: opacity, transform;
-        }
-        .bg-slide.active {
             opacity: 1;
-            transform: scale(1.08);
+            transform: scale(1);
+            will-change: auto;
+            background-image: url('3d-ai-cybersecurity-concept-as-glowing-abstract-digital-art-banner-highlighting-ais-role-cyb_980716-667027.jpg'), url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1920&q=80');
         }
 
         /* Dark Contrast Overlay for Text Readability */
@@ -245,7 +241,8 @@
         }
         .animated-img, .continuous-video {
             width: 100%; height: 100%; object-fit: cover; display: block;
-            pointer-events: none; border: none; outline: none;
+            pointer-events: none;
+            border: none; outline: none;
         }
 
         /* --- PROJECT GALLERY SHOWCASE --- */
@@ -295,6 +292,7 @@
         .info-box h3 { font-size: 1.4rem; margin-bottom: 1.8rem; display: flex; align-items: center; gap: 12px; color: #fff; }
 
         .info-3d-list { display: flex; flex-direction: column; gap: 1.2rem; }
+        
         .info-3d-card {
             background: rgba(255, 255, 255, 0.05); border: 1px solid var(--glass-border);
             border-radius: 18px; padding: 1.2rem 1.4rem; display: flex; align-items: center; gap: 1.2rem;
@@ -473,13 +471,9 @@
 </head>
 <body>
 
-    <!-- SMOOTH SLOW-MOTION CONTINUOUS WALLPAPER CAROUSEL -->
+    <!-- STATIC BACKGROUND (TRANSITIONS REMOVED) -->
     <div class="bg-wallpaper-slider" id="wallpaperSlider">
-        <div class="bg-slide active" style="background-image: url('g1_2.jpg'), url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1920&q=80');"></div>
-        <div class="bg-slide" style="background-image: url('g2_2.jpg'), url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1920&q=80');"></div>
-        <div class="bg-slide" style="background-image: url('g3_2.jpg'), url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1920&q=80');"></div>
-        <div class="bg-slide" style="background-image: url('g4_2.jpg'), url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1920&q=80');"></div>
-        <div class="bg-slide" style="background-image: url('g5_2.jpg'), url('https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&w=1920&q=80');"></div>
+        <div class="bg-slide"></div>
     </div>
     <div class="bg-overlay"></div>
 
@@ -533,6 +527,7 @@
 
                     <!-- Complete Scrollable Tender Leaderboard Stream -->
                     <div class="tender-feed" id="tenderLeaderboard">
+                        
                         <div class="tender-item">
                             <div class="rank-badge rank-top">#1</div>
                             <div class="tender-item-info">
@@ -616,6 +611,7 @@
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -630,7 +626,7 @@
         </div>
 
         <div class="stacks-container">
-            <!-- Stack 1 -->
+            <!-- Stack 1: Global Procurement -->
             <div class="stack-group">
                 <div class="stack-card">
                     <div>
@@ -652,7 +648,7 @@
                 </div>
             </div>
 
-            <!-- Stack 2 -->
+            <!-- Stack 2: Civil & Structural Engineering -->
             <div class="stack-group">
                 <div class="stack-card">
                     <div>
@@ -676,7 +672,7 @@
                 </div>
             </div>
 
-            <!-- Stack 3 -->
+            <!-- Stack 3: Mechanical & Electrical -->
             <div class="stack-group">
                 <div class="stack-card">
                     <div>
@@ -710,6 +706,7 @@
         </div>
 
         <div class="gallery-grid">
+            <!-- 1. Refinery Pipeline Systems -->
             <div class="gallery-card">
                 <div class="gallery-img-container">
                     <video class="continuous-video" autoplay loop muted playsinline webkit-playsinline preload="auto" disablePictureInPicture>
@@ -722,6 +719,7 @@
                 </div>
             </div>
 
+            <!-- 2. Gas Processing Plants -->
             <div class="gallery-card">
                 <div class="gallery-img-container">
                     <video class="continuous-video" autoplay loop muted playsinline webkit-playsinline preload="auto" disablePictureInPicture>
@@ -734,6 +732,7 @@
                 </div>
             </div>
 
+            <!-- 3. Piping & Valve Assemblies -->
             <div class="gallery-card">
                 <div class="gallery-img-container">
                     <video class="continuous-video" autoplay loop muted playsinline webkit-playsinline preload="auto" disablePictureInPicture>
@@ -746,6 +745,7 @@
                 </div>
             </div>
 
+            <!-- 4. Hydrogen & ESG Tech -->
             <div class="gallery-card">
                 <div class="gallery-img-container">
                     <img class="animated-img" src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=800&q=80" alt="Hydrogen & ESG Tech">
@@ -756,6 +756,7 @@
                 </div>
             </div>
 
+            <!-- 5. Control Panel Distribution -->
             <div class="gallery-card">
                 <div class="gallery-img-container">
                     <video class="continuous-video" autoplay loop muted playsinline webkit-playsinline preload="auto" disablePictureInPicture>
@@ -768,6 +769,7 @@
                 </div>
             </div>
 
+            <!-- 6. Tech-Hub Operations Matrix -->
             <div class="gallery-card">
                 <div class="gallery-img-container">
                     <video class="continuous-video" autoplay loop muted playsinline webkit-playsinline preload="auto" disablePictureInPicture>
@@ -835,8 +837,11 @@
 
         <!-- INFOGRAPHICS -->
         <div class="infographics-grid">
+            
+            <!-- Box 1: Safety Compliance Systems -->
             <div class="info-box">
                 <h3><i class="fa-solid fa-shield-halved" style="color: var(--accent-pink);"></i> Safety Compliance Systems</h3>
+                
                 <div class="info-3d-list">
                     <div class="info-3d-card">
                         <div class="icon-3d-wrapper icon-dosh"><i class="fa-solid fa-file-contract"></i></div>
@@ -873,8 +878,10 @@
                 </div>
             </div>
 
+            <!-- Box 2: Quality Assurance Checklist -->
             <div class="info-box">
                 <h3><i class="fa-solid fa-award" style="color: #4ade80;"></i> Quality Assurance Checklist</h3>
+                
                 <div class="info-3d-list">
                     <div class="info-3d-card">
                         <div class="icon-3d-wrapper icon-mat"><i class="fa-solid fa-clipboard-check"></i></div>
@@ -910,6 +917,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </section>
 
@@ -1008,22 +1016,8 @@
         <a href="https://wa.me/60149725722" target="_blank" class="dock-icon" title="WhatsApp"><i class="fa-brands fa-whatsapp" style="color: #25d366;"></i></a>
     </div>
 
-    <!-- DYNAMIC SCRIPTS -->
+    <!-- SYSTEM SCRIPTS (WALLPAPER INTERVAL REMOVED) -->
     <script>
-        // Smooth Slow-Motion Wallpaper Crossfade Controller
-        const slides = document.querySelectorAll('#wallpaperSlider .bg-slide');
-        let currentSlideIndex = 0;
-        const transitionInterval = 8000;
-
-        function nextWallpaperSlide() {
-            if (slides.length <= 1) return;
-            slides[currentSlideIndex].classList.remove('active');
-            currentSlideIndex = (currentSlideIndex + 1) % slides.length;
-            slides[currentSlideIndex].classList.add('active');
-        }
-
-        setInterval(nextWallpaperSlide, transitionInterval);
-
         // Force Auto-Play Functionality Across All Videos
         function ensureAutoplay() {
             const allVideos = document.querySelectorAll('video');
@@ -1043,6 +1037,7 @@
                         });
                     }
                 };
+                
                 tryPlay();
                 
                 const enablePlayOnTouch = () => { tryPlay(); };
