@@ -161,17 +161,16 @@
             transition: transform 0.15s ease-out; position: relative; overflow: hidden;
         }
         
-        /* Realtime Tender Box */
+        /* Realtime Tender Box - Smooth Auto-Scroll Leaderboard */
         .tender-widget-box {
-            background: rgba(3, 7, 18, 0.85);
+            background: rgba(3, 7, 18, 0.88);
             border-radius: var(--radius-sm);
             border: 1px solid rgba(255, 255, 255, 0.12);
             padding: 1.2rem;
             color: #f8fafc;
-            height: 280px;
+            min-height: 380px;
             display: flex; flex-direction: column; justify-content: space-between;
             position: relative;
-            overflow: hidden;
             box-shadow: inset 0 0 20px rgba(0,0,0,0.6);
         }
         .tender-header {
@@ -187,21 +186,35 @@
         @keyframes pulseGlow { 0% { opacity: 0.3; transform: scale(0.8); } 50% { opacity: 1; transform: scale(1.3); } 100% { opacity: 0.3; transform: scale(0.8); } }
 
         .tender-feed {
-            display: flex; flex-direction: column; gap: 0.75rem; overflow-y: hidden; position: relative; height: 180px;
+            display: flex; flex-direction: column; gap: 0.75rem; 
+            max-height: 250px; overflow-y: auto; position: relative;
+            padding-right: 4px; scroll-behavior: smooth;
         }
+        /* Styling thin custom scrollbar for leaderboard feed */
+        .tender-feed::-webkit-scrollbar { width: 4px; }
+        .tender-feed::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.05); border-radius: 4px; }
+        .tender-feed::-webkit-scrollbar-thumb { background: var(--accent-blue); border-radius: 4px; }
+
         .tender-item {
-            background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 10px 14px; border-radius: 10px; transition: all 0.3s;
-            animation: slideUpFeed 6s infinite ease-in-out;
+            background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 10px 14px; border-radius: 12px; transition: all 0.25s var(--ease-out);
+            display: flex; align-items: center; gap: 12px;
         }
-        @keyframes slideUpFeed {
-            0%, 25% { transform: translateY(0); }
-            33%, 58% { transform: translateY(-72px); }
-            66%, 91% { transform: translateY(-144px); }
-            100% { transform: translateY(0); }
+        .tender-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(56, 189, 248, 0.4);
+            transform: translateX(4px);
         }
-        .tender-item-title { font-size: 0.85rem; font-weight: 700; color: #38bdf8; display: flex; justify-content: space-between; }
-        .tender-item-desc { font-size: 0.76rem; color: #94a3b8; margin-top: 3px; display: flex; justify-content: space-between; align-items: center; }
+        .rank-badge {
+            font-family: 'Space Grotesk', monospace; font-size: 0.8rem; font-weight: 800;
+            width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center;
+            background: rgba(0, 122, 255, 0.2); color: #38bdf8; border: 1px solid rgba(0, 122, 255, 0.3);
+            flex-shrink: 0;
+        }
+        .rank-top { background: linear-gradient(135deg, var(--accent-orange), var(--accent-pink)); color: #fff; border: none; }
+        .tender-item-info { flex-grow: 1; }
+        .tender-item-title { font-size: 0.85rem; font-weight: 700; color: #f8fafc; display: flex; justify-content: space-between; gap: 8px; }
+        .tender-item-desc { font-size: 0.75rem; color: #94a3b8; margin-top: 2px; display: flex; justify-content: space-between; align-items: center; }
 
         /* --- DESKTOP STACKS & CONTINUOUS VIDEO WRAPPERS --- */
         .section-block { padding: 80px 6%; max-width: 1400px; margin: 0 auto; }
@@ -276,36 +289,40 @@
             border-radius: 50px; font-size: 0.78rem; font-weight: 800;
         }
 
-        /* --- INFOGRAPHICS --- */
+        /* --- INFOGRAPHICS (FIXED SAFETY & QUALITY VISUAL ERRORS) --- */
         .infographics-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem; }
         .info-box {
             background: var(--glass-card); border: 1px solid var(--glass-border);
             border-radius: var(--radius-md); padding: 2.2rem; box-shadow: var(--glass-shadow); backdrop-filter: var(--glass-blur);
         }
-        .info-box h3 { font-size: 1.4rem; margin-bottom: 1.8rem; display: flex; align-items: center; gap: 10px; color: #fff; }
+        .info-box h3 { font-size: 1.4rem; margin-bottom: 1.8rem; display: flex; align-items: center; gap: 12px; color: #fff; }
 
         .info-3d-list { display: flex; flex-direction: column; gap: 1.2rem; }
+        
+        /* Cleaned 3D card layout to prevent rendering glitches & text wrap collisions */
         .info-3d-card {
             background: rgba(255, 255, 255, 0.05); border: 1px solid var(--glass-border);
-            border-radius: 18px; padding: 1.2rem; display: flex; align-items: center; gap: 1.2rem;
-            position: relative; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-            transition: all 0.4s var(--ease-out); transform-style: preserve-3d;
+            border-radius: 18px; padding: 1.2rem 1.4rem; display: flex; align-items: center; gap: 1.2rem;
+            position: relative; box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            transition: all 0.3s var(--ease-out);
+            will-change: transform; backface-visibility: hidden;
         }
         .info-3d-card:hover {
-            transform: translateY(-4px) rotateX(4deg) rotateY(-2deg) scale(1.02);
+            transform: translateY(-4px) scale(1.02);
             box-shadow: 0 15px 30px rgba(0, 122, 255, 0.25);
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.09);
+            border-color: rgba(56, 189, 248, 0.4);
         }
 
         .icon-3d-wrapper {
             width: 52px; height: 52px; border-radius: 16px;
-            display: flex; align-items: center; justify-content: center; font-size: 1.5rem;
+            display: flex; align-items: center; justify-content: center; font-size: 1.4rem;
             position: relative; flex-shrink: 0; box-shadow: 0 8px 16px rgba(0,0,0,0.3);
             animation: float3D 3s ease-in-out infinite alternate;
         }
         @keyframes float3D {
             0% { transform: translateY(0px) rotate(0deg); }
-            100% { transform: translateY(-6px) rotate(5deg); }
+            100% { transform: translateY(-5px) rotate(4deg); }
         }
         .icon-dosh { background: linear-gradient(135deg, #ff2d55, #ff9500); color: white; }
         .icon-hirarc { background: linear-gradient(135deg, #af52de, #007aff); color: white; }
@@ -314,14 +331,22 @@
         .icon-qaqc { background: linear-gradient(135deg, #ff9500, #ff2d55); color: white; }
         .icon-iso { background: linear-gradient(135deg, #34c759, #af52de); color: white; }
 
-        .info-3d-content { flex-grow: 1; }
-        .info-3d-title { font-weight: 800; font-size: 1.05rem; display: flex; justify-content: space-between; align-items: center; color: #fff; }
+        .info-3d-content { flex-grow: 1; width: 100%; min-width: 0; }
+        .info-3d-title { 
+            font-weight: 700; font-size: 1rem; display: flex; justify-content: space-between; 
+            align-items: center; gap: 8px; color: #fff; width: 100%; margin-bottom: 8px;
+        }
+        .info-3d-title span.title-label {
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 70%;
+        }
         .status-pill-3d {
             font-size: 0.72rem; font-weight: 800; padding: 4px 10px; border-radius: 50px;
-            background: rgba(52, 199, 89, 0.25); color: #4ade80; display: inline-flex; align-items: center; gap: 5px; border: 1px solid rgba(74, 222, 128, 0.3);
+            background: rgba(52, 199, 89, 0.25); color: #4ade80; display: inline-flex; align-items: center; 
+            gap: 5px; border: 1px solid rgba(74, 222, 128, 0.3); flex-shrink: 0;
         }
         .progress-bar-3d {
-            width: 100%; height: 6px; background: rgba(255,255,255,0.1); border-radius: 10px; margin-top: 8px; overflow: hidden;
+            width: 100%; height: 7px; background: rgba(255,255,255,0.12); border-radius: 10px; overflow: hidden;
+            position: relative;
         }
         .progress-fill-3d { height: 100%; border-radius: 10px; transition: width 1s ease-in-out; }
 
@@ -506,58 +531,112 @@
             </div>
         </div>
 
-        <!-- 3D INTERACTIVE VISUAL HERO CARD WITH REALTIME TENDER UPDATES -->
+        <!-- 3D INTERACTIVE VISUAL HERO CARD WITH LEADERBOARD REALTIME TENDER UPDATES -->
         <div class="perspective-wrapper">
             <div class="hero-visual-card" id="tiltSnippet">
                 <div class="tender-widget-box">
                     <div class="tender-header">
                         <div>
-                            <span class="code-font" style="font-size: 0.78rem; text-transform: uppercase; color: #a5f3fc; letter-spacing: 0.5px;">Live Portal Integration</span>
-                            <h4 style="font-size: 1rem; color: #ffffff;"><i class="fa-solid fa-rss" style="color: #38bdf8;"></i> Realtime Tender Updates</h4>
+                            <span class="code-font" style="font-size: 0.78rem; text-transform: uppercase; color: #a5f3fc; letter-spacing: 0.5px;">Live Leaderboard Feed</span>
+                            <h4 style="font-size: 1rem; color: #ffffff;"><i class="fa-solid fa-trophy" style="color: #facc15;"></i> Realtime Tender Leaderboard</h4>
                         </div>
                         <a href="https://www.tenderpanel.com/" target="_blank" class="tender-live-badge">
                             <span class="pulse-dot"></span> tenderpanel.com
                         </a>
                     </div>
 
-                    <div class="tender-feed">
+                    <!-- Complete Scrollable Tender Leaderboard Stream -->
+                    <div class="tender-feed" id="tenderLeaderboard">
+                        
                         <div class="tender-item">
-                            <div class="tender-item-title">
-                                <span>PETRONAS - Subsea Pipeline EPCIC</span>
-                                <span style="color: #4ade80;">Active</span>
-                            </div>
-                            <div class="tender-item-desc">
-                                <span>Ref: MY-TND-89421 • Offshore Sabah</span>
-                                <span class="code-font" style="color: #facc15;">RM 45.2M</span>
+                            <div class="rank-badge rank-top">#1</div>
+                            <div class="tender-item-info">
+                                <div class="tender-item-title">
+                                    <span>PETRONAS - Subsea Pipeline EPCIC</span>
+                                    <span style="color: #4ade80;">Active</span>
+                                </div>
+                                <div class="tender-item-desc">
+                                    <span>Ref: MY-TND-89421 • Offshore Sabah</span>
+                                    <span class="code-font" style="color: #facc15;">RM 45.2M</span>
+                                </div>
                             </div>
                         </div>
 
                         <div class="tender-item">
-                            <div class="tender-item-title">
-                                <span>Sarawak Energy - Substation Automation</span>
-                                <span style="color: #4ade80;">Open</span>
-                            </div>
-                            <div class="tender-item-desc">
-                                <span>Ref: MY-TND-77210 • Bintulu Hub</span>
-                                <span class="code-font" style="color: #facc15;">RM 18.7M</span>
+                            <div class="rank-badge rank-top">#2</div>
+                            <div class="tender-item-info">
+                                <div class="tender-item-title">
+                                    <span>TNB - Renewable Grid Tie Integration</span>
+                                    <span style="color: #38bdf8;">Evaluating</span>
+                                </div>
+                                <div class="tender-item-desc">
+                                    <span>Ref: MY-TND-90114 • Selangor Zone</span>
+                                    <span class="code-font" style="color: #facc15;">RM 32.0M</span>
+                                </div>
                             </div>
                         </div>
 
                         <div class="tender-item">
-                            <div class="tender-item-title">
-                                <span>TNB - Renewable Grid Tie Integration</span>
-                                <span style="color: #38bdf8;">Evaluating</span>
-                            </div>
-                            <div class="tender-item-desc">
-                                <span>Ref: MY-TND-90114 • Selangor Zone</span>
-                                <span class="code-font" style="color: #facc15;">RM 32.0M</span>
+                            <div class="rank-badge rank-top">#3</div>
+                            <div class="tender-item-info">
+                                <div class="tender-item-title">
+                                    <span>Malakoff - Solar PV Civil Engineering</span>
+                                    <span style="color: #4ade80;">Open</span>
+                                </div>
+                                <div class="tender-item-desc">
+                                    <span>Ref: MY-TND-61022 • Perak Installation</span>
+                                    <span class="code-font" style="color: #facc15;">RM 28.1M</span>
+                                </div>
                             </div>
                         </div>
+
+                        <div class="tender-item">
+                            <div class="rank-badge">#4</div>
+                            <div class="tender-item-info">
+                                <div class="tender-item-title">
+                                    <span>Shell MY - Plant Turnaround & Piping</span>
+                                    <span style="color: #fb923c;">Bidding</span>
+                                </div>
+                                <div class="tender-item-desc">
+                                    <span>Ref: MY-TND-53109 • Miri Hub</span>
+                                    <span class="code-font" style="color: #facc15;">RM 24.5M</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tender-item">
+                            <div class="rank-badge">#5</div>
+                            <div class="tender-item-info">
+                                <div class="tender-item-title">
+                                    <span>Sarawak Energy - Substation Automation</span>
+                                    <span style="color: #4ade80;">Open</span>
+                                </div>
+                                <div class="tender-item-desc">
+                                    <span>Ref: MY-TND-77210 • Bintulu Hub</span>
+                                    <span class="code-font" style="color: #facc15;">RM 18.7M</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tender-item">
+                            <div class="rank-badge">#6</div>
+                            <div class="tender-item-info">
+                                <div class="tender-item-title">
+                                    <span>Sabah Electricity - Grid Expansion</span>
+                                    <span style="color: #4ade80;">Active</span>
+                                </div>
+                                <div class="tender-item-desc">
+                                    <span>Ref: MY-TND-40892 • Kota Kinabalu</span>
+                                    <span class="code-font" style="color: #facc15;">RM 15.3M</span>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
 
-                    <div style="text-align: right; margin-top: 4px;">
+                    <div style="text-align: right; margin-top: 10px;">
                         <a href="https://www.tenderpanel.com/" target="_blank" style="font-size: 0.75rem; color: #38bdf8; text-decoration: underline;">
-                            View all live listings on TenderPanel &rarr;
+                            View full database on TenderPanel &rarr;
                         </a>
                     </div>
                 </div>
@@ -782,8 +861,10 @@
             </div>
         </div>
 
-        <!-- 3D INFOGRAPHICS -->
+        <!-- 3D INFOGRAPHICS (FIXED LAYOUT & COMPLIANCE BOXES) -->
         <div class="infographics-grid">
+            
+            <!-- Box 1: Safety Compliance Systems -->
             <div class="info-box">
                 <h3><i class="fa-solid fa-shield-halved" style="color: var(--accent-pink);"></i> Safety Compliance Systems</h3>
                 
@@ -791,7 +872,10 @@
                     <div class="info-3d-card">
                         <div class="icon-3d-wrapper icon-dosh"><i class="fa-solid fa-file-contract"></i></div>
                         <div class="info-3d-content">
-                            <div class="info-3d-title"><span>DOSH / JKKP Standard</span><span class="status-pill-3d"><i class="fa-solid fa-check"></i> 100%</span></div>
+                            <div class="info-3d-title">
+                                <span class="title-label">DOSH / JKKP Standard</span>
+                                <span class="status-pill-3d"><i class="fa-solid fa-check"></i> 100% Verified</span>
+                            </div>
                             <div class="progress-bar-3d"><div class="progress-fill-3d" style="width: 100%; background: linear-gradient(90deg, #ff2d55, #ff9500);"></div></div>
                         </div>
                     </div>
@@ -799,7 +883,10 @@
                     <div class="info-3d-card">
                         <div class="icon-3d-wrapper icon-hirarc"><i class="fa-solid fa-triangle-exclamation"></i></div>
                         <div class="info-3d-content">
-                            <div class="info-3d-title"><span>HIRARC Risk Assessment</span><span class="status-pill-3d"><i class="fa-solid fa-check"></i> Verified</span></div>
+                            <div class="info-3d-title">
+                                <span class="title-label">HIRARC Risk Assessment</span>
+                                <span class="status-pill-3d"><i class="fa-solid fa-check"></i> Active</span>
+                            </div>
                             <div class="progress-bar-3d"><div class="progress-fill-3d" style="width: 98%; background: linear-gradient(90deg, #af52de, #007aff);"></div></div>
                         </div>
                     </div>
@@ -807,13 +894,17 @@
                     <div class="info-3d-card">
                         <div class="icon-3d-wrapper icon-zero"><i class="fa-solid fa-heart-pulse"></i></div>
                         <div class="info-3d-content">
-                            <div class="info-3d-title"><span>LTI Frequency Rate</span><span class="status-pill-3d"><i class="fa-solid fa-check"></i> Zero LTI</span></div>
+                            <div class="info-3d-title">
+                                <span class="title-label">LTI Frequency Rate</span>
+                                <span class="status-pill-3d"><i class="fa-solid fa-check"></i> Zero LTI</span>
+                            </div>
                             <div class="progress-bar-3d"><div class="progress-fill-3d" style="width: 100%; background: linear-gradient(90deg, #34c759, #00c7be);"></div></div>
                         </div>
                     </div>
                 </div>
             </div>
 
+            <!-- Box 2: Quality Assurance Checklist -->
             <div class="info-box">
                 <h3><i class="fa-solid fa-award" style="color: #4ade80;"></i> Quality Assurance Checklist</h3>
                 
@@ -821,7 +912,10 @@
                     <div class="info-3d-card">
                         <div class="icon-3d-wrapper icon-mat"><i class="fa-solid fa-clipboard-check"></i></div>
                         <div class="info-3d-content">
-                            <div class="info-3d-title"><span>Material Inspection Plans</span><span class="status-pill-3d"><i class="fa-solid fa-check"></i> Verified</span></div>
+                            <div class="info-3d-title">
+                                <span class="title-label">Material Inspection Plans</span>
+                                <span class="status-pill-3d"><i class="fa-solid fa-check"></i> Passed</span>
+                            </div>
                             <div class="progress-bar-3d"><div class="progress-fill-3d" style="width: 100%; background: linear-gradient(90deg, #007aff, #00c7be);"></div></div>
                         </div>
                     </div>
@@ -829,7 +923,10 @@
                     <div class="info-3d-card">
                         <div class="icon-3d-wrapper icon-qaqc"><i class="fa-solid fa-microscope"></i></div>
                         <div class="info-3d-content">
-                            <div class="info-3d-title"><span>QA/QC Documentation</span><span class="status-pill-3d"><i class="fa-solid fa-check"></i> Validated</span></div>
+                            <div class="info-3d-title">
+                                <span class="title-label">QA/QC Documentation</span>
+                                <span class="status-pill-3d"><i class="fa-solid fa-check"></i> Validated</span>
+                            </div>
                             <div class="progress-bar-3d"><div class="progress-fill-3d" style="width: 96%; background: linear-gradient(90deg, #ff9500, #ff2d55);"></div></div>
                         </div>
                     </div>
@@ -837,12 +934,16 @@
                     <div class="info-3d-card">
                         <div class="icon-3d-wrapper icon-iso"><i class="fa-solid fa-certificate"></i></div>
                         <div class="info-3d-content">
-                            <div class="info-3d-title"><span>ISO Compliance Validation</span><span class="status-pill-3d"><i class="fa-solid fa-check"></i> 100%</span></div>
+                            <div class="info-3d-title">
+                                <span class="title-label">ISO Compliance Validation</span>
+                                <span class="status-pill-3d"><i class="fa-solid fa-check"></i> 100% Certified</span>
+                            </div>
                             <div class="progress-bar-3d"><div class="progress-fill-3d" style="width: 100%; background: linear-gradient(90deg, #34c759, #af52de);"></div></div>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
     </section>
 
@@ -989,6 +1090,26 @@
 
         document.addEventListener('DOMContentLoaded', ensureAutoplay);
         window.addEventListener('load', ensureAutoplay);
+
+        // Smooth Auto-Scrolling Controller for Tender Leaderboard Feed
+        const feedContainer = document.getElementById('tenderLeaderboard');
+        let isHovered = false;
+
+        if (feedContainer) {
+            feedContainer.addEventListener('mouseenter', () => isHovered = true);
+            feedContainer.addEventListener('mouseleave', () => isHovered = false);
+
+            setInterval(() => {
+                if (!isHovered && feedContainer) {
+                    // Scroll 1px continuously or step through items
+                    if (feedContainer.scrollTop + feedContainer.clientHeight >= feedContainer.scrollHeight - 5) {
+                        feedContainer.scrollTop = 0; // Loop back to top
+                    } else {
+                        feedContainer.scrollTop += 1;
+                    }
+                }
+            }, 40);
+        }
 
         // WhatsApp Floating Chatbot Toggle
         function toggleWaBox() {
