@@ -22,7 +22,7 @@
             --accent-orange: #ff9500;
             --accent-green: #34c759;
 
-            /* Glassmorphism Surfaces */
+            /* Glassmorphism Surfaces for Dark/Dynamic Wallpapers */
             --glass-surface: rgba(15, 23, 42, 0.65);
             --glass-card: rgba(15, 23, 42, 0.72);
             --glass-border: rgba(255, 255, 255, 0.15);
@@ -47,27 +47,24 @@
             min-height: 100vh;
             overflow-x: hidden;
             position: relative;
-            background-color: #030712;
         }
         h1, h2, h3, h4 { font-family: 'Outfit', sans-serif; font-weight: 800; letter-spacing: -0.02em; }
         .code-font { font-family: 'Space Grotesk', monospace; }
         a { text-decoration: none; color: inherit; }
 
-        /* --- BACKGROUND WALLPAPER CAROUSEL --- */
+        /* --- SMOOTH CONTINUOUS SLOW-MOTION BACKGROUND WALLPAPER CAROUSEL --- */
         .bg-wallpaper-slider {
             position: fixed;
             top: 0; left: 0; width: 100vw; height: 100vh;
             z-index: -2;
             overflow: hidden;
             pointer-events: none;
-            background: radial-gradient(circle at center, #0f172a 0%, #030712 100%);
         }
         .bg-slide {
             position: absolute;
             inset: 0;
             background-size: cover;
             background-position: center;
-            background-repeat: no-repeat;
             opacity: 0;
             transform: scale(1);
             transition: opacity 3.5s ease-in-out, transform 12s linear;
@@ -78,11 +75,11 @@
             transform: scale(1.08);
         }
 
-        /* Contrast Overlay for Text Readability */
+        /* Dark Contrast Overlay for Text Readability */
         .bg-overlay {
             position: fixed;
             inset: 0;
-            background: radial-gradient(circle at center, rgba(3, 7, 18, 0.5) 0%, rgba(3, 7, 18, 0.85) 100%);
+            background: radial-gradient(circle at center, rgba(3, 7, 18, 0.45) 0%, rgba(3, 7, 18, 0.8) 100%);
             backdrop-filter: blur(2px);
             z-index: -1;
             pointer-events: none;
@@ -164,7 +161,7 @@
             transition: transform 0.15s ease-out; position: relative; overflow: hidden;
         }
         
-        /* Realtime Tender Box */
+        /* Realtime Tender Box - Smooth Auto-Scroll Leaderboard */
         .tender-widget-box {
             background: rgba(3, 7, 18, 0.88);
             border-radius: var(--radius-sm);
@@ -218,7 +215,7 @@
         .tender-item-title { font-size: 0.85rem; font-weight: 700; color: #f8fafc; display: flex; justify-content: space-between; gap: 8px; }
         .tender-item-desc { font-size: 0.75rem; color: #94a3b8; margin-top: 2px; display: flex; justify-content: space-between; align-items: center; }
 
-        /* --- DESKTOP STACKS & VIDEO WRAPPERS --- */
+        /* --- DESKTOP STACKS & CONTINUOUS VIDEO WRAPPERS --- */
         .section-block { padding: 80px 6%; max-width: 1400px; margin: 0 auto; }
         .section-header { text-align: center; max-width: 700px; margin: 0 auto 3.5rem; }
         .section-header h2 { font-size: 2.8rem; margin-bottom: 1rem; color: #fff; }
@@ -241,14 +238,16 @@
         .stack-group:hover .stack-card:nth-child(2) { transform: translateY(-20px) rotate(3deg); opacity: 0.95; }
         .stack-group:hover .stack-card:nth-child(3) { transform: translateY(-50px) rotate(-1deg); opacity: 0.9; }
 
+        /* AUTO-FUNCTIONAL VIDEO & IMAGE CONTAINER ENHANCEMENTS */
         .card-img-wrapper {
             width: 100%; height: 160px; border-radius: var(--radius-sm);
-            overflow: hidden; margin-bottom: 1rem; background: #0f172a; position: relative;
+            overflow: hidden; margin-bottom: 1rem; background: #000; position: relative;
             display: block;
         }
         .animated-img, .continuous-video {
             width: 100%; height: 100%; object-fit: cover; display: block;
-            pointer-events: none; border: none; outline: none;
+            pointer-events: none;
+            border: none; outline: none;
         }
 
         /* --- PROJECT GALLERY SHOWCASE --- */
@@ -260,7 +259,7 @@
             display: flex; flex-direction: column;
         }
         .gallery-card:hover { transform: translateY(-8px); border-color: rgba(56, 189, 248, 0.4); }
-        .gallery-img-container { width: 100%; height: 230px; overflow: hidden; position: relative; background: #0f172a; display: block; }
+        .gallery-img-container { width: 100%; height: 230px; overflow: hidden; position: relative; background: #000; display: block; }
         .gallery-img-container .animated-img, 
         .gallery-img-container .continuous-video {
             width: 100%; height: 100%; object-fit: cover; object-position: center; transition: transform 0.5s; display: block;
@@ -477,20 +476,18 @@
 </head>
 <body>
 
-    <!-- RELIABLE WEB-HOSTED BACKGROUND WALLPAPER SLIDER -->
+    <!-- SMOOTH SLOW-MOTION CONTINUOUS WALLPAPER CAROUSEL USING ATTACHED IMAGES -->
     <div class="bg-wallpaper-slider" id="wallpaperSlider">
-        <!-- Slide 1: Tech & Industrial Infrastructure -->
-        <div class="bg-slide active" style="background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1920&q=80');"></div>
-        <!-- Slide 2: Heavy Industrial Engineering -->
-        <div class="bg-slide" style="background-image: url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1920&q=80');"></div>
-        <!-- Slide 3: Smart Operations Matrix -->
-        <div class="bg-slide" style="background-image: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1920&q=80');"></div>
-        <!-- Slide 4: Clean Energy & Sustainable Tech -->
-        <div class="bg-slide" style="background-image: url('https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=1920&q=80');"></div>
-        <!-- Slide 5: Plant Processing & Piping -->
-        <div class="bg-slide" style="background-image: url('https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1920&q=80');"></div>
-        <!-- Slide 6: Digital Cyber Network -->
-        <div class="bg-slide" style="background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1920&q=80');"></div>
+        <!-- Slide 1: Gemini Generated Image Shak -->
+        <div class="bg-slide active" style="background-image: url('Gemini_Generated_Image_shak2cshak2cshak.jpg'), url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1920&q=80');"></div>
+        <!-- Slide 2: Gemini Generated Image A5eo -->
+        <div class="bg-slide" style="background-image: url('Gemini_Generated_Image_a5eo3ba5eo3ba5eo.jpg'), url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1920&q=80');"></div>
+        <!-- Slide 3: Gemini Generated Image 640wx -->
+        <div class="bg-slide" style="background-image: url('Gemini_Generated_Image_640wxb640wxb640w.jpg'), url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1920&q=80');"></div>
+        <!-- Slide 4: Gemini Generated Image 84tdu -->
+        <div class="bg-slide" style="background-image: url('Gemini_Generated_Image_84tdu984tdu984td.jpg'), url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1920&q=80');"></div>
+        <!-- Slide 5: Gemini Generated Image 4gr0k -->
+        <div class="bg-slide" style="background-image: url('Gemini_Generated_Image_4gr0k34gr0k34gr0.jpg'), url('https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&w=1920&q=80');"></div>
     </div>
     <div class="bg-overlay"></div>
 
@@ -670,7 +667,9 @@
                 <div class="stack-card">
                     <div>
                         <div class="card-img-wrapper">
-                            <img class="animated-img" src="https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?auto=format&fit=crop&w=800&q=80" alt="Civil Construction">
+                            <video class="continuous-video" autoplay loop muted playsinline webkit-playsinline preload="auto" disablePictureInPicture>
+                                <source src="input_file_3.mp4" type="video/mp4">
+                            </video>
                         </div>
                         <h3>Civil & Structural</h3>
                         <p style="color: var(--text-secondary); margin-top: 0.3rem;">Steel truss structures, foundations, site prep, civil works.</p>
@@ -692,7 +691,9 @@
                 <div class="stack-card">
                     <div>
                         <div class="card-img-wrapper">
-                            <img class="animated-img" src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=800&q=80" alt="Mechanical Electrical">
+                            <video class="continuous-video" autoplay loop muted playsinline webkit-playsinline preload="auto" disablePictureInPicture>
+                                <source src="input_file_1.mp4" type="video/mp4">
+                            </video>
                         </div>
                         <h3>Mechanical & Electrical</h3>
                         <p style="color: var(--text-secondary); margin-top: 0.3rem;">Power panels, wiring circuits, skids, and control systems.</p>
@@ -719,10 +720,11 @@
         </div>
 
         <div class="gallery-grid">
-            <!-- 1. Refinery Pipeline Systems -->
             <div class="gallery-card">
                 <div class="gallery-img-container">
-                    <img class="animated-img" src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80" alt="Refinery Pipeline">
+                    <video class="continuous-video" autoplay loop muted playsinline webkit-playsinline preload="auto" disablePictureInPicture>
+                        <source src="input_file_0.mp4" type="video/mp4">
+                    </video>
                 </div>
                 <div class="gallery-content">
                     <span class="gallery-badge">Petrochemical</span>
@@ -730,10 +732,11 @@
                 </div>
             </div>
 
-            <!-- 2. Gas Processing Plants -->
             <div class="gallery-card">
                 <div class="gallery-img-container">
-                    <img class="animated-img" src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80" alt="Gas Processing">
+                    <video class="continuous-video" autoplay loop muted playsinline webkit-playsinline preload="auto" disablePictureInPicture>
+                        <source src="input_file_2.mp4" type="video/mp4">
+                    </video>
                 </div>
                 <div class="gallery-content">
                     <span class="gallery-badge">Gas Operations</span>
@@ -741,10 +744,11 @@
                 </div>
             </div>
 
-            <!-- 3. Piping & Valve Assemblies -->
             <div class="gallery-card">
                 <div class="gallery-img-container">
-                    <img class="animated-img" src="https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=800&q=80" alt="Piping Valve">
+                    <video class="continuous-video" autoplay loop muted playsinline webkit-playsinline preload="auto" disablePictureInPicture>
+                        <source src="input_file_4.mp4" type="video/mp4">
+                    </video>
                 </div>
                 <div class="gallery-content">
                     <span class="gallery-badge">Mechanical</span>
@@ -752,7 +756,6 @@
                 </div>
             </div>
 
-            <!-- 4. Hydrogen & ESG Tech -->
             <div class="gallery-card">
                 <div class="gallery-img-container">
                     <img class="animated-img" src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=800&q=80" alt="Hydrogen & ESG Tech">
@@ -763,10 +766,11 @@
                 </div>
             </div>
 
-            <!-- 5. Control Panel Distribution -->
             <div class="gallery-card">
                 <div class="gallery-img-container">
-                    <img class="animated-img" src="https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=800&q=80" alt="Control Panel">
+                    <video class="continuous-video" autoplay loop muted playsinline webkit-playsinline preload="auto" disablePictureInPicture>
+                        <source src="input_file_1.mp4" type="video/mp4">
+                    </video>
                 </div>
                 <div class="gallery-content">
                     <span class="gallery-badge" style="background: rgba(175,82,222,0.25); color: #c084fc; border-color: rgba(192,132,252,0.3);">Electrical</span>
@@ -774,10 +778,11 @@
                 </div>
             </div>
 
-            <!-- 6. Tech-Hub Operations Matrix -->
             <div class="gallery-card">
                 <div class="gallery-img-container">
-                    <img class="animated-img" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80" alt="Tech Hub Matrix">
+                    <video class="continuous-video" autoplay loop muted playsinline webkit-playsinline preload="auto" disablePictureInPicture>
+                        <source src="input_file_0.mp4" type="video/mp4">
+                    </video>
                 </div>
                 <div class="gallery-content">
                     <span class="gallery-badge" style="background: rgba(0,199,190,0.25); color: #2dd4bf; border-color: rgba(45,212,191,0.3);">Smart Operations</span>
@@ -840,11 +845,8 @@
 
         <!-- INFOGRAPHICS -->
         <div class="infographics-grid">
-            
-            <!-- Box 1: Safety Compliance Systems -->
             <div class="info-box">
                 <h3><i class="fa-solid fa-shield-halved" style="color: var(--accent-pink);"></i> Safety Compliance Systems</h3>
-                
                 <div class="info-3d-list">
                     <div class="info-3d-card">
                         <div class="icon-3d-wrapper icon-dosh"><i class="fa-solid fa-file-contract"></i></div>
@@ -881,10 +883,8 @@
                 </div>
             </div>
 
-            <!-- Box 2: Quality Assurance Checklist -->
             <div class="info-box">
                 <h3><i class="fa-solid fa-award" style="color: #4ade80;"></i> Quality Assurance Checklist</h3>
-                
                 <div class="info-3d-list">
                     <div class="info-3d-card">
                         <div class="icon-3d-wrapper icon-mat"><i class="fa-solid fa-clipboard-check"></i></div>
@@ -920,7 +920,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </section>
 
@@ -1021,10 +1020,10 @@
 
     <!-- DYNAMIC WALLPAPER CROSSFADE & SYSTEM SCRIPTS -->
     <script>
-        // Smooth Wallpaper Crossfade Controller
+        // Smooth Slow-Motion Wallpaper Crossfade Controller
         const slides = document.querySelectorAll('#wallpaperSlider .bg-slide');
         let currentSlideIndex = 0;
-        const transitionInterval = 6000; // Switch slide every 6 seconds
+        const transitionInterval = 8000; // Switch slide every 8 seconds
 
         function nextWallpaperSlide() {
             if (slides.length <= 1) return;
@@ -1033,10 +1032,41 @@
             slides[currentSlideIndex].classList.add('active');
         }
 
-        // Start continuous background transition loop
         setInterval(nextWallpaperSlide, transitionInterval);
 
-        // Auto-Scroll Controller for Tender Leaderboard Feed
+        // Force Auto-Play Functionality Across All Videos
+        function ensureAutoplay() {
+            const allVideos = document.querySelectorAll('video');
+            allVideos.forEach(vid => {
+                vid.muted = true;
+                vid.defaultMuted = true;
+                vid.playsInline = true;
+                vid.loop = true;
+                vid.setAttribute('playsinline', '');
+                vid.setAttribute('webkit-playsinline', '');
+                
+                const tryPlay = () => {
+                    const playPromise = vid.play();
+                    if (playPromise !== undefined) {
+                        playPromise.catch(error => {
+                            console.log('Autoplay retry queued on user gesture', error);
+                        });
+                    }
+                };
+                
+                tryPlay();
+                
+                const enablePlayOnTouch = () => { tryPlay(); };
+                window.addEventListener('touchstart', enablePlayOnTouch, { once: true, passive: true });
+                window.addEventListener('click', enablePlayOnTouch, { once: true, passive: true });
+                window.addEventListener('scroll', enablePlayOnTouch, { once: true, passive: true });
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', ensureAutoplay);
+        window.addEventListener('load', ensureAutoplay);
+
+        // Smooth Auto-Scrolling Controller for Tender Leaderboard Feed
         const feedContainer = document.getElementById('tenderLeaderboard');
         let isHovered = false;
 
