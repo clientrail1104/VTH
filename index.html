@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-wallpaper="dynamic-cyber">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,7 +14,6 @@
     <style>
         /* --- SYSTEM DESIGN VARIABLES --- */
         :root {
-            /* Surface & Accent Colors */
             --accent-blue: #007aff;
             --accent-cyan: #00c7be;
             --accent-purple: #af52de;
@@ -22,17 +21,14 @@
             --accent-orange: #ff9500;
             --accent-green: #34c759;
 
-            /* Glassmorphism Surfaces for Dark/Dynamic Wallpapers */
-            --glass-surface: rgba(15, 23, 42, 0.65);
-            --glass-card: rgba(15, 23, 42, 0.72);
+            --glass-surface: rgba(15, 23, 42, 0.75);
+            --glass-card: rgba(15, 23, 42, 0.82);
             --glass-border: rgba(255, 255, 255, 0.15);
             --glass-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
             --glass-blur: blur(28px);
 
-            /* Dynamic Theme Text */
             --text-primary: #f8fafc;
             --text-secondary: #cbd5e1;
-            --text-inverse: #0f172a;
             --radius-sm: 14px;
             --radius-md: 24px;
             --radius-lg: 36px;
@@ -52,7 +48,7 @@
         .code-font { font-family: 'Space Grotesk', monospace; }
         a { text-decoration: none; color: inherit; }
 
-        /* --- STATIC BACKGROUND WALLPAPER (TRANSITIONS REMOVED) --- */
+        /* --- STATIC BACKGROUND WALLPAPER --- */
         .bg-wallpaper-slider {
             position: fixed;
             top: 0; left: 0; width: 100vw; height: 100vh;
@@ -65,17 +61,13 @@
             inset: 0;
             background-size: cover;
             background-position: center;
-            opacity: 1;
-            transform: scale(1);
-            will-change: auto;
             background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1920&q=80');
         }
 
-        /* Dark Contrast Overlay for Text Readability */
         .bg-overlay {
             position: fixed;
             inset: 0;
-            background: radial-gradient(circle at center, rgba(3, 7, 18, 0.45) 0%, rgba(3, 7, 18, 0.8) 100%);
+            background: radial-gradient(circle at center, rgba(3, 7, 18, 0.5) 0%, rgba(3, 7, 18, 0.85) 100%);
             backdrop-filter: blur(2px);
             z-index: -1;
             pointer-events: none;
@@ -148,7 +140,7 @@
         }
         .btn-mac-glass:hover { transform: translateY(-3px); background: rgba(255, 255, 255, 0.15); }
 
-        /* 3D Visual Card Hero & Realtime Tender Updates Widget */
+        /* REALTIME TENDER UPDATES WIDGET */
         .perspective-wrapper { perspective: 1000px; }
         .hero-visual-card {
             background: var(--glass-card); border: 1px solid var(--glass-border);
@@ -157,9 +149,8 @@
             transition: transform 0.15s ease-out; position: relative; overflow: hidden;
         }
         
-        /* Realtime Tender Box - Smooth Auto-Scroll Leaderboard */
         .tender-widget-box {
-            background: rgba(3, 7, 18, 0.88);
+            background: rgba(3, 7, 18, 0.92);
             border-radius: var(--radius-sm);
             border: 1px solid rgba(255, 255, 255, 0.12);
             padding: 1.2rem;
@@ -211,7 +202,7 @@
         .tender-item-title { font-size: 0.85rem; font-weight: 700; color: #f8fafc; display: flex; justify-content: space-between; gap: 8px; }
         .tender-item-desc { font-size: 0.75rem; color: #94a3b8; margin-top: 2px; display: flex; justify-content: space-between; align-items: center; }
 
-        /* --- DESKTOP STACKS & CONTINUOUS VIDEO WRAPPERS --- */
+        /* --- SECTIONS & STACKS --- */
         .section-block { padding: 80px 6%; max-width: 1400px; margin: 0 auto; }
         .section-header { text-align: center; max-width: 700px; margin: 0 auto 3.5rem; }
         .section-header h2 { font-size: 2.8rem; margin-bottom: 1rem; color: #fff; }
@@ -237,13 +228,12 @@
         .card-img-wrapper {
             width: 100%; height: 160px; border-radius: var(--radius-sm);
             overflow: hidden; margin-bottom: 1rem; background: #000; position: relative;
-            display: block;
         }
-        .animated-img, .continuous-video {
+        .card-img-wrapper img {
             width: 100%; height: 100%; object-fit: cover; display: block;
-            pointer-events: none;
-            border: none; outline: none;
+            transition: transform 0.5s ease;
         }
+        .stack-card:hover .card-img-wrapper img { transform: scale(1.1); }
 
         /* --- PROJECT GALLERY SHOWCASE --- */
         .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 2rem; }
@@ -254,13 +244,11 @@
             display: flex; flex-direction: column;
         }
         .gallery-card:hover { transform: translateY(-8px); border-color: rgba(56, 189, 248, 0.4); }
-        .gallery-img-container { width: 100%; height: 230px; overflow: hidden; position: relative; background: #000; display: block; }
-        .gallery-img-container .animated-img, 
-        .gallery-img-container .continuous-video {
-            width: 100%; height: 100%; object-fit: cover; object-position: center; transition: transform 0.5s; display: block;
+        .gallery-img-container { width: 100%; height: 230px; overflow: hidden; position: relative; background: #000; }
+        .gallery-img-container img {
+            width: 100%; height: 100%; object-fit: cover; object-position: center; transition: transform 0.5s ease; display: block;
         }
-        .gallery-card:hover .gallery-img-container .animated-img,
-        .gallery-card:hover .gallery-img-container .continuous-video { transform: scale(1.1); }
+        .gallery-card:hover .gallery-img-container img { transform: scale(1.1); }
         .gallery-content { padding: 1.4rem 1.5rem; text-align: left; }
         .gallery-badge {
             display: inline-block; padding: 4px 12px; border-radius: 50px;
@@ -268,7 +256,7 @@
             background: rgba(0,122,255,0.25); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3);
         }
 
-        /* --- REALTIME DATA WIDGETS GRID --- */
+        /* --- WIDGETS & INFOGRAPHICS --- */
         .widgets-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 2rem; }
         .widget {
             background: var(--glass-card); border: 1px solid var(--glass-border);
@@ -283,7 +271,6 @@
             border-radius: 50px; font-size: 0.78rem; font-weight: 800;
         }
 
-        /* --- INFOGRAPHICS --- */
         .infographics-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem; }
         .info-box {
             background: var(--glass-card); border: 1px solid var(--glass-border);
@@ -292,13 +279,11 @@
         .info-box h3 { font-size: 1.4rem; margin-bottom: 1.8rem; display: flex; align-items: center; gap: 12px; color: #fff; }
 
         .info-3d-list { display: flex; flex-direction: column; gap: 1.2rem; }
-        
         .info-3d-card {
             background: rgba(255, 255, 255, 0.05); border: 1px solid var(--glass-border);
             border-radius: 18px; padding: 1.2rem 1.4rem; display: flex; align-items: center; gap: 1.2rem;
             position: relative; box-shadow: 0 10px 20px rgba(0,0,0,0.2);
             transition: all 0.3s var(--ease-out);
-            will-change: transform; backface-visibility: hidden;
         }
         .info-3d-card:hover {
             transform: translateY(-4px) scale(1.02);
@@ -311,11 +296,6 @@
             width: 52px; height: 52px; border-radius: 16px;
             display: flex; align-items: center; justify-content: center; font-size: 1.4rem;
             position: relative; flex-shrink: 0; box-shadow: 0 8px 16px rgba(0,0,0,0.3);
-            animation: float3D 3s ease-in-out infinite alternate;
-        }
-        @keyframes float3D {
-            0% { transform: translateY(0px) rotate(0deg); }
-            100% { transform: translateY(-5px) rotate(4deg); }
         }
         .icon-dosh { background: linear-gradient(135deg, #ff2d55, #ff9500); color: white; }
         .icon-hirarc { background: linear-gradient(135deg, #af52de, #007aff); color: white; }
@@ -329,9 +309,6 @@
             font-weight: 700; font-size: 1rem; display: flex; justify-content: space-between; 
             align-items: center; gap: 8px; color: #fff; width: 100%; margin-bottom: 8px;
         }
-        .info-3d-title span.title-label {
-            white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 70%;
-        }
         .status-pill-3d {
             font-size: 0.72rem; font-weight: 800; padding: 4px 10px; border-radius: 50px;
             background: rgba(52, 199, 89, 0.25); color: #4ade80; display: inline-flex; align-items: center; 
@@ -339,9 +316,8 @@
         }
         .progress-bar-3d {
             width: 100%; height: 7px; background: rgba(255,255,255,0.12); border-radius: 10px; overflow: hidden;
-            position: relative;
         }
-        .progress-fill-3d { height: 100%; border-radius: 10px; transition: width 1s ease-in-out; }
+        .progress-fill-3d { height: 100%; border-radius: 10px; }
 
         /* --- CONTACT SECTION --- */
         .contact-card {
@@ -350,7 +326,6 @@
             backdrop-filter: var(--glass-blur); display: grid; grid-template-columns: 1fr 1.1fr; gap: 3.5rem;
             align-items: start;
         }
-
         .contact-info-col { display: flex; flex-direction: column; height: 100%; justify-content: space-between; }
         .contact-info-col h2 { font-size: 2.8rem; margin-bottom: 0.8rem; line-height: 1.15; color: #fff; }
         .contact-desc { color: var(--text-secondary); margin-bottom: 2rem; font-size: 1.05rem; line-height: 1.6; }
@@ -383,7 +358,7 @@
         .mac-input:focus { border-color: var(--accent-blue); background: rgba(15, 23, 42, 0.85); box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.25); }
         select.mac-input { cursor: pointer; appearance: none; background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%22%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23FFFFFF%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E"); background-repeat: no-repeat; background-position: right 1.2rem center; background-size: 0.7rem auto; padding-right: 2.5rem; }
 
-        /* --- GLOWING WHATSAPP CHATBOT WIDGET --- */
+        /* --- WHATSAPP WIDGET --- */
         .wa-widget-wrapper { position: fixed; bottom: 25px; right: 25px; z-index: 2005; }
         .wa-glow-button {
             width: 62px; height: 62px; border-radius: 50%;
@@ -459,9 +434,8 @@
             color: var(--text-primary); transition: all 0.3s var(--ease-out); box-shadow: 0 4px 10px rgba(0,0,0,0.2);
             border: 1px solid rgba(255,255,255,0.1);
         }
-        .dock-icon:hover { transform: translateY(-12px) scale(1.2); background: rgba(255,255,255,0.25); }
+        .dock-icon:hover { transform: translateY(-12px) scale(1.2); background: rgba(255, 255, 255, 0.25); }
 
-        /* Responsive Breakpoints */
         @media (max-width: 1024px) {
             .hero-container, .stacks-container, .gallery-grid, .widgets-grid, .infographics-grid, .contact-card { grid-template-columns: 1fr; }
             .hero-title { font-size: 2.8rem; }
@@ -511,7 +485,7 @@
             </div>
         </div>
 
-        <!-- 3D INTERACTIVE VISUAL HERO CARD WITH LEADERBOARD REALTIME TENDER UPDATES -->
+        <!-- TENDER LEADERBOARD REALTIME WIDGET -->
         <div class="perspective-wrapper">
             <div class="hero-visual-card" id="tiltSnippet">
                 <div class="tender-widget-box">
@@ -525,9 +499,7 @@
                         </a>
                     </div>
 
-                    <!-- Complete Scrollable Tender Leaderboard Stream -->
                     <div class="tender-feed" id="tenderLeaderboard">
-                        
                         <div class="tender-item">
                             <div class="rank-badge rank-top">#1</div>
                             <div class="tender-item-info">
@@ -597,21 +569,6 @@
                                 </div>
                             </div>
                         </div>
-
-                        <div class="tender-item">
-                            <div class="rank-badge">#6</div>
-                            <div class="tender-item-info">
-                                <div class="tender-item-title">
-                                    <span>Sabah Electricity - Grid Expansion</span>
-                                    <span style="color: #4ade80;">Active</span>
-                                </div>
-                                <div class="tender-item-desc">
-                                    <span>Ref: MY-TND-40892 • Kota Kinabalu</span>
-                                    <span class="code-font" style="color: #facc15;">RM 15.3M</span>
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
                 </div>
             </div>
@@ -631,7 +588,7 @@
                 <div class="stack-card">
                     <div>
                         <div class="card-img-wrapper">
-                            <img class="animated-img" src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80" alt="Industrial Procurement & Supplies">
+                            <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80" alt="Procurement">
                         </div>
                         <h3>Global Procurement</h3>
                         <p style="color: var(--text-secondary); margin-top: 0.3rem;">Refinery supplies, certified fittings, import/export logistics.</p>
@@ -653,9 +610,7 @@
                 <div class="stack-card">
                     <div>
                         <div class="card-img-wrapper">
-                            <video class="continuous-video" autoplay loop muted playsinline webkit-playsinline preload="auto" disablePictureInPicture>
-                                <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4">
-                            </video>
+                            <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80" alt="Civil Construction">
                         </div>
                         <h3>Civil & Structural</h3>
                         <p style="color: var(--text-secondary); margin-top: 0.3rem;">Steel truss structures, foundations, site prep, civil works.</p>
@@ -677,9 +632,7 @@
                 <div class="stack-card">
                     <div>
                         <div class="card-img-wrapper">
-                            <video class="continuous-video" autoplay loop muted playsinline webkit-playsinline preload="auto" disablePictureInPicture>
-                                <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4" type="video/mp4">
-                            </video>
+                            <img src="https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=800&q=80" alt="Electrical Automation">
                         </div>
                         <h3>Mechanical & Electrical</h3>
                         <p style="color: var(--text-secondary); margin-top: 0.3rem;">Power panels, wiring circuits, skids, and control systems.</p>
@@ -706,12 +659,9 @@
         </div>
 
         <div class="gallery-grid">
-            <!-- 1. Refinery Pipeline Systems -->
             <div class="gallery-card">
                 <div class="gallery-img-container">
-                    <video class="continuous-video" autoplay loop muted playsinline webkit-playsinline preload="auto" disablePictureInPicture>
-                        <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4" type="video/mp4">
-                    </video>
+                    <img src="https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=800&q=80" alt="Refinery Pipeline Systems">
                 </div>
                 <div class="gallery-content">
                     <span class="gallery-badge">Petrochemical</span>
@@ -719,12 +669,9 @@
                 </div>
             </div>
 
-            <!-- 2. Gas Processing Plants -->
             <div class="gallery-card">
                 <div class="gallery-img-container">
-                    <video class="continuous-video" autoplay loop muted playsinline webkit-playsinline preload="auto" disablePictureInPicture>
-                        <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackSeeTheWorld.mp4" type="video/mp4">
-                    </video>
+                    <img src="https://images.unsplash.com/photo-1541888946425-d0fbb18f1f7d?auto=format&fit=crop&w=800&q=80" alt="Gas Processing Plants">
                 </div>
                 <div class="gallery-content">
                     <span class="gallery-badge">Gas Operations</span>
@@ -732,12 +679,9 @@
                 </div>
             </div>
 
-            <!-- 3. Piping & Valve Assemblies -->
             <div class="gallery-card">
                 <div class="gallery-img-container">
-                    <video class="continuous-video" autoplay loop muted playsinline webkit-playsinline preload="auto" disablePictureInPicture>
-                        <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4" type="video/mp4">
-                    </video>
+                    <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80" alt="Piping & Valve Assemblies">
                 </div>
                 <div class="gallery-content">
                     <span class="gallery-badge">Mechanical</span>
@@ -745,10 +689,9 @@
                 </div>
             </div>
 
-            <!-- 4. Hydrogen & ESG Tech -->
             <div class="gallery-card">
                 <div class="gallery-img-container">
-                    <img class="animated-img" src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=800&q=80" alt="Hydrogen & ESG Tech">
+                    <img src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=800&q=80" alt="Hydrogen & ESG Tech">
                 </div>
                 <div class="gallery-content">
                     <span class="gallery-badge" style="background: rgba(52,199,89,0.25); color: #4ade80; border-color: rgba(74,222,128,0.3);">Green Energy</span>
@@ -756,12 +699,9 @@
                 </div>
             </div>
 
-            <!-- 5. Control Panel Distribution -->
             <div class="gallery-card">
                 <div class="gallery-img-container">
-                    <video class="continuous-video" autoplay loop muted playsinline webkit-playsinline preload="auto" disablePictureInPicture>
-                        <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4">
-                    </video>
+                    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80" alt="Control Panel Distribution">
                 </div>
                 <div class="gallery-content">
                     <span class="gallery-badge" style="background: rgba(175,82,222,0.25); color: #c084fc; border-color: rgba(192,132,252,0.3);">Electrical</span>
@@ -769,12 +709,9 @@
                 </div>
             </div>
 
-            <!-- 6. Tech-Hub Operations Matrix -->
             <div class="gallery-card">
                 <div class="gallery-img-container">
-                    <video class="continuous-video" autoplay loop muted playsinline webkit-playsinline preload="auto" disablePictureInPicture>
-                        <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4" type="video/mp4">
-                    </video>
+                    <img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=800&q=80" alt="Tech-Hub Operations Matrix">
                 </div>
                 <div class="gallery-content">
                     <span class="gallery-badge" style="background: rgba(0,199,190,0.25); color: #2dd4bf; border-color: rgba(45,212,191,0.3);">Smart Operations</span>
@@ -837,17 +774,14 @@
 
         <!-- INFOGRAPHICS -->
         <div class="infographics-grid">
-            
-            <!-- Box 1: Safety Compliance Systems -->
             <div class="info-box">
                 <h3><i class="fa-solid fa-shield-halved" style="color: var(--accent-pink);"></i> Safety Compliance Systems</h3>
-                
                 <div class="info-3d-list">
                     <div class="info-3d-card">
                         <div class="icon-3d-wrapper icon-dosh"><i class="fa-solid fa-file-contract"></i></div>
                         <div class="info-3d-content">
                             <div class="info-3d-title">
-                                <span class="title-label">DOSH / JKKP Standard</span>
+                                <span>DOSH / JKKP Standard</span>
                                 <span class="status-pill-3d"><i class="fa-solid fa-check"></i> 100% Verified</span>
                             </div>
                             <div class="progress-bar-3d"><div class="progress-fill-3d" style="width: 100%; background: linear-gradient(90deg, #ff2d55, #ff9500);"></div></div>
@@ -858,7 +792,7 @@
                         <div class="icon-3d-wrapper icon-hirarc"><i class="fa-solid fa-triangle-exclamation"></i></div>
                         <div class="info-3d-content">
                             <div class="info-3d-title">
-                                <span class="title-label">HIRARC Risk Assessment</span>
+                                <span>HIRARC Risk Assessment</span>
                                 <span class="status-pill-3d"><i class="fa-solid fa-check"></i> Active</span>
                             </div>
                             <div class="progress-bar-3d"><div class="progress-fill-3d" style="width: 98%; background: linear-gradient(90deg, #af52de, #007aff);"></div></div>
@@ -869,7 +803,7 @@
                         <div class="icon-3d-wrapper icon-zero"><i class="fa-solid fa-heart-pulse"></i></div>
                         <div class="info-3d-content">
                             <div class="info-3d-title">
-                                <span class="title-label">LTI Frequency Rate</span>
+                                <span>LTI Frequency Rate</span>
                                 <span class="status-pill-3d"><i class="fa-solid fa-check"></i> Zero LTI</span>
                             </div>
                             <div class="progress-bar-3d"><div class="progress-fill-3d" style="width: 100%; background: linear-gradient(90deg, #34c759, #00c7be);"></div></div>
@@ -878,16 +812,14 @@
                 </div>
             </div>
 
-            <!-- Box 2: Quality Assurance Checklist -->
             <div class="info-box">
                 <h3><i class="fa-solid fa-award" style="color: #4ade80;"></i> Quality Assurance Checklist</h3>
-                
                 <div class="info-3d-list">
                     <div class="info-3d-card">
                         <div class="icon-3d-wrapper icon-mat"><i class="fa-solid fa-clipboard-check"></i></div>
                         <div class="info-3d-content">
                             <div class="info-3d-title">
-                                <span class="title-label">Material Inspection Plans</span>
+                                <span>Material Inspection Plans</span>
                                 <span class="status-pill-3d"><i class="fa-solid fa-check"></i> Passed</span>
                             </div>
                             <div class="progress-bar-3d"><div class="progress-fill-3d" style="width: 100%; background: linear-gradient(90deg, #007aff, #00c7be);"></div></div>
@@ -898,7 +830,7 @@
                         <div class="icon-3d-wrapper icon-qaqc"><i class="fa-solid fa-microscope"></i></div>
                         <div class="info-3d-content">
                             <div class="info-3d-title">
-                                <span class="title-label">QA/QC Documentation</span>
+                                <span>QA/QC Documentation</span>
                                 <span class="status-pill-3d"><i class="fa-solid fa-check"></i> Validated</span>
                             </div>
                             <div class="progress-bar-3d"><div class="progress-fill-3d" style="width: 96%; background: linear-gradient(90deg, #ff9500, #ff2d55);"></div></div>
@@ -909,7 +841,7 @@
                         <div class="icon-3d-wrapper icon-iso"><i class="fa-solid fa-certificate"></i></div>
                         <div class="info-3d-content">
                             <div class="info-3d-title">
-                                <span class="title-label">ISO Compliance Validation</span>
+                                <span>ISO Compliance Validation</span>
                                 <span class="status-pill-3d"><i class="fa-solid fa-check"></i> 100% Certified</span>
                             </div>
                             <div class="progress-bar-3d"><div class="progress-fill-3d" style="width: 100%; background: linear-gradient(90deg, #34c759, #af52de);"></div></div>
@@ -917,7 +849,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </section>
 
@@ -931,7 +862,6 @@
                         Send us your procurement specifications, civil requirements, M&E plans, or tender documents.
                     </p>
                 </div>
-                
                 <div>
                     <div class="key-contact-badge-box">
                         <div class="contact-avatar">M</div>
@@ -953,7 +883,6 @@
                     <label for="contactName">Your Name / Company</label>
                     <input type="text" id="contactName" class="mac-input" placeholder="e.g. Alex Tan / Tech Corp" required>
                 </div>
-                
                 <div class="form-group">
                     <label for="contactService">Service Required</label>
                     <select id="contactService" class="mac-input">
@@ -963,12 +892,10 @@
                         <option>Process Plant & Valve Engineering</option>
                     </select>
                 </div>
-
                 <div class="form-group">
                     <label for="contactMsg">Message / Details</label>
                     <textarea id="contactMsg" class="mac-input" rows="4" placeholder="Attach details or tender reference..."></textarea>
                 </div>
-
                 <button type="submit" class="btn-mac-primary" style="width: 100%; justify-content: center; margin-top: 0.5rem;">
                     Submit Inquiry &rarr;
                 </button>
@@ -976,7 +903,7 @@
         </div>
     </section>
 
-    <!-- FLOATING GLOWING WHATSAPP CHATBOT WIDGET -->
+    <!-- FLOATING WHATSAPP CHATBOT WIDGET -->
     <div class="wa-widget-wrapper">
         <div class="wa-chat-box" id="waChatBox">
             <div class="wa-chat-header">
@@ -1018,38 +945,6 @@
 
     <!-- SYSTEM SCRIPTS -->
     <script>
-        // Force Auto-Play Functionality Across All Videos
-        function ensureAutoplay() {
-            const allVideos = document.querySelectorAll('video');
-            allVideos.forEach(vid => {
-                vid.muted = true;
-                vid.defaultMuted = true;
-                vid.playsInline = true;
-                vid.loop = true;
-                vid.setAttribute('playsinline', '');
-                vid.setAttribute('webkit-playsinline', '');
-                
-                const tryPlay = () => {
-                    const playPromise = vid.play();
-                    if (playPromise !== undefined) {
-                        playPromise.catch(error => {
-                            console.log('Autoplay retry queued on user gesture', error);
-                        });
-                    }
-                };
-                
-                tryPlay();
-                
-                const enablePlayOnTouch = () => { tryPlay(); };
-                window.addEventListener('touchstart', enablePlayOnTouch, { once: true, passive: true });
-                window.addEventListener('click', enablePlayOnTouch, { once: true, passive: true });
-                window.addEventListener('scroll', enablePlayOnTouch, { once: true, passive: true });
-            });
-        }
-
-        document.addEventListener('DOMContentLoaded', ensureAutoplay);
-        window.addEventListener('load', ensureAutoplay);
-
         // Smooth Auto-Scrolling Controller for Tender Leaderboard Feed
         const feedContainer = document.getElementById('tenderLeaderboard');
         let isHovered = false;
