@@ -106,9 +106,35 @@
         }
         .logo-globe { position: absolute; font-size: 16px; color: var(--accent-blue); }
 
+        .menubar-right {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
         .menubar-nav { display: flex; gap: 1.8rem; list-style: none; }
         .menubar-link { font-size: 0.9rem; font-weight: 600; color: var(--text-secondary); transition: color 0.2s; }
         .menubar-link:hover { color: #38bdf8; }
+
+        /* Admin link style */
+        .admin-badge-link {
+            background: rgba(255, 45, 85, 0.15);
+            border: 1px solid rgba(255, 45, 85, 0.4);
+            color: #ff2d55;
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            backdrop-filter: blur(10px);
+            transition: all 0.2s var(--ease-out);
+        }
+        .admin-badge-link:hover {
+            background: rgba(255, 45, 85, 0.25);
+            color: #ff5277;
+            transform: translateY(-1px);
+        }
 
         /* --- HERO SECTION --- */
         .hero-container {
@@ -511,15 +537,20 @@
             </div>
             <span>Vihaanaa Tech Hubs</span>
         </div>
-        <nav>
-            <ul class="menubar-nav">
-                <li><a href="#hero" class="menubar-link">Overview</a></li>
-                <li><a href="#stacks" class="menubar-link">Capabilities</a></li>
-                <li><a href="#gallery" class="menubar-link">Infrastructure</a></li>
-                <li><a href="#widgets" class="menubar-link">Operations</a></li>
-                <li><a href="#contact" class="menubar-link">Contact</a></li>
-            </ul>
-        </nav>
+        <div class="menubar-right">
+            <nav>
+                <ul class="menubar-nav">
+                    <li><a href="#hero" class="menubar-link">Overview</a></li>
+                    <li><a href="#stacks" class="menubar-link">Capabilities</a></li>
+                    <li><a href="#gallery" class="menubar-link">Infrastructure</a></li>
+                    <li><a href="#widgets" class="menubar-link">Operations</a></li>
+                    <li><a href="#contact" class="menubar-link">Contact</a></li>
+                </ul>
+            </nav>
+            <a href="?admin=1" class="admin-badge-link" title="Administrative View">
+                <i class="fa-solid fa-shield-halved"></i> Admin View
+            </a>
+        </div>
     </header>
 
     <!-- HERO & VISUAL SHOWCASE -->
@@ -1065,6 +1096,19 @@
 
     <!-- SCRIPTS -->
     <script>
+        // Administrative View Activation Handler
+        window.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('admin') === '1') {
+                document.body.classList.add('admin-mode');
+                
+                const adminBanner = document.createElement('div');
+                adminBanner.style.cssText = 'position: fixed; top: 52px; left: 0; right: 0; background: linear-gradient(135deg, #ff2d55, #ff9500); color: white; text-align: center; padding: 6px; font-size: 0.85rem; font-weight: 700; z-index: 1999; box-shadow: 0 4px 12px rgba(0,0,0,0.3);';
+                adminBanner.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> ADMINISTRATIVE VIEW ACTIVE (?admin=1) — Management Controls Enabled';
+                document.body.prepend(adminBanner);
+            }
+        });
+
         // Background Wallpaper Slider
         const slides = document.querySelectorAll('#wallpaperSlider .bg-slide');
         let currentSlideIndex = 0;
