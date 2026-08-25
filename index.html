@@ -215,36 +215,49 @@
         .section-header h2 { font-size: 2.8rem; margin-bottom: 1rem; color: #fff; }
         .section-header p { font-size: 1.1rem; color: var(--text-secondary); }
 
-        /* Stacks Grid & Cards */
-        .stacks-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; }
-        .stack-group { position: relative; height: 440px; cursor: pointer; }
-        .stack-card {
-            position: absolute; inset: 0; background: var(--glass-card);
-            border: 1px solid var(--glass-border); border-radius: var(--radius-md);
-            padding: 1.8rem; box-shadow: var(--glass-shadow); backdrop-filter: var(--glass-blur);
-            transition: all 0.4s var(--ease-out); display: flex; flex-direction: column; justify-content: space-between;
+        /* Capabilities Grid (100% VISIBLE IMAGES FOR ALL CARDS) */
+        .capabilities-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        .service-card {
+            background: var(--glass-card);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-md);
+            padding: 1.6rem;
+            box-shadow: var(--glass-shadow);
+            backdrop-filter: var(--glass-blur);
+            transition: all 0.3s var(--ease-out);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
             overflow: hidden;
         }
-        .stack-card:nth-child(1) { transform: translateY(0) scale(1); z-index: 3; }
-        .stack-card:nth-child(2) { transform: translateY(-14px) scale(0.95); z-index: 2; opacity: 0.85; }
-        .stack-card:nth-child(3) { transform: translateY(-28px) scale(0.9); z-index: 1; opacity: 0.6; }
+        .service-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(56, 189, 248, 0.4);
+            box-shadow: 0 30px 60px -12px rgba(0, 122, 255, 0.3);
+        }
 
-        .stack-group:hover .stack-card:nth-child(1) { transform: translateY(10px) rotate(-2deg); }
-        .stack-group:hover .stack-card:nth-child(2) { transform: translateY(-20px) rotate(3deg); opacity: 0.95; }
-        .stack-group:hover .stack-card:nth-child(3) { transform: translateY(-50px) rotate(-1deg); opacity: 0.9; }
-
-        /* Functional Image Wrappers (Guaranteed 100% Visibility) */
+        /* Functional Image Wrappers (Guaranteed 100% Visibility at All Times) */
         .card-img-wrapper {
-            width: 100%; height: 160px; border-radius: var(--radius-sm);
-            overflow: hidden; margin-bottom: 1rem; background: #000; position: relative;
+            width: 100%; height: 170px; border-radius: var(--radius-sm);
+            overflow: hidden; margin-bottom: 1.2rem; background: #000; position: relative;
             display: block;
         }
         .animated-img {
             width: 100%; height: 100%; object-fit: cover; display: block;
             border: none; outline: none; transition: transform 0.5s var(--ease-out);
         }
-        .stack-card:hover .animated-img, .gallery-card:hover .animated-img {
+        .service-card:hover .animated-img, .gallery-card:hover .animated-img {
             transform: scale(1.08);
+        }
+
+        .service-tag {
+            display: inline-block; padding: 4px 12px; border-radius: 50px;
+            font-size: 0.72rem; font-weight: 800; text-transform: uppercase; margin-bottom: 0.6rem;
+            background: rgba(0,122,255,0.25); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3);
         }
 
         /* --- PROJECT GALLERY SHOWCASE --- */
@@ -456,7 +469,7 @@
         .dock-icon:hover { transform: translateY(-12px) scale(1.2); background: rgba(255,255,255,0.25); }
 
         @media (max-width: 1024px) {
-            .hero-container, .stacks-container, .gallery-grid, .widgets-grid, .infographics-grid, .contact-card { grid-template-columns: 1fr; }
+            .hero-container, .capabilities-grid, .gallery-grid, .widgets-grid, .infographics-grid, .contact-card { grid-template-columns: 1fr; }
             .hero-title { font-size: 2.8rem; }
             .menubar-nav { display: none; }
         }
@@ -614,78 +627,129 @@
         </div>
     </section>
 
-    <!-- CAPABILITIES & SERVICES (100% VISIBLE & VERIFIED IMAGES) -->
+    <!-- CAPABILITIES & SERVICES (100% VISIBLE IMAGES FOR ALL CARDS AT ALL TIMES) -->
     <section class="section-block" id="stacks">
         <div class="section-header">
             <h2>Capabilities & Services</h2>
-            <p>Hover over cards to explore our core technical operational domains.</p>
+            <p>Explore our core technical operational domains with verified imagery always on display.</p>
         </div>
 
-        <div class="stacks-container">
-            <!-- Stack 1: Global Procurement -->
-            <div class="stack-group">
-                <div class="stack-card">
-                    <div>
-                        <div class="card-img-wrapper">
-                            <img class="animated-img" src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80" alt="Global Procurement">
-                        </div>
-                        <h3>Global Procurement</h3>
-                        <p style="color: var(--text-secondary); margin-top: 0.3rem;">Refinery supplies, certified fittings, import/export logistics.</p>
+        <div class="capabilities-grid">
+            <!-- 1. Global Procurement -->
+            <div class="service-card">
+                <div>
+                    <div class="card-img-wrapper">
+                        <img class="animated-img" src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80" alt="Global Procurement">
                     </div>
-                    <span class="code-font" style="font-size: 0.85rem; color: #38bdf8;">Industrial Supply &rarr;</span>
+                    <span class="service-tag">Procurement</span>
+                    <h3 style="font-size: 1.25rem; color: #fff; margin-bottom: 0.4rem;">Global Procurement</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Refinery supplies, certified fittings, and import/export logistics.</p>
                 </div>
-                <div class="stack-card">
-                    <h4>Import & Export Logistics</h4>
-                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Seamless customs compliance & cross-border freight.</p>
-                </div>
-                <div class="stack-card">
-                    <h4>Industrial Supplies</h4>
-                    <p style="color: var(--text-secondary); font-size: 0.9rem;">OEM spare parts and heavy production equipment.</p>
-                </div>
+                <span class="code-font" style="font-size: 0.85rem; color: #38bdf8; margin-top: 1rem;">Industrial Supply &rarr;</span>
             </div>
 
-            <!-- Stack 2: Civil & Structural -->
-            <div class="stack-group">
-                <div class="stack-card">
-                    <div>
-                        <div class="card-img-wrapper">
-                            <img class="animated-img" src="https://images.unsplash.com/photo-1541888946425-d0fbb18f02f4?auto=format&fit=crop&w=800&q=80" alt="Civil & Structural">
-                        </div>
-                        <h3>Civil & Structural</h3>
-                        <p style="color: var(--text-secondary); margin-top: 0.3rem;">Steel truss structures, foundations, site prep, civil works.</p>
+            <!-- 2. Import & Export Logistics -->
+            <div class="service-card">
+                <div>
+                    <div class="card-img-wrapper">
+                        <img class="animated-img" src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80" alt="Import & Export Logistics">
                     </div>
-                    <span class="code-font" style="font-size: 0.85rem; color: var(--accent-orange);">Structural Engineering &rarr;</span>
+                    <span class="service-tag">Logistics</span>
+                    <h3 style="font-size: 1.25rem; color: #fff; margin-bottom: 0.4rem;">Import & Export Logistics</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Seamless customs compliance and cross-border freight forwarding.</p>
                 </div>
-                <div class="stack-card">
-                    <h4>Structural Concrete</h4>
-                    <p style="color: var(--text-secondary); font-size: 0.9rem;">High-durability site preparation and heavy foundations.</p>
-                </div>
-                <div class="stack-card">
-                    <h4>Facility Modifications</h4>
-                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Infrastructure upgrades and ongoing structural maintenance.</p>
-                </div>
+                <span class="code-font" style="font-size: 0.85rem; color: #38bdf8; margin-top: 1rem;">Freight Management &rarr;</span>
             </div>
 
-            <!-- Stack 3: Mechanical & Electrical -->
-            <div class="stack-group">
-                <div class="stack-card">
-                    <div>
-                        <div class="card-img-wrapper">
-                            <img class="animated-img" src="https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=800&q=80" alt="Mechanical & Electrical">
-                        </div>
-                        <h3>Mechanical & Electrical</h3>
-                        <p style="color: var(--text-secondary); margin-top: 0.3rem;">Power panels, wiring circuits, skids, and control systems.</p>
+            <!-- 3. Industrial OEM Supplies -->
+            <div class="service-card">
+                <div>
+                    <div class="card-img-wrapper">
+                        <img class="animated-img" src="https://images.unsplash.com/photo-1563770660941-20978e870e26?auto=format&fit=crop&w=800&q=80" alt="Industrial Supplies">
                     </div>
-                    <span class="code-font" style="font-size: 0.85rem; color: #4ade80;">Electrical Automation &rarr;</span>
+                    <span class="service-tag">OEM Parts</span>
+                    <h3 style="font-size: 1.25rem; color: #fff; margin-bottom: 0.4rem;">Industrial OEM Supplies</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Genuine OEM spare parts and heavy production equipment supply.</p>
                 </div>
-                <div class="stack-card">
-                    <h4>Piping & Skid Assembly</h4>
-                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Modular skid fabrication and valve precision alignment.</p>
+                <span class="code-font" style="font-size: 0.85rem; color: #38bdf8; margin-top: 1rem;">Equipment Sourcing &rarr;</span>
+            </div>
+
+            <!-- 4. Civil & Structural (Directly Fixed & Fully Visible) -->
+            <div class="service-card">
+                <div>
+                    <div class="card-img-wrapper">
+                        <img class="animated-img" src="https://images.unsplash.com/photo-1541888946425-d0fbb18f02f4?auto=format&fit=crop&w=800&q=80" alt="Civil & Structural">
+                    </div>
+                    <span class="service-tag" style="background: rgba(255,149,0,0.25); color: #ffab2d; border-color: rgba(255,171,45,0.3);">Civil Engineering</span>
+                    <h3 style="font-size: 1.25rem; color: #fff; margin-bottom: 0.4rem;">Civil & Structural</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Steel truss structures, heavy foundations, and site preparation.</p>
                 </div>
-                <div class="stack-card">
-                    <h4>Testing & Maintenance</h4>
-                    <p style="color: var(--text-secondary); font-size: 0.9rem;">24/7 technical field support and plant commissioning.</p>
+                <span class="code-font" style="font-size: 0.85rem; color: var(--accent-orange); margin-top: 1rem;">Structural Works &rarr;</span>
+            </div>
+
+            <!-- 5. Structural Concrete & Foundations -->
+            <div class="service-card">
+                <div>
+                    <div class="card-img-wrapper">
+                        <img class="animated-img" src="https://images.unsplash.com/photo-1590069261209-f8e9b8642343?auto=format&fit=crop&w=800&q=80" alt="Structural Concrete">
+                    </div>
+                    <span class="service-tag" style="background: rgba(255,149,0,0.25); color: #ffab2d; border-color: rgba(255,171,45,0.3);">Foundations</span>
+                    <h3 style="font-size: 1.25rem; color: #fff; margin-bottom: 0.4rem;">Structural Concrete</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">High-durability site preparation, piling, and heavy machinery foundations.</p>
                 </div>
+                <span class="code-font" style="font-size: 0.85rem; color: var(--accent-orange); margin-top: 1rem;">Foundation Engineering &rarr;</span>
+            </div>
+
+            <!-- 6. Facility Modifications -->
+            <div class="service-card">
+                <div>
+                    <div class="card-img-wrapper">
+                        <img class="animated-img" src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=80" alt="Facility Modifications">
+                    </div>
+                    <span class="service-tag" style="background: rgba(255,149,0,0.25); color: #ffab2d; border-color: rgba(255,171,45,0.3);">Upgrades</span>
+                    <h3 style="font-size: 1.25rem; color: #fff; margin-bottom: 0.4rem;">Facility Modifications</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Industrial infrastructure upgrades and ongoing structural maintenance.</p>
+                </div>
+                <span class="code-font" style="font-size: 0.85rem; color: var(--accent-orange); margin-top: 1rem;">Facility Maintenance &rarr;</span>
+            </div>
+
+            <!-- 7. Mechanical & Electrical (Directly Fixed & Fully Visible) -->
+            <div class="service-card">
+                <div>
+                    <div class="card-img-wrapper">
+                        <img class="animated-img" src="https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=800&q=80" alt="Mechanical & Electrical">
+                    </div>
+                    <span class="service-tag" style="background: rgba(52,199,89,0.25); color: #4ade80; border-color: rgba(74,222,128,0.3);">M&E Systems</span>
+                    <h3 style="font-size: 1.25rem; color: #fff; margin-bottom: 0.4rem;">Mechanical & Electrical</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Power distribution panels, wiring circuits, and control systems.</p>
+                </div>
+                <span class="code-font" style="font-size: 0.85rem; color: #4ade80; margin-top: 1rem;">Electrical Automation &rarr;</span>
+            </div>
+
+            <!-- 8. Piping & Skid Assembly -->
+            <div class="service-card">
+                <div>
+                    <div class="card-img-wrapper">
+                        <img class="animated-img" src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=800&q=80" alt="Piping & Skid Assembly">
+                    </div>
+                    <span class="service-tag" style="background: rgba(52,199,89,0.25); color: #4ade80; border-color: rgba(74,222,128,0.3);">Piping</span>
+                    <h3 style="font-size: 1.25rem; color: #fff; margin-bottom: 0.4rem;">Piping & Skid Assembly</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Modular skid fabrication, process piping, and valve precision alignment.</p>
+                </div>
+                <span class="code-font" style="font-size: 0.85rem; color: #4ade80; margin-top: 1rem;">Skid Fabrication &rarr;</span>
+            </div>
+
+            <!-- 9. Testing & Plant Maintenance -->
+            <div class="service-card">
+                <div>
+                    <div class="card-img-wrapper">
+                        <img class="animated-img" src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80" alt="Testing & Maintenance">
+                    </div>
+                    <span class="service-tag" style="background: rgba(52,199,89,0.25); color: #4ade80; border-color: rgba(74,222,128,0.3);">Commissioning</span>
+                    <h3 style="font-size: 1.25rem; color: #fff; margin-bottom: 0.4rem;">Testing & Maintenance</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">24/7 technical field support, plant turnaround, and commissioning.</p>
+                </div>
+                <span class="code-font" style="font-size: 0.85rem; color: #4ade80; margin-top: 1rem;">Plant Support &rarr;</span>
             </div>
         </div>
     </section>
