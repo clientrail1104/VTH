@@ -190,7 +190,6 @@
             max-height: 250px; overflow-y: auto; position: relative;
             padding-right: 4px; scroll-behavior: smooth;
         }
-        /* Styling thin custom scrollbar for leaderboard feed */
         .tender-feed::-webkit-scrollbar { width: 4px; }
         .tender-feed::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.05); border-radius: 4px; }
         .tender-feed::-webkit-scrollbar-thumb { background: var(--accent-blue); border-radius: 4px; }
@@ -239,7 +238,7 @@
         .stack-group:hover .stack-card:nth-child(2) { transform: translateY(-20px) rotate(3deg); opacity: 0.95; }
         .stack-group:hover .stack-card:nth-child(3) { transform: translateY(-50px) rotate(-1deg); opacity: 0.9; }
 
-        /* AUTO-FUNCTIONAL VIDEO & IMAGE CONTAINER ENHANCEMENTS */
+        /* FULLY FUNCTIONAL HTML5 VIDEO CONTAINER */
         .card-img-wrapper {
             width: 100%; height: 160px; border-radius: var(--radius-sm);
             overflow: hidden; margin-bottom: 1rem; background: #000; position: relative;
@@ -247,8 +246,7 @@
         }
         .animated-img, .continuous-video {
             width: 100%; height: 100%; object-fit: cover; display: block;
-            pointer-events: none;
-            border: none; outline: none;
+            pointer-events: none; border: none; outline: none;
         }
 
         /* --- PROJECT GALLERY SHOWCASE --- */
@@ -479,15 +477,13 @@
 
     <!-- SMOOTH SLOW-MOTION CONTINUOUS WALLPAPER CAROUSEL -->
     <div class="bg-wallpaper-slider" id="wallpaperSlider">
-        <div class="bg-slide active" style="background-image: url('3d-ai-cybersecurity-concept-as-glowing-abstract-digital-art-banner-highlighting-ais-role-cyb_980716-667027.jpg');"></div>
-        <div class="bg-slide" style="background-image: url('9851-ai-intelligent-systems-02.jpg');"></div>
-        <div class="bg-slide" style="background-image: url('9851-industry-applications-use-cases-04.jpg');"></div>
-        <div class="bg-slide" style="background-image: url('images-2.jpeg');"></div>
-        <div class="bg-slide" style="background-image: url('images-3.jpeg');"></div>
-        <div class="bg-slide" style="background-image: url('h6.png.jpeg');"></div>
-        <div class="bg-slide" style="background-image: url('AdobeStock_711599297-scaled.jpg');"></div>
-        <div class="bg-slide" style="background-image: url('4232366.jpg');"></div>
-        <div class="bg-slide" style="background-image: url('images.jpeg');"></div>
+        <div class="bg-slide active" style="background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1920&q=80');"></div>
+        <div class="bg-slide" style="background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1920&q=80');"></div>
+        <div class="bg-slide" style="background-image: url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1920&q=80');"></div>
+        <div class="bg-slide" style="background-image: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1920&q=80');"></div>
+        <div class="bg-slide" style="background-image: url('https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&w=1920&q=80');"></div>
+        <div class="bg-slide" style="background-image: url('https://images.unsplash.com/photo-1510519138161-58441d828198?auto=format&fit=crop&w=1920&q=80');"></div>
+        <div class="bg-slide" style="background-image: url('https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?auto=format&fit=crop&w=1920&q=80');"></div>
     </div>
     <div class="bg-overlay"></div>
 
@@ -532,7 +528,7 @@
                     <div class="tender-header">
                         <div>
                             <span class="code-font" style="font-size: 0.78rem; text-transform: uppercase; color: #a5f3fc; letter-spacing: 0.5px;">Live Leaderboard Feed</span>
-                            <h4 style="font-size: 1rem; color: #ffffff;">Realtime Tender Leaderboard</h4>
+                            <h4 style="font-size: 1rem; color: #ffffff;"><i class="fa-solid fa-list-check" style="margin-right: 6px;"></i> Realtime Tender Leaderboard</h4>
                         </div>
                         <a href="https://www.tenderpanel.com/" target="_blank" class="tender-live-badge">
                             <span class="pulse-dot"></span> tenderpanel.com
@@ -667,8 +663,8 @@
                 <div class="stack-card">
                     <div>
                         <div class="card-img-wrapper">
-                            <video class="continuous-video" autoplay loop muted playsinline webkit-playsinline preload="auto" disablePictureInPicture>
-                                <source src="input_file_3.mp4" type="video/mp4">
+                            <video class="continuous-video" autoplay loop muted playsinline preload="auto">
+                                <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4">
                             </video>
                         </div>
                         <h3>Civil & Structural</h3>
@@ -691,8 +687,8 @@
                 <div class="stack-card">
                     <div>
                         <div class="card-img-wrapper">
-                            <video class="continuous-video" autoplay loop muted playsinline webkit-playsinline preload="auto" disablePictureInPicture>
-                                <source src="input_file_1.mp4" type="video/mp4">
+                            <video class="continuous-video" autoplay loop muted playsinline preload="auto">
+                                <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4" type="video/mp4">
                             </video>
                         </div>
                         <h3>Mechanical & Electrical</h3>
@@ -723,8 +719,8 @@
             <!-- 1. Refinery Pipeline Systems -->
             <div class="gallery-card">
                 <div class="gallery-img-container">
-                    <video class="continuous-video" autoplay loop muted playsinline webkit-playsinline preload="auto" disablePictureInPicture>
-                        <source src="input_file_0.mp4" type="video/mp4">
+                    <video class="continuous-video" autoplay loop muted playsinline preload="auto">
+                        <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4" type="video/mp4">
                     </video>
                 </div>
                 <div class="gallery-content">
@@ -736,8 +732,8 @@
             <!-- 2. Gas Processing Plants -->
             <div class="gallery-card">
                 <div class="gallery-img-container">
-                    <video class="continuous-video" autoplay loop muted playsinline webkit-playsinline preload="auto" disablePictureInPicture>
-                        <source src="input_file_2.mp4" type="video/mp4">
+                    <video class="continuous-video" autoplay loop muted playsinline preload="auto">
+                        <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4" type="video/mp4">
                     </video>
                 </div>
                 <div class="gallery-content">
@@ -749,8 +745,8 @@
             <!-- 3. Piping & Valve Assemblies -->
             <div class="gallery-card">
                 <div class="gallery-img-container">
-                    <video class="continuous-video" autoplay loop muted playsinline webkit-playsinline preload="auto" disablePictureInPicture>
-                        <source src="input_file_4.mp4" type="video/mp4">
+                    <video class="continuous-video" autoplay loop muted playsinline preload="auto">
+                        <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyflights.mp4" type="video/mp4">
                     </video>
                 </div>
                 <div class="gallery-content">
@@ -762,7 +758,7 @@
             <!-- 4. Hydrogen & ESG Tech -->
             <div class="gallery-card">
                 <div class="gallery-img-container">
-                    <img class="animated-img" src="images.jpeg" alt="Hydrogen & ESG Tech">
+                    <img class="animated-img" src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=800&q=80" alt="Hydrogen & ESG Tech">
                 </div>
                 <div class="gallery-content">
                     <span class="gallery-badge" style="background: rgba(52,199,89,0.25); color: #4ade80; border-color: rgba(74,222,128,0.3);">Green Energy</span>
@@ -773,8 +769,8 @@
             <!-- 5. Control Panel Distribution -->
             <div class="gallery-card">
                 <div class="gallery-img-container">
-                    <video class="continuous-video" autoplay loop muted playsinline webkit-playsinline preload="auto" disablePictureInPicture>
-                        <source src="input_file_1.mp4" type="video/mp4">
+                    <video class="continuous-video" autoplay loop muted playsinline preload="auto">
+                        <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4" type="video/mp4">
                     </video>
                 </div>
                 <div class="gallery-content">
@@ -786,8 +782,8 @@
             <!-- 6. Tech-Hub Operations Matrix -->
             <div class="gallery-card">
                 <div class="gallery-img-container">
-                    <video class="continuous-video" autoplay loop muted playsinline webkit-playsinline preload="auto" disablePictureInPicture>
-                        <source src="input_file_0.mp4" type="video/mp4">
+                    <video class="continuous-video" autoplay loop muted playsinline preload="auto">
+                        <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4">
                     </video>
                 </div>
                 <div class="gallery-content">
@@ -1030,84 +1026,72 @@
         <a href="https://wa.me/60149725722" target="_blank" class="dock-icon" title="WhatsApp"><i class="fa-brands fa-whatsapp" style="color: #25d366;"></i></a>
     </div>
 
-    <!-- DYNAMIC WALLPAPER CROSSFADE & SYSTEM SCRIPTS -->
+    <!-- SCRIPTS FOR AUTOPLAY & INTERACTIVITY -->
     <script>
-        // Smooth Slow-Motion Wallpaper Crossfade Controller
+        // Background Wallpaper Slider
         const slides = document.querySelectorAll('#wallpaperSlider .bg-slide');
         let currentSlideIndex = 0;
-        const transitionInterval = 8000; // Switch slide every 8 seconds
-
-        function nextWallpaperSlide() {
+        setInterval(() => {
             if (slides.length <= 1) return;
             slides[currentSlideIndex].classList.remove('active');
             currentSlideIndex = (currentSlideIndex + 1) % slides.length;
             slides[currentSlideIndex].classList.add('active');
-        }
+        }, 8000);
 
-        // Start continuous background transition loop
-        setInterval(nextWallpaperSlide, transitionInterval);
-
-        // Force Auto-Play Functionality Across All Videos
-        function ensureAutoplay() {
-            const allVideos = document.querySelectorAll('video');
-            allVideos.forEach(vid => {
+        // Robust HTML5 Video Autoplay Controller
+        function initializeVideos() {
+            const videos = document.querySelectorAll('video');
+            videos.forEach(vid => {
                 vid.muted = true;
-                vid.defaultMuted = true;
-                vid.playsInline = true;
                 vid.loop = true;
-                vid.setAttribute('playsinline', '');
-                vid.setAttribute('webkit-playsinline', '');
+                vid.playsInline = true;
                 
-                const tryPlay = () => {
-                    const playPromise = vid.play();
-                    if (playPromise !== undefined) {
-                        playPromise.catch(error => {
-                            console.log('Autoplay retry queued on user gesture', error);
-                        });
-                    }
-                };
-                
-                tryPlay();
-                
-                const enablePlayOnTouch = () => { tryPlay(); };
-                window.addEventListener('touchstart', enablePlayOnTouch, { once: true, passive: true });
-                window.addEventListener('click', enablePlayOnTouch, { once: true, passive: true });
-                window.addEventListener('scroll', enablePlayOnTouch, { once: true, passive: true });
+                const playPromise = vid.play();
+                if (playPromise !== undefined) {
+                    playPromise.catch(() => {
+                        const enableOnUserGesture = () => {
+                            vid.play();
+                            window.removeEventListener('click', enableOnUserGesture);
+                            window.removeEventListener('touchstart', enableOnUserGesture);
+                            window.removeEventListener('scroll', enableOnUserGesture);
+                        };
+                        window.addEventListener('click', enableOnUserGesture, { once: true });
+                        window.addEventListener('touchstart', enableOnUserGesture, { once: true });
+                        window.addEventListener('scroll', enableOnUserGesture, { once: true });
+                    });
+                }
             });
         }
 
-        document.addEventListener('DOMContentLoaded', ensureAutoplay);
-        window.addEventListener('load', ensureAutoplay);
+        document.addEventListener('DOMContentLoaded', initializeVideos);
 
-        // Smooth Auto-Scrolling Controller for Tender Leaderboard Feed
+        // Auto-scroll Leaderboard Feed
         const feedContainer = document.getElementById('tenderLeaderboard');
         let isHovered = false;
-
         if (feedContainer) {
             feedContainer.addEventListener('mouseenter', () => isHovered = true);
             feedContainer.addEventListener('mouseleave', () => isHovered = false);
 
             setInterval(() => {
                 if (!isHovered && feedContainer) {
-                    // Scroll 1px continuously or step through items
-                    if (feedContainer.scrollTop + feedContainer.clientHeight >= feedContainer.scrollHeight - 5) {
-                        feedContainer.scrollTop = 0; // Loop back to top
+                    if (feedContainer.scrollTop + feedContainer.clientHeight >= feedContainer.scrollHeight - 2) {
+                        feedContainer.scrollTop = 0;
                     } else {
                         feedContainer.scrollTop += 1;
                     }
                 }
-            }, 40);
+            }, 35);
         }
 
-        // WhatsApp Floating Chatbot Toggle
+        // WhatsApp Chatbox Toggle
         function toggleWaBox() {
             const box = document.getElementById('waChatBox');
             if (box) box.classList.toggle('active');
         }
 
-        // 3D Visual Card Interactive Tilt Effect
+        // 3D Card Interactive Tilt Effect
         const tiltSnippet = document.getElementById('tiltSnippet');
-        if(tiltSnippet) {
+        if (tiltSnippet) {
             document.addEventListener('mousemove', (e) => {
                 const x = (window.innerWidth / 2 - e.pageX) / 45;
                 const y = (window.innerHeight / 2 - e.pageY) / 45;
@@ -1118,17 +1102,14 @@
         // Realtime Data Micro-Fluctuations
         setInterval(() => {
             const co2 = document.getElementById('co2Meter');
-            if(co2) {
-                const base = 238.4;
+            if (co2) {
                 const delta = (Math.random() * 0.4 - 0.2).toFixed(2);
-                co2.textContent = `${(base + parseFloat(delta)).toFixed(1)} Mt`;
+                co2.textContent = `${(238.4 + parseFloat(delta)).toFixed(1)} Mt`;
             }
-            
             const ai = document.getElementById('aiGrowthMeter');
-            if(ai) {
-                const baseAi = 38.6;
+            if (ai) {
                 const deltaAi = (Math.random() * 0.2 - 0.1).toFixed(1);
-                ai.textContent = `+${(baseAi + parseFloat(deltaAi)).toFixed(1)}%`;
+                ai.textContent = `+${(38.6 + parseFloat(deltaAi)).toFixed(1)}%`;
             }
         }, 3000);
     </script>
