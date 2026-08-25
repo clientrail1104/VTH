@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vihaanaa Tech Hubs - Management Portal</title>
+    <title>Vihaanaa Tech Hubs</title>
     
     <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,8 +21,8 @@
             --accent-orange: #ff9500;
             --accent-green: #34c759;
 
-            --glass-surface: rgba(15, 23, 42, 0.75);
-            --glass-card: rgba(15, 23, 42, 0.82);
+            --glass-surface: rgba(15, 23, 42, 0.65);
+            --glass-card: rgba(15, 23, 42, 0.72);
             --glass-border: rgba(255, 255, 255, 0.15);
             --glass-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
             --glass-blur: blur(28px);
@@ -64,12 +64,17 @@
             opacity: 0;
             transform: scale(1);
             transition: opacity 3.5s ease-in-out, transform 12s linear;
+            will-change: opacity, transform;
         }
-        .bg-slide.active { opacity: 1; transform: scale(1.08); }
+        .bg-slide.active {
+            opacity: 1;
+            transform: scale(1.08);
+        }
+
         .bg-overlay {
             position: fixed;
             inset: 0;
-            background: radial-gradient(circle at center, rgba(3, 7, 18, 0.45) 0%, rgba(3, 7, 18, 0.85) 100%);
+            background: radial-gradient(circle at center, rgba(3, 7, 18, 0.45) 0%, rgba(3, 7, 18, 0.8) 100%);
             backdrop-filter: blur(2px);
             z-index: -1;
             pointer-events: none;
@@ -101,17 +106,35 @@
         }
         .logo-globe { position: absolute; font-size: 16px; color: var(--accent-blue); }
 
-        .menubar-nav { display: flex; gap: 1.8rem; list-style: none; align-items: center; }
+        .menubar-right {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+        .menubar-nav { display: flex; gap: 1.8rem; list-style: none; }
         .menubar-link { font-size: 0.9rem; font-weight: 600; color: var(--text-secondary); transition: color 0.2s; }
         .menubar-link:hover { color: #38bdf8; }
 
-        .admin-nav-btn {
-            background: linear-gradient(135deg, var(--accent-purple), var(--accent-pink));
-            color: white; padding: 6px 14px; border-radius: 50px; font-size: 0.82rem; font-weight: 700;
-            display: inline-flex; align-items: center; gap: 6px; cursor: pointer; border: none;
-            box-shadow: 0 4px 15px rgba(175, 82, 222, 0.4); transition: transform 0.2s;
+        /* Admin link style */
+        .admin-badge-link {
+            background: rgba(255, 45, 85, 0.15);
+            border: 1px solid rgba(255, 45, 85, 0.4);
+            color: #ff2d55;
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            backdrop-filter: blur(10px);
+            transition: all 0.2s var(--ease-out);
         }
-        .admin-nav-btn:hover { transform: scale(1.05); }
+        .admin-badge-link:hover {
+            background: rgba(255, 45, 85, 0.25);
+            color: #ff5277;
+            transform: translateY(-1px);
+        }
 
         /* --- HERO SECTION --- */
         .hero-container {
@@ -123,6 +146,7 @@
             background: rgba(0, 122, 255, 0.2); border: 1px solid rgba(0, 122, 255, 0.4);
             color: #38bdf8; padding: 8px 18px; border-radius: 50px;
             font-size: 0.85rem; font-weight: 800; text-transform: uppercase; margin-bottom: 1.5rem;
+            backdrop-filter: blur(10px);
         }
         .hero-title { font-size: 3.8rem; line-height: 1.1; margin-bottom: 1.5rem; color: #ffffff; }
         .hero-title span {
@@ -139,7 +163,8 @@
             box-shadow: 0 10px 25px rgba(0, 122, 255, 0.4); transition: all 0.3s var(--ease-out);
             display: inline-flex; align-items: center; gap: 10px;
         }
-        .btn-mac-primary:hover { transform: translateY(-3px) scale(1.02); }
+        .btn-mac-primary:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 15px 35px rgba(0, 122, 255, 0.6); }
+        
         .btn-mac-glass {
             background: var(--glass-card); border: 1px solid var(--glass-border);
             color: var(--text-primary); padding: 1rem 2rem; border-radius: 16px;
@@ -148,17 +173,25 @@
         }
         .btn-mac-glass:hover { transform: translateY(-3px); background: rgba(255, 255, 255, 0.15); }
 
-        /* Tender Box */
+        /* Realtime Tender Box */
         .perspective-wrapper { perspective: 1000px; }
         .hero-visual-card {
             background: var(--glass-card); border: 1px solid var(--glass-border);
             border-radius: var(--radius-md); padding: 1.2rem; box-shadow: var(--glass-shadow);
-            backdrop-filter: var(--glass-blur); position: relative; overflow: hidden;
+            backdrop-filter: var(--glass-blur); transform-style: preserve-3d;
+            transition: transform 0.15s ease-out; position: relative; overflow: hidden;
         }
+        
         .tender-widget-box {
-            background: rgba(3, 7, 18, 0.88); border-radius: var(--radius-sm);
-            border: 1px solid rgba(255, 255, 255, 0.12); padding: 1.2rem; color: #f8fafc;
-            min-height: 380px; display: flex; flex-direction: column; justify-content: space-between;
+            background: rgba(3, 7, 18, 0.88);
+            border-radius: var(--radius-sm);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            padding: 1.2rem;
+            color: #f8fafc;
+            min-height: 380px;
+            display: flex; flex-direction: column; justify-content: space-between;
+            position: relative;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.6);
         }
         .tender-header {
             display: flex; justify-content: space-between; align-items: center;
@@ -174,21 +207,33 @@
 
         .tender-feed {
             display: flex; flex-direction: column; gap: 0.75rem; 
-            max-height: 250px; overflow-y: auto; padding-right: 4px;
+            max-height: 250px; overflow-y: auto; position: relative;
+            padding-right: 4px; scroll-behavior: smooth;
         }
+        .tender-feed::-webkit-scrollbar { width: 4px; }
+        .tender-feed::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.05); border-radius: 4px; }
+        .tender-feed::-webkit-scrollbar-thumb { background: var(--accent-blue); border-radius: 4px; }
+
         .tender-item {
             background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 10px 14px; border-radius: 12px; display: flex; align-items: center; gap: 12px;
+            padding: 10px 14px; border-radius: 12px; transition: all 0.25s var(--ease-out);
+            display: flex; align-items: center; gap: 12px;
+        }
+        .tender-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(56, 189, 248, 0.4);
+            transform: translateX(4px);
         }
         .rank-badge {
             font-family: 'Space Grotesk', monospace; font-size: 0.8rem; font-weight: 800;
             width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center;
-            background: rgba(0, 122, 255, 0.2); color: #38bdf8; border: 1px solid rgba(0, 122, 255, 0.3); flex-shrink: 0;
+            background: rgba(0, 122, 255, 0.2); color: #38bdf8; border: 1px solid rgba(0, 122, 255, 0.3);
+            flex-shrink: 0;
         }
         .rank-top { background: linear-gradient(135deg, var(--accent-orange), var(--accent-pink)); color: #fff; border: none; }
         .tender-item-info { flex-grow: 1; }
-        .tender-item-title { font-size: 0.85rem; font-weight: 700; color: #f8fafc; display: flex; justify-content: space-between; }
-        .tender-item-desc { font-size: 0.75rem; color: #94a3b8; margin-top: 2px; display: flex; justify-content: space-between; }
+        .tender-item-title { font-size: 0.85rem; font-weight: 700; color: #f8fafc; display: flex; justify-content: space-between; gap: 8px; }
+        .tender-item-desc { font-size: 0.75rem; color: #94a3b8; margin-top: 2px; display: flex; justify-content: space-between; align-items: center; }
 
         /* --- SECTIONS --- */
         .section-block { padding: 80px 6%; max-width: 1400px; margin: 0 auto; }
@@ -197,124 +242,273 @@
         .section-header p { font-size: 1.1rem; color: var(--text-secondary); }
 
         /* Capabilities Grid */
-        .capabilities-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+        .capabilities-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
         .service-card {
-            background: var(--glass-card); border: 1px solid var(--glass-border);
-            border-radius: var(--radius-md); padding: 1.6rem; box-shadow: var(--glass-shadow);
-            backdrop-filter: var(--glass-blur); transition: all 0.3s var(--ease-out);
-            display: flex; flex-direction: column; justify-content: space-between; overflow: hidden;
+            background: var(--glass-card);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-md);
+            padding: 1.6rem;
+            box-shadow: var(--glass-shadow);
+            backdrop-filter: var(--glass-blur);
+            transition: all 0.3s var(--ease-out);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
         }
-        .service-card:hover { transform: translateY(-8px); border-color: rgba(56, 189, 248, 0.4); }
+        .service-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(56, 189, 248, 0.4);
+            box-shadow: 0 30px 60px -12px rgba(0, 122, 255, 0.3);
+        }
 
+        /* Guaranteed 100% Visibility Image Wrappers */
         .card-img-wrapper {
-            width: 100%; height: 170px; border-radius: var(--radius-sm);
-            overflow: hidden; margin-bottom: 1.2rem; background: #0f172a; position: relative; border: 1px solid rgba(255,255,255,0.08);
+            width: 100%; 
+            height: 170px; 
+            min-height: 170px;
+            border-radius: var(--radius-sm);
+            overflow: hidden; 
+            margin-bottom: 1.2rem; 
+            background: #0f172a; 
+            position: relative;
+            display: block;
+            flex-shrink: 0;
+            border: 1px solid rgba(255, 255, 255, 0.08);
         }
-        .animated-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s var(--ease-out); }
-        .service-card:hover .animated-img { transform: scale(1.08); }
+        .animated-img {
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            display: block;
+            border: none; 
+            outline: none; 
+            transition: transform 0.5s var(--ease-out);
+        }
+        .service-card:hover .animated-img, .gallery-card:hover .animated-img {
+            transform: scale(1.08);
+        }
+
         .service-tag {
             display: inline-block; padding: 4px 12px; border-radius: 50px;
             font-size: 0.72rem; font-weight: 800; text-transform: uppercase; margin-bottom: 0.6rem;
             background: rgba(0,122,255,0.25); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3);
         }
 
-        /* Contact Section */
+        /* --- PROJECT GALLERY SHOWCASE --- */
+        .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 2rem; }
+        .gallery-card {
+            background: var(--glass-card); border: 1px solid var(--glass-border);
+            border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--glass-shadow);
+            backdrop-filter: var(--glass-blur); transition: transform 0.3s var(--ease-out);
+            display: flex; flex-direction: column;
+        }
+        .gallery-card:hover { transform: translateY(-8px); border-color: rgba(56, 189, 248, 0.4); }
+        .gallery-img-container { width: 100%; height: 230px; overflow: hidden; position: relative; background: #0f172a; display: block; flex-shrink: 0; }
+        .gallery-content { padding: 1.4rem 1.5rem; text-align: left; }
+        .gallery-badge {
+            display: inline-block; padding: 4px 12px; border-radius: 50px;
+            font-size: 0.75rem; font-weight: 800; text-transform: uppercase; margin-bottom: 0.6rem;
+            background: rgba(0,122,255,0.25); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3);
+        }
+
+        /* --- REALTIME WIDGETS --- */
+        .widgets-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 2rem; }
+        .widget {
+            background: var(--glass-card); border: 1px solid var(--glass-border);
+            border-radius: var(--radius-md); padding: 1.8rem; box-shadow: var(--glass-shadow);
+            backdrop-filter: var(--glass-blur); transition: transform 0.3s var(--ease-out);
+            display: flex; flex-direction: column; justify-content: space-between; min-height: 200px;
+        }
+        .widget:hover { transform: translateY(-5px); border-color: rgba(255,255,255,0.3); }
+        .widget-metric-val { font-size: 2.5rem; font-weight: 800; font-family: 'Space Grotesk'; line-height: 1.1; margin: 0.6rem 0; }
+        .metric-badge {
+            display: inline-flex; align-items: center; gap: 5px; padding: 4px 10px;
+            border-radius: 50px; font-size: 0.78rem; font-weight: 800;
+        }
+
+        /* --- INFOGRAPHICS --- */
+        .infographics-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem; }
+        .info-box {
+            background: var(--glass-card); border: 1px solid var(--glass-border);
+            border-radius: var(--radius-md); padding: 2.2rem; box-shadow: var(--glass-shadow); backdrop-filter: var(--glass-blur);
+        }
+        .info-box h3 { font-size: 1.4rem; margin-bottom: 1.8rem; display: flex; align-items: center; gap: 12px; color: #fff; }
+
+        .info-3d-list { display: flex; flex-direction: column; gap: 1.2rem; }
+        .info-3d-card {
+            background: rgba(255, 255, 255, 0.05); border: 1px solid var(--glass-border);
+            border-radius: 18px; padding: 1.2rem 1.4rem; display: flex; align-items: center; gap: 1.2rem;
+            position: relative; box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            transition: all 0.3s var(--ease-out);
+            will-change: transform; backface-visibility: hidden;
+        }
+        .info-3d-card:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0, 122, 255, 0.25);
+            background: rgba(255, 255, 255, 0.09);
+            border-color: rgba(56, 189, 248, 0.4);
+        }
+
+        .icon-3d-wrapper {
+            width: 52px; height: 52px; border-radius: 16px;
+            display: flex; align-items: center; justify-content: center; font-size: 1.4rem;
+            position: relative; flex-shrink: 0; box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+            animation: float3D 3s ease-in-out infinite alternate;
+        }
+        @keyframes float3D {
+            0% { transform: translateY(0px) rotate(0deg); }
+            100% { transform: translateY(-5px) rotate(4deg); }
+        }
+        .icon-dosh { background: linear-gradient(135deg, #ff2d55, #ff9500); color: white; }
+        .icon-hirarc { background: linear-gradient(135deg, #af52de, #007aff); color: white; }
+        .icon-zero { background: linear-gradient(135deg, #34c759, #00c7be); color: white; }
+        .icon-mat { background: linear-gradient(135deg, #007aff, #00c7be); color: white; }
+        .icon-qaqc { background: linear-gradient(135deg, #ff9500, #ff2d55); color: white; }
+        .icon-iso { background: linear-gradient(135deg, #34c759, #af52de); color: white; }
+
+        .info-3d-content { flex-grow: 1; width: 100%; min-width: 0; }
+        .info-3d-title { 
+            font-weight: 700; font-size: 1rem; display: flex; justify-content: space-between; 
+            align-items: center; gap: 8px; color: #fff; width: 100%; margin-bottom: 8px;
+        }
+        .info-3d-title span.title-label {
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 70%;
+        }
+        .status-pill-3d {
+            font-size: 0.72rem; font-weight: 800; padding: 4px 10px; border-radius: 50px;
+            background: rgba(52, 199, 89, 0.25); color: #4ade80; display: inline-flex; align-items: center; 
+            gap: 5px; border: 1px solid rgba(74, 222, 128, 0.3); flex-shrink: 0;
+        }
+        .progress-bar-3d {
+            width: 100%; height: 7px; background: rgba(255,255,255,0.12); border-radius: 10px; overflow: hidden;
+            position: relative;
+        }
+        .progress-fill-3d { height: 100%; border-radius: 10px; transition: width 1s ease-in-out; }
+
+        /* --- CONTACT --- */
         .contact-card {
             background: var(--glass-card); border: 1px solid var(--glass-border);
             border-radius: var(--radius-lg); padding: 3.5rem; box-shadow: var(--glass-shadow);
             backdrop-filter: var(--glass-blur); display: grid; grid-template-columns: 1fr 1.1fr; gap: 3.5rem;
+            align-items: start;
         }
-        .contact-info-col h2 { font-size: 2.8rem; margin-bottom: 0.8rem; color: #fff; }
+        .contact-info-col { display: flex; flex-direction: column; height: 100%; justify-content: space-between; }
+        .contact-info-col h2 { font-size: 2.8rem; margin-bottom: 0.8rem; line-height: 1.15; color: #fff; }
         .contact-desc { color: var(--text-secondary); margin-bottom: 2rem; font-size: 1.05rem; line-height: 1.6; }
+        
         .key-contact-badge-box {
             background: linear-gradient(135deg, rgba(0, 122, 255, 0.15), rgba(52, 199, 89, 0.15));
-            border: 1px solid rgba(0, 122, 255, 0.3); border-radius: 20px; padding: 1.4rem; margin-bottom: 1.8rem;
+            border: 1px solid rgba(0, 122, 255, 0.3);
+            border-radius: 20px; padding: 1.4rem; margin-bottom: 1.8rem;
             display: flex; align-items: center; gap: 1.2rem;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
         .contact-avatar {
-            width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, var(--accent-blue), var(--accent-green));
-            display: flex; align-items: center; justify-content: center; color: white; font-size: 1.6rem; font-weight: 800; flex-shrink: 0;
+            width: 60px; height: 60px; border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-green));
+            display: flex; align-items: center; justify-content: center;
+            color: white; font-size: 1.6rem; font-weight: 800; box-shadow: 0 8px 18px rgba(0,122,255,0.4);
+            flex-shrink: 0;
         }
+
         .contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
         .form-group { display: flex; flex-direction: column; gap: 6px; }
         .form-group label { font-weight: 700; font-size: 0.92rem; color: var(--text-primary); }
+
         .mac-input {
-            width: 100%; padding: 1rem 1.2rem; border-radius: 14px; border: 1px solid rgba(255, 255, 255, 0.18);
-            background: rgba(15, 23, 42, 0.6); color: #ffffff; font-size: 0.98rem; outline: none; transition: all 0.2s;
+            width: 100%; padding: 1rem 1.2rem; border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            background: rgba(15, 23, 42, 0.6); color: #ffffff; font-size: 0.98rem;
+            outline: none; transition: all 0.2s var(--ease-out);
         }
         .mac-input:focus { border-color: var(--accent-blue); background: rgba(15, 23, 42, 0.85); box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.25); }
-        select.mac-input { cursor: pointer; }
+        select.mac-input { cursor: pointer; appearance: none; background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%22%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23FFFFFF%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E"); background-repeat: no-repeat; background-position: right 1.2rem center; background-size: 0.7rem auto; padding-right: 2.5rem; }
 
-        /* --- ADMIN PANEL MODAL STYLES --- */
-        .admin-modal-overlay {
-            position: fixed; inset: 0; background: rgba(3, 7, 18, 0.85); backdrop-filter: blur(12px);
-            z-index: 3000; display: none; align-items: center; justify-content: center; padding: 2rem;
-        }
-        .admin-modal-overlay.active { display: flex; }
-        .admin-dashboard-box {
-            background: rgba(15, 23, 42, 0.95); border: 1px solid var(--glass-border);
-            width: 100%; max-width: 1100px; height: 85vh; border-radius: var(--radius-md);
-            display: flex; flex-direction: column; box-shadow: var(--glass-shadow); overflow: hidden;
-        }
-        .admin-header {
-            padding: 1.5rem 2rem; background: rgba(0, 122, 255, 0.15); border-bottom: 1px solid var(--glass-border);
-            display: flex; justify-content: space-between; align-items: center;
-        }
-        .admin-tabs { display: flex; gap: 1rem; padding: 1rem 2rem; background: rgba(0,0,0,0.2); border-bottom: 1px solid var(--glass-border); }
-        .admin-tab-btn {
-            background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); color: var(--text-secondary);
-            padding: 8px 16px; border-radius: 10px; font-weight: 700; cursor: pointer; transition: all 0.2s;
-        }
-        .admin-tab-btn.active { background: var(--accent-blue); color: white; border-color: transparent; }
-        
-        .admin-content-area { padding: 2rem; overflow-y: auto; flex-grow: 1; }
-        .admin-pane { display: none; }
-        .admin-pane.active { display: block; }
-        
-        .admin-table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
-        .admin-table th, .admin-table td { padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 0.9rem; }
-        .admin-table th { color: #38bdf8; font-weight: 700; background: rgba(255,255,255,0.03); }
-        .admin-table tr:hover { background: rgba(255,255,255,0.02); }
-        
-        .status-badge { padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 800; display: inline-block; }
-        .status-pending { background: rgba(255,149,0,0.2); color: #ffab2d; }
-        .status-resolved { background: rgba(52,199,89,0.2); color: #4ade80; }
-
-        .login-box-inner { max-width: 400px; margin: auto; padding: 2.5rem; background: var(--glass-card); border-radius: var(--radius-md); border: 1px solid var(--glass-border); text-align: center; }
-
-        /* --- WHATSAPP WIDGET & DOCK --- */
+        /* --- WHATSAPP CHATBOT WIDGET --- */
         .wa-widget-wrapper { position: fixed; bottom: 25px; right: 25px; z-index: 2005; }
         .wa-glow-button {
-            width: 62px; height: 62px; border-radius: 50%; background: linear-gradient(135deg, #25D366, #128C7E);
-            color: white; border: none; font-size: 2rem; display: flex; align-items: center; justify-content: center;
-            cursor: pointer; box-shadow: 0 10px 25px rgba(37, 211, 102, 0.45); transition: transform 0.3s;
+            width: 62px; height: 62px; border-radius: 50%;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white; border: none; font-size: 2rem;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; position: relative;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.45);
+            transition: transform 0.3s var(--ease-out);
         }
+        .wa-glow-button:hover { transform: scale(1.08); }
+        
+        .wa-pulse-ring {
+            position: absolute; inset: -6px; border-radius: 50%;
+            border: 2px solid rgba(37, 211, 102, 0.6);
+            animation: ringPulse 2s infinite ease-out; pointer-events: none;
+        }
+        .wa-pulse-ring.delay { animation-delay: 0.8s; }
+        @keyframes ringPulse {
+            0% { transform: scale(0.9); opacity: 1; }
+            100% { transform: scale(1.6); opacity: 0; }
+        }
+
         .wa-chat-box {
-            position: absolute; bottom: 75px; right: 0; width: 320px; background: #ffffff; border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4); border: 1px solid rgba(255,255,255,0.2); overflow: hidden;
-            display: none; flex-direction: column; transform-origin: bottom right;
+            position: absolute; bottom: 75px; right: 0; width: 320px;
+            background: #ffffff; border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255,255,255,0.2); overflow: hidden;
+            display: none; flex-direction: column;
+            animation: waPop 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            transform-origin: bottom right;
         }
         .wa-chat-box.active { display: flex; }
-        .wa-chat-header { background: #075e54; color: white; padding: 1rem; display: flex; align-items: center; gap: 12px; position: relative; }
-        .wa-avatar { position: relative; width: 42px; height: 42px; background: rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
-        .wa-status-dot { position: absolute; bottom: 2px; right: 2px; width: 10px; height: 10px; background: #25D366; border-radius: 50%; border: 2px solid #075e54; }
-        .wa-chat-body { background: #e5ddd5; padding: 1.2rem; min-height: 120px; display: flex; flex-direction: column; gap: 10px; }
-        .wa-msg-bubble { background: #ffffff; padding: 0.8rem 1rem; border-radius: 0 14px 14px 14px; font-size: 0.86rem; color: #111b21; }
-        .wa-chat-cta { padding: 0.9rem; text-align: center; background: #25D366; color: white; font-weight: 700; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; gap: 8px; }
+        @keyframes waPop {
+            from { opacity: 0; transform: scale(0.8) translateY(20px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
 
+        .wa-chat-header {
+            background: #075e54; color: white; padding: 1rem;
+            display: flex; align-items: center; gap: 12px; position: relative;
+        }
+        .wa-avatar { position: relative; width: 42px; height: 42px; background: rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
+        .wa-status-dot { position: absolute; bottom: 2px; right: 2px; width: 10px; height: 10px; background: #25D366; border-radius: 50%; border: 2px solid #075e54; }
+        .wa-chat-title { font-size: 0.95rem; font-weight: 700; }
+        .wa-chat-sub { font-size: 0.75rem; opacity: 0.85; }
+        .wa-close-btn { position: absolute; right: 12px; top: 12px; background: none; border: none; color: white; font-size: 1.2rem; cursor: pointer; opacity: 0.8; }
+        .wa-close-btn:hover { opacity: 1; }
+
+        .wa-chat-body { background: #e5ddd5; padding: 1.2rem; min-height: 120px; display: flex; flex-direction: column; gap: 10px; }
+        .wa-msg-bubble {
+            background: #ffffff; padding: 0.8rem 1rem; border-radius: 0 14px 14px 14px;
+            font-size: 0.86rem; color: #111b21; line-height: 1.4;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+        }
+        .wa-chat-cta {
+            padding: 0.9rem; text-align: center; background: #25D366; color: white;
+            font-weight: 700; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; gap: 8px;
+            transition: background 0.2s;
+        }
+        .wa-chat-cta:hover { background: #128C7E; }
+
+        /* --- DOCK BAR --- */
         .dock-bar {
             position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
-            background: var(--glass-surface); border: 1px solid var(--glass-border); border-radius: 24px; padding: 10px 18px;
-            display: flex; gap: 16px; box-shadow: var(--glass-shadow); backdrop-filter: var(--glass-blur); z-index: 2000;
+            background: var(--glass-surface); border: 1px solid var(--glass-border);
+            border-radius: 24px; padding: 10px 18px; display: flex; gap: 16px;
+            box-shadow: var(--glass-shadow); backdrop-filter: var(--glass-blur); z-index: 2000;
         }
         .dock-icon {
             width: 48px; height: 48px; border-radius: 14px; background: rgba(255, 255, 255, 0.1);
-            display: flex; align-items: center; justify-content: center; font-size: 1.4rem; color: var(--text-primary); transition: all 0.3s;
+            display: flex; align-items: center; justify-content: center; font-size: 1.4rem;
+            color: var(--text-primary); transition: all 0.3s var(--ease-out); box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            border: 1px solid rgba(255,255,255,0.1);
         }
         .dock-icon:hover { transform: translateY(-12px) scale(1.2); background: rgba(255,255,255,0.25); }
 
         @media (max-width: 1024px) {
-            .hero-container, .capabilities-grid, .contact-card { grid-template-columns: 1fr; }
+            .hero-container, .capabilities-grid, .gallery-grid, .widgets-grid, .infographics-grid, .contact-card { grid-template-columns: 1fr; }
             .hero-title { font-size: 2.8rem; }
             .menubar-nav { display: none; }
         }
@@ -324,9 +518,13 @@
 
     <!-- BACKGROUND WALLPAPER CAROUSEL -->
     <div class="bg-wallpaper-slider" id="wallpaperSlider">
-        <div class="bg-slide active" style="background-image: url('3d-ai-cybersecurity-concept-as-glowing-abstract-digital-art-banner-highlighting-ais-role-cyb_980716-667027.jpg');"></div>
-        <div class="bg-slide" style="background-image: url('9851-ai-intelligent-systems-02.jpg');"></div>
-        <div class="bg-slide" style="background-image: url('9851-industry-applications-use-cases-04.jpg');"></div>
+        <div class="bg-slide active" style="background-image: url('3d-ai-cybersecurity-concept-as-glowing-abstract-digital-art-banner-highlighting-ais-role-cyb_980716-667027.jpg'), url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1920&q=80');"></div>
+        <div class="bg-slide" style="background-image: url('9851-ai-intelligent-systems-02.jpg'), url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1920&q=80');"></div>
+        <div class="bg-slide" style="background-image: url('9851-industry-applications-use-cases-04.jpg'), url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1920&q=80');"></div>
+        <div class="bg-slide" style="background-image: url('images-2.jpeg'), url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1920&q=80');"></div>
+        <div class="bg-slide" style="background-image: url('images-3.jpeg'), url('https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&w=1920&q=80');"></div>
+        <div class="bg-slide" style="background-image: url('h6.png.jpeg'), url('https://images.unsplash.com/photo-1510519138161-58441d828198?auto=format&fit=crop&w=1920&q=80');"></div>
+        <div class="bg-slide" style="background-image: url('il_fullxfull.5325158409_odg5.jpg'), url('https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?auto=format&fit=crop&w=1920&q=80');"></div>
     </div>
     <div class="bg-overlay"></div>
 
@@ -339,17 +537,23 @@
             </div>
             <span>Vihaanaa Tech Hubs</span>
         </div>
-        <nav>
-            <ul class="menubar-nav">
-                <li><a href="#hero" class="menubar-link">Overview</a></li>
-                <li><a href="#stacks" class="menubar-link">Capabilities</a></li>
-                <li><a href="#contact" class="menubar-link">Contact</a></li>
-                <li><button class="admin-nav-btn" onclick="openAdminPortal()"><i class="fa-solid fa-lock"></i> Admin Portal</button></li>
-            </ul>
-        </nav>
+        <div class="menubar-right">
+            <nav>
+                <ul class="menubar-nav">
+                    <li><a href="#hero" class="menubar-link">Overview</a></li>
+                    <li><a href="#stacks" class="menubar-link">Capabilities</a></li>
+                    <li><a href="#gallery" class="menubar-link">Infrastructure</a></li>
+                    <li><a href="#widgets" class="menubar-link">Operations</a></li>
+                    <li><a href="#contact" class="menubar-link">Contact</a></li>
+                </ul>
+            </nav>
+            <a href="?admin=1" class="admin-badge-link" title="Administrative View">
+                <i class="fa-solid fa-shield-halved"></i> Admin View
+            </a>
+        </div>
     </header>
 
-    <!-- HERO SECTION -->
+    <!-- HERO & VISUAL SHOWCASE -->
     <section class="hero-container" id="hero">
         <div>
             <div class="hero-tag">
@@ -359,34 +563,106 @@
             <p class="hero-subtitle">Turnkey civil engineering, mechanical installations, energy infrastructure, precision piping, and global procurement operating nationwide in Malaysia.</p>
             <div class="cta-group">
                 <a href="#contact" class="btn-mac-primary"><i class="fa-solid fa-paper-plane"></i> Request Quote</a>
+                <a href="#gallery" class="btn-mac-glass"><i class="fa-solid fa-layer-group"></i> Explore Projects</a>
             </div>
         </div>
 
         <!-- REALTIME TENDER LEADERBOARD WIDGET -->
         <div class="perspective-wrapper">
-            <div class="hero-visual-card">
+            <div class="hero-visual-card" id="tiltSnippet">
                 <div class="tender-widget-box">
                     <div class="tender-header">
                         <div>
-                            <span class="code-font" style="font-size: 0.78rem; text-transform: uppercase; color: #a5f3fc;">Live Leaderboard Feed</span>
+                            <span class="code-font" style="font-size: 0.78rem; text-transform: uppercase; color: #a5f3fc; letter-spacing: 0.5px;">Live Leaderboard Feed</span>
                             <h4 style="font-size: 1rem; color: #ffffff;">Realtime Tender Leaderboard</h4>
                         </div>
-                        <span class="tender-live-badge"><span class="pulse-dot"></span> Active Feed</span>
+                        <a href="https://www.tenderpanel.com/" target="_blank" class="tender-live-badge">
+                            <span class="pulse-dot"></span> tenderpanel.com
+                        </a>
                     </div>
 
-                    <div class="tender-feed">
+                    <div class="tender-feed" id="tenderLeaderboard">
                         <div class="tender-item">
                             <div class="rank-badge rank-top">#1</div>
                             <div class="tender-item-info">
-                                <div class="tender-item-title"><span>PETRONAS - Subsea Pipeline EPCIC</span><span style="color: #4ade80;">Active</span></div>
-                                <div class="tender-item-desc"><span>Ref: MY-TND-89421</span><span class="code-font" style="color: #facc15;">RM 45.2M</span></div>
+                                <div class="tender-item-title">
+                                    <span>PETRONAS - Subsea Pipeline EPCIC</span>
+                                    <span style="color: #4ade80;">Active</span>
+                                </div>
+                                <div class="tender-item-desc">
+                                    <span>Ref: MY-TND-89421 • Offshore Sabah</span>
+                                    <span class="code-font" style="color: #facc15;">RM 45.2M</span>
+                                </div>
                             </div>
                         </div>
+
                         <div class="tender-item">
                             <div class="rank-badge rank-top">#2</div>
                             <div class="tender-item-info">
-                                <div class="tender-item-title"><span>TNB - Renewable Grid Tie Integration</span><span style="color: #38bdf8;">Evaluating</span></div>
-                                <div class="tender-item-desc"><span>Ref: MY-TND-90114</span><span class="code-font" style="color: #facc15;">RM 32.0M</span></div>
+                                <div class="tender-item-title">
+                                    <span>TNB - Renewable Grid Tie Integration</span>
+                                    <span style="color: #38bdf8;">Evaluating</span>
+                                </div>
+                                <div class="tender-item-desc">
+                                    <span>Ref: MY-TND-90114 • Selangor Zone</span>
+                                    <span class="code-font" style="color: #facc15;">RM 32.0M</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tender-item">
+                            <div class="rank-badge rank-top">#3</div>
+                            <div class="tender-item-info">
+                                <div class="tender-item-title">
+                                    <span>Malakoff - Solar PV Civil Engineering</span>
+                                    <span style="color: #4ade80;">Open</span>
+                                </div>
+                                <div class="tender-item-desc">
+                                    <span>Ref: MY-TND-61022 • Perak Installation</span>
+                                    <span class="code-font" style="color: #facc15;">RM 28.1M</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tender-item">
+                            <div class="rank-badge">#4</div>
+                            <div class="tender-item-info">
+                                <div class="tender-item-title">
+                                    <span>Shell MY - Plant Turnaround & Piping</span>
+                                    <span style="color: #fb923c;">Bidding</span>
+                                </div>
+                                <div class="tender-item-desc">
+                                    <span>Ref: MY-TND-53109 • Miri Hub</span>
+                                    <span class="code-font" style="color: #facc15;">RM 24.5M</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tender-item">
+                            <div class="rank-badge">#5</div>
+                            <div class="tender-item-info">
+                                <div class="tender-item-title">
+                                    <span>Sarawak Energy - Substation Automation</span>
+                                    <span style="color: #4ade80;">Open</span>
+                                </div>
+                                <div class="tender-item-desc">
+                                    <span>Ref: MY-TND-77210 • Bintulu Hub</span>
+                                    <span class="code-font" style="color: #facc15;">RM 18.7M</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tender-item">
+                            <div class="rank-badge">#6</div>
+                            <div class="tender-item-info">
+                                <div class="tender-item-title">
+                                    <span>Sabah Electricity - Grid Expansion</span>
+                                    <span style="color: #4ade80;">Active</span>
+                                </div>
+                                <div class="tender-item-desc">
+                                    <span>Ref: MY-TND-40892 • Kota Kinabalu</span>
+                                    <span class="code-font" style="color: #facc15;">RM 15.3M</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -401,33 +677,324 @@
             <h2>Capabilities & Services</h2>
             <p>Explore our core technical operational domains with verified imagery always on display.</p>
         </div>
+
         <div class="capabilities-grid">
+            <!-- 1. Global Procurement -->
             <div class="service-card">
                 <div>
-                    <div class="card-img-wrapper"><img class="animated-img" src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80" alt="Global Procurement"></div>
+                    <div class="card-img-wrapper">
+                        <img class="animated-img" src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80" alt="Global Procurement">
+                    </div>
                     <span class="service-tag">Procurement</span>
                     <h3 style="font-size: 1.25rem; color: #fff; margin-bottom: 0.4rem;">Global Procurement</h3>
                     <p style="color: var(--text-secondary); font-size: 0.9rem;">Refinery supplies, certified fittings, and import/export logistics.</p>
                 </div>
                 <span class="code-font" style="font-size: 0.85rem; color: #38bdf8; margin-top: 1rem;">Industrial Supply &rarr;</span>
             </div>
+
+            <!-- 2. Import & Export Logistics -->
             <div class="service-card">
                 <div>
-                    <div class="card-img-wrapper"><img class="animated-img" src="https://images.unsplash.com/photo-1541888946425-d0fbb18f02f4?auto=format&fit=crop&w=800&q=80" alt="Civil Construction"></div>
-                    <span class="service-tag" style="background: rgba(255,149,0,0.25); color: #ffab2d;">Civil Engineering</span>
+                    <div class="card-img-wrapper">
+                        <img class="animated-img" src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80" alt="Import & Export Logistics">
+                    </div>
+                    <span class="service-tag">Logistics</span>
+                    <h3 style="font-size: 1.25rem; color: #fff; margin-bottom: 0.4rem;">Import & Export Logistics</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Seamless customs compliance and cross-border freight forwarding.</p>
+                </div>
+                <span class="code-font" style="font-size: 0.85rem; color: #38bdf8; margin-top: 1rem;">Freight Management &rarr;</span>
+            </div>
+
+            <!-- 3. Industrial OEM Supplies -->
+            <div class="service-card">
+                <div>
+                    <div class="card-img-wrapper">
+                        <img class="animated-img" src="https://images.unsplash.com/photo-1563770660941-20978e870e26?auto=format&fit=crop&w=800&q=80" alt="Industrial Supplies">
+                    </div>
+                    <span class="service-tag">OEM Parts</span>
+                    <h3 style="font-size: 1.25rem; color: #fff; margin-bottom: 0.4rem;">Industrial OEM Supplies</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Genuine OEM spare parts and heavy production equipment supply.</p>
+                </div>
+                <span class="code-font" style="font-size: 0.85rem; color: #38bdf8; margin-top: 1rem;">Equipment Sourcing &rarr;</span>
+            </div>
+
+            <!-- 4. Civil & Structural (Explicitly Verified & Guaranteed Visible) -->
+            <div class="service-card">
+                <div>
+                    <div class="card-img-wrapper">
+                        <img class="animated-img" src="https://images.unsplash.com/photo-1541888946425-d0fbb18f02f4?auto=format&fit=crop&w=800&q=80" alt="Civil & Structural" onerror="this.src='https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=80'">
+                    </div>
+                    <span class="service-tag" style="background: rgba(255,149,0,0.25); color: #ffab2d; border-color: rgba(255,171,45,0.3);">Civil Engineering</span>
                     <h3 style="font-size: 1.25rem; color: #fff; margin-bottom: 0.4rem;">Civil & Structural</h3>
                     <p style="color: var(--text-secondary); font-size: 0.9rem;">Steel truss structures, heavy foundations, and site preparation.</p>
                 </div>
                 <span class="code-font" style="font-size: 0.85rem; color: var(--accent-orange); margin-top: 1rem;">Structural Works &rarr;</span>
             </div>
+
+            <!-- 5. Structural Concrete & Foundations -->
             <div class="service-card">
                 <div>
-                    <div class="card-img-wrapper"><img class="animated-img" src="https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=800&q=80" alt="Mechanical & Electrical"></div>
-                    <span class="service-tag" style="background: rgba(52,199,89,0.25); color: #4ade80;">M&E Systems</span>
+                    <div class="card-img-wrapper">
+                        <img class="animated-img" src="https://images.unsplash.com/photo-1590069261209-f8e9b8642343?auto=format&fit=crop&w=800&q=80" alt="Structural Concrete">
+                    </div>
+                    <span class="service-tag" style="background: rgba(255,149,0,0.25); color: #ffab2d; border-color: rgba(255,171,45,0.3);">Foundations</span>
+                    <h3 style="font-size: 1.25rem; color: #fff; margin-bottom: 0.4rem;">Structural Concrete</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">High-durability site preparation, piling, and heavy machinery foundations.</p>
+                </div>
+                <span class="code-font" style="font-size: 0.85rem; color: var(--accent-orange); margin-top: 1rem;">Foundation Engineering &rarr;</span>
+            </div>
+
+            <!-- 6. Facility Modifications -->
+            <div class="service-card">
+                <div>
+                    <div class="card-img-wrapper">
+                        <img class="animated-img" src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=80" alt="Facility Modifications">
+                    </div>
+                    <span class="service-tag" style="background: rgba(255,149,0,0.25); color: #ffab2d; border-color: rgba(255,171,45,0.3);">Upgrades</span>
+                    <h3 style="font-size: 1.25rem; color: #fff; margin-bottom: 0.4rem;">Facility Modifications</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Industrial infrastructure upgrades and ongoing structural maintenance.</p>
+                </div>
+                <span class="code-font" style="font-size: 0.85rem; color: var(--accent-orange); margin-top: 1rem;">Facility Maintenance &rarr;</span>
+            </div>
+
+            <!-- 7. Mechanical & Electrical (Explicitly Verified & Guaranteed Visible) -->
+            <div class="service-card">
+                <div>
+                    <div class="card-img-wrapper">
+                        <img class="animated-img" src="https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=800&q=80" alt="Mechanical & Electrical" onerror="this.src='https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80'">
+                    </div>
+                    <span class="service-tag" style="background: rgba(52,199,89,0.25); color: #4ade80; border-color: rgba(74,222,128,0.3);">M&E Systems</span>
                     <h3 style="font-size: 1.25rem; color: #fff; margin-bottom: 0.4rem;">Mechanical & Electrical</h3>
                     <p style="color: var(--text-secondary); font-size: 0.9rem;">Power distribution panels, wiring circuits, and control systems.</p>
                 </div>
                 <span class="code-font" style="font-size: 0.85rem; color: #4ade80; margin-top: 1rem;">Electrical Automation &rarr;</span>
+            </div>
+
+            <!-- 8. Piping & Skid Assembly -->
+            <div class="service-card">
+                <div>
+                    <div class="card-img-wrapper">
+                        <img class="animated-img" src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=800&q=80" alt="Piping & Skid Assembly">
+                    </div>
+                    <span class="service-tag" style="background: rgba(52,199,89,0.25); color: #4ade80; border-color: rgba(74,222,128,0.3);">Piping</span>
+                    <h3 style="font-size: 1.25rem; color: #fff; margin-bottom: 0.4rem;">Piping & Skid Assembly</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Modular skid fabrication, process piping, and valve precision alignment.</p>
+                </div>
+                <span class="code-font" style="font-size: 0.85rem; color: #4ade80; margin-top: 1rem;">Skid Fabrication &rarr;</span>
+            </div>
+
+            <!-- 9. Testing & Plant Maintenance -->
+            <div class="service-card">
+                <div>
+                    <div class="card-img-wrapper">
+                        <img class="animated-img" src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80" alt="Testing & Maintenance">
+                    </div>
+                    <span class="service-tag" style="background: rgba(52,199,89,0.25); color: #4ade80; border-color: rgba(74,222,128,0.3);">Commissioning</span>
+                    <h3 style="font-size: 1.25rem; color: #fff; margin-bottom: 0.4rem;">Testing & Maintenance</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">24/7 technical field support, plant turnaround, and commissioning.</p>
+                </div>
+                <span class="code-font" style="font-size: 0.85rem; color: #4ade80; margin-top: 1rem;">Plant Support &rarr;</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURED INFRASTRUCTURE PROJECTS -->
+    <section class="section-block" id="gallery" style="padding-top: 20px;">
+        <div class="section-header">
+            <h2>Featured Infrastructure Projects</h2>
+            <p>Proven excellence across oil & gas, process plants, power systems, and sustainable energy infrastructure.</p>
+        </div>
+
+        <div class="gallery-grid">
+            <div class="gallery-card">
+                <div class="gallery-img-container">
+                    <img class="animated-img" src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=800&q=80" alt="Refinery Pipeline Systems">
+                </div>
+                <div class="gallery-content">
+                    <span class="gallery-badge">Petrochemical</span>
+                    <h3 style="font-size: 1.25rem; color: #fff;">Refinery Pipeline Systems</h3>
+                </div>
+            </div>
+
+            <div class="gallery-card">
+                <div class="gallery-img-container">
+                    <img class="animated-img" src="https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=800&q=80" alt="Gas Processing Plants">
+                </div>
+                <div class="gallery-content">
+                    <span class="gallery-badge">Gas Operations</span>
+                    <h3 style="font-size: 1.25rem; color: #fff;">Gas Processing Plants</h3>
+                </div>
+            </div>
+
+            <div class="gallery-card">
+                <div class="gallery-img-container">
+                    <img class="animated-img" src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=800&q=80" alt="Piping & Valve Assemblies">
+                </div>
+                <div class="gallery-content">
+                    <span class="gallery-badge">Mechanical</span>
+                    <h3 style="font-size: 1.25rem; color: #fff;">Piping & Valve Assemblies</h3>
+                </div>
+            </div>
+
+            <div class="gallery-card">
+                <div class="gallery-img-container">
+                    <img class="animated-img" src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=800&q=80" alt="Hydrogen & ESG Tech">
+                </div>
+                <div class="gallery-content">
+                    <span class="gallery-badge" style="background: rgba(52,199,89,0.25); color: #4ade80; border-color: rgba(74,222,128,0.3);">Green Energy</span>
+                    <h3 style="font-size: 1.25rem; color: #fff;">Hydrogen & ESG Tech</h3>
+                </div>
+            </div>
+
+            <div class="gallery-card">
+                <div class="gallery-img-container">
+                    <img class="animated-img" src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80" alt="Control Panel Distribution">
+                </div>
+                <div class="gallery-content">
+                    <span class="gallery-badge" style="background: rgba(175,82,222,0.25); color: #c084fc; border-color: rgba(192,132,252,0.3);">Electrical</span>
+                    <h3 style="font-size: 1.25rem; color: #fff;">Control Panel Distribution</h3>
+                </div>
+            </div>
+
+            <div class="gallery-card">
+                <div class="gallery-img-container">
+                    <img class="animated-img" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80" alt="Tech-Hub Operations Matrix">
+                </div>
+                <div class="gallery-content">
+                    <span class="gallery-badge" style="background: rgba(0,199,190,0.25); color: #2dd4bf; border-color: rgba(45,212,191,0.3);">Smart Operations</span>
+                    <h3 style="font-size: 1.25rem; color: #fff;">Tech-Hub Operations Matrix</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OPERATIONS & ESG METRICS -->
+    <section class="section-block" id="widgets" style="padding-top: 20px;">
+        <div class="section-header">
+            <h2>HSE & Quality Operational Hub</h2>
+            <p>Real-time ESG, carbon, AI growth, and site quality compliance metrics.</p>
+        </div>
+
+        <div class="widgets-grid">
+            <div class="widget" style="background: linear-gradient(135deg, rgba(255,149,0,0.15), rgba(255,45,85,0.15));">
+                <div>
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <span class="code-font" style="text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; color: var(--text-secondary);">Realtime Tracker</span>
+                        <span class="metric-badge" style="background: rgba(255,45,85,0.25); color: #ff2d55;"><i class="fa-solid fa-smog"></i> Carbon Meter</span>
+                    </div>
+                    <div class="widget-metric-val" style="color: var(--accent-orange);" id="co2Meter">238.4 Mt</div>
+                    <p style="font-size: 0.88rem; font-weight: 700; color: #fff;">Malaysia CO2 Emissions Rate</p>
+                </div>
+                <div style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.8rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 0.6rem;">
+                    <i class="fa-solid fa-arrow-down" style="color: #4ade80;"></i> -2.4% Grid Emission Intensity YoY
+                </div>
+            </div>
+
+            <div class="widget" style="background: linear-gradient(135deg, rgba(0,122,255,0.15), rgba(175,82,222,0.15));">
+                <div>
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <span class="code-font" style="text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; color: var(--text-secondary);">Industrial AI Tech</span>
+                        <span class="metric-badge" style="background: rgba(0,122,255,0.25); color: #38bdf8;"><i class="fa-solid fa-brain"></i> Compute Index</span>
+                    </div>
+                    <div class="widget-metric-val" style="color: #38bdf8;" id="aiGrowthMeter">+38.6%</div>
+                    <p style="font-size: 0.88rem; font-weight: 700; color: #fff;">AI Industrial Adoption Growth</p>
+                </div>
+                <div style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.8rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 0.6rem;">
+                    <i class="fa-solid fa-arrow-up" style="color: #38bdf8;"></i> Realtime Data Automation Scale
+                </div>
+            </div>
+
+            <div class="widget" style="background: linear-gradient(135deg, rgba(52,199,89,0.15), rgba(0,199,190,0.15));">
+                <div>
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <span class="code-font" style="text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; color: var(--text-secondary);">Sustainability Rating</span>
+                        <span class="metric-badge" style="background: rgba(52,199,89,0.25); color: #4ade80;"><i class="fa-solid fa-leaf"></i> Bursa ESG Score</span>
+                    </div>
+                    <div class="widget-metric-val" style="color: #4ade80;" id="esgMeter">88.4 / 100</div>
+                    <p style="font-size: 0.88rem; font-weight: 700; color: #fff;">Malaysia ESG Performance Index</p>
+                </div>
+                <div style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.8rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 0.6rem;">
+                    <i class="fa-solid fa-circle-check" style="color: #4ade80;"></i> Top Tier FTSE4Good MY Index Standard Compliant
+                </div>
+            </div>
+        </div>
+
+        <!-- INFOGRAPHICS -->
+        <div class="infographics-grid">
+            <div class="info-box">
+                <h3><i class="fa-solid fa-shield-halved" style="color: var(--accent-pink);"></i> Safety Compliance Systems</h3>
+                <div class="info-3d-list">
+                    <div class="info-3d-card">
+                        <div class="icon-3d-wrapper icon-dosh"><i class="fa-solid fa-file-contract"></i></div>
+                        <div class="info-3d-content">
+                            <div class="info-3d-title">
+                                <span class="title-label">DOSH / JKKP Standard</span>
+                                <span class="status-pill-3d"><i class="fa-solid fa-check"></i> 100% Verified</span>
+                            </div>
+                            <div class="progress-bar-3d"><div class="progress-fill-3d" style="width: 100%; background: linear-gradient(90deg, #ff2d55, #ff9500);"></div></div>
+                        </div>
+                    </div>
+
+                    <div class="info-3d-card">
+                        <div class="icon-3d-wrapper icon-hirarc"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                        <div class="info-3d-content">
+                            <div class="info-3d-title">
+                                <span class="title-label">HIRARC Risk Assessment</span>
+                                <span class="status-pill-3d"><i class="fa-solid fa-check"></i> Active</span>
+                            </div>
+                            <div class="progress-bar-3d"><div class="progress-fill-3d" style="width: 98%; background: linear-gradient(90deg, #af52de, #007aff);"></div></div>
+                        </div>
+                    </div>
+
+                    <div class="info-3d-card">
+                        <div class="icon-3d-wrapper icon-zero"><i class="fa-solid fa-heart-pulse"></i></div>
+                        <div class="info-3d-content">
+                            <div class="info-3d-title">
+                                <span class="title-label">LTI Frequency Rate</span>
+                                <span class="status-pill-3d"><i class="fa-solid fa-check"></i> Zero LTI</span>
+                            </div>
+                            <div class="progress-bar-3d"><div class="progress-fill-3d" style="width: 100%; background: linear-gradient(90deg, #34c759, #00c7be);"></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <h3><i class="fa-solid fa-award" style="color: #4ade80;"></i> Quality Assurance Checklist</h3>
+                <div class="info-3d-list">
+                    <div class="info-3d-card">
+                        <div class="icon-3d-wrapper icon-mat"><i class="fa-solid fa-clipboard-check"></i></div>
+                        <div class="info-3d-content">
+                            <div class="info-3d-title">
+                                <span class="title-label">Material Inspection Plans</span>
+                                <span class="status-pill-3d"><i class="fa-solid fa-check"></i> Passed</span>
+                            </div>
+                            <div class="progress-bar-3d"><div class="progress-fill-3d" style="width: 100%; background: linear-gradient(90deg, #007aff, #00c7be);"></div></div>
+                        </div>
+                    </div>
+
+                    <div class="info-3d-card">
+                        <div class="icon-3d-wrapper icon-qaqc"><i class="fa-solid fa-microscope"></i></div>
+                        <div class="info-3d-content">
+                            <div class="info-3d-title">
+                                <span class="title-label">QA/QC Documentation</span>
+                                <span class="status-pill-3d"><i class="fa-solid fa-check"></i> Validated</span>
+                            </div>
+                            <div class="progress-bar-3d"><div class="progress-fill-3d" style="width: 96%; background: linear-gradient(90deg, #ff9500, #ff2d55);"></div></div>
+                        </div>
+                    </div>
+
+                    <div class="info-3d-card">
+                        <div class="icon-3d-wrapper icon-iso"><i class="fa-solid fa-certificate"></i></div>
+                        <div class="info-3d-content">
+                            <div class="info-3d-title">
+                                <span class="title-label">ISO Compliance Validation</span>
+                                <span class="status-pill-3d"><i class="fa-solid fa-check"></i> 100% Certified</span>
+                            </div>
+                            <div class="progress-bar-3d"><div class="progress-fill-3d" style="width: 100%; background: linear-gradient(90deg, #34c759, #af52de);"></div></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -438,27 +1005,33 @@
             <div class="contact-info-col">
                 <div>
                     <h2>Let's Build Together</h2>
-                    <p class="contact-desc">Send us your procurement specifications, civil requirements, M&E plans, or tender documents.</p>
+                    <p class="contact-desc">
+                        Send us your procurement specifications, civil requirements, M&E plans, or tender documents.
+                    </p>
                 </div>
-                <div class="key-contact-badge-box">
-                    <div class="contact-avatar">M</div>
-                    <div>
-                        <div style="font-size: 0.78rem; text-transform: uppercase; font-weight: 800; color: #38bdf8;">Key Contact Person</div>
-                        <h4 style="font-size: 1.2rem; color: #ffffff;">Morghan</h4>
-                        <p style="font-size: 0.85rem; color: var(--text-secondary);">Operations Manager</p>
+                
+                <div>
+                    <div class="key-contact-badge-box">
+                        <div class="contact-avatar">M</div>
+                        <div>
+                            <div style="font-size: 0.78rem; text-transform: uppercase; font-weight: 800; color: #38bdf8;">Key Contact Person</div>
+                            <h4 style="font-size: 1.2rem; color: #ffffff;">Morghan</h4>
+                            <p style="font-size: 0.85rem; color: var(--text-secondary);">Operations Manager</p>
+                        </div>
                     </div>
+
+                    <a href="https://wa.me/60149725722?text=Hello%20Morghan,%20I%20have%20an%20inquiry%20regarding%20procurement%2Fservices." target="_blank" class="btn-mac-primary" style="width: 100%; justify-content: center; background: linear-gradient(135deg, #25d366, #128c7e);">
+                        <i class="fa-brands fa-whatsapp" style="font-size: 1.3rem;"></i> Direct Chat on WhatsApp
+                    </a>
                 </div>
             </div>
 
-            <form class="contact-form" id="clientInquiryForm" onsubmit="handleInquirySubmit(event)">
+            <form class="contact-form" onsubmit="event.preventDefault(); alert('Inquiry sent successfully!');">
                 <div class="form-group">
                     <label for="contactName">Your Name / Company</label>
                     <input type="text" id="contactName" class="mac-input" placeholder="e.g. Alex Tan / Tech Corp" required>
                 </div>
-                <div class="form-group">
-                    <label for="contactEmail">Email Address</label>
-                    <input type="email" id="contactEmail" class="mac-input" placeholder="alex@techcorp.com" required>
-                </div>
+                
                 <div class="form-group">
                     <label for="contactService">Service Required</label>
                     <select id="contactService" class="mac-input">
@@ -468,10 +1041,12 @@
                         <option>Process Plant & Valve Engineering</option>
                     </select>
                 </div>
+
                 <div class="form-group">
                     <label for="contactMsg">Message / Details</label>
-                    <textarea id="contactMsg" class="mac-input" rows="4" placeholder="Attach details or tender reference..." required></textarea>
+                    <textarea id="contactMsg" class="mac-input" rows="4" placeholder="Attach details or tender reference..."></textarea>
                 </div>
+
                 <button type="submit" class="btn-mac-primary" style="width: 100%; justify-content: center; margin-top: 0.5rem;">
                     Submit Inquiry &rarr;
                 </button>
@@ -479,261 +1054,125 @@
         </div>
     </section>
 
-    <!-- ADMIN PORTAL MODAL -->
-    <div class="admin-modal-overlay" id="adminModalOverlay">
-        <div class="admin-dashboard-box">
-            <div class="admin-header">
-                <div>
-                    <h3 style="color: #fff;"><i class="fa-solid fa-shield-halved" style="color: var(--accent-purple);"></i> Administrative Management Portal</h3>
-                    <p style="font-size: 0.85rem; color: var(--text-secondary);">Vihaanaa Tech Hubs Core Backend Operations</p>
-                </div>
-                <button onclick="closeAdminPortal()" style="background: none; border: none; color: #fff; font-size: 1.5rem; cursor: pointer;"><i class="fa-solid fa-xmark"></i></button>
-            </div>
-
-            <!-- LOGIN VIEW -->
-            <div id="adminLoginPane" style="padding: 4rem 2rem; display: flex; align-items: center; justify-content: center; flex-grow: 1;">
-                <div class="login-box-inner">
-                    <h3 style="color: #fff; margin-bottom: 1.5rem;">Admin Authentication</h3>
-                    <form onsubmit="handleAdminLogin(event)" style="display: flex; flex-direction: column; gap: 1rem;">
-                        <input type="text" id="adminUser" class="mac-input" placeholder="Admin Username (admin)" required>
-                        <input type="password" id="adminPass" class="mac-input" placeholder="Password (vihaanaa)" required>
-                        <button type="submit" class="btn-mac-primary" style="width: 100%; justify-content: center;">Authenticate Access</button>
-                    </form>
-                </div>
-            </div>
-
-            <!-- DASHBOARD VIEW -->
-            <div id="adminDashboardPane" style="display: none; flex-direction: column; flex-grow: 1; overflow: hidden;">
-                <div class="admin-tabs">
-                    <button class="admin-tab-btn active" onclick="switchAdminTab(event, 'inquiriesTab')"><i class="fa-solid fa-inbox"></i> Manage Inquiries</button>
-                    <button class="admin-tab-btn" onclick="switchAdminTab(event, 'chatTab')"><i class="fa-brands fa-whatsapp"></i> WhatsApp Chat History</button>
-                    <button class="admin-tab-btn" onclick="switchAdminTab(event, 'contentTab')"><i class="fa-solid fa-sliders"></i> Content & Tenders</button>
-                </div>
-
-                <div class="admin-content-area">
-                    <!-- Inquiries Tab -->
-                    <div id="inquiriesTab" class="admin-pane active">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-                            <h4 style="color: #fff;">Submitted Client Inquiries & Responses</h4>
-                            <button onclick="loadInquiriesTable()" class="admin-tab-btn" style="background: rgba(0,122,255,0.3);"><i class="fa-solid fa-rotate"></i> Refresh Data</button>
-                        </div>
-                        <div style="overflow-x: auto;">
-                            <table class="admin-table">
-                                <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Service</th>
-                                        <th>Message</th>
-                                        <th>Status</th>
-                                        <th>Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="inquiriesTableBody">
-                                    <!-- Injected via JavaScript -->
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                    <!-- WhatsApp Logs Tab -->
-                    <div id="chatTab" class="admin-pane">
-                        <h4 style="color: #fff; margin-bottom: 1rem;">Simulated WhatsApp Chat & Bot Logs</h4>
-                        <div style="overflow-x: auto;">
-                            <table class="admin-table">
-                                <thead>
-                                    <tr>
-                                        <th>Timestamp</th>
-                                        <th>Client Reference</th>
-                                        <th>Channel / Bot Prompt</th>
-                                        <th>Last Message</th>
-                                        <th>Assigned Manager</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>2026-08-25 14:12</td>
-                                        <td>+60 12-345 6789 (Alex Tan)</td>
-                                        <td>WhatsApp Floating Chat</td>
-                                        <td>"Hello Morghan, I have an inquiry regarding procurement/services."</td>
-                                        <td>Morghan (Active)</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2026-08-25 11:05</td>
-                                        <td>+60 19-876 5432 (Zul Hairi)</td>
-                                        <td>Direct QR / Direct Link</td>
-                                        <td>"Requesting quotation breakdown for subsea pipeline spares."</td>
-                                        <td>Morghan (Resolved)</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                    <!-- Content Manager Tab -->
-                    <div id="contentTab" class="admin-pane">
-                        <h4 style="color: #fff; margin-bottom: 1rem;">Live Control Parameters</h4>
-                        <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">Modify active operational parameters, tender thresholds, and site statuses instantly.</p>
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
-                            <div style="background: rgba(255,255,255,0.03); padding: 1.5rem; border-radius: 14px; border: 1px solid rgba(255,255,255,0.08);">
-                                <h5 style="color: #38bdf8; margin-bottom: 0.8rem;">CO2 Tracker Baseline Metric</h5>
-                                <input type="text" class="mac-input" value="238.4 Mt" style="margin-bottom: 1rem;">
-                                <button class="admin-tab-btn active" onclick="alert('Metric updated successfully!')">Save Changes</button>
-                            </div>
-                            <div style="background: rgba(255,255,255,0.03); padding: 1.5rem; border-radius: 14px; border: 1px solid rgba(255,255,255,0.08);">
-                                <h5 style="color: #38bdf8; margin-bottom: 0.8rem;">Active Operations Manager Contact</h5>
-                                <input type="text" class="mac-input" value="+60149725722" style="margin-bottom: 1rem;">
-                                <button class="admin-tab-btn active" onclick="alert('Contact number updated!')">Update Line</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- WHATSAPP CHATBOT WIDGET -->
     <div class="wa-widget-wrapper">
         <div class="wa-chat-box" id="waChatBox">
             <div class="wa-chat-header">
-                <div class="wa-avatar"><i class="fa-solid fa-user-tie"></i><span class="wa-status-dot"></span></div>
-                <div>
-                    <div style="font-size: 0.95rem; font-weight: 700; color: #fff;">Morghan</div>
-                    <div style="font-size: 0.75rem; color: #a5f3fc;">Operations Manager • Online</div>
+                <div class="wa-avatar">
+                    <i class="fa-solid fa-user-tie"></i>
+                    <span class="wa-status-dot"></span>
                 </div>
-                <button onclick="toggleWaBox()" style="position: absolute; right: 12px; background: none; border: none; color: white; font-size: 1.2rem; cursor: pointer;">&times;</button>
+                <div>
+                    <div class="wa-chat-title">Morghan</div>
+                    <div class="wa-chat-sub">Operations Manager • Online</div>
+                </div>
+                <button class="wa-close-btn" onclick="toggleWaBox()">&times;</button>
             </div>
             <div class="wa-chat-body">
-                <div class="wa-msg-bubble">Hello! 👋 Welcome to Vihaanaa Tech Hubs. How can we assist with your procurement, civil, or M&E requirements today?</div>
+                <div class="wa-msg-bubble">
+                    Hello! 👋 Welcome to Vihaanaa Tech Hubs. How can we assist with your procurement, civil, or M&E requirements today?
+                </div>
             </div>
-            <a href="https://wa.me/60149725722?text=Hello%20Morghan,%20I%20have%20an%20inquiry." target="_blank" class="wa-chat-cta">
+            <a href="https://wa.me/60149725722?text=Hello%20Morghan,%20I%20have%20an%20inquiry%20regarding%20procurement%2Fservices." target="_blank" class="wa-chat-cta">
                 <i class="fa-brands fa-whatsapp" style="font-size: 1.1rem;"></i> Start Chat on WhatsApp
             </a>
         </div>
-        <button class="wa-glow-button" onclick="toggleWaBox()" aria-label="WhatsApp Assistance"><i class="fa-brands fa-whatsapp"></i></button>
+
+        <button class="wa-glow-button" onclick="toggleWaBox()" aria-label="WhatsApp Assistance">
+            <i class="fa-brands fa-whatsapp"></i>
+            <span class="wa-pulse-ring"></span>
+            <span class="wa-pulse-ring delay"></span>
+        </button>
     </div>
 
     <!-- DOCK BAR -->
     <div class="dock-bar">
         <a href="#hero" class="dock-icon" title="Home"><i class="fa-solid fa-house" style="color: #38bdf8;"></i></a>
         <a href="#stacks" class="dock-icon" title="Capabilities"><i class="fa-solid fa-layer-group" style="color: #c084fc;"></i></a>
-        <a href="#" onclick="openAdminPortal(); return false;" class="dock-icon" title="Admin Portal"><i class="fa-solid fa-lock" style="color: #ff2d55;"></i></a>
+        <a href="#gallery" class="dock-icon" title="Infrastructure"><i class="fa-solid fa-industry" style="color: var(--accent-orange);"></i></a>
+        <a href="#widgets" class="dock-icon" title="Operations"><i class="fa-solid fa-chart-simple" style="color: #4ade80;"></i></a>
         <a href="https://wa.me/60149725722" target="_blank" class="dock-icon" title="WhatsApp"><i class="fa-brands fa-whatsapp" style="color: #25d366;"></i></a>
     </div>
 
     <!-- SCRIPTS -->
     <script>
-        // Wallpaper Carousel
+        // Administrative View Activation Handler
+        window.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('admin') === '1') {
+                document.body.classList.add('admin-mode');
+                
+                const adminBanner = document.createElement('div');
+                adminBanner.style.cssText = 'position: fixed; top: 52px; left: 0; right: 0; background: linear-gradient(135deg, #ff2d55, #ff9500); color: white; text-align: center; padding: 6px; font-size: 0.85rem; font-weight: 700; z-index: 1999; box-shadow: 0 4px 12px rgba(0,0,0,0.3);';
+                adminBanner.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> ADMINISTRATIVE VIEW ACTIVE (?admin=1) — Management Controls Enabled';
+                document.body.prepend(adminBanner);
+            }
+        });
+
+        // Background Wallpaper Slider
         const slides = document.querySelectorAll('#wallpaperSlider .bg-slide');
         let currentSlideIndex = 0;
-        setInterval(() => {
+        const transitionInterval = 8000;
+
+        function nextWallpaperSlide() {
             if (slides.length <= 1) return;
             slides[currentSlideIndex].classList.remove('active');
             currentSlideIndex = (currentSlideIndex + 1) % slides.length;
             slides[currentSlideIndex].classList.add('active');
-        }, 8000);
+        }
+        setInterval(nextWallpaperSlide, transitionInterval);
+
+        // Tender Leaderboard Auto-Scroll
+        const feedContainer = document.getElementById('tenderLeaderboard');
+        let isHovered = false;
+
+        if (feedContainer) {
+            feedContainer.addEventListener('mouseenter', () => isHovered = true);
+            feedContainer.addEventListener('mouseleave', () => isHovered = false);
+
+            setInterval(() => {
+                if (!isHovered && feedContainer) {
+                    if (feedContainer.scrollTop + feedContainer.clientHeight >= feedContainer.scrollHeight - 5) {
+                        feedContainer.scrollTop = 0;
+                    } else {
+                        feedContainer.scrollTop += 1;
+                    }
+                }
+            }, 40);
+        }
 
         // WhatsApp Chatbot Toggle
         function toggleWaBox() {
-            document.getElementById('waChatBox').classList.toggle('active');
+            const box = document.getElementById('waChatBox');
+            if (box) box.classList.toggle('active');
         }
 
-        // --- ADMIN PORTAL LOGIC ---
-        function openAdminPortal() {
-            document.getElementById('adminModalOverlay').classList.add('active');
-        }
-        function closeAdminPortal() {
-            document.getElementById('adminModalOverlay').classList.remove('active');
-        }
-
-        function handleAdminLogin(e) {
-            e.preventDefault();
-            const u = document.getElementById('adminUser').value;
-            const p = document.getElementById('adminPass').value;
-            
-            if (u === 'admin' && p === 'vihaanaa') {
-                document.getElementById('adminLoginPane').style.display = 'none';
-                document.getElementById('adminDashboardPane').style.display = 'flex';
-                loadInquiriesTable();
-            } else {
-                alert('Invalid credentials! Use Username: admin, Password: vihaanaa');
-            }
-        }
-
-        function switchAdminTab(e, tabId) {
-            document.querySelectorAll('.admin-pane').forEach(p => p.classList.remove('active'));
-            document.querySelectorAll('.admin-tab-btn').forEach(b => b.classList.remove('active'));
-            document.getElementById(tabId).classList.add('active');
-            e.currentTarget.classList.add('active');
-        }
-
-        // Handle Contact Form & Store to localStorage
-        function handleInquirySubmit(e) {
-            e.preventDefault();
-            const name = document.getElementById('contactName').value;
-            const email = document.getElementById('contactEmail').value;
-            const service = document.getElementById('contactService').value;
-            const msg = document.getElementById('contactMsg').value;
-
-            const newInquiry = {
-                id: 'INQ-' + Math.floor(1000 + Math.random() * 9000),
-                name, email, service, msg,
-                status: 'Pending',
-                date: new Date().toLocaleDateString()
-            };
-
-            let inquiries = JSON.parse(localStorage.getItem('vihaanaa_inquiries') || '[]');
-            inquiries.push(newInquiry);
-            localStorage.setItem('vihaanaa_inquiries', JSON.stringify(inquiries));
-
-            alert('Inquiry submitted successfully! Our operations team has received your specifications.');
-            document.getElementById('clientInquiryForm').reset();
-        }
-
-        // Load Inquiries into Admin Table
-        function loadInquiriesTable() {
-            const tbody = document.getElementById('inquiriesTableBody');
-            let inquiries = JSON.parse(localStorage.getItem('vihaanaa_inquiries') || '[]');
-
-            if (inquiries.length === 0) {
-                inquiries = [
-                    { id: 'INQ-9421', name: 'Zul Hairi', email: 'zul@petronas-contractor.my', service: 'Global Procurement & Supply', msg: 'Need catalog for certified pipeline flanges.', status: 'Pending', date: '2026-08-24' }
-                ];
-                localStorage.setItem('vihaanaa_inquiries', JSON.stringify(inquiries));
-            }
-
-            tbody.innerHTML = '';
-            inquiries.forEach((item, index) => {
-                const tr = document.createElement('tr');
-                tr.innerHTML = `
-                    <td class="code-font">${item.id}</td>
-                    <td><strong>${item.name}</strong><br><small style="color:var(--text-secondary);">${item.email}</small></td>
-                    <td>${item.service}</td>
-                    <td style="max-width: 250px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" title="${item.msg}">${item.msg}</td>
-                    <td><span class="status-badge ${item.status === 'Resolved' ? 'status-resolved' : 'status-pending'}">${item.status}</span></td>
-                    <td>
-                        <button onclick="toggleInquiryStatus(${index})" class="admin-tab-btn" style="padding: 4px 8px; font-size: 0.75rem;">Toggle Status</button>
-                        <button onclick="deleteInquiry(${index})" class="admin-tab-btn" style="padding: 4px 8px; font-size: 0.75rem; background: rgba(255,45,85,0.2); color:#ff2d55;"><i class="fa-solid fa-trash"></i></button>
-                    </td>
-                `;
-                tbody.appendChild(tr);
+        // 3D Tilt Effect
+        const tiltSnippet = document.getElementById('tiltSnippet');
+        if(tiltSnippet) {
+            document.addEventListener('mousemove', (e) => {
+                const x = (window.innerWidth / 2 - e.pageX) / 45;
+                const y = (window.innerHeight / 2 - e.pageY) / 45;
+                tiltSnippet.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
             });
         }
 
-        function toggleInquiryStatus(index) {
-            let inquiries = JSON.parse(localStorage.getItem('vihaanaa_inquiries') || '[]');
-            inquiries[index].status = inquiries[index].status === 'Pending' ? 'Resolved' : 'Pending';
-            localStorage.setItem('vihaanaa_inquiries', JSON.stringify(inquiries));
-            loadInquiriesTable();
-        }
-
-        function deleteInquiry(index) {
-            let inquiries = JSON.parse(localStorage.getItem('vihaanaa_inquiries') || '[]');
-            inquiries.splice(index, 1);
-            localStorage.setItem('vihaanaa_inquiries', JSON.stringify(inquiries));
-            loadInquiriesTable();
-        }
+        // Realtime Data Micro-Fluctuations
+        setInterval(() => {
+            const co2 = document.getElementById('co2Meter');
+            if(co2) {
+                const base = 238.4;
+                const delta = (Math.random() * 0.4 - 0.2).toFixed(2);
+                co2.textContent = `${(base + parseFloat(delta)).toFixed(1)} Mt`;
+            }
+            
+            const ai = document.getElementById('aiGrowthMeter');
+            if(ai) {
+                const baseAi = 38.6;
+                const deltaAi = (Math.random() * 0.2 - 0.1).toFixed(1);
+                ai.textContent = `+${(baseAi + parseFloat(deltaAi)).toFixed(1)}%`;
+            }
+        }, 3000);
     </script>
 </body>
 </html>
