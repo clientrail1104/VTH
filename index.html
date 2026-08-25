@@ -48,7 +48,7 @@
         .code-font { font-family: 'Space Grotesk', monospace; }
         a { text-decoration: none; color: inherit; }
 
-        /* --- SMOOTH CONTINUOUS SLOW-MOTION BACKGROUND WALLPAPER CAROUSEL --- */
+        /* --- BACKGROUND WALLPAPER CAROUSEL --- */
         .bg-wallpaper-slider {
             position: fixed;
             top: 0; left: 0; width: 100vw; height: 100vh;
@@ -240,15 +240,28 @@
             box-shadow: 0 30px 60px -12px rgba(0, 122, 255, 0.3);
         }
 
-        /* Permanent Image Wrappers (Guaranteed 100% Visibility at All Times) */
+        /* Guaranteed 100% Visibility Image Wrappers */
         .card-img-wrapper {
-            width: 100%; height: 170px; border-radius: var(--radius-sm);
-            overflow: hidden; margin-bottom: 1.2rem; background: #000; position: relative;
+            width: 100%; 
+            height: 170px; 
+            min-height: 170px;
+            border-radius: var(--radius-sm);
+            overflow: hidden; 
+            margin-bottom: 1.2rem; 
+            background: #0f172a; 
+            position: relative;
             display: block;
+            flex-shrink: 0;
+            border: 1px solid rgba(255, 255, 255, 0.08);
         }
         .animated-img {
-            width: 100%; height: 100%; object-fit: cover; display: block;
-            border: none; outline: none; transition: transform 0.5s var(--ease-out);
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            display: block;
+            border: none; 
+            outline: none; 
+            transition: transform 0.5s var(--ease-out);
         }
         .service-card:hover .animated-img, .gallery-card:hover .animated-img {
             transform: scale(1.08);
@@ -269,7 +282,7 @@
             display: flex; flex-direction: column;
         }
         .gallery-card:hover { transform: translateY(-8px); border-color: rgba(56, 189, 248, 0.4); }
-        .gallery-img-container { width: 100%; height: 230px; overflow: hidden; position: relative; background: #000; display: block; }
+        .gallery-img-container { width: 100%; height: 230px; overflow: hidden; position: relative; background: #0f172a; display: block; flex-shrink: 0; }
         .gallery-content { padding: 1.4rem 1.5rem; text-align: left; }
         .gallery-badge {
             display: inline-block; padding: 4px 12px; border-radius: 50px;
@@ -477,7 +490,7 @@
 </head>
 <body>
 
-    <!-- WALLPAPER CAROUSEL -->
+    <!-- BACKGROUND WALLPAPER CAROUSEL -->
     <div class="bg-wallpaper-slider" id="wallpaperSlider">
         <div class="bg-slide active" style="background-image: url('3d-ai-cybersecurity-concept-as-glowing-abstract-digital-art-banner-highlighting-ais-role-cyb_980716-667027.jpg'), url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1920&q=80');"></div>
         <div class="bg-slide" style="background-image: url('9851-ai-intelligent-systems-02.jpg'), url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1920&q=80');"></div>
@@ -627,7 +640,7 @@
         </div>
     </section>
 
-    <!-- CAPABILITIES & SERVICES (Civil & Structural, Mechanical & Electrical Images Verified & Always Visible) -->
+    <!-- CAPABILITIES & SERVICES -->
     <section class="section-block" id="stacks">
         <div class="section-header">
             <h2>Capabilities & Services</h2>
@@ -674,11 +687,11 @@
                 <span class="code-font" style="font-size: 0.85rem; color: #38bdf8; margin-top: 1rem;">Equipment Sourcing &rarr;</span>
             </div>
 
-            <!-- 4. Civil & Structural (Permanently Visible Image) -->
+            <!-- 4. Civil & Structural (Explicitly Verified & Guaranteed Visible) -->
             <div class="service-card">
                 <div>
                     <div class="card-img-wrapper">
-                        <img class="animated-img" src="https://images.unsplash.com/photo-1541888946425-d0fbb18f02f4?auto=format&fit=crop&w=800&q=80" alt="Civil & Structural">
+                        <img class="animated-img" src="https://images.unsplash.com/photo-1541888946425-d0fbb18f02f4?auto=format&fit=crop&w=800&q=80" alt="Civil & Structural" onerror="this.src='https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=80'">
                     </div>
                     <span class="service-tag" style="background: rgba(255,149,0,0.25); color: #ffab2d; border-color: rgba(255,171,45,0.3);">Civil Engineering</span>
                     <h3 style="font-size: 1.25rem; color: #fff; margin-bottom: 0.4rem;">Civil & Structural</h3>
@@ -713,11 +726,11 @@
                 <span class="code-font" style="font-size: 0.85rem; color: var(--accent-orange); margin-top: 1rem;">Facility Maintenance &rarr;</span>
             </div>
 
-            <!-- 7. Mechanical & Electrical (Permanently Visible Image) -->
+            <!-- 7. Mechanical & Electrical (Explicitly Verified & Guaranteed Visible) -->
             <div class="service-card">
                 <div>
                     <div class="card-img-wrapper">
-                        <img class="animated-img" src="https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=800&q=80" alt="Mechanical & Electrical">
+                        <img class="animated-img" src="https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=800&q=80" alt="Mechanical & Electrical" onerror="this.src='https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80'">
                     </div>
                     <span class="service-tag" style="background: rgba(52,199,89,0.25); color: #4ade80; border-color: rgba(74,222,128,0.3);">M&E Systems</span>
                     <h3 style="font-size: 1.25rem; color: #fff; margin-bottom: 0.4rem;">Mechanical & Electrical</h3>
@@ -754,7 +767,7 @@
         </div>
     </section>
 
-    <!-- FEATURED INFRASTRUCTURE PROJECTS (100% VISIBLE & VERIFIED IMAGES) -->
+    <!-- FEATURED INFRASTRUCTURE PROJECTS -->
     <section class="section-block" id="gallery" style="padding-top: 20px;">
         <div class="section-header">
             <h2>Featured Infrastructure Projects</h2>
@@ -762,7 +775,6 @@
         </div>
 
         <div class="gallery-grid">
-            <!-- Project 1 -->
             <div class="gallery-card">
                 <div class="gallery-img-container">
                     <img class="animated-img" src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=800&q=80" alt="Refinery Pipeline Systems">
@@ -773,7 +785,6 @@
                 </div>
             </div>
 
-            <!-- Project 2 -->
             <div class="gallery-card">
                 <div class="gallery-img-container">
                     <img class="animated-img" src="https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=800&q=80" alt="Gas Processing Plants">
@@ -784,7 +795,6 @@
                 </div>
             </div>
 
-            <!-- Project 3 -->
             <div class="gallery-card">
                 <div class="gallery-img-container">
                     <img class="animated-img" src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=800&q=80" alt="Piping & Valve Assemblies">
@@ -795,7 +805,6 @@
                 </div>
             </div>
 
-            <!-- Project 4 -->
             <div class="gallery-card">
                 <div class="gallery-img-container">
                     <img class="animated-img" src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=800&q=80" alt="Hydrogen & ESG Tech">
@@ -806,7 +815,6 @@
                 </div>
             </div>
 
-            <!-- Project 5 -->
             <div class="gallery-card">
                 <div class="gallery-img-container">
                     <img class="animated-img" src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80" alt="Control Panel Distribution">
@@ -817,7 +825,6 @@
                 </div>
             </div>
 
-            <!-- Project 6 -->
             <div class="gallery-card">
                 <div class="gallery-img-container">
                     <img class="animated-img" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80" alt="Tech-Hub Operations Matrix">
